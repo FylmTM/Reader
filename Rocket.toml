@@ -1,0 +1,7 @@
+[global]
+address = "0.0.0.0"
+port = 8080
+
+[global.databases.db]
+url = "db.sqlite"
+pool_size = "10"
