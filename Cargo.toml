@@ -4,26 +4,19 @@ version = "0.1.0"
 authors = ["Dmitry Vrublevsky <dmitry@vrublevsky.me>"]
 edition = "2018"
 
-
 [dependencies]
 rocket = "0.4.2"
 serde = "1.0"
 serde_json = "1.0"
 serde_derive = "1.0"
+r2d2 = "0.8.6"
+r2d2_sqlite = "0.12.0"
 
 [dependencies.rocket_contrib]
 version = "0.4.2"
 default-features = false
-features = [
-    "json",
-    "diesel_sqlite_pool"
-]
+features = ["json"]
 
-#[dependencies.libsqlite3-sys]
-#version = "0.16.0"
-#features = ["bundled"]
-
-[dependencies.diesel]
-version = "1.4"
-features = ["sqlite"]
-
+[dependencies.rusqlite]
+version = "0.20.0"
+features = ["bundled"]
