@@ -11,7 +11,7 @@ pub fn initialize(conn: &Connection) {
 }
 
 pub fn find_posts(conn: &Connection) -> Result<Vec<Post>, Error> {
-    let mut statement = conn.prepare("SELECT id, title, body FROM posts")?;
+    let mut statement = conn.prepare(include_str!("queries/find_posts.sql"))?;
     let result = statement.query_map(NO_PARAMS, |row| {
         Ok(Post {
             id: row.get(0)?,

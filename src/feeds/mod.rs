@@ -1,42 +1,32 @@
-use crate::bootstrap::DBPool;
-use rusqlite::Connection;
 use std::thread;
 use std::time::Duration;
 
+use rusqlite::Connection;
+
+use crate::bootstrap::DBPool;
+
 mod rss;
-mod twitter;
 
 pub fn initialize(config: &rocket::Config, pool: &DBPool) {
-    schedule("RSS", "rss_update_interval", rss::update, config, pool);
-    schedule(
-        "Twitter",
-        "twitter_update_interval",
-        twitter::update,
-        config,
-        pool,
-    );
-}
-
-fn schedule(
-    name: &'static str,
-    config_parameter: &'static str,
-    updater: fn(&Connection) -> (),
-    config: &rocket::Config,
-    pool: &DBPool,
-) {
-    let interval = config.get_int(config_parameter).unwrap_or(30) as u64;
+    let interval = config.get_int("feeds_update_interval").unwrap_or(30) as u64;
     let pool = pool.clone();
-    thread::spawn(move || {
-        info!("Schedule {} feeds update every {} minutes.", name, interval);
+
+    info!("Schedule feeds update every {} minutes.", interval);
+
+    thread::spawn(move || loop {
         loop {
-            info!("Update {} feeds.", name);
+            info!("Begin feeds update.");
             let conn = pool.get().expect("Failed to acquire DB connection");
-            updater(&conn);
-            info!(
-                "{} feeds update completed. Next one in {} minutes.",
-                name, interval
-            );
+            run("RSS", rss::update, &conn);
+
+            info!("Feeds update completed. Next one in {} minutes.", interval);
             thread::sleep(Duration::from_secs(60 * interval));
         }
     });
+}
+
+fn run(name: &'static str, updater: fn(&Connection) -> (), conn: &Connection) {
+    info!("Update {} feeds.", name);
+    updater(&conn);
+    info!("{} feeds update completed.", name);
 }
