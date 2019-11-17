@@ -4,3 +4,7 @@ port = 8080
 
 db_path = "db.sqlite"
 db_pool_size = 10
+
+enable_feed_update=false
+rss_update_interval=1
+twitter_update_interval=1

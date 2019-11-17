@@ -16,6 +16,7 @@ mod api;
 mod bootstrap;
 mod db;
 mod error;
+mod feeds;
 
 fn main() {
     let mut log = env_logger::Builder::from_default_env();
@@ -40,6 +41,14 @@ fn main() {
     info!("Initialize database schema.");
     let connection = pool.get().expect("Failed to acquire connection");
     db::initialize(&connection);
+
+    info!("Initialize feeds.");
+    let enable_feeds_update = config.get_bool("enable_feed_update").unwrap_or(true);
+    if enable_feeds_update {
+        feeds::initialize(&config, &pool);
+    } else {
+        info!("Feeds update is disabled.")
+    }
 
     info!("Start server.");
     rocket
