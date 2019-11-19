@@ -1,14 +1,10 @@
 use rusqlite::{Connection, NO_PARAMS};
 
-pub use self::entities::Post;
+pub use self::entities::*;
 use crate::error::Error;
 
-mod entities;
-
-pub fn initialize(conn: &Connection) {
-    conn.execute(include_str!("queries/schema.sql"), NO_PARAMS)
-        .expect("schema created");
-}
+pub mod bootstrap;
+pub mod entities;
 
 pub fn find_posts(conn: &Connection) -> Result<Vec<Post>, Error> {
     let mut statement = conn.prepare(include_str!("queries/find_posts.sql"))?;

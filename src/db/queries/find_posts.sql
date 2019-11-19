@@ -1,1 +1,2 @@
-SELECT id, title, body FROM posts;
+select id, title, body
+from posts;
