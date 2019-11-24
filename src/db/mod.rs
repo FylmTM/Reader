@@ -7,7 +7,12 @@ pub mod bootstrap;
 pub mod entities;
 
 pub fn find_posts(conn: &Connection) -> Result<Vec<Post>, Error> {
-    let mut statement = conn.prepare(include_str!("queries/find_posts.sql"))?;
+    // language=SQLite
+    let query = "
+        select id, title, body
+        from posts;
+    ";
+    let mut statement = conn.prepare(query)?;
     let result = statement.query_map(NO_PARAMS, |row| {
         Ok(Post {
             id: row.get(0)?,

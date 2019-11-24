@@ -32,12 +32,12 @@ fn main() {
     // Configuration
     //-----------------
 
-    let dev_db_fixture = config.get_bool("dev_db_fixture").unwrap_or(false);
     let db_in_memory = config.get_bool("db_in_memory").unwrap_or(false);
     let db_path = config.get_str("db_path").unwrap_or("db.sqlite");
     let db_pool_size = config.get_int("db_pool_size").unwrap_or(10) as u32;
     let feeds_update_enabled = config.get_bool("feeds_update_enabled").unwrap_or(true);
     let feeds_update_interval = config.get_int("feeds_update_interval").unwrap_or(30) as u64;
+    let dev_db_fixture_enabled = config.get_bool("dev_db_fixture_enabled").unwrap_or(false);
 
     //-----------------
     // Database
@@ -57,7 +57,7 @@ fn main() {
     let connection = pool.get().expect("Failed to acquire connection.");
     db::bootstrap::initialize_schema(&connection);
 
-    if dev_db_fixture {
+    if dev_db_fixture_enabled {
         info!("Apply development db fixture.");
         db::bootstrap::initialize_fixture(&connection);
     }

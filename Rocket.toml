@@ -2,11 +2,11 @@
 address = "0.0.0.0"
 port = 8080
 
-db_in_memory = true
+db_in_memory = false
 db_path = "db.sqlite"
 db_pool_size = 10
 
 feeds_update_enabled = false
 feeds_update_interval = 1
 
-dev_db_fixture = true
+dev_db_fixture_enabled = true
