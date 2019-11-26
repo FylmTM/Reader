@@ -9,13 +9,11 @@ create table feeds
 (
     id         integer primary key,
     type       text not null,
-    identifier text not null,
-    config     text not null
+    identifier text not null
 );
 
-create table posts
+create table user_feeds
 (
-    id    integer primary key,
-    title text not null,
-    body  text not null
+    user_id integer references users (id) not null,
+    feed_id integer references feeds (id) not null
 );

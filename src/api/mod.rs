@@ -1,3 +1,5 @@
+pub mod authentication;
+pub mod catchers;
 pub mod endpoints;
 
 #[derive(Serialize, Deserialize)]

@@ -3,7 +3,7 @@ use std::time::Duration;
 
 use rusqlite::Connection;
 
-use crate::bootstrap::DBPool;
+use crate::DBPool;
 
 mod rss;
 

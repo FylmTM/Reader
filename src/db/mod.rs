@@ -1,4 +1,4 @@
-use rusqlite::{Connection, NO_PARAMS};
+use rusqlite::Connection;
 
 pub use self::entities::*;
 use crate::error::Error;
@@ -6,24 +6,19 @@ use crate::error::Error;
 pub mod bootstrap;
 pub mod entities;
 
-pub fn find_posts(conn: &Connection) -> Result<Vec<Post>, Error> {
+pub fn find_user(conn: &Connection, api_key: &str) -> Result<User, Error> {
     // language=SQLite
     let query = "
-        select id, title, body
-        from posts;
+        select id, username
+        from users
+        where api_key = ?
     ";
     let mut statement = conn.prepare(query)?;
-    let result = statement.query_map(NO_PARAMS, |row| {
-        Ok(Post {
+    let user = statement.query_row(&[api_key], |row| {
+        Ok(User {
             id: row.get(0)?,
-            title: row.get(1)?,
-            body: row.get(2)?,
+            username: row.get(1)?,
         })
     })?;
-
-    let mut posts = Vec::new();
-    for post in result {
-        posts.push(post?);
-    }
-    Ok(posts)
+    Ok(user)
 }

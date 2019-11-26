@@ -11,12 +11,18 @@ extern crate rocket_contrib;
 extern crate rusqlite;
 #[macro_use]
 extern crate serde_derive;
+extern crate time;
 
 mod api;
-mod bootstrap;
 mod db;
 mod error;
 mod feeds;
+
+pub type DBPool = r2d2::Pool<r2d2_sqlite::SqliteConnectionManager>;
+
+pub struct Context {
+    pub pool: DBPool,
+}
 
 fn main() {
     let mut log = env_logger::Builder::from_default_env();
@@ -78,11 +84,15 @@ fn main() {
 
     info!("Start server.");
     rocket
-        .manage(bootstrap::Context { pool })
+        .manage(Context { pool })
         .register(catchers![
-            bootstrap::catcher_not_found,
-            bootstrap::catcher_internal_error
+            api::catchers::catcher_unauthorized,
+            api::catchers::catcher_not_found,
+            api::catchers::catcher_internal_error,
         ])
-        .mount("/", routes!(api::endpoints::index))
+        .mount(
+            "/",
+            routes![api::endpoints::authenticate, api::endpoints::current_user],
+        )
         .launch();
 }

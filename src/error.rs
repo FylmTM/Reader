@@ -5,6 +5,7 @@ use std::io::Cursor;
 
 #[derive(Debug)]
 pub enum Error {
+    ApiKeyNotPresent,
     PoolError(r2d2::Error),
     DatabaseError(rusqlite::Error),
 }

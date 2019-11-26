@@ -1,9 +1,11 @@
 use rocket_contrib::json::JsonValue;
 
-pub type DBPool = r2d2::Pool<r2d2_sqlite::SqliteConnectionManager>;
-
-pub struct Context {
-    pub pool: DBPool,
+#[catch(401)]
+pub fn catcher_unauthorized() -> JsonValue {
+    json!({
+        "status": "error",
+        "error": "Unauthorized."
+    })
 }
 
 #[catch(404)]
