@@ -1,6 +1,5 @@
 use std::ops::Add;
 
-use rocket::http::RawStr;
 use rocket::http::{Cookie, Cookies};
 use rocket::State;
 
@@ -10,15 +9,13 @@ use crate::Context;
 
 #[get("/api/v1/authenticate/<api_key>")]
 pub fn authenticate(
-    api_key: &RawStr,
+    api_key: String,
     context: State<Context>,
     mut cookies: Cookies,
 ) -> Response<db::User> {
     let conn = context.pool.clone().get()?;
-    let api_key = api_key.as_str().to_string();
 
     let user = db::find_user(&conn, &api_key)?;
-
     cookies.add(
         Cookie::build("api_key", api_key)
             .path("/")
