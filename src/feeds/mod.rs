@@ -3,19 +3,19 @@ use std::time::Duration;
 
 use rusqlite::Connection;
 
-use crate::DBPool;
+use crate::db;
+use crate::db::AcquireConnection;
 
 mod rss;
 
-pub fn initialize(pool: &DBPool, interval: u64) {
+pub fn initialize(pool: &db::Pool, interval: u64) {
     let pool = pool.clone();
-
     info!("Schedule feeds update every {} minutes.", interval);
 
     thread::spawn(move || loop {
         loop {
             info!("Feeds update started.");
-            let conn = pool.get().expect("Failed to acquire db connection");
+            let conn = pool.conn().expect("Failed to acquire db connection");
             run("RSS", rss::update, &conn);
 
             info!("Feeds update completed. Next in {} minutes.", interval);

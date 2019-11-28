@@ -18,12 +18,6 @@ mod db;
 mod error;
 mod feeds;
 
-pub type DBPool = r2d2::Pool<r2d2_sqlite::SqliteConnectionManager>;
-
-pub struct Context {
-    pub pool: DBPool,
-}
-
 fn main() {
     let mut log = env_logger::Builder::from_default_env();
     log.target(env_logger::Target::Stdout)
@@ -84,7 +78,7 @@ fn main() {
 
     info!("Start server.");
     rocket
-        .manage(Context { pool })
+        .manage(pool)
         .register(catchers![
             api::catchers::catcher_unauthorized,
             api::catchers::catcher_not_found,

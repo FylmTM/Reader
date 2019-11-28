@@ -5,15 +5,15 @@ use rocket::State;
 
 use crate::api::{ok, Response};
 use crate::db;
-use crate::Context;
+use crate::db::AcquireConnection;
 
 #[get("/api/v1/authenticate/<api_key>")]
 pub fn authenticate(
     api_key: String,
-    context: State<Context>,
+    pool: State<db::Pool>,
     mut cookies: Cookies,
 ) -> Response<db::User> {
-    let conn = context.pool.clone().get()?;
+    let conn = pool.conn()?;
 
     let user = db::find_user(&conn, &api_key)?;
     cookies.add(
