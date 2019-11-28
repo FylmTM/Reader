@@ -1,3 +1,6 @@
+use crate::error::Error;
+use rocket_contrib::json::Json;
+
 pub mod authentication;
 pub mod catchers;
 pub mod endpoints;
@@ -15,4 +18,10 @@ impl<T> ApiResponse<T> {
             payload,
         }
     }
+}
+
+type Response<T> = Result<Json<ApiResponse<T>>, Error>;
+
+fn ok<T>(data: T) -> Response<T> {
+    Ok(Json(ApiResponse::with(data)))
 }
