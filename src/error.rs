@@ -1,3 +1,4 @@
+use crate::api::ApiError;
 use rocket::http::Status;
 use rocket::response::Responder;
 use rocket::{Request, Response};
@@ -46,14 +47,12 @@ impl<'r> Responder<'r> for Error {
     fn respond_to(self, _: &Request) -> Result<Response<'r>, Status> {
         let (http_status, message) = self.describe();
 
-        let json = json!({
-            "status": "error",
-            "error": message
-        });
+        let json = serde_json::to_string(&ApiError::with(message))
+            .expect("Failed to serialize api error.");
 
         Response::build()
             .header(rocket::http::ContentType::JSON)
-            .sized_body(Cursor::new(json.0.to_string()))
+            .sized_body(Cursor::new(json))
             .status(http_status)
             .ok()
     }

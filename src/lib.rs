@@ -6,8 +6,6 @@ extern crate r2d2;
 extern crate r2d2_sqlite;
 #[macro_use]
 extern crate rocket;
-#[macro_use]
-extern crate rocket_contrib;
 extern crate rusqlite;
 #[macro_use]
 extern crate serde_derive;

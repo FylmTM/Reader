@@ -11,11 +11,26 @@ pub struct ApiResponse<T> {
     payload: T,
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct ApiError {
+    status: String,
+    message: String,
+}
+
 impl<T> ApiResponse<T> {
-    fn with(payload: T) -> ApiResponse<T> {
+    pub fn with(payload: T) -> ApiResponse<T> {
         ApiResponse {
             status: "ok".to_string(),
             payload,
+        }
+    }
+}
+
+impl ApiError {
+    pub fn with(message: String) -> ApiError {
+        ApiError {
+            status: "error".to_string(),
+            message,
         }
     }
 }
