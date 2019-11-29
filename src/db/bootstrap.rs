@@ -1,20 +1,17 @@
 use rusqlite::{Connection, NO_PARAMS};
 
 const SCHEMA_VERSION: u16 = 1;
-// language=SQLite
-const SCHEMA_VERSION_QUERY: &str = "
-create table if not exists schema_version
-(
-    id      integer primary key,
-    version integer
-);
 
-insert or ignore into schema_version(id, version)
-values (1, 0);
-";
-
+/// # Database schema
+///
+/// This is really dumb & simple implementation of schema migrations.
+///
+/// It defines a `schema_version` table that contains one row, which defines current schema version.
+/// During initialization it will read current version (or initialize version 0) from database.
+/// If current version is less that required version, it will sequentially apply all missing migrations,
+/// and then update `schema_version`.
 pub fn initialize_schema(conn: &Connection) {
-    conn.execute_batch(SCHEMA_VERSION_QUERY)
+    conn.execute_batch(include_str!("migrations/_schema_version.sql"))
         .expect("Failed to create schema_version table.");
 
     let mut current_version: u16 = conn
@@ -33,6 +30,7 @@ pub fn initialize_schema(conn: &Connection) {
         current_version, SCHEMA_VERSION
     );
 
+    // TODO: Create a map version -> migration, and iterate over it.
     if current_version == 0 {
         info!("Applying V1 migration.");
         conn.execute_batch(include_str!("migrations/V1_initial.sql"))
@@ -51,11 +49,11 @@ pub fn initialize_schema(conn: &Connection) {
     }
 }
 
+/// # Database fixture
+///
+/// If applied, will insert sample data into a database.
+/// Useful for development purposes.
 pub fn initialize_fixture(conn: &Connection) {
-    // language=SQLite
-    let query = "
-        insert or ignore into users(id, username, api_key)
-        values (1, 'me', 'api_key');
-    ";
-    conn.execute_batch(query).expect("Failed to apply fixture.");
+    conn.execute_batch(include_str!("migrations/_fixture.sql"))
+        .expect("Failed to apply fixture.");
 }
