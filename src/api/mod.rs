@@ -1,9 +1,10 @@
-use crate::error::Error;
-use rocket_contrib::json::Json;
-
 pub mod authentication;
 pub mod catchers;
 pub mod endpoints;
+pub mod assets;
+
+use crate::error::Error;
+use rocket_contrib::json::Json;
 
 #[derive(Serialize, Deserialize)]
 pub struct ApiResponse<T> {

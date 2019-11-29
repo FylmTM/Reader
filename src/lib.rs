@@ -10,6 +10,8 @@ extern crate rusqlite;
 #[macro_use]
 extern crate serde_derive;
 extern crate time;
+#[macro_use]
+extern crate rust_embed;
 
 pub mod api;
 pub mod db;
@@ -93,6 +95,11 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
         ])
         .mount(
             "/",
-            routes![api::endpoints::authenticate, api::endpoints::current_user],
+            routes![
+                api::endpoints::authenticate,
+                api::endpoints::current_user,
+                api::assets::index,
+                api::assets::assets
+            ],
         )
 }

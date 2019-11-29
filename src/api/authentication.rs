@@ -1,11 +1,10 @@
-use rocket::http::Status;
-use rocket::request::FromRequest;
-use rocket::{Outcome, Request, State};
-
 use crate::db;
 use crate::db::AcquireConnection;
 use crate::db::User;
 use crate::error::{ApplicationError, Error as E};
+use rocket::http::Status;
+use rocket::request::FromRequest;
+use rocket::{Outcome, Request, State};
 
 impl<'a, 'r> FromRequest<'a, 'r> for User {
     type Error = E;

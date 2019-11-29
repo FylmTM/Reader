@@ -1,11 +1,9 @@
-use std::ops::Add;
-
-use rocket::http::{Cookie, Cookies};
-use rocket::State;
-
 use crate::api::{ok, Response};
 use crate::db;
 use crate::db::AcquireConnection;
+use rocket::http::{Cookie, Cookies};
+use rocket::State;
+use std::ops::Add;
 
 // TODO: Consider supporting authentication via authorization header as well.
 #[get("/api/v1/authenticate/<api_key>")]
