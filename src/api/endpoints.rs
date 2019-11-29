@@ -1,19 +1,14 @@
 use crate::api::{ok, Response};
 use crate::db;
-use crate::db::AcquireConnection;
 use rocket::http::{Cookie, Cookies};
-use rocket::State;
 use std::ops::Add;
 
-// TODO: Consider supporting authentication via authorization header as well.
 #[get("/api/v1/authenticate/<api_key>")]
 pub fn authenticate(
     api_key: String,
-    pool: State<db::Pool>,
+    conn: db::PoolConnection,
     mut cookies: Cookies,
 ) -> Response<db::User> {
-    let conn = pool.conn()?;
-
     let user = db::find_user(&conn, &api_key)?;
     cookies.add(
         Cookie::build("api_key", api_key)

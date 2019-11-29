@@ -2,10 +2,10 @@ pub mod bootstrap;
 pub mod entities;
 pub mod pool;
 
-pub use self::entities::*;
 use crate::error::Error;
-pub use pool::{AcquireConnection, Pool};
-use rusqlite::Connection;
+pub use entities::*;
+pub use pool::{Pool, PoolConnection};
+pub use rusqlite::Connection;
 
 pub fn find_user(conn: &Connection, api_key: &str) -> Result<User, Error> {
     // language=SQLite

@@ -1,10 +1,7 @@
 use std::thread;
 use std::time::Duration;
 
-use rusqlite::Connection;
-
 use crate::db;
-use crate::db::AcquireConnection;
 
 mod rss;
 
@@ -15,7 +12,7 @@ pub fn initialize(pool: &db::Pool, interval: u64) {
     thread::spawn(move || loop {
         loop {
             info!("Feeds update started.");
-            let conn = pool.conn().expect("Failed to acquire db connection");
+            let conn = pool.clone().get().expect("Failed to acquire db connection");
             run("RSS", rss::update, &conn);
 
             info!("Feeds update completed. Next in {} minutes.", interval);
@@ -24,7 +21,7 @@ pub fn initialize(pool: &db::Pool, interval: u64) {
     });
 }
 
-fn run(name: &'static str, updater: fn(&Connection) -> (), conn: &Connection) {
+fn run(name: &'static str, updater: fn(&db::Connection) -> (), conn: &db::Connection) {
     info!("{} feeds update started.", name);
     updater(&conn);
     info!("{} feeds update completed.", name);

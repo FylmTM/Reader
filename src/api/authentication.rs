@@ -1,24 +1,23 @@
 use crate::db;
-use crate::db::AcquireConnection;
 use crate::db::User;
 use crate::error::{ApplicationError, Error as E};
 use rocket::http::Status;
 use rocket::request::FromRequest;
-use rocket::{Outcome, Request, State};
+use rocket::{Outcome, Request};
 
 impl<'a, 'r> FromRequest<'a, 'r> for User {
     type Error = E;
 
     fn from_request(request: &'a Request<'r>) -> rocket::request::Outcome<Self, E> {
-        let pool = request
-            .guard::<State<db::Pool>>()
-            .expect("Failed to get context.");
+        let conn = request
+            .guard::<db::PoolConnection>()
+            .expect("Failed to get pool.");
 
         let result = request
             .cookies()
             .get("api_key")
             .and_then(|cookie| Some(cookie.value()))
-            .and_then(|api_key| match authenticate(&pool, api_key) {
+            .and_then(|api_key| match authenticate(&conn, api_key) {
                 Ok(user) => Some(Outcome::Success(user)),
                 Err(error) => {
                     info!("Failed to authenticate user: {:?}.", error);
@@ -39,7 +38,6 @@ impl<'a, 'r> FromRequest<'a, 'r> for User {
     }
 }
 
-fn authenticate(pool: &db::Pool, api_key: &str) -> Result<User, E> {
-    let conn = pool.conn()?;
+fn authenticate(conn: &db::Connection, api_key: &str) -> Result<User, E> {
     db::find_user(&conn, api_key)
 }
