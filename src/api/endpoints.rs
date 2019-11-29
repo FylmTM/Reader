@@ -7,6 +7,7 @@ use crate::api::{ok, Response};
 use crate::db;
 use crate::db::AcquireConnection;
 
+// TODO: Consider supporting authentication via authorization header as well.
 #[get("/api/v1/authenticate/<api_key>")]
 pub fn authenticate(
     api_key: String,
