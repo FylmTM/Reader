@@ -19,7 +19,7 @@ time = "0.1.42"
 [dependencies.rocket_contrib]
 version = "0.4.2"
 default-features = false
-features = ["json"]
+features = ["json", "helmet"]
 
 [dependencies.rusqlite]
 version = "0.20.0"

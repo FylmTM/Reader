@@ -30,7 +30,6 @@ pub fn initialize_schema(conn: &Connection) {
         current_version, SCHEMA_VERSION
     );
 
-    // TODO: Create a map version -> migration, and iterate over it.
     if current_version == 0 {
         info!("Applying V1 migration.");
         conn.execute_batch(include_str!("migrations/V1_initial.sql"))

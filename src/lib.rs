@@ -53,10 +53,10 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
     //-----------------
 
     let manager = if db_in_memory {
-        info!("Create in memory db[pool_size={}].", db_pool_size);
+        info!("Create db [path=:memory:, pool_size={}].", db_pool_size);
         r2d2_sqlite::SqliteConnectionManager::memory()
     } else {
-        info!("Create db[path={}, pool_size={}].", db_path, db_pool_size);
+        info!("Create db [path={}, pool_size={}].", db_path, db_pool_size);
         r2d2_sqlite::SqliteConnectionManager::file(db_path)
     };
     let pool = r2d2::Pool::builder()
@@ -88,6 +88,19 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
     info!("Start server.");
     rocket
         .manage(pool)
+        .attach(
+            rocket_contrib::helmet::SpaceHelmet::default()
+                .enable(rocket_contrib::helmet::Referrer::NoReferrer),
+        )
+        .attach(rocket::fairing::AdHoc::on_response(
+            "Configure Content-Security-Policy",
+            |_, res| {
+                res.set_raw_header(
+                    "Content-Security-Policy", 
+                    "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';"
+                );
+            },
+        ))
         .register(catchers![
             api::catchers::catcher_unauthorized,
             api::catchers::catcher_not_found,
