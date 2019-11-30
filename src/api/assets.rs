@@ -1,5 +1,5 @@
 use crate::error::Error as E;
-use rocket::http::{ContentType, Status};
+use rocket::http::ContentType;
 use rocket::request::FromRequest;
 use rocket::response;
 use rocket::{Outcome, Request};
@@ -12,9 +12,11 @@ use std::path::{Path, PathBuf};
 #[folder = "static"]
 struct Assets;
 
+const INDEX: &str = "index.html";
+
 pub struct Asset {
-    path: String,
     content: Cow<'static, [u8]>,
+    content_type: Option<ContentType>,
 }
 
 impl<'a, 'r> FromRequest<'a, 'r> for Asset {
@@ -22,24 +24,44 @@ impl<'a, 'r> FromRequest<'a, 'r> for Asset {
 
     fn from_request(request: &'a Request<'r>) -> rocket::request::Outcome<Self, E> {
         let path_raw = request.uri().path();
+
+        // Do not try to serve assets for API endpoints.
+        if path_raw.starts_with("/api") {
+            return Outcome::Forward(());
+        }
+
         let path = if path_raw == "/" {
-            "index.html".to_string()
+            INDEX
         } else {
-            // Assets path are relative. We need to remove first '/' from url path.
-            path_raw[1..].to_string()
+            if Path::new(path_raw).extension().is_none() {
+                // Fallback all URL's that does not possibly represent file to index.html.
+                // Required to support HTML5 history API for SPA application.
+                INDEX
+            } else {
+                // We need to remove first '/' from url path, because assets paths are relative.
+                &path_raw[1..]
+            }
         };
 
         let file: Option<Cow<'static, [u8]>> = Assets::get(&path);
-        debug!(
-            "Trying to serve asset path={} exists={}",
-            path,
-            file.is_some()
-        );
+        let file_path = Path::new(path);
+        let extension = file_path
+            .extension()
+            .and_then(OsStr::to_str)
+            .expect("Asset extension must be present.");
+        let content_type: Option<ContentType> = ContentType::from_extension(extension);
+
         file.map_or_else(
-            || Outcome::Forward(()),
+            || {
+                debug!("Asset does not exist, forward request path={}.", path);
+                Outcome::Forward(())
+            },
             |content| {
-                debug!("Serve asset path={}", path);
-                Outcome::Success(Asset { path, content })
+                debug!("Serve asset path={}.", path);
+                Outcome::Success(Asset {
+                    content,
+                    content_type,
+                })
             },
         )
     }
@@ -56,17 +78,13 @@ pub fn assets<'r>(asset: Asset, _file: PathBuf) -> response::Result<'r> {
 }
 
 fn get_asset<'r>(asset: Asset) -> response::Result<'r> {
-    let path = Path::new(&asset.path);
-
-    let extension = path
-        .extension()
-        .and_then(OsStr::to_str)
-        .ok_or(Status::new(400, "Could not get file extension"))?;
-    let content_type: ContentType = ContentType::from_extension(extension)
-        .ok_or(Status::new(400, "Could not get file content type"))?;
-
-    response::Response::build()
-        .header(content_type)
-        .sized_body(Cursor::new(asset.content))
-        .ok()
+    match asset.content_type {
+        Some(content_type) => response::Response::build()
+            .header(content_type)
+            .sized_body(Cursor::new(asset.content))
+            .ok(),
+        None => response::Response::build()
+            .sized_body(Cursor::new(asset.content))
+            .ok(),
+    }
 }
