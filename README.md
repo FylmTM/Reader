@@ -1,23 +1,90 @@
 Reader
 ======
 
-## Goals
+**Reader** is simple, small and fast news aggregator.
+
+* Multiple [sources](#sources).
+* [Fast](#benchmarks).
+* Low CPU and memory usage.
+* Sensible default [configuration](#configuration).
+* Available as a [single static binary](#deployment).
+
+### Features
+
+- [ ] Web UI
+- [ ] Organize feeds in categories
+- [ ] Read later
+- [ ] Search
+- [ ] Shortcuts
+- [ ] OPML Import/Export
+- [ ] Cleanup old posts
+- [ ] Rotten feeds
+
+### Sources
+
+- [ ] RSS
+- [ ] Atom
+- [ ] Github (issues, pull requests, releases)
+- [ ] Reddit (sort, date range)
+- [ ] Twitter
+
+## Quickstart
+
+WIP.
+
+## Configuration
+
+WIP.
+
+## Deployment
+
+WIP.
+
+## Benchmarks
+
+WIP.
+
+## Development
+
+**Requirements:**
+
+* Rust nightly (install via [rustup](https://rustup.rs/)).
+
+```sh
+rustup default nightly
+```
+
+**Build:**
+
+```sh
+cargo build --release
+```
+
+**Test:**
+
+```sh
+cargo test 
+```
+
+### Rules
 
 **General:**
 
-* Available as a single static binary
-* Sensible configuration out-of-the-box
 * Keep dependency count as small as possible
 
 **Backend:**
 
-* Provide API for all actions
-* Be fast for sensible amount of data
-* Extensive API test coverage
+* All actions must be available through API
+* All API endpoints must be covered with integration tests
+* Ensure all database queries are optimized 
 
 **Frontend:**
 
-* Support latest versions of popular browsers
-* Small bundle size
-* Mobile & desktop layouts
 * Dark theme
+* Support latest versions of popular browsers
+* Mobile & desktop layouts
+* Small bundle size
+
+## License
+
+Licensed under [GNU General Public License v3.0](https://github.com/FylmTM/Reader/blob/master/LICENSE).
