@@ -26,11 +26,11 @@ create table feeds
 (
     id    integer primary key,
 
-    type  text not null,
+    kind  text not null,
     link  text not null,
     title text not null,
 
-    unique (type, link)
+    unique (kind, link)
 );
 
 create table user_feeds
