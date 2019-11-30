@@ -1,7 +1,7 @@
+pub mod assets;
 pub mod authentication;
 pub mod catchers;
 pub mod endpoints;
-pub mod assets;
 
 use crate::error::Error;
 use rocket_contrib::json::Json;
