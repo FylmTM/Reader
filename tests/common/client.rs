@@ -1,12 +1,13 @@
 #![allow(dead_code)]
 
-use reader;
-use reader::api::routes::*;
-use reader::api::{ApiError, ApiResponse};
 use rocket::http::uri::Origin;
 use rocket::http::Status;
 use rocket::local::{Client, LocalRequest, LocalResponse};
 use rocket::uri;
+
+use reader;
+use reader::api::routes::*;
+use reader::api::{ApiError, ApiResponse};
 
 pub fn get() -> Client {
     let app = reader::app(true);
@@ -16,21 +17,13 @@ pub fn get() -> Client {
 pub fn authenticated() -> Client {
     let app = reader::app(true);
     let client = Client::new(app).expect("failed to construct rocket client");
-    client.get_uri(uri!(authenticate: "api_key")).dispatch();
     client
-}
-
-pub trait ResponseOperations {
-    fn entity(&mut self) -> (Status, String);
-}
-
-impl<'c> ResponseOperations for LocalResponse<'c> {
-    fn entity(&mut self) -> (Status, String) {
-        (
-            self.status(),
-            self.body_string().expect("Response body is empty"),
-        )
-    }
+        .post_uri(uri!(authenticate))
+        .json(ApiKey {
+            api_key: "api_key".to_string(),
+        })
+        .dispatch();
+    client
 }
 
 pub trait ClientOperations {
@@ -55,13 +48,41 @@ impl ClientOperations for Client {
     }
 }
 
+pub trait RequestOperations {
+    fn json<T>(self, body: T) -> Self
+    where
+        T: serde::Serialize;
+}
+
+impl<'c> RequestOperations for LocalRequest<'c> {
+    fn json<T>(self, body: T) -> Self
+    where
+        T: serde::Serialize,
+    {
+        self.header(rocket::http::ContentType::JSON)
+            .body(serde_json::to_string(&body).unwrap())
+    }
+}
+
+pub trait ResponseOperations {
+    fn entity(&mut self) -> (Status, String);
+}
+
+impl<'c> ResponseOperations for LocalResponse<'c> {
+    fn entity(&mut self) -> (Status, String) {
+        (
+            self.status(),
+            self.body_string().expect("Response body is empty"),
+        )
+    }
+}
+
 pub fn api_response<T>(status: Status, entity: T) -> (Status, String)
 where
     T: serde::Serialize,
 {
     let api_response = ApiResponse::with(entity);
-    let api_response_string =
-        serde_json::to_string(&api_response).expect("Failed to serialize api response.");
+    let api_response_string = serde_json::to_string(&api_response).unwrap();
     (status, api_response_string)
 }
 

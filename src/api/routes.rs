@@ -1,16 +1,23 @@
 use std::ops::Add;
 
 use rocket::http::{Cookie, Cookies};
+use rocket_contrib::json::Json;
 
 use crate::api::{ok, Response};
 use crate::db::{self, Queries};
 
-#[get("/api/v1/authenticate/<api_key>")]
+#[derive(Serialize, Deserialize)]
+pub struct ApiKey {
+    pub api_key: String,
+}
+
+#[post("/api/v1/authenticate", data = "<api_key>")]
 pub fn authenticate(
-    api_key: String,
+    api_key: Json<ApiKey>,
     conn: db::PoolConnection,
     mut cookies: Cookies,
 ) -> Response<db::User> {
+    let api_key = api_key.0.api_key;
     let user = conn.find_user_by_api_key(&api_key)?;
     cookies.add(
         Cookie::build("api_key", api_key)

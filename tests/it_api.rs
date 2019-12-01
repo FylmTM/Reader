@@ -2,18 +2,24 @@
 #[macro_use]
 extern crate rocket;
 
-pub mod common;
-
-use common::client::{self, ClientOperations, ResponseOperations};
-use reader::api::routes::*;
-use reader::db::User;
 use rocket::http::Status;
 use rocket::uri;
+
+use common::client::{self, ClientOperations, RequestOperations, ResponseOperations};
+use reader::api::routes::*;
+use reader::db::User;
+
+pub mod common;
 
 #[test]
 fn test_authenticate_failed() {
     let client = client::get();
-    let mut response = client.get_uri(uri!(authenticate: "invalid")).dispatch();
+    let mut response = client
+        .post_uri(uri!(authenticate))
+        .json(ApiKey {
+            api_key: "invalid".to_string(),
+        })
+        .dispatch();
 
     let expected_response = client::api_error(Status::NotFound, "Entity not found.");
     assert_eq!(response.entity(), expected_response);
@@ -22,7 +28,12 @@ fn test_authenticate_failed() {
 #[test]
 fn test_authenticate_success() {
     let client = client::get();
-    let mut response = client.get_uri(uri!(authenticate: "api_key")).dispatch();
+    let mut response = client
+        .post_uri(uri!(authenticate))
+        .json(ApiKey {
+            api_key: "api_key".to_string(),
+        })
+        .dispatch();
 
     let expected_response = client::api_ok(User {
         id: 1,
