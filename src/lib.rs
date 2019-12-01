@@ -8,10 +8,10 @@ extern crate r2d2_sqlite;
 extern crate rocket;
 extern crate rusqlite;
 #[macro_use]
+extern crate rust_embed;
+#[macro_use]
 extern crate serde_derive;
 extern crate time;
-#[macro_use]
-extern crate rust_embed;
 
 pub mod api;
 pub mod db;
@@ -21,7 +21,7 @@ pub mod feeds;
 pub fn app(is_testing: bool) -> rocket::Rocket {
     if !is_testing {
         let mut log = env_logger::Builder::from_default_env();
-        log.target(env_logger::Target::Stderr)
+        log.target(env_logger::Target::Stdout)
             .filter_level(log::LevelFilter::Info)
             .init();
     }
@@ -96,8 +96,8 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
             "Configure Content-Security-Policy",
             |_, res| {
                 res.set_raw_header(
-                    "Content-Security-Policy", 
-                    "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';"
+                    "Content-Security-Policy",
+                    "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';",
                 );
             },
         ))
@@ -109,8 +109,8 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
         .mount(
             "/",
             routes![
-                api::endpoints::authenticate,
-                api::endpoints::current_user,
+                api::routes::authenticate,
+                api::routes::current_user,
                 api::assets::index,
                 api::assets::assets
             ],

@@ -1,16 +1,31 @@
-use crate::db;
+use crate::db::{self, Queries};
 use crate::error::{ApplicationError, Error, Result};
 
-pub fn update(conn: &db::Connection, feed: &db::Feed) -> Result<()> {
-    let user_category_ids = db::find_user_category_ids_by_feed(conn, feed.id)?;
-    if user_category_ids.is_empty() {
+pub fn update(conn: &mut db::Connection, feed: &db::Feed) -> Result<()> {
+    let user_ids = conn.find_user_ids_by_feed(feed.id)?;
+    if user_ids.is_empty() {
+        debug!("{:?} does not belong to any user, skip update.", feed);
         return Ok(());
     }
     let content = get(&feed.feed)?;
     let posts = parse(&content)?;
 
-    for _post in posts {
-        // save posts
+    for post in posts {
+        let tx = conn.transaction()?;
+
+        match tx.save_post(feed.id, &post) {
+            Ok(post_id) => {
+                debug!("{:?} saved.", post);
+                for user_id in &user_ids {
+                    tx.save_user_post(*user_id, post_id)?;
+                }
+                tx.commit()?;
+            }
+            Err(Error::App(ApplicationError::QueryEntityAlreadyExists)) => {
+                debug!("{:?} already exists.", &post)
+            }
+            Err(error) => return Err(error),
+        }
     }
 
     Ok(())
@@ -67,7 +82,7 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
         });
 
         let post = db::Post {
-            id: -1,
+            id: -1, // Post is not retrieved from database
             link,
             title,
             date,

@@ -1,0 +1,43 @@
+[config]
+skip_core_tasks = true
+
+[tasks.backend-check]
+command = "cargo"
+args = ["check", "--all-targets"]
+
+[tasks.backend-format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt"]
+
+[tasks.backend-format-check]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--check"]
+
+[tasks.backend-test]
+command = "cargo"
+args = ["test"]
+
+[tasks.backend-build-release]
+command = "cargo"
+args = ["build", "--release"]
+
+[tasks.verify]
+dependencies = [
+    "backend-check",
+    "backend-format-check",
+    "backend-test"
+]
+
+[tasks.build]
+dependencies = [
+    "backend-build-release"
+]
+
+[tasks.default]
+dependencies = [
+    "backend-check",
+    "backend-test",
+    "backend-format",
+]

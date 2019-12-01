@@ -1,5 +1,6 @@
-use crate::api::ApiError;
 use rocket_contrib::json::Json;
+
+use crate::api::ApiError;
 
 #[catch(401)]
 pub fn catcher_unauthorized() -> Json<ApiError> {

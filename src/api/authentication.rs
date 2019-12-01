@@ -1,9 +1,9 @@
-use crate::db;
-use crate::db::User;
-use crate::error::{ApplicationError, Error as E};
 use rocket::http::Status;
 use rocket::request::FromRequest;
 use rocket::{Outcome, Request};
+
+use crate::db::{self, Queries, User};
+use crate::error::{ApplicationError, Error as E};
 
 impl<'a, 'r> FromRequest<'a, 'r> for User {
     type Error = E;
@@ -39,5 +39,5 @@ impl<'a, 'r> FromRequest<'a, 'r> for User {
 }
 
 fn authenticate(conn: &db::Connection, api_key: &str) -> Result<User, E> {
-    db::find_user_by_api_key(&conn, api_key)
+    conn.find_user_by_api_key(api_key)
 }

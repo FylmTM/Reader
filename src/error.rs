@@ -1,9 +1,12 @@
-use crate::api::ApiError;
+use std::io::Cursor;
+
 use rocket::http::Status;
 use rocket::response::Responder;
 use rocket::{Request, Response};
-use std::io::Cursor;
+
 use ApplicationError::*;
+
+use crate::api::ApiError;
 
 pub type Result<T> = std::result::Result<T, Error>;
 
@@ -23,6 +26,8 @@ pub enum ApplicationError {
     RSSFailedToRetrieve(String),
     RSSParsingMissingItemLink,
     RSSParsingMissingItemTitle,
+    QueryEntityAlreadyExists,
+    QueryUnexpectedRowCount { expected: i64, actual: i64 },
 }
 
 impl Error {
@@ -31,6 +36,10 @@ impl Error {
             Error::App(AuthenticationApiKeyNotFound) => {
                 (Status::NotFound, "API key does not exists.".to_string())
             }
+            Error::App(QueryUnexpectedRowCount { expected, actual }) => (
+                Status::BadRequest,
+                format!("Expected row count {}, got {}.", expected, actual),
+            ),
             Error::DB(rusqlite::Error::QueryReturnedNoRows) => {
                 (Status::NotFound, "Entity not found.".to_string())
             }

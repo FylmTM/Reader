@@ -1,9 +1,11 @@
-use crate::db;
-use crate::error::Error as E;
+use std::ops::Deref;
+
 use rocket::http::Status;
 use rocket::request::FromRequest;
 use rocket::{Outcome, Request, State};
-use std::ops::Deref;
+
+use crate::db;
+use crate::error::Error as E;
 
 pub type Pool = r2d2::Pool<r2d2_sqlite::SqliteConnectionManager>;
 

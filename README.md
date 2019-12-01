@@ -52,21 +52,29 @@ WIP.
 **Requirements:**
 
 * Rust nightly (install via [rustup](https://rustup.rs/)).
+* Cargo make
 
 ```sh
 rustup default nightly
+cargo install cargo-make
 ```
 
-**Build:**
+**Build release:**
 
 ```sh
-cargo build --release
+cargo make build
 ```
 
-**Test:**
+**Verify:**
 
 ```sh
-cargo test 
+cargo make verify
+```
+
+**Before commit:**
+
+```sh
+cargo make
 ```
 
 ### Rules

@@ -1,7 +1,8 @@
-use rusqlite::types::{FromSql, FromSqlError, FromSqlResult, ToSql, ToSqlOutput, ValueRef};
-use serde::export::Formatter;
 use std::error::Error;
 use std::fmt;
+
+use rusqlite::types::{FromSql, FromSqlError, FromSqlResult, ToSql, ToSqlOutput, ValueRef};
+use serde::export::Formatter;
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct User {

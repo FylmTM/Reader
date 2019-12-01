@@ -1,7 +1,9 @@
-use crate::api::{ok, Response};
-use crate::db;
-use rocket::http::{Cookie, Cookies};
 use std::ops::Add;
+
+use rocket::http::{Cookie, Cookies};
+
+use crate::api::{ok, Response};
+use crate::db::{self, Queries};
 
 #[get("/api/v1/authenticate/<api_key>")]
 pub fn authenticate(
@@ -9,7 +11,7 @@ pub fn authenticate(
     conn: db::PoolConnection,
     mut cookies: Cookies,
 ) -> Response<db::User> {
-    let user = db::find_user_by_api_key(&conn, &api_key)?;
+    let user = conn.find_user_by_api_key(&api_key)?;
     cookies.add(
         Cookie::build("api_key", api_key)
             .path("/")

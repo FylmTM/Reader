@@ -1,12 +1,14 @@
-use crate::error::Error as E;
-use rocket::http::ContentType;
-use rocket::request::FromRequest;
-use rocket::response;
-use rocket::{Outcome, Request};
 use std::borrow::Cow;
 use std::ffi::OsStr;
 use std::io::Cursor;
 use std::path::{Path, PathBuf};
+
+use rocket::http::ContentType;
+use rocket::request::FromRequest;
+use rocket::response;
+use rocket::{Outcome, Request};
+
+use crate::error::Error as E;
 
 #[derive(RustEmbed)]
 #[folder = "static"]
@@ -25,7 +27,7 @@ impl<'a, 'r> FromRequest<'a, 'r> for Asset {
     fn from_request(request: &'a Request<'r>) -> rocket::request::Outcome<Self, E> {
         let path_raw = request.uri().path();
 
-        // Do not try to serve assets for API endpoints.
+        // Do not try to serve assets for API.
         if path_raw.starts_with("/api") {
             return Outcome::Forward(());
         }

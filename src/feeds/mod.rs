@@ -1,8 +1,9 @@
-pub mod rss;
-
-use crate::db;
 use std::thread;
 use std::time::Duration;
+
+use crate::db::{self, Queries};
+
+pub mod rss;
 
 pub fn initialize(pool: &db::Pool, interval: u64) {
     let pool = pool.clone();
@@ -11,25 +12,19 @@ pub fn initialize(pool: &db::Pool, interval: u64) {
     thread::spawn(move || loop {
         loop {
             info!("Feeds update started.");
-            let conn = pool.clone().get().expect("Failed to acquire db connection");
+            let mut conn = pool.clone().get().expect("Failed to acquire db connection");
 
-            match db::find_feeds(&conn) {
+            match conn.find_feeds() {
                 Ok(feeds) => {
                     for feed in feeds {
-                        info!(
-                            "Feed[id={}, kind={:?}, title={}] update started.",
-                            feed.id, feed.kind, feed.title
-                        );
+                        debug!("{:?} update started.", feed);
 
                         let result = match feed.kind {
-                            db::FeedKind::RSS => rss::update(&conn, &feed),
+                            db::FeedKind::RSS => rss::update(&mut conn, &feed),
                         };
                         match result {
-                            Ok(_) => info!(
-                                "Feed[id={}, kind={:?}, title={}] updated.",
-                                feed.id, feed.kind, feed.title
-                            ),
-                            Err(error) => error!("Failed to update {:?}: {:?}.", feed, error),
+                            Ok(_) => debug!("{:?} updated.", feed),
+                            Err(error) => error!("{:?} failed to update: {:?}.", feed, error),
                         };
                     }
                 }
