@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "lint": "tsc && eslint --ext js,ts,tsx src"
+    "lint": "eslint --ext js,ts,tsx src && tsc",
+    "fix": "eslint --fix --ext js,ts,tsx src && tsc",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "dependencies": {
     "react": "^16.12.0",

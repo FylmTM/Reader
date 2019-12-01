@@ -10,8 +10,14 @@ use rocket::{Outcome, Request};
 
 use crate::error::Error as E;
 
+#[cfg(debug_assertions)]
 #[derive(RustEmbed)]
 #[folder = "static"]
+struct Assets;
+
+#[cfg(not(debug_assertions))]
+#[derive(RustEmbed)]
+#[folder = "app/build"]
 struct Assets;
 
 const INDEX: &str = "index.html";

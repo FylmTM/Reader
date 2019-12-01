@@ -23,9 +23,13 @@ args = ["test"]
 command = "cargo"
 args = ["build", "--release"]
 
-[tasks.frontend-check]
+[tasks.frontend-lint]
 cwd = "./app"
 install_script = ["yarn lint"]
+
+[tasks.frontend-fix]
+cwd = "./app"
+install_script = ["yarn fix"]
 
 [tasks.frontend-test]
 cwd = "./app"
@@ -37,7 +41,7 @@ install_script = ["yarn build"]
 
 [tasks.verify]
 dependencies = [
-    "frontend-check",
+    "frontend-lint",
     "frontend-test",
     "backend-check",
     "backend-format-check",
@@ -50,11 +54,14 @@ dependencies = [
     "backend-build",
 ]
 
-[tasks.default]
+[tasks.fix]
 dependencies = [
-    "frontend-check",
+    "frontend-fix",
     "frontend-test",
     "backend-check",
     "backend-test",
     "backend-format",
 ]
+
+[tasks.default]
+alias = "fix"

@@ -52,12 +52,17 @@ WIP.
 **Requirements:**
 
 * Rust nightly (install via [rustup](https://rustup.rs/)).
-* Cargo make
+* [Cargo make](https://github.com/sagiegurari/cargo-make)
+* [Node](https://nodejs.org)
+* [Yarn](https://yarnpkg.com)
 
 ```sh
 rustup default nightly
 cargo install cargo-make
 ```
+
+Build process is orchestrated by `cargo make`.
+Check [Makefile.toml](./Makefile.toml) to find out details behind these command.
 
 **Build release:**
 
@@ -71,9 +76,11 @@ cargo make build
 cargo make verify
 ```
 
-**Before commit:**
+**Verify (with auto-formatting and auto-fix):**
 
 ```sh
+cargo make fix
+# or
 cargo make
 ```
 
