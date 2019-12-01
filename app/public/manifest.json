@@ -1,7 +1,7 @@
 {
-  "name": "Reader",
   "short_name": "Reader",
-  "description": "Simple all-in-one Reader.",
+  "name": "Reader",
+  "description": "Reader is simple, small and fast news aggregator.",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -14,7 +14,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
