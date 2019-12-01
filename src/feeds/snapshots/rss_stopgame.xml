@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Игровые новости от Stopgame</title>
+        <description>Ежедневные игровые новости.</description>
+        <link>https://stopgame.ru/</link>
+        <lastBuildDate>Sun, 01 Dec 2019 00:55:00 +0300</lastBuildDate>
+        <language>ru-RU</language>
+        <generator>StopGame</generator>
+        <ttl>30</ttl>
+        <image>
+            <title>Игровые новости от Stopgame</title>
+            <url>https://images.stopgame.ru/site/logo-ft.png</url>
+            <link>https://stopgame.ru</link>
+            <width>144</width>
+            <height>26</height>
+        </image>
+        <item>
+            <title>Результаты опроса сообщества Ghost Recon: Breakpoint — чего игроки хотят в первую очередь</title>
+            <description>&lt;b&gt;Ghost Recon: Breakpoint&lt;/b&gt; стала
+            </description>
+            <pubDate>Sat, 30 Nov 2019 17:55:03 +0300</pubDate>
+            <link>https://stopgame.ru/newsdata/41005</link>
+            <comments>https://stopgame.ru/newsdata/41005#comments</comments>
+            <guid isPermaLink="true">https://stopgame.ru/newsdata/41005</guid>
+            <enclosure url="https://images.stopgame.ru/news/2019/11/30/AwQ7-p3_W.jpg" length="" type="image/jpeg"/>
+        </item>
+    </channel>
+</rss>

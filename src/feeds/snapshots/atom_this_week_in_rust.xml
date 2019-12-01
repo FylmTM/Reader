@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>This Week in Rust</title>
+    <link href="https://this-week-in-rust.org/" rel="alternate"/>
+    <link href="https://this-week-in-rust.org/atom.xml" rel="self"/>
+    <id>https://this-week-in-rust.org/</id>
+    <updated>2019-11-26T00:00:00-05:00</updated>
+    <entry>
+        <title>This Week in Rust 314</title>
+        <link href="https://this-week-in-rust.org/blog/2019/11/26/this-week-in-rust-314/" rel="alternate"/>
+        <updated>2019-11-26T00:00:00-05:00</updated>
+        <author>
+            <name>TWiR Contributors</name>
+        </author>
+        <id>tag:this-week-in-rust.org,2019-11-26:blog/2019/11/26/this-week-in-rust-314/</id>
+        <summary type="html">&lt;p&gt;Hello and welcome to another issue of &lt;em&gt;This Week in Rust&lt;/em&gt;!&lt;/p&gt;</summary>
+    </entry>
+</feed>

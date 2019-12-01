@@ -27,8 +27,9 @@ create table feeds
     id    integer primary key,
 
     kind  text not null,
-    link  text not null,
     title text not null,
+    link  text not null,
+    feed  text not null,
 
     unique (kind, link)
 );
@@ -43,12 +44,15 @@ create table user_feeds
 
 create table posts
 (
-    id      integer primary key,
-    feed_id integer references feeds (id) not null,
+    id         integer primary key,
+    feed_id    integer references feeds (id) not null,
 
-    link    text                          not null,
-    title   text                          not null,
-    date    text                          not null,
+    link       text                          not null,
+    title      text                          not null,
+    date       text                          not null,
+    content    text                          null,
+    media_type text                          null,
+    media_link text                          null,
 
     unique (feed_id, link)
 );

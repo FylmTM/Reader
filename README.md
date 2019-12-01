@@ -25,7 +25,9 @@ Reader
 - [ ] RSS
 - [ ] Atom
 - [ ] Github (issues, pull requests, releases)
+- [ ] StackOverflow
 - [ ] Reddit (sort, date range)
+- [ ] Hacker News
 - [ ] Twitter
 
 ## Quickstart

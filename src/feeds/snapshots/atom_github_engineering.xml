@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:thr="http://purl.org/syndication/thread/1.0"
+	xml:lang="en-US"
+	xml:base="https://github.blog/wp-atom.php"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+	<title type="text">Engineering &#8211; The GitHub Blog</title>
+	<subtitle type="text">Updates, ideas, and inspiration from GitHub to help developers build and design software.</subtitle>
+
+	<updated>2019-11-22T07:53:18Z</updated>
+
+	<link rel="alternate" type="text/html" href="https://github.blog" />
+	<id>https://github.blog/feed/atom/</id>
+	<link rel="self" type="application/atom+xml" href="https://github.blog/engineering.atom" />
+
+	<generator uri="https://wordpress.org/" version="5.2.4">WordPress</generator>
+<icon>https://github.blog/wp-content/uploads/2019/01/cropped-github-favicon-512.png?fit=32%2C32</icon>
+	<entry>
+		<author>
+			<name>Theo Julienne</name>
+						<uri>http://theo.julienne.org/</uri>
+						</author>
+		<title type="html"><![CDATA[Debugging network stalls on Kubernetes]]></title>
+		<link rel="alternate" type="text/html" href="https://github.blog/2019-11-21-debugging-network-stalls-on-kubernetes/" />
+		<id>https://github.blog/?p=51321</id>
+		<updated>2019-11-22T07:53:18Z</updated>
+		<published>2019-11-22T07:14:39Z</published>
+		<category scheme="https://github.blog" term="Engineering" />		<summary type="html"><![CDATA[<p>In this deep-dive, we identified and worked through sporadic latency issues with services running on Kubernetes in our environment.</p>
+]]></summary>
+				<content type="html" xml:base="https://github.blog/2019-11-21-debugging-network-stalls-on-kubernetes/"><![CDATA[<p>We’ve talked about <a href="https://github.blog/2017-08-16-kubernetes-at-github/">Kubernetes</a> before.</p>
+]]></content>
+					</entry>
+	</feed>
