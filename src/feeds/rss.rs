@@ -1,11 +1,19 @@
 use crate::db;
 use crate::error::{ApplicationError, Error, Result};
 
-pub fn update(conn: &db::Connection /*, feed: &db::Feed*/) /* -> Result<()> */
-{
-    //    let content = get(&feed.feed)?;
-    //    let posts = parse(&content);
-    //    Ok(())
+pub fn update(conn: &db::Connection, feed: &db::Feed) -> Result<()> {
+    let user_category_ids = db::find_user_category_ids_by_feed(conn, feed.id)?;
+    if user_category_ids.is_empty() {
+        return Ok(());
+    }
+    let content = get(&feed.feed)?;
+    let posts = parse(&content)?;
+
+    for _post in posts {
+        // save posts
+    }
+
+    Ok(())
 }
 
 fn get(link: &String) -> Result<String> {

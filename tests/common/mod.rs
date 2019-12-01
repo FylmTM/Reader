@@ -1,10 +1,24 @@
+#![allow(dead_code)]
+
 use reader;
 use reader::api::endpoints::*;
 use reader::api::{ApiError, ApiResponse};
+use reader::db;
 use rocket::http::uri::Origin;
 use rocket::http::Status;
 use rocket::local::{Client, LocalRequest, LocalResponse};
 use rocket::uri;
+
+pub fn db() -> db::Connection {
+    let conn =
+        rusqlite::Connection::open_in_memory().expect("Failed to open in memory connection.");
+
+    db::bootstrap::initialize_schema(&conn);
+    conn.execute_batch(include_str!("../test_assets/test_fixture.sql"))
+        .expect("Failed to apply fixture.");
+
+    conn
+}
 
 pub fn client() -> Client {
     let app = reader::app(true);

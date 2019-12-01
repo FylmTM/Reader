@@ -9,7 +9,7 @@ pub fn authenticate(
     conn: db::PoolConnection,
     mut cookies: Cookies,
 ) -> Response<db::User> {
-    let user = db::find_user(&conn, &api_key)?;
+    let user = db::find_user_by_api_key(&conn, &api_key)?;
     cookies.add(
         Cookie::build("api_key", api_key)
             .path("/")

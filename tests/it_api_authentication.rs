@@ -1,6 +1,6 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
-mod common;
+pub mod common;
 
 use crate::common::api_ok;
 use common::{api_error, api_response, ClientOperations, ResponseOperations};

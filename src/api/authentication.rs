@@ -39,5 +39,5 @@ impl<'a, 'r> FromRequest<'a, 'r> for User {
 }
 
 fn authenticate(conn: &db::Connection, api_key: &str) -> Result<User, E> {
-    db::find_user(&conn, api_key)
+    db::find_user_by_api_key(&conn, api_key)
 }
