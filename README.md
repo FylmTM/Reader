@@ -17,8 +17,9 @@ Reader
 - [ ] Search
 - [ ] Shortcuts
 - [ ] OPML Import/Export
-- [ ] Cleanup old posts
+- [ ] Old posts cleanup
 - [ ] Rotten feeds
+- [ ] API documentation
 
 ### Sources
 
