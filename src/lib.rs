@@ -19,11 +19,14 @@ pub mod error;
 pub mod feeds;
 
 pub fn app(is_testing: bool) -> rocket::Rocket {
+    std::env::set_var("ROCKET_CLI_COLORS", "off");
     if !is_testing {
         let mut log = env_logger::Builder::from_default_env();
-        log.target(env_logger::Target::Stdout)
-            .filter_level(log::LevelFilter::Info)
-            .init();
+        log.target(env_logger::Target::Stdout);
+        if std::env::var_os("RUST_LOG").is_none() {
+            log.filter_level(log::LevelFilter::Info);
+        }
+        log.init();
     }
 
     info!("Start Reader.");
