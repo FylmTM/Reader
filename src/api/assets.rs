@@ -25,6 +25,7 @@ const INDEX: &str = "index.html";
 pub struct Asset {
     content: Cow<'static, [u8]>,
     content_type: Option<ContentType>,
+    is_gzipped: bool,
 }
 
 impl<'a, 'r> FromRequest<'a, 'r> for Asset {
@@ -51,7 +52,26 @@ impl<'a, 'r> FromRequest<'a, 'r> for Asset {
             }
         };
 
-        let file: Option<Cow<'static, [u8]>> = Assets::get(&path);
+        let accept_gzip = request
+            .headers()
+            .get_one("Accept-Encoding")
+            .map_or(false, |value| value.contains("gzip"));
+
+        // Attempt to get gzipped asset version, otherwise fallback to normal asset.
+        let file_lookup: (bool, Option<Cow<'static, [u8]>>) = if accept_gzip {
+            let gzipped_path = path.to_string() + ".gz";
+            let file: Option<Cow<'static, [u8]>> = Assets::get(&gzipped_path);
+            if file.is_some() {
+                (true, file)
+            } else {
+                (false, Assets::get(&path))
+            }
+        } else {
+            (false, Assets::get(&path))
+        };
+
+        let (is_gzipped, file) = file_lookup;
+
         let file_path = Path::new(path);
         let extension = file_path
             .extension()
@@ -69,6 +89,7 @@ impl<'a, 'r> FromRequest<'a, 'r> for Asset {
                 Outcome::Success(Asset {
                     content,
                     content_type,
+                    is_gzipped,
                 })
             },
         )
@@ -86,13 +107,16 @@ pub fn assets<'r>(asset: Asset, _file: PathBuf) -> response::Result<'r> {
 }
 
 fn get_asset<'r>(asset: Asset) -> response::Result<'r> {
-    match asset.content_type {
-        Some(content_type) => response::Response::build()
-            .header(content_type)
-            .sized_body(Cursor::new(asset.content))
-            .ok(),
-        None => response::Response::build()
-            .sized_body(Cursor::new(asset.content))
-            .ok(),
+    let mut response = response::Response::build();
+    response.sized_body(Cursor::new(asset.content));
+
+    if asset.content_type.is_some() {
+        response.header(asset.content_type.unwrap());
     }
+
+    if asset.is_gzipped {
+        response.header(rocket::http::Header::new("Content-Encoding", "gzip"));
+    }
+
+    response.ok()
 }
