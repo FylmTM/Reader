@@ -25,9 +25,9 @@ Reader
 
 - [ ] RSS
 - [ ] Atom
-- [ ] Github (issues, pull requests, releases)
+- [ ] Github
 - [ ] StackOverflow
-- [ ] Reddit (sort, date range)
+- [ ] Reddit
 - [ ] Hacker News
 - [ ] Twitter
 
@@ -83,25 +83,6 @@ cargo make fix
 # or
 cargo make
 ```
-
-### Rules
-
-**General:**
-
-* Keep dependency count as small as possible
-
-**Backend:**
-
-* All actions must be available through API
-* All API endpoints must be covered with integration tests
-* Ensure all database queries are optimized 
-
-**Frontend:**
-
-* Dark theme
-* Support latest versions of popular browsers
-* Mobile & desktop layouts
-* Small bundle size
 
 ## License
 
