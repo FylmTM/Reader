@@ -1,13 +1,25 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
+import { ApiRequestState } from "./components/ApiRequestState";
+import { LoginPage } from "./components/pages/LoginPage";
+import { PostsPage } from "./components/pages/PostsPage";
+import { useCurrentUserStore } from "./stores";
 
-export const number = 42;
-
-function App() {
+export const App = observer(function App() {
     return (
         <div>
-            App
+            <ApiRequestState/>
+            <Page/>
         </div>
     );
-}
+});
 
-export default App;
+const Page = observer(function App() {
+    let currentUserStore = useCurrentUserStore();
+
+    if (currentUserStore.currentUser == null) {
+        return <LoginPage/>;
+    } else {
+        return <PostsPage/>;
+    }
+});

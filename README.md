@@ -21,6 +21,8 @@ Reader
 - [ ] Rotten feeds
 - [ ] API documentation
 
+**Supported browsers:** latest versions of Chrome, Firefox, Edge, Safari.
+
 ### Sources
 
 - [ ] RSS

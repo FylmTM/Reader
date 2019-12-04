@@ -12,8 +12,11 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "dependencies": {
+    "mobx": "^5.15.0",
+    "mobx-react-lite": "^1.5.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "wouter": "^2.4.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
@@ -33,8 +36,8 @@
     "production": [
       "last 3 chrome versions",
       "last 3 chromeandroid versions",
-      "last 2 safari versions",
-      "last 2 ios versions",
+      "last 1 safari versions",
+      "last 1 ios versions",
       "last 2 firefox versions",
       "last 1 edge version"
     ],

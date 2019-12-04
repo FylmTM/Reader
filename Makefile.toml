@@ -42,7 +42,7 @@ install_script = ["yarn build"]
 [tasks.verify]
 dependencies = [
     "frontend-lint",
-    "frontend-test",
+    #"frontend-test",
     "backend-check",
     "backend-format-check",
     "backend-test",
@@ -57,7 +57,7 @@ dependencies = [
 [tasks.fix]
 dependencies = [
     "frontend-fix",
-    "frontend-test",
+    #"frontend-test",
     "backend-check",
     "backend-test",
     "backend-format",
