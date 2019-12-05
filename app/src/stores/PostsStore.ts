@@ -1,31 +1,20 @@
 import { decorate, IObservableArray, observable } from 'mobx/lib/mobx.es6.js';
 import { Category, Post } from '../domain';
+import { ApiStore } from './ApiStore';
 
 export class PostsStore {
+    apiStore: ApiStore;
+
     currentCategory: Category | undefined;
     categories: IObservableArray<Category> = observable.array();
     posts: IObservableArray<Post> = observable.array();
 
-    constructor() {
-        this.categories.replace([
-            {
-                id: 1,
-                name: 'all',
-            },
-            {
-                id: 2,
-                name: 'programming',
-            },
-        ]);
+    constructor(apiStore: ApiStore) {
+        this.apiStore = apiStore;
     }
 
     clean = () => {
         this.posts.clear();
-        this.currentCategory = undefined;
-    };
-
-    changeCategory = (category: Category) => {
-        this.currentCategory = category;
     };
 }
 

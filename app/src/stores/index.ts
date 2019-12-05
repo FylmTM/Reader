@@ -4,7 +4,7 @@ import { PostsStore } from './PostsStore';
 import { UserStore } from './UserStore';
 
 const apiStore = new ApiStore();
-const postsStore = new PostsStore();
+const postsStore = new PostsStore(apiStore);
 const userStore = new UserStore(apiStore, postsStore);
 
 export const rootStoreContext = React.createContext({

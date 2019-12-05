@@ -1,6 +1,6 @@
 import { Category, Feed, User } from '../domain';
 
-const DELAY = 1000;
+const DELAY = 0;
 
 function login(): Promise<User> {
     return new Promise((resolve) => {
