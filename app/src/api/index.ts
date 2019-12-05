@@ -1,6 +1,17 @@
 import { CategoriesWithFeeds, User } from '../domain';
 
-const DELAY = 1000;
+const DELAY = 100;
+
+function getCurrentUser(): Promise<User> {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({
+                id: 1,
+                username: 'me',
+            });
+        }, DELAY);
+    });
+}
 
 function login(): Promise<User> {
     return new Promise((resolve) => {
@@ -30,6 +41,7 @@ function getCategoriesWithFeeds(): Promise<CategoriesWithFeeds> {
 }
 
 export default {
+    getCurrentUser,
     login,
     logout,
     getCategoriesWithFeeds,

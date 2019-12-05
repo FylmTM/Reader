@@ -1,48 +1,67 @@
 import create from 'zustand'
-import { User } from '../domain';
 import api from '../api';
+import { User } from '../domain';
+
+type AppStore = {
+    initialized: boolean,
+    init: () => void,
+};
+
+export const [useApp] = create<AppStore>(set => ({
+    initialized: false,
+    init: () => {
+        api.getCurrentUser()
+            .then((user) => {
+                userStoreApi.setState({ current: user });
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+            .finally(() => {
+                set({ initialized: true });
+            });
+    },
+}));
 
 type UserStore = {
-    current: User | undefined;
-    loginInProgress: boolean;
-    logoutInProgress: boolean;
-    login: () => void
-    logout: () => void
+    current: User | undefined,
+    loginInProgress: boolean,
+    logoutInProgress: boolean,
+    login: () => void,
+    logout: () => void,
 }
 
-const userStore = create<UserStore>(set => ({
+export const [useUser, userStoreApi] = create<UserStore>(set => ({
     current: undefined,
     loginInProgress: false,
     logoutInProgress: false,
     login: () => {
-        set({loginInProgress: true});
+        set({ loginInProgress: true });
         api.login()
             .then((user) => {
-                set({current: user});
+                set({ current: user });
             })
             .catch((error) => {
                 console.error(error);
             })
             .finally(() => {
-                set({loginInProgress: false})
+                set({ loginInProgress: false })
             });
     },
     logout: () => {
-        set({logoutInProgress: true});
+        set({ logoutInProgress: true });
         api.logout()
             .then(() => {
-                set({current: undefined});
+                set({ current: undefined });
             })
             .catch((error) => {
                 console.error(error);
             })
             .finally(() => {
-                set({logoutInProgress: false});
+                set({ logoutInProgress: false });
             })
     },
 }));
-
-export const useUser = userStore[0];
 
 export function useAuthenticatedUser(): { current: User } & UserStore {
     const { current, ...rest } = useUser();
