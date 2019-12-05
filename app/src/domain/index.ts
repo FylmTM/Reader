@@ -1,4 +1,5 @@
 export type User = {
+    id: number;
     username: string;
 }
 
@@ -17,6 +18,11 @@ export type Feed = {
     link: string;
     feed: string;
 }
+
+export type CategoriesWithFeeds = Array<{
+    category: Category,
+    feeds: Feed[],
+}>;
 
 export type MediaType = {
     mime: string;

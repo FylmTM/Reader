@@ -1,13 +1,12 @@
-import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Container } from './components/Container';
 import { LoginPage } from './components/pages/LoginPage';
 import { PostsPage } from './components/pages/PostsPage';
-import { useUserStore } from './stores';
+import { useUser } from './stores';
 
-export const App = observer(function App() {
-    let userStore = useUserStore();
-    if (userStore.authenticatedUser == null) {
+export const App = function App() {
+    let user = useUser();
+    if (user.current == null) {
         return <LoginPage />;
     }
 
@@ -16,4 +15,4 @@ export const App = observer(function App() {
             <PostsPage />
         </Container>
     );
-});
+};

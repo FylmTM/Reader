@@ -1,9 +1,8 @@
-import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { FC } from 'react';
 
-export const PostsPage = observer(function PostsPage() {
+export const PostsPage: FC = function PostsPage() {
     return (
         <div>
         </div>
     );
-});
+};

@@ -1,19 +1,53 @@
-import React from 'react';
-import { ApiStore } from './ApiStore';
-import { PostsStore } from './PostsStore';
-import { UserStore } from './UserStore';
+import create from 'zustand'
+import { User } from '../domain';
+import api from '../api';
 
-const apiStore = new ApiStore();
-const postsStore = new PostsStore(apiStore);
-const userStore = new UserStore(apiStore, postsStore);
+type UserStore = {
+    current: User | undefined;
+    loginInProgress: boolean;
+    logoutInProgress: boolean;
+    login: () => void
+    logout: () => void
+}
 
-export const rootStoreContext = React.createContext({
-    apiStore,
-    postsStore,
-    userStore,
-});
+const userStore = create<UserStore>(set => ({
+    current: undefined,
+    loginInProgress: false,
+    logoutInProgress: false,
+    login: () => {
+        set({loginInProgress: true});
+        api.login()
+            .then((user) => {
+                set({current: user});
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+            .finally(() => {
+                set({loginInProgress: false})
+            });
+    },
+    logout: () => {
+        set({logoutInProgress: true});
+        api.logout()
+            .then(() => {
+                set({current: undefined});
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+            .finally(() => {
+                set({logoutInProgress: false});
+            })
+    },
+}));
 
-export const useRootStore = () => React.useContext(rootStoreContext);
-export const useApiStore = () => React.useContext(rootStoreContext).apiStore;
-export const useUserStore = () => React.useContext(rootStoreContext).userStore;
-export const usePostsStore = () => React.useContext(rootStoreContext).postsStore;
+export const useUser = userStore[0];
+
+export function useAuthenticatedUser(): { current: User } & UserStore {
+    const { current, ...rest } = useUser();
+    if (current == null) {
+        throw new Error('User must be authenticated');
+    }
+    return { current, ...rest };
+}

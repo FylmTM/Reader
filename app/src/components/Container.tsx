@@ -1,9 +1,8 @@
-import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { FC } from 'react';
 import './Container.css';
 import { Sidebar } from './Sidebar/Sidebar';
 
-export const Container = observer(function Container({ children }) {
+export const Container: FC = function Container({ children }) {
     return (
         <div className="r-container">
             <div className="r-sidebar">
@@ -14,4 +13,4 @@ export const Container = observer(function Container({ children }) {
             </div>
         </div>
     );
-});
+};

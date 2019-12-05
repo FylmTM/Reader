@@ -6358,16 +6358,6 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mobx-react-lite@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-1.5.1.tgz#8eac90985b4d2bee475dd90a0d4d903be578f154"
-  integrity sha512-40Gn8hFq+MuNHqCaeSo2adN4WvpWkIeSYZVJWzRzm0rbEf0BFow6Ir9IefErql0pX9q650TN1JAQXvrXxKR8Mg==
-
-mobx@^5.15.0:
-  version "5.15.0"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.15.0.tgz#3ef34ac4965169698eff6df72f18c2a735e8e7f8"
-  integrity sha512-Ax7vE32zBRgO0A3Yu12RXaFwIhBzpGQXZjRHiDvKLrqpDEijhNTSuXJ1Ci+L30BSa/Mb3by9+3nuKq15YoH5dA==
-
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -10370,3 +10360,8 @@ yargs@^14.2.0:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^15.0.0"
+
+zustand@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-2.2.1.tgz#e749b43bbd87e3b6658a6c9a8e3e20dc3da3b2fa"
+  integrity sha512-K0GO3fe4RxhUWJo3yu9ET16FxPpwHR7EZg3du/c2q1p8QEarzSxqmT9J+Gip4cAV8tapL17h99GbsBsmqq55WA==
