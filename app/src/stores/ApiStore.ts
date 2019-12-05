@@ -1,15 +1,12 @@
 import { computed, decorate, observable } from 'mobx/lib/mobx.es6.js';
 import api from '../api';
 import { User } from '../domain';
-import { RootStore } from './index';
 
 export class ApiStore {
-    rootStore: RootStore;
 
     currentRequestsCount: number;
 
-    constructor(rootStore: RootStore) {
-        this.rootStore = rootStore;
+    constructor() {
         this.currentRequestsCount = 0;
     }
 

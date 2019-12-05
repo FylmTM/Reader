@@ -1,10 +1,10 @@
-.feather {
+.r-icon {
     height: 19px;
     width: 19px;
     transition: stroke 0.2s;
 }
 
-.large .feather {
+.large .r-icon, .r-icon.large {
     height: 27px;
     width: 27px;
 }

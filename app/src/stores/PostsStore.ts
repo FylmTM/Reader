@@ -1,16 +1,12 @@
 import { decorate, IObservableArray, observable } from 'mobx/lib/mobx.es6.js';
 import { Category, Post } from '../domain';
-import { RootStore } from './index';
 
 export class PostsStore {
-    rootStore: RootStore;
-
     currentCategory: Category | undefined;
     categories: IObservableArray<Category> = observable.array();
     posts: IObservableArray<Post> = observable.array();
 
-    constructor(rootStore: RootStore) {
-        this.rootStore = rootStore;
+    constructor() {
         this.categories.replace([
             {
                 id: 1,

@@ -1,6 +1,6 @@
-import { User } from '../domain';
+import { Category, Feed, User } from '../domain';
 
-const DELAY = 0;
+const DELAY = 1000;
 
 function login(): Promise<User> {
     return new Promise((resolve) => {
@@ -20,7 +20,22 @@ function logout(): Promise<void> {
     });
 }
 
+
+export type CategoriesWithFeeds = Array<{
+    category: Category,
+    feeds: Feed[]
+}>;
+
+function getCategoriesWithFeeds(): Promise<CategoriesWithFeeds> {
+    return new Promise<CategoriesWithFeeds>((resolve) => {
+        setTimeout(() => {
+            resolve([]);
+        }, DELAY);
+    });
+}
+
 export default {
     login,
     logout,
+    getCategoriesWithFeeds,
 };

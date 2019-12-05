@@ -1,10 +1,31 @@
 .r-sidebar-actions {
     box-sizing: border-box;
-    position: absolute;
     bottom: 0;
     width: 250px;
     padding: 5px;
     display: flex;
-    border-top: 1px solid var(--color-seconary);
+    border-bottom: 1px solid var(--color-seconary);
     justify-content: space-between;
+}
+
+.r-sidebar-actions > div {
+    display: flex;
+    align-items: center;
+}
+
+.r-sidebar-actions > .left > * {
+    margin-right: 5px;
+}
+
+.r-sidebar-actions > .right > * {
+    margin-left: 5px;
+}
+
+.r-sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    width: 100%;
 }

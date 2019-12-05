@@ -1,22 +1,26 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { useCurrentUserStore } from '../../stores';
+import { useUserStore } from '../../stores';
 import { Button } from '../common/Button/Button';
 import './LoginPage.css';
+import { Input } from '../common/Input/Input';
 
 export const LoginPage = observer(function LoginPage() {
-    const currentUserStore = useCurrentUserStore();
+    const userStore = useUserStore();
     return (
         <form className="r-page-login" onSubmit={(event) => {
             event.preventDefault();
-            currentUserStore.login();
+            if (userStore.inProgress.login) {
+                return;
+            }
+            userStore.login();
         }}>
-            <input type="password" className="large" placeholder="API key" autoFocus={true}/>
+            <Input large={true} type="password" placeholder="API key" autoFocus={true}/>
             <Button
                 icon="login"
-                size="large"
-                onClick={currentUserStore.login}
-                disabled={currentUserStore.inProgress.login}
+                large={true}
+                type="submit"
+                disabled={userStore.inProgress.login}
             />
         </form>
     );

@@ -3,11 +3,11 @@ import React from 'react';
 import { Container } from './components/Container';
 import { LoginPage } from './components/pages/LoginPage';
 import { PostsPage } from './components/pages/PostsPage';
-import { useCurrentUserStore } from './stores';
+import { useUserStore } from './stores';
 
 export const App = observer(function App() {
-    let currentUserStore = useCurrentUserStore();
-    if (currentUserStore.currentUser == null) {
+    let userStore = useUserStore();
+    if (userStore.authenticatedUser == null) {
         return <LoginPage />;
     }
 

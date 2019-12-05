@@ -4,28 +4,33 @@ import './Button.css';
 
 type NativeButton = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
-interface ButtonProps {
-    look?: 'default' | 'outline';
+export type Look =
+    | "default"
+    | "outline"
+    ;
+
+interface Props {
+    look?: Look;
     icon?: IconType;
-    size?: 'default' | 'large'
+    large?: boolean;
 }
 
-export const Button: FC<NativeButton & ButtonProps> = (allProps) => {
-    const { look, icon, size, className, children, ...props } = allProps;
-    let extendedClassName = className ? className : '';
-    if (look) {
-        extendedClassName = `${extendedClassName} ${look}`
-    }
-    if (size) {
-        extendedClassName = `${extendedClassName} ${size}`
-    }
+export const Button: FC<NativeButton & Props> =
+    ({ look, icon, large, className, children, ...props }) => {
+        let extendedClassName = className ? className : '';
+        if (look) {
+            extendedClassName = `${extendedClassName} ${look}`
+        }
+        if (large) {
+            extendedClassName = `${extendedClassName} large`
+        }
 
-    return (
-        <button
-            {...props}
-            className={extendedClassName}
-        >
-            {children}{icon && <Icon type={icon} />}
-        </button>
-    );
-};
+        return (
+            <button
+                {...props}
+                className={extendedClassName}
+            >
+                {children}{icon && <Icon type={icon} />}
+            </button>
+        );
+    };

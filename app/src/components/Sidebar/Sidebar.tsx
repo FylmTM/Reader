@@ -1,31 +1,34 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { useCurrentUserStore } from '../../stores';
+import { useApiStore, useUserStore } from '../../stores';
 import { Button } from '../common/Button/Button';
-import { ActivityStatus } from './ActivityStatus';
+import { Icon } from '../common/Icon/Icon';
 import './Sidebar.css';
 
 export const Sidebar = observer(function Sidebar({ children }) {
-    const currentUserStore = useCurrentUserStore();
+    const userStore = useUserStore();
+    const apiStore = useApiStore();
+    const user = userStore.user;
     return (
         <>
             <div className="r-sidebar-actions">
                 <div className="left">
-                    <Button
-                        icon="settings"
-                        look="outline"
-                    />
+                    <span>{user.username}</span>
+                </div>
+                <div className="center">
                 </div>
                 <div className="right">
                     <Button
                         icon="logout"
                         look="outline"
-                        onClick={currentUserStore.logout}
-                        disabled={currentUserStore.inProgress.logout}
+                        onClick={userStore.logout}
+                        disabled={userStore.inProgress.logout}
                     />
                 </div>
             </div>
-            <ActivityStatus />
+            <div className="r-sidebar-footer">
+                {apiStore.isRequestInProgress && <Icon type="grid-animated" />}
+            </div>
         </>
     );
 });
