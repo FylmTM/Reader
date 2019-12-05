@@ -1,6 +1,6 @@
 import { decorate, observable } from 'mobx/lib/mobx.es6.js';
 import { User } from '../domain';
-import { RootStore } from "./index";
+import { RootStore } from './index';
 
 export class CurrentUserStore {
     rootStore: RootStore;
@@ -14,6 +14,7 @@ export class CurrentUserStore {
             login: false,
             logout: false,
         };
+        this.login();
     }
 
     login = () => {
@@ -24,7 +25,7 @@ export class CurrentUserStore {
             },
             () => {
                 this.inProgress.login = false;
-            }
+            },
         );
     };
 
@@ -37,7 +38,7 @@ export class CurrentUserStore {
             () => {
                 this.inProgress.logout = false;
                 this.rootStore.postsStore.clean();
-            }
+            },
         );
     };
 }

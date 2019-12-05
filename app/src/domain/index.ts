@@ -8,7 +8,7 @@ export type Category = {
 }
 
 export type FeedKind =
-    | "RSS";
+    | 'RSS';
 
 export type Feed = {
     id: number;

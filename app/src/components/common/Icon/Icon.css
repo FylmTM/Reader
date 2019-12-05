@@ -1,0 +1,10 @@
+.feather {
+    height: 19px;
+    width: 19px;
+    transition: stroke 0.2s;
+}
+
+.large .feather {
+    height: 27px;
+    width: 27px;
+}

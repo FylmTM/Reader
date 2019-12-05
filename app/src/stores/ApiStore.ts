@@ -1,7 +1,7 @@
-import { computed, decorate, observable } from "mobx/lib/mobx.es6.js";
+import { computed, decorate, observable } from 'mobx/lib/mobx.es6.js';
 import api from '../api';
-import { User } from "../domain";
-import { RootStore } from "./index";
+import { User } from '../domain';
+import { RootStore } from './index';
 
 export class ApiStore {
     rootStore: RootStore;
@@ -25,7 +25,7 @@ export class ApiStore {
         this.currentRequestsCount--;
     };
 
-    login = (onSuccess: (user: User) => void, onFinished: () => void = () => {}) => {
+    login = (onSuccess: (user: User) => void, onFinished: () => void = () => undefined) => {
         this.beginApiRequest();
         api.login()
             .then(onSuccess)
@@ -36,7 +36,7 @@ export class ApiStore {
             });
     };
 
-    logout = (onSuccess: () => void, onFinished: () => void = () => {}) => {
+    logout = (onSuccess: () => void, onFinished: () => void = () => undefined) => {
         this.beginApiRequest();
         api.logout()
             .then(onSuccess)

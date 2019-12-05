@@ -1,0 +1,35 @@
+button {
+    padding: 5px;
+    font-size: var(--font-size);
+    background: var(--color-seconary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.1s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+}
+
+button:hover {
+    background: var(--color-accent);
+}
+
+button:disabled {
+    background: var(--color-seconary-muted);
+    color: var(--color-foreground-muted);
+    cursor: auto;
+}
+
+button.large {
+    font-size: var(--font-size-large);
+}
+
+button.outline {
+    background: transparent;
+}
+
+button.outline:hover {
+    background: var(--color-accent);
+}
