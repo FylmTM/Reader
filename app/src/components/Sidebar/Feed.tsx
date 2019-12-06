@@ -13,9 +13,7 @@ export const Feed: FC<Props> = function Feed({ categoryId, feed }) {
             href={`/category/${categoryId}/feed/${feed.id}`}
             className="r-feed"
         >
-            <div className="r-feed-title ellipsis">
-                {feed.title}
-            </div>
+            <span className="ellipsis">{feed.title}</span>
         </a>
     );
 };

@@ -1,11 +1,4 @@
 .r-feed {
-    padding-left: 29px;
-}
-
-.r-feed-title {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    border-top: 1px solid var(--color-seconary-muted);
-    flex: 1;
+    display: flex;
+    padding: 10px 10px 10px 29px;
 }

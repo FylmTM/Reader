@@ -1,0 +1,11 @@
+.r-categories a {
+    text-decoration: none;
+}
+
+.r-categories a:hover {
+    background: var(--color-accent-muted);
+}
+
+.r-categories a.r-active {
+    background: var(--color-accent);
+}

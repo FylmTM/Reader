@@ -1,28 +1,14 @@
-import React, { FC, useEffect } from 'react';
-import { useAuthenticatedUser, useCategories } from '../../stores';
-import { Activity } from '../common/Activity/Activity';
+import React, { FC } from 'react';
+import { useAuthenticatedUser } from '../../stores';
 import { Button } from '../common/Button/Button';
-import { AllCategory, Category } from './Category';
+import { Categories } from './Categories';
 import './Sidebar.css';
 
 export const Sidebar: FC = function Sidebar({ children }) {
     const user = useAuthenticatedUser();
-    const { categories, categoriesGetInProgress, getCategories } = useCategories();
-
-    useEffect(() => {
-        getCategories();
-    }, [getCategories]);
 
     return (
         <div className="r-sidebar">
-            <div className="r-sidebar-content">
-                <Activity inProgress={categoriesGetInProgress}>
-                    <AllCategory />
-                    {categories.map(({ category, feeds }) => (
-                        <Category key={category.id} category={category} feeds={feeds} />
-                    ))}
-                </Activity>
-            </div>
             <div className="r-sidebar-actions">
                 <div className="left">
                     <span>{user.current.username}</span>
@@ -35,6 +21,9 @@ export const Sidebar: FC = function Sidebar({ children }) {
                         disabled={user.logoutInProgress}
                     />
                 </div>
+            </div>
+            <div className="r-sidebar-content">
+                <Categories />
             </div>
         </div>
     );

@@ -1,23 +1,10 @@
 .r-category {
-    border-bottom: 1px solid var(--color-seconary-muted);
-}
-
-.r-category:last-child {
-    border: none;
-}
-
-.r-category a {
     display: flex;
-    background: var(--color-background-muted);
-    text-decoration: none;
-}
-
-.r-category a:hover {
-    background: var(--color-accent-muted);
-}
-
-.r-category a.r-active {
-    background: var(--color-accent);
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    align-items: center;
 }
 
 .r-category-toggle {
@@ -26,9 +13,7 @@
     padding: 0 5px;
 }
 
-.r-category-title {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    align-content: center;
+.r-category-feeds {
+    display: flex;
+    flex-direction: column;
 }

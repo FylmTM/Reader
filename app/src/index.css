@@ -1,17 +1,16 @@
 :root {
-    --color-background: rgb(21, 24, 29);
-    --color-background-muted: rgba(21, 24, 29, 0.7);
+    --color-background: #15181d;
 
-    --color-foreground: rgba(255, 255, 255, 0.9);
-    --color-foreground-muted: rgba(255, 255, 255, 0.3);
+    --color-foreground: #ffffff;
+    --color-foreground-muted: #9b9b9b;
 
-    --color-seconary: rgb(64, 75, 105);
-    --color-seconary-muted: rgba(64, 75, 105, 0.4);
+    --color-seconary: #404b69;
+    --color-seconary-muted: #262c3b;
 
-    --color-accent: rgb(0, 129, 138);
-    --color-accent-muted: rgba(0, 129, 138, 0.4);
+    --color-accent: #00818a;
+    --color-accent-muted: #174d5a;
 
-    --font-size: 12pt;
+    --font-size: 11pt;
     --font-size-large: 16pt;
     --border-radius: 5px;
 }

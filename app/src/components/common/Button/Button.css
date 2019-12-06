@@ -22,6 +22,10 @@ button:disabled {
     cursor: auto;
 }
 
+button:disabled .r-icon {
+    stroke: var(--color-foreground-muted);
+}
+
 button.large {
     font-size: var(--font-size-large);
 }
@@ -36,8 +40,4 @@ button.outline:hover {
 
 button.outline:disabled {
     background: transparent;
-}
-
-button.outline:disabled .r-icon {
-    stroke: var(--color-foreground-muted);
 }

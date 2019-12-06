@@ -10,10 +10,10 @@
 .r-sidebar-actions {
     box-sizing: border-box;
     bottom: 0;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
-    background: var(--color-background-muted);
+    background: var(--color-background);
 }
 
 .r-sidebar-actions > div {
