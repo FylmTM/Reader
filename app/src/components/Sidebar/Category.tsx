@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Link, useRoute } from 'wouter';
 import * as domain from '../../domain';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { ALL_ROUTE, CATEGORY_ROUTE } from '../../routes';
 import { Icon } from '../common/Icon/Icon';
 import './Category.css';
 import { Feed } from './Feed';
@@ -12,7 +13,7 @@ interface Props {
 }
 
 export const AllCategory: FC = function AllCategory() {
-    const [match] = useRoute('/');
+    const [match] = useRoute(ALL_ROUTE);
     return (
         <Link
             href="/"
@@ -28,8 +29,8 @@ export const AllCategory: FC = function AllCategory() {
 
 export const Category: FC<Props> = function Category({ category, feeds }) {
     const [{ expanded }, setState] = useLocalStorage(`category-${category.id}-expanded`, { expanded: false });
-    const [match, params] = useRoute<{ id: string }>(`/category/:id`);
-    const isActive = match && params?.id === category.id.toString();
+    const [match, params] = useRoute<{ categoryId: string }>(CATEGORY_ROUTE);
+    const isActive = match && params?.categoryId === category.id.toString();
 
     return (
         <>

@@ -2,6 +2,21 @@ import create from 'zustand'
 import api from '../api';
 import { CategoriesWithFeeds, User } from '../domain';
 
+interface ErrorStore {
+    error: string | undefined;
+    clear: () => void;
+}
+
+export const [useError, errorStoreApi] = create<ErrorStore>(set => ({
+    error: undefined,
+    clear: () => set({ error: undefined }),
+}));
+
+function handleError(error: any) {
+    console.log(error);
+    errorStoreApi.setState({ error: error.toString() });
+}
+
 interface AppStore {
     initialized: boolean;
     init: () => void;
@@ -12,7 +27,7 @@ export const [useApp] = create<AppStore>(set => ({
     init: () => {
         api.getCurrentUser()
             .then((user) => userStoreApi.setState({ current: user }))
-            .catch((error) => console.error(error))
+            .catch(handleError)
             .finally(() => set({ initialized: true }));
     },
 }));
@@ -33,14 +48,14 @@ export const [useUser, userStoreApi] = create<UserStore>(set => ({
         set({ loginInProgress: true });
         api.login()
             .then((user) => set({ current: user }))
-            .catch((error) => console.error(error))
+            .catch(handleError)
             .finally(() => set({ loginInProgress: false }));
     },
     logout: () => {
         set({ logoutInProgress: true });
         api.logout()
             .then(() => set({ current: undefined }))
-            .catch((error) => console.error(error))
+            .catch(handleError)
             .finally(() => set({ logoutInProgress: false }))
     },
 }));
@@ -66,7 +81,7 @@ export const [useCategories] = create<CategoriesStore>(set => ({
         set({ categoriesGetInProgress: true });
         api.getCategoriesWithFeeds()
             .then((categories) => set({ categories }))
-            .catch((error) => console.error(error))
+            .catch(handleError)
             .finally(() => set({ categoriesGetInProgress: false }))
     },
 }));

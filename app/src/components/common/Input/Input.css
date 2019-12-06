@@ -7,7 +7,7 @@ input {
     transition: border 0.2s;
 }
 
-input:hover, input:focus {
+input:hover {
     border-color: var(--color-accent);
     outline: 0;
 }

@@ -10,6 +10,8 @@
     --color-accent: #00818a;
     --color-accent-muted: #174d5a;
 
+    --color-error: #b71c1c;
+
     --font-size: 11pt;
     --font-size-large: 16pt;
     --border-radius: 5px;
@@ -41,6 +43,11 @@ body, html, #root {
     height: 100%;
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
 pre, code {
     font-family: 'Inconsolata', monospace;
 }
@@ -49,4 +56,8 @@ pre, code {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+input:focus, button:focus {
+    outline: none;
 }

@@ -16,6 +16,7 @@ import { ReactComponent as Collapsed } from './icons/chevron-right.svg';
 import { ReactComponent as Expanded } from './icons/chevron-down.svg';
 import { ReactComponent as Home } from './icons/home.svg';
 import { ReactComponent as Radio } from './icons/radio.svg';
+import { ReactComponent as Close } from './icons/x.svg';
 
 export type IconType =
     | 'login'
@@ -26,6 +27,7 @@ export type IconType =
     | 'expanded'
     | 'home'
     | 'radio'
+    | 'close'
     ;
 
 interface Props {
@@ -55,5 +57,7 @@ export const Icon: FC<Props> = ({ type, large }) => {
             return <Home className={className} />;
         case 'radio':
             return <Radio className={className} />;
+        case 'close':
+            return <Close className={className} />;
     }
 };

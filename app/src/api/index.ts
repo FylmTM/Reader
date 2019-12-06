@@ -14,7 +14,7 @@ function getCurrentUser(): Promise<User> {
 }
 
 function login(): Promise<User> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve({
                 id: 1,
@@ -33,7 +33,7 @@ function logout(): Promise<void> {
 }
 
 function getCategoriesWithFeeds(): Promise<CategoriesWithFeeds> {
-    return new Promise<CategoriesWithFeeds>((resolve) => {
+    return new Promise<CategoriesWithFeeds>((resolve, reject) => {
         setTimeout(() => {
             resolve([
                 {

@@ -1,0 +1,10 @@
+.r-error {
+    padding: 10px;
+    background: var(--color-error);
+    display: flex;
+    align-items: center;
+}
+
+.r-error button:hover {
+    background: none;
+}
