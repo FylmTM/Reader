@@ -1,10 +1,19 @@
+.r-sidebar {
+    width: 250px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-seconary-muted);
+    border-right: 1px solid var(--color-seconary-muted);
+}
+
 .r-sidebar-actions {
     box-sizing: border-box;
     bottom: 0;
-    padding: 5px;
+    padding: 10px;
     display: flex;
-    border-bottom: 1px solid var(--color-seconary);
     justify-content: space-between;
+    background: var(--color-background-muted);
 }
 
 .r-sidebar-actions > div {
@@ -21,7 +30,6 @@
 }
 
 .r-sidebar-content {
-    padding-top: 10px;
     flex-grow: 1;
     overflow-y: auto;
 }

@@ -19,10 +19,12 @@ export type Feed = {
     feed: string;
 }
 
-export type CategoriesWithFeeds = Array<{
+export type CategoryWithFeeds = {
     category: Category,
-    feeds: Feed[],
-}>;
+    feeds: Array<Feed>,
+};
+
+export type CategoriesWithFeeds = Array<CategoryWithFeeds>;
 
 export type MediaType = {
     mime: string;

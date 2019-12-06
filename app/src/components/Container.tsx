@@ -5,9 +5,7 @@ import { Sidebar } from './Sidebar/Sidebar';
 export const Container: FC = function Container({ children }) {
     return (
         <div className="r-container">
-            <div className="r-sidebar">
-                <Sidebar />
-            </div>
+            <Sidebar />
             <div className="r-page">
                 {children}
             </div>

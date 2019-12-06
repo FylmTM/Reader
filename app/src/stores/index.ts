@@ -1,34 +1,28 @@
 import create from 'zustand'
 import api from '../api';
-import { User } from '../domain';
+import { CategoriesWithFeeds, User } from '../domain';
 
-type AppStore = {
-    initialized: boolean,
-    init: () => void,
-};
+interface AppStore {
+    initialized: boolean;
+    init: () => void;
+}
 
 export const [useApp] = create<AppStore>(set => ({
     initialized: false,
     init: () => {
         api.getCurrentUser()
-            .then((user) => {
-                userStoreApi.setState({ current: user });
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-                set({ initialized: true });
-            });
+            .then((user) => userStoreApi.setState({ current: user }))
+            .catch((error) => console.error(error))
+            .finally(() => set({ initialized: true }));
     },
 }));
 
-type UserStore = {
-    current: User | undefined,
-    loginInProgress: boolean,
-    logoutInProgress: boolean,
-    login: () => void,
-    logout: () => void,
+interface UserStore {
+    current: User | undefined;
+    loginInProgress: boolean;
+    logoutInProgress: boolean;
+    login: () => void;
+    logout: () => void;
 }
 
 export const [useUser, userStoreApi] = create<UserStore>(set => ({
@@ -38,28 +32,16 @@ export const [useUser, userStoreApi] = create<UserStore>(set => ({
     login: () => {
         set({ loginInProgress: true });
         api.login()
-            .then((user) => {
-                set({ current: user });
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-                set({ loginInProgress: false })
-            });
+            .then((user) => set({ current: user }))
+            .catch((error) => console.error(error))
+            .finally(() => set({ loginInProgress: false }));
     },
     logout: () => {
         set({ logoutInProgress: true });
         api.logout()
-            .then(() => {
-                set({ current: undefined });
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-                set({ logoutInProgress: false });
-            })
+            .then(() => set({ current: undefined }))
+            .catch((error) => console.error(error))
+            .finally(() => set({ logoutInProgress: false }))
     },
 }));
 
@@ -70,3 +52,21 @@ export function useAuthenticatedUser(): { current: User } & UserStore {
     }
     return { current, ...rest };
 }
+
+interface CategoriesStore {
+    categories: CategoriesWithFeeds;
+    categoriesGetInProgress: boolean;
+    getCategories: () => void;
+}
+
+export const [useCategories] = create<CategoriesStore>(set => ({
+    categories: [],
+    categoriesGetInProgress: false,
+    getCategories: () => {
+        set({ categoriesGetInProgress: true });
+        api.getCategoriesWithFeeds()
+            .then((categories) => set({ categories }))
+            .catch((error) => console.error(error))
+            .finally(() => set({ categoriesGetInProgress: false }))
+    },
+}));
