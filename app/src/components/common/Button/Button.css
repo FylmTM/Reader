@@ -26,6 +26,10 @@ button:disabled .r-icon {
     stroke: var(--color-foreground-muted);
 }
 
+button.small {
+    font-size: var(--font-size-small);
+}
+
 button.large {
     font-size: var(--font-size-large);
 }
@@ -40,4 +44,15 @@ button.outline:hover {
 
 button.outline:disabled {
     background: transparent;
+}
+
+button.minimal {
+    background: transparent;
+    padding: 1px;
+}
+
+button.minimal:hover {
+    background: transparent;
+    color: var(--color-accent);
+    stroke: var(--color-accent);
 }

@@ -5,17 +5,18 @@ import { useSection } from "../../stores";
 import "./Feed.css";
 
 interface Props {
+  categoryId: number;
   feed: domain.Feed;
 }
 
-export const Feed: FC<Props> = function Feed({ feed }) {
+export const Feed: FC<Props> = function Feed({ categoryId, feed }) {
   const isActive = useSection(
     ({ section }) => section?.type === "feed" && section.feedId === feed.id
   );
 
   return (
     <Link
-      href={`/feed/${feed.id}`}
+      href={`/category/${categoryId}/feed/${feed.id}`}
       className={`r-feed ellipsis ${isActive && "r-active"}`}
     >
       {feed.title}

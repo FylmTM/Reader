@@ -27,7 +27,7 @@ export const LoginPage = function LoginPage() {
         />
         <Button
           icon="login"
-          large={true}
+          size="large"
           type="submit"
           disabled={user.loginInProgress}
         />

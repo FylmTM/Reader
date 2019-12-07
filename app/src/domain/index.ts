@@ -1,3 +1,10 @@
+export type Section =
+  | { type: "read-later"; postId?: number }
+  | { type: "all"; postId?: number }
+  | { type: "category"; categoryId: number; postId?: number }
+  | { type: "feed"; categoryId: number; feedId: number; postId?: number }
+  | { type: "not-found" };
+
 export type User = {
   id: number;
   username: string;
@@ -31,18 +38,20 @@ export type MediaType = {
 
 export type Post = {
   id: number;
+  feed: {
+    id: number;
+    category_id: number;
+    title: string;
+  };
+  is_read: boolean;
   link: string;
   title: string;
   date: string;
-  content: string | undefined;
-  media_type: string | undefined;
-  media_link: string | undefined;
-  comments_link: string | undefined;
+  summary?: string;
+  content?: string;
+  media?: {
+    type: string;
+    link: string;
+  };
+  comments_link?: string;
 };
-
-export type Section =
-  | { type: "read-later"; postId?: number }
-  | { type: "all"; postId?: number }
-  | { type: "category"; categoryId: number; postId?: number }
-  | { type: "feed"; feedId: number; postId?: number }
-  | { type: "not-found" };

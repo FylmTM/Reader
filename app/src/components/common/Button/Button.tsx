@@ -7,18 +7,19 @@ type NativeButton = React.DetailedHTMLProps<
   HTMLButtonElement
 >;
 
-export type Look = "default" | "outline";
+type Look = "default" | "outline" | "minimal";
+type Size = "default" | "small" | "large";
 
 interface Props {
   look?: Look;
   icon?: IconType;
-  large?: boolean;
+  size?: Size;
 }
 
 export const Button: FC<NativeButton & Props> = ({
   look,
   icon,
-  large,
+  size,
   className,
   children,
   ...props
@@ -27,8 +28,8 @@ export const Button: FC<NativeButton & Props> = ({
   if (look) {
     extendedClassName = `${extendedClassName} ${look}`;
   }
-  if (large) {
-    extendedClassName = `${extendedClassName} large`;
+  if (size) {
+    extendedClassName = `${extendedClassName} ${size}`;
   }
 
   return (

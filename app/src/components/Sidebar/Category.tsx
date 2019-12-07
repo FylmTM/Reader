@@ -59,6 +59,7 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
           className="r-category-toggle"
           onClick={event => {
             event.preventDefault();
+            event.stopPropagation();
             setState({ expanded: !expanded });
           }}
         >
@@ -69,7 +70,7 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
       {(expanded && feeds.length) > 0 && (
         <div className="r-category-feeds">
           {feeds.map(feed => (
-            <Feed key={feed.id} feed={feed} />
+            <Feed key={feed.id} categoryId={category.id} feed={feed} />
           ))}
         </div>
       )}

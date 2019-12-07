@@ -8,3 +8,8 @@
     height: 27px;
     width: 27px;
 }
+
+.small .r-icon, .r-icon.small {
+    height: 15px;
+    width: 15px;
+}

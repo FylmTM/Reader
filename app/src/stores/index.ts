@@ -1,6 +1,6 @@
 import create from "zustand";
 import api from "../api";
-import { CategoriesWithFeeds, Section, User } from "../domain";
+import { CategoriesWithFeeds, Post, Section, User } from "../domain";
 
 interface ErrorStore {
   error: string | undefined;
@@ -16,6 +16,14 @@ function handleError(error: any) {
   console.log(error);
   errorStoreApi.setState({ error: error.toString() });
 }
+
+interface SectionStore {
+  section?: Section;
+}
+
+export const [useSection, sectionStoreApi] = create<SectionStore>(set => ({
+  section: undefined
+}));
 
 interface AppStore {
   initialized: boolean;
@@ -77,25 +85,36 @@ interface CategoriesStore {
   getCategories: () => void;
 }
 
-export const [useCategories] = create<CategoriesStore>(set => ({
-  categories: [],
-  categoriesGetInProgress: false,
-  getCategories: () => {
-    set({ categoriesGetInProgress: true });
-    api
-      .getCategoriesWithFeeds()
-      .then(categories => set({ categories }))
-      .catch(handleError)
-      .finally(() => set({ categoriesGetInProgress: false }));
-  }
-}));
+export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
+  set => ({
+    categories: [],
+    categoriesGetInProgress: false,
+    getCategories: () => {
+      set({ categoriesGetInProgress: true });
+      api
+        .getCategoriesWithFeeds()
+        .then(categories => set({ categories }))
+        .catch(handleError)
+        .finally(() => set({ categoriesGetInProgress: false }));
+    }
+  })
+);
 
-interface SectionStore {
-  section?: Section;
-  change: (section: Section) => void;
+interface PostsStore {
+  posts: Array<Post>;
+  postsGetInProgress: boolean;
+  get: (section: Section) => void;
 }
 
-export const [useSection, sectionStoreApi] = create<SectionStore>(set => ({
-  section: undefined,
-  change: (section: Section) => set({ section })
+export const [usePosts] = create<PostsStore>(set => ({
+  posts: [],
+  postsGetInProgress: false,
+  get: section => {
+    set({ posts: [], postsGetInProgress: true });
+    api
+      .getPosts()
+      .then(posts => set({ posts }))
+      .catch(handleError)
+      .finally(() => set({ postsGetInProgress: false }));
+  }
 }));

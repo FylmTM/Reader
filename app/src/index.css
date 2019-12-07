@@ -12,6 +12,7 @@
 
     --color-error: #b71c1c;
 
+    --font-size-small: 9pt;
     --font-size: 11pt;
     --font-size-large: 16pt;
     --border-radius: 5px;
@@ -19,6 +20,9 @@
 
 * {
     font-family: 'Roboto', sans-serif;
+}
+
+body, a, button, input {
     color: var(--color-foreground);
 }
 
@@ -60,4 +64,8 @@ pre, code {
 
 input:focus, button:focus {
     outline: none;
+}
+
+a {
+    text-decoration: none;
 }

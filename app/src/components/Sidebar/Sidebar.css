@@ -18,6 +18,10 @@
     border-bottom: 1px solid var(--color-seconary-muted);
 }
 
+.r-sidebar-navbar a {
+    text-decoration: none;
+}
+
 .r-sidebar-navbar > div {
     display: flex;
     align-items: center;

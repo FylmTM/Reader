@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "wouter";
 import { useAuthenticatedUser } from "../../stores";
 import { Button } from "../common/Button/Button";
 import { Categories } from "./Categories";
@@ -11,7 +12,7 @@ export const Sidebar: FC = function Sidebar({ children }) {
     <div className="r-sidebar">
       <div className="r-sidebar-navbar">
         <div className="left">
-          <span>{user.current.username}</span>
+          <Link to="/">{user.current.username}</Link>
         </div>
         <div className="right">
           <Button
