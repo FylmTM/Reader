@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { Link, useRoute } from "wouter";
+import { Link } from "wouter";
 import * as domain from "../../domain";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { ALL_ROUTE, CATEGORY_ROUTE } from "../../routes";
+import { useSection } from "../../stores";
 import { Icon } from "../common/Icon/Icon";
 import "./Category.css";
 import { Feed } from "./Feed";
@@ -12,10 +12,24 @@ interface Props {
   feeds: Array<domain.Feed>;
 }
 
-export const AllCategory: FC = function AllCategory() {
-  const [match] = useRoute(ALL_ROUTE);
+export const ReadLaterCategory: FC = function ReadLaterCategory() {
+  const isActive = useSection(({ section }) => section?.type === "read-later");
+
   return (
-    <Link href="/" className={`r-category ${match && "r-active"}`}>
+    <Link href="/read-later" className={`r-category ${isActive && "r-active"}`}>
+      <div className="r-category-toggle">
+        <Icon type="bookmark" />
+      </div>
+      <span className="ellipsis">Read later</span>
+    </Link>
+  );
+};
+
+export const AllCategory: FC = function AllCategory() {
+  const isActive = useSection(({ section }) => section?.type === "all");
+
+  return (
+    <Link href="/all" className={`r-category ${isActive && "r-active"}`}>
       <div className="r-category-toggle">
         <Icon type="radio" />
       </div>
@@ -29,8 +43,11 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
     { expanded },
     setState
   ] = useLocalStorage(`category-${category.id}-expanded`, { expanded: false });
-  const [match, params] = useRoute<{ categoryId: string }>(CATEGORY_ROUTE);
-  const isActive = match && params?.categoryId === category.id.toString();
+
+  const isActive = useSection(
+    ({ section }) =>
+      section?.type === "category" && section.categoryId === category.id
+  );
 
   return (
     <>

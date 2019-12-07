@@ -1,6 +1,6 @@
 import create from "zustand";
 import api from "../api";
-import { CategoriesWithFeeds, User } from "../domain";
+import { CategoriesWithFeeds, Section, User } from "../domain";
 
 interface ErrorStore {
   error: string | undefined;
@@ -88,4 +88,14 @@ export const [useCategories] = create<CategoriesStore>(set => ({
       .catch(handleError)
       .finally(() => set({ categoriesGetInProgress: false }));
   }
+}));
+
+interface SectionStore {
+  section?: Section;
+  change: (section: Section) => void;
+}
+
+export const [useSection, sectionStoreApi] = create<SectionStore>(set => ({
+  section: undefined,
+  change: (section: Section) => set({ section })
 }));

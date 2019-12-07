@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { useCategories } from "../../stores";
 import { Activity } from "../common/Activity/Activity";
-import { AllCategory, Category } from "./Category";
+import { AllCategory, Category, ReadLaterCategory } from "./Category";
 import "./Categories.css";
 
 export const Categories: FC = function Categorries() {
@@ -18,6 +18,7 @@ export const Categories: FC = function Categorries() {
   return (
     <Activity inProgress={categoriesGetInProgress}>
       <div className="r-categories">
+        <ReadLaterCategory />
         <AllCategory />
         {categories.map(({ category, feeds }) => (
           <Category key={category.id} category={category} feeds={feeds} />

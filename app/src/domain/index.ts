@@ -39,3 +39,10 @@ export type Post = {
   media_link: string | undefined;
   comments_link: string | undefined;
 };
+
+export type Section =
+  | { type: "read-later"; postId?: number }
+  | { type: "all"; postId?: number }
+  | { type: "category"; categoryId: number; postId?: number }
+  | { type: "feed"; feedId: number; postId?: number }
+  | { type: "not-found" };

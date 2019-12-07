@@ -1,4 +1,4 @@
-.r-not-found {
+.r-page-not-found {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -7,6 +7,6 @@
     font-size: var(--font-size-large);
 }
 
-.r-not-found a {
+.r-page-not-found a {
     margin-top: 10px;
 }

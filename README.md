@@ -3,11 +3,11 @@ Reader
 
 **Reader** is simple, small and fast news aggregator.
 
+* Available as a [single static binary](#deployment).
+* Sensible default [configuration](#configuration).
 * Multiple [sources](#sources).
 * [Fast](#benchmarks).
 * Low CPU and memory usage.
-* Sensible default [configuration](#configuration).
-* Available as a [single static binary](#deployment).
 
 ### Features
 

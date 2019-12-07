@@ -17,6 +17,9 @@ import { ReactComponent as Expanded } from "./icons/chevron-down.svg";
 import { ReactComponent as Home } from "./icons/home.svg";
 import { ReactComponent as Radio } from "./icons/radio.svg";
 import { ReactComponent as Close } from "./icons/x.svg";
+import { ReactComponent as Bookmark } from "./icons/bookmark.svg";
+import { ReactComponent as Check } from "./icons/check.svg";
+import { ReactComponent as Refresh } from "./icons/refresh-cw.svg";
 
 export type IconType =
   | "login"
@@ -27,7 +30,10 @@ export type IconType =
   | "expanded"
   | "home"
   | "radio"
-  | "close";
+  | "close"
+  | "bookmark"
+  | "check"
+  | "refresh";
 
 interface Props {
   type: IconType;
@@ -58,5 +64,11 @@ export const Icon: FC<Props> = ({ type, large }) => {
       return <Radio className={className} />;
     case "close":
       return <Close className={className} />;
+    case "bookmark":
+      return <Bookmark className={className} />;
+    case "check":
+      return <Check className={className} />;
+    case "refresh":
+      return <Refresh className={className} />;
   }
 };

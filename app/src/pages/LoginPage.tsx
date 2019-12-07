@@ -1,8 +1,8 @@
 import React from "react";
-import { useUser } from "../../stores";
-import { Activity } from "../common/Activity/Activity";
-import { Button } from "../common/Button/Button";
-import { Input } from "../common/Input/Input";
+import { useUser } from "../stores";
+import { Activity } from "../components/common/Activity/Activity";
+import { Button } from "../components/common/Button/Button";
+import { Input } from "../components/common/Input/Input";
 import "./LoginPage.css";
 
 export const LoginPage = function LoginPage() {

@@ -9,7 +9,7 @@ export const Sidebar: FC = function Sidebar({ children }) {
 
   return (
     <div className="r-sidebar">
-      <div className="r-sidebar-actions">
+      <div className="r-sidebar-navbar">
         <div className="left">
           <span>{user.current.username}</span>
         </div>
