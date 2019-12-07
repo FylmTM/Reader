@@ -3,9 +3,9 @@ import { Redirect, Route, Switch } from "wouter";
 import { Activity } from "./components/common/Activity/Activity";
 import { Container } from "./components/Container";
 import { Error } from "./components/Error/Error";
-import { LoginPage } from "./pages/LoginPage";
-import { NotFound } from "./pages/NotFound";
-import { PostsPage } from "./pages/PostsPage";
+import { LoginPage } from "./pages/LoginPage/LoginPage";
+import { NotFound } from "./pages/NotFound/NotFound";
+import { PostsPage } from "./pages/PostsPage/PostsPage";
 import {
   ALL_ROUTE,
   CATEGORY_ROUTE,

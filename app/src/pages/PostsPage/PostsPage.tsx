@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Button } from "../components/common/Button/Button";
+import { Button } from "../../components/common/Button/Button";
 import "./PostsPage.css";
 
 export const PostsPage: FC = function PostsPage() {

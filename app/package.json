@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "postbuild": "gzipper -t 1000 -i html,js,css ./build",
     "test": "react-scripts test",
@@ -24,6 +24,7 @@
     "@types/node": "^12.12.14",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
+    "cross-env": "^6.0.3",
     "gzipper": "^3.4.1",
     "prettier": "1.19.1",
     "react-scripts": "3.3.0",
