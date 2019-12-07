@@ -3,9 +3,6 @@
     height: 100%;
 }
 
-.r-page-posts > div {
-    flex: 1;
-}
 
 .r-page-posts-list-navbar {
     height: 40px;
@@ -38,7 +35,7 @@
 .r-posts-list {
     display: flex;
     flex-direction: column;
-    max-width: 450px;
+    width: 400px;
     border-right: 1px solid var(--color-seconary-muted);
 }
 
@@ -48,6 +45,7 @@
 }
 
 .r-post {
+    flex: 1;
     display: flex;
     flex-direction: column;
 }

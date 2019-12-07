@@ -3,14 +3,17 @@ import { Icon } from "../Icon/Icon";
 import "./Activity.css";
 
 interface Props {
-  inProgress: boolean;
+  inProgress?: boolean;
 }
 
-export const Activity: FC<Props> = function Activity({ inProgress, children }) {
+export const Activity: FC<Props> = function Activity({
+  inProgress = true,
+  children
+}) {
   if (inProgress) {
     return (
       <div className="r-activity">
-        <Icon type="grid-animated" large={true} />
+        <Icon type="grid-animated" size="large" />
       </div>
     );
   }

@@ -1,9 +1,42 @@
 import React, { FC, useEffect } from "react";
 import { Activity } from "../../components/common/Activity/Activity";
-import { Button } from "../../components/common/Button/Button";
+import { IconButton } from "../../components/common/Button/Button";
+import { Section } from "../../domain";
 import { useCategories, usePosts, useSection } from "../../stores";
-import "./PostsPage.css";
 import { PostsListItem } from "./PostsListItem";
+import "./PostsPage.css";
+
+function itemData(
+  section: Section | undefined
+): { hrefPrefix: string; postId: number | undefined } {
+  switch (section?.type) {
+    case "read-later":
+      return {
+        hrefPrefix: "/read-later",
+        postId: section.postId
+      };
+    case "all":
+      return {
+        hrefPrefix: "/all",
+        postId: section.postId
+      };
+    case "category":
+      return {
+        hrefPrefix: `/category/${section.categoryId}`,
+        postId: section.postId
+      };
+    case "feed":
+      return {
+        hrefPrefix: `/category/${section.categoryId}/feed/${section.feedId}`,
+        postId: section.postId
+      };
+    default:
+      return {
+        hrefPrefix: "",
+        postId: undefined
+      };
+  }
+}
 
 export const PostsPage: FC = function PostsPage() {
   const section = useSection(state => state.section);
@@ -42,6 +75,7 @@ export const PostsPage: FC = function PostsPage() {
   });
 
   const { posts, postsGetInProgress, get: getPosts } = usePosts();
+  const { hrefPrefix, postId } = itemData(section);
 
   useEffect(() => {
     if (section) {
@@ -55,18 +89,27 @@ export const PostsPage: FC = function PostsPage() {
       <div className="r-posts-list">
         <div className="r-page-posts-list-navbar">
           <div className="left">
-            <span className="r-title">{title}</span>
+            <span className="r-title ellipsis">
+              <span className="ellipsis">{title}</span>
+            </span>
           </div>
           <div className="right">
-            <Button icon="check" look="outline" />
+            <IconButton icon="check" look="outline" />
           </div>
         </div>
         <div className="r-posts-list-content">
-          <Activity inProgress={postsGetInProgress}>
-            {posts.map(post => (
-              <PostsListItem key={post.id} post={post} />
-            ))}
-          </Activity>
+          {postsGetInProgress ? (
+            <Activity />
+          ) : (
+            posts.map(post => (
+              <PostsListItem
+                key={post.id}
+                post={post}
+                hrefPrefix={hrefPrefix}
+                isSelected={postId ? postId === post.id : false}
+              />
+            ))
+          )}
         </div>
       </div>
       <div className="r-post">

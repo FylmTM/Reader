@@ -18,9 +18,25 @@ export function Routes() {
               return <PostsPage />;
             }}
           </Route>
+          <Route<{ postId: string }> path="/read-later/post/:postId">
+            {params => {
+              const postId = parseInt(params.postId);
+              sectionStoreApi.setState({
+                section: { type: "read-later", postId }
+              });
+              return <PostsPage />;
+            }}
+          </Route>
           <Route path="/all">
             {params => {
               sectionStoreApi.setState({ section: { type: "all" } });
+              return <PostsPage />;
+            }}
+          </Route>
+          <Route<{ postId: string }> path="/all/post/:postId">
+            {params => {
+              const postId = parseInt(params.postId);
+              sectionStoreApi.setState({ section: { type: "all", postId } });
               return <PostsPage />;
             }}
           </Route>
@@ -55,6 +71,21 @@ export function Routes() {
               const feedId = parseInt(params.feedId);
               sectionStoreApi.setState({
                 section: { type: "feed", feedId, categoryId }
+              });
+              return <PostsPage />;
+            }}
+          </Route>
+          <Route<{
+            categoryId: string;
+            feedId: string;
+            postId: string;
+          }> path="/category/:categoryId/feed/:feedId/post/:postId">
+            {params => {
+              const categoryId = parseInt(params.categoryId);
+              const feedId = parseInt(params.feedId);
+              const postId = parseInt(params.postId);
+              sectionStoreApi.setState({
+                section: { type: "feed", feedId, categoryId, postId }
               });
               return <PostsPage />;
             }}

@@ -1,8 +1,8 @@
 import React from "react";
-import { useUser } from "../../stores";
 import { Activity } from "../../components/common/Activity/Activity";
-import { Button } from "../../components/common/Button/Button";
+import { IconButton } from "../../components/common/Button/Button";
 import { Input } from "../../components/common/Input/Input";
+import { useUser } from "../../stores";
 import "./LoginPage.css";
 
 export const LoginPage = function LoginPage() {
@@ -20,12 +20,12 @@ export const LoginPage = function LoginPage() {
         }}
       >
         <Input
-          large={true}
+          sizing="large"
           type="password"
           placeholder="API key"
           autoFocus={true}
         />
-        <Button
+        <IconButton
           icon="login"
           size="large"
           type="submit"

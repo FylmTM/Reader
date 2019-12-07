@@ -61,7 +61,7 @@ function getCategoriesWithFeeds(): Promise<CategoriesWithFeeds> {
         {
           category: {
             id: 2,
-            name: "Gaming - Best Gaming Category in the World"
+            name: "Gaming - Best Gaming Category in the whole World"
           },
           feeds: [
             {
@@ -90,7 +90,7 @@ function getPosts(): Promise<Array<Post>> {
           .fill(".")
           .map((_, i) => {
             return {
-              id: i,
+              id: i + 1,
               is_read: randomInt(0, 1) === 1,
               feed: {
                 id: 1,

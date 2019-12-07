@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { classNames } from "../../../utils";
 import { Icon, IconType } from "../Icon/Icon";
 import "./Button.css";
 
@@ -10,13 +11,13 @@ type NativeButton = React.DetailedHTMLProps<
 type Look = "default" | "outline" | "minimal";
 type Size = "default" | "small" | "large";
 
-interface Props {
+interface ButtonProps {
   look?: Look;
   icon?: IconType;
   size?: Size;
 }
 
-export const Button: FC<NativeButton & Props> = ({
+export const Button: FC<NativeButton & ButtonProps> = ({
   look,
   icon,
   size,
@@ -24,18 +25,34 @@ export const Button: FC<NativeButton & Props> = ({
   children,
   ...props
 }) => {
-  let extendedClassName = className ? className : "";
-  if (look) {
-    extendedClassName = `${extendedClassName} ${look}`;
-  }
-  if (size) {
-    extendedClassName = `${extendedClassName} ${size}`;
-  }
-
+  const extendedClassName = classNames(className, look, size);
   return (
     <button {...props} className={extendedClassName}>
       {children}
       {icon && <Icon type={icon} />}
+    </button>
+  );
+};
+
+interface IconButtonProps {
+  look?: Look;
+  icon: IconType;
+  size?: Size;
+}
+
+export const IconButton: FC<NativeButton & IconButtonProps> = ({
+  look,
+  icon,
+  size,
+  className,
+  children,
+  ...props
+}) => {
+  const extendedClassName = classNames(className, look, size);
+  return (
+    <button {...props} className={extendedClassName}>
+      {children}
+      <Icon type={icon} />
     </button>
   );
 };

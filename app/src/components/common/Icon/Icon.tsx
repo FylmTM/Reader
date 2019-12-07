@@ -8,6 +8,7 @@
  */
 import React, { FC } from "react";
 import "./Icon.css";
+import { classNames } from "../../../utils";
 import { ReactComponent as GridAnimated } from "./icons/grid.svg";
 import { ReactComponent as Login } from "./icons/log-in.svg";
 import { ReactComponent as Logout } from "./icons/log-out.svg";
@@ -35,16 +36,15 @@ export type IconType =
   | "check"
   | "refresh";
 
+type Size = "default" | "small" | "large";
+
 interface Props {
   type: IconType;
-  large?: boolean;
+  size?: Size;
 }
 
-export const Icon: FC<Props> = ({ type, large }) => {
-  let className = "r-icon";
-  if (large) {
-    className = `${className} large`;
-  }
+export const Icon: FC<Props> = ({ type, size }) => {
+  const className = classNames("r-icon", size);
   switch (type) {
     case "grid-animated":
       return <GridAnimated className={className} />;
