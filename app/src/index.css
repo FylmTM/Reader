@@ -62,10 +62,18 @@ pre, code {
     overflow: hidden;
 }
 
-input:focus, button:focus {
+a {
+    text-decoration: none;
+}
+
+:focus {
     outline: none;
 }
 
-a {
-    text-decoration: none;
+::-moz-focus-inner {
+    border: 0;
+}
+
+:focus {
+    scrollbar-color: var(--color-accent-muted) currentcolor;
 }

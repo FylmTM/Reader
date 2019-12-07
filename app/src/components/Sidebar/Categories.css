@@ -2,11 +2,7 @@
     text-decoration: none;
 }
 
-.r-categories a:focus {
-    outline: none;
-}
-
-.r-categories a:hover {
+.r-categories a:hover, .r-categories a:focus  {
     background: var(--color-accent-muted);
 }
 

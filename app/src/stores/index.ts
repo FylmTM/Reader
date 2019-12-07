@@ -104,6 +104,9 @@ interface PostsStore {
   posts: Array<Post>;
   postsGetInProgress: boolean;
   get: (section: Section) => void;
+  read: (postId: number, isRead: boolean) => void;
+  readLater: (postId: number, isReadLater: boolean) => void;
+  close: (postId: number) => void;
 }
 
 export const [usePosts] = create<PostsStore>(set => ({
@@ -116,5 +119,8 @@ export const [usePosts] = create<PostsStore>(set => ({
       .then(posts => set({ posts }))
       .catch(handleError)
       .finally(() => set({ postsGetInProgress: false }));
-  }
+  },
+  read: (postId, isRead) => undefined,
+  readLater: (postId, isReadLater) => undefined,
+  close: postId => undefined
 }));

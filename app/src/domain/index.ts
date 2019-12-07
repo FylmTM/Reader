@@ -44,6 +44,7 @@ export type Post = {
     title: string;
   };
   is_read: boolean;
+  is_read_later: boolean;
   link: string;
   title: string;
   date: string;

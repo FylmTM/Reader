@@ -92,6 +92,7 @@ function getPosts(): Promise<Array<Post>> {
             return {
               id: i + 1,
               is_read: randomInt(0, 1) === 1,
+              is_read_later: randomInt(0, 1) === 1,
               feed: {
                 id: 1,
                 category_id: 1,

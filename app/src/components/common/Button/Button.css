@@ -12,7 +12,7 @@ button {
     border: none;
 }
 
-button:hover {
+button:hover, button:focus {
     background: var(--color-accent);
 }
 
@@ -38,7 +38,7 @@ button.outline {
     background: transparent;
 }
 
-button.outline:hover {
+button.outline:hover, button.outline:focus {
     background: var(--color-accent);
 }
 
@@ -51,7 +51,7 @@ button.minimal {
     padding: 1px;
 }
 
-button.minimal:hover {
+button.minimal:hover, button.minimal:focus {
     background: transparent;
     color: var(--color-accent);
     stroke: var(--color-accent);

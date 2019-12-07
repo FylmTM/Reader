@@ -4,6 +4,7 @@ import { NoStateLink } from "../../components/common/NoStateLink";
 import { Post } from "../../domain";
 import { classNames } from "../../utils";
 import "./PostsListItem.css";
+import { usePosts } from "../../stores";
 
 interface Props {
   post: Post;
@@ -18,6 +19,11 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   hrefPrefix,
   isSelected
 }) {
+  const { read, readLater, close } = usePosts(({ read, readLater, close }) => ({
+    read,
+    readLater,
+    close
+  }));
   let summary = post.summary;
   if (post.summary && post.summary?.length > MAX_SUMMARY_LENGTH) {
     summary = post.summary.substring(0, MAX_SUMMARY_LENGTH) + "...";
@@ -38,6 +44,7 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
       href={post.link}
       className={className}
       onClickHref={`${hrefPrefix}/post/${post.id}`}
+      onClick={() => read(post.id, true)}
     >
       <div className="border">
         {isMediaImage && (
@@ -49,8 +56,24 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
           <div className="title-row">
             <span className="title">{post.title}</span>
             <span className="actions">
-              <IconButton icon="bookmark" look="minimal" size="small" />
-              <IconButton icon="close" look="minimal" size="small" />
+              <IconButton
+                icon="bookmark"
+                look="minimal"
+                size="small"
+                onClick={() => readLater(post.id, post.is_read)}
+              />
+              <IconButton
+                icon="check"
+                look="minimal"
+                size="small"
+                onClick={() => read(post.id, post.is_read)}
+              />
+              <IconButton
+                icon="close"
+                look="minimal"
+                size="small"
+                onClick={() => close(post.id)}
+              />
             </span>
           </div>
           {summary && <span className="summary">{summary}</span>}
