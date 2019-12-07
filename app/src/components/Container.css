@@ -6,4 +6,5 @@
 
 .r-page {
     height: 100%;
+    flex: 1;
 }

@@ -48,7 +48,7 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
             </Link>
             {(expanded && feeds.length) > 0 && (
                 <div className="r-category-feeds">
-                    {feeds.map(feed => <Feed key={feed.id} categoryId={category.id} feed={feed} />)}
+                    {feeds.map(feed => <Feed key={feed.id} feed={feed} />)}
                 </div>
             )}
         </>

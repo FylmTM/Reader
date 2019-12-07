@@ -1,0 +1,12 @@
+.r-not-found {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-large);
+}
+
+.r-not-found a {
+    margin-top: 10px;
+}
