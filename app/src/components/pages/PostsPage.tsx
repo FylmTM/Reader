@@ -1,7 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
 export const PostsPage: FC = function PostsPage() {
-    return (
-        <div></div>
-    );
+  return <div></div>;
 };

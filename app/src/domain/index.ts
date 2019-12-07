@@ -1,42 +1,41 @@
 export type User = {
-    id: number;
-    username: string;
-}
+  id: number;
+  username: string;
+};
 
 export type Category = {
-    id: number;
-    name: string;
-}
+  id: number;
+  name: string;
+};
 
-export type FeedKind =
-    | 'RSS';
+export type FeedKind = "RSS";
 
 export type Feed = {
-    id: number;
-    kind: FeedKind;
-    title: string;
-    link: string;
-    feed: string;
-}
+  id: number;
+  kind: FeedKind;
+  title: string;
+  link: string;
+  feed: string;
+};
 
 export type CategoryWithFeeds = {
-    category: Category,
-    feeds: Array<Feed>,
+  category: Category;
+  feeds: Array<Feed>;
 };
 
 export type CategoriesWithFeeds = Array<CategoryWithFeeds>;
 
 export type MediaType = {
-    mime: string;
-}
+  mime: string;
+};
 
 export type Post = {
-    id: number;
-    link: string;
-    title: string;
-    date: string;
-    content: string | undefined;
-    media_type: string | undefined;
-    media_link: string | undefined;
-    comments_link: string | undefined;
-}
+  id: number;
+  link: string;
+  title: string;
+  date: string;
+  content: string | undefined;
+  media_type: string | undefined;
+  media_link: string | undefined;
+  comments_link: string | undefined;
+};
