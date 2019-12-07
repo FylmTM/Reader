@@ -78,7 +78,7 @@ cargo make build
 cargo make verify
 ```
 
-**Verify (with auto-formatting and auto-fix):**
+**Verify (with automatic formatting and lint fixes):**
 
 ```sh
 cargo make fix

@@ -6,12 +6,10 @@ command = "cargo"
 args = ["check", "--all-targets"]
 
 [tasks.backend-format]
-install_crate = "rustfmt"
 command = "cargo"
 args = ["fmt"]
 
 [tasks.backend-format-check]
-install_crate = "rustfmt"
 command = "cargo"
 args = ["fmt", "--", "--check"]
 
