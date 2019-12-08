@@ -1,5 +1,9 @@
 const hasOwn = {}.hasOwnProperty;
 
+export function remove(array: any[], index: number) {
+  return [...array.slice(0, index), ...array.slice(index + 1)];
+}
+
 /**
  * Copy-pasted from https://github.com/JedWatson/classnames
  * Removed flattening of arguments.

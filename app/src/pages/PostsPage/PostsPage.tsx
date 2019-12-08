@@ -2,12 +2,7 @@ import React, { FC, useEffect } from "react";
 import { Activity } from "../../components/common/Activity/Activity";
 import { IconButton } from "../../components/common/Button/Button";
 import { Section } from "../../domain";
-import {
-  useCategories,
-  usePosts,
-  useSection,
-  postsStoreApi
-} from "../../stores";
+import { useCategories, usePosts, useSection, useApp } from "../../stores";
 import { PostsListItem } from "./PostsListItem";
 import "./PostsPage.css";
 
@@ -45,6 +40,9 @@ function itemData(
 
 export const PostsPage: FC = function PostsPage() {
   const section = useSection(state => state.section);
+  const posts = usePosts();
+  const refreshMark = useApp(state => state.refreshMark);
+
   const type = section?.type;
   let categoryId: number | undefined = undefined;
   let feedId: number | undefined = undefined;
@@ -79,20 +77,20 @@ export const PostsPage: FC = function PostsPage() {
     }
   });
 
-  const { posts, postsGetInProgress, get: getPosts } = usePosts();
   const { hrefPrefix, postId } = itemData(section);
 
   useEffect(() => {
     if (section) {
-      getPosts(section);
+      posts.get(section);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [type, categoryId, feedId]);
+  }, [refreshMark, type, categoryId, feedId]);
 
   useEffect(() => {
     if (postId) {
-      postsStoreApi.getState().read(postId, true);
+      posts.read(postId, true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId]);
 
   return (
@@ -109,18 +107,16 @@ export const PostsPage: FC = function PostsPage() {
           </div>
         </div>
         <div className="r-posts-list-content">
-          {postsGetInProgress ? (
-            <Activity />
-          ) : (
-            posts.map(post => (
+          <Activity inProgress={posts.postsGetInProgress}>
+            {posts.posts.map(post => (
               <PostsListItem
                 key={post.id}
                 post={post}
                 hrefPrefix={hrefPrefix}
                 isSelected={postId ? postId === post.id : false}
               />
-            ))
-          )}
+            ))}
+          </Activity>
         </div>
       </div>
       <div className="r-post">

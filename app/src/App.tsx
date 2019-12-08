@@ -19,7 +19,7 @@ export const App = function App() {
     return (
       <>
         <Error />
-        <Activity inProgress={true} />
+        <Activity />
       </>
     );
   }

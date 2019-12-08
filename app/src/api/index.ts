@@ -1,6 +1,6 @@
 import { CategoriesWithFeeds, Post, User } from "../domain";
 
-const DELAY = 200;
+const DELAY = 50;
 
 function getCurrentUser(): Promise<User> {
   return new Promise((resolve, reject) => {

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import * as domain from "../../domain";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { useSection } from "../../stores";
+import { appStoreApi, useSection } from "../../stores";
 import { classNames } from "../../utils";
 import { Icon } from "../common/Icon/Icon";
 import { NoStateLink } from "../common/NoStateLink";
@@ -15,10 +15,19 @@ interface Props {
 
 export const ReadLaterCategory: FC = function ReadLaterCategory() {
   const isActive = useSection(({ section }) => section?.type === "read-later");
+  function forceRefresh() {
+    if (isActive) {
+      appStoreApi.getState().refresh();
+    }
+  }
 
   const className = classNames("r-category", { "r-active": isActive });
   return (
-    <NoStateLink href="/read-later" className={className}>
+    <NoStateLink
+      href="/read-later"
+      className={className}
+      onClick={forceRefresh}
+    >
       <div className="r-category-toggle">
         <Icon type="bookmark" />
       </div>
@@ -29,10 +38,15 @@ export const ReadLaterCategory: FC = function ReadLaterCategory() {
 
 export const AllCategory: FC = function AllCategory() {
   const isActive = useSection(({ section }) => section?.type === "all");
+  function forceRefresh() {
+    if (isActive) {
+      appStoreApi.getState().refresh();
+    }
+  }
 
   const className = classNames("r-category", { "r-active": isActive });
   return (
-    <NoStateLink href="/all" className={className}>
+    <NoStateLink href="/all" className={className} onClick={forceRefresh}>
       <div className="r-category-toggle">
         <Icon type="radio" />
       </div>
@@ -53,9 +67,20 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
   );
 
   const className = classNames("r-category", { "r-active": isActive });
+
+  function forceRefresh() {
+    if (isActive) {
+      appStoreApi.getState().refresh();
+    }
+  }
+
   return (
     <>
-      <NoStateLink href={`/category/${category.id}`} className={className}>
+      <NoStateLink
+        href={`/category/${category.id}`}
+        className={className}
+        onClick={forceRefresh}
+      >
         <div
           className="r-category-toggle"
           onClick={event => {

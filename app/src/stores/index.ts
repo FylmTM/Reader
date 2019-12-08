@@ -2,10 +2,7 @@ import create from "zustand";
 import api from "../api";
 import { navigate } from "../components/common/NoStateLink";
 import { CategoriesWithFeeds, Post, Section, User } from "../domain";
-
-function remove(array: any[], index: number) {
-  return [...array.slice(0, index), ...array.slice(index + 1)];
-}
+import { remove } from "../utils";
 
 interface ErrorStore {
   error: string | undefined;
@@ -32,18 +29,22 @@ export const [useSection, sectionStoreApi] = create<SectionStore>(set => ({
 
 interface AppStore {
   initialized: boolean;
+  refreshMark: number;
   init: () => void;
+  refresh: () => void;
 }
 
-export const [useApp] = create<AppStore>(set => ({
+export const [useApp, appStoreApi] = create<AppStore>(set => ({
   initialized: false,
+  refreshMark: 0,
   init: () => {
     api
       .getCurrentUser()
       .then(user => userStoreApi.setState({ current: user }))
       .catch(handleError)
       .finally(() => set({ initialized: true }));
-  }
+  },
+  refresh: () => set(({ refreshMark }) => ({ refreshMark: refreshMark + 1 }))
 }));
 
 interface UserStore {
@@ -152,14 +153,13 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
       };
     }),
   close: (postId, isSelected, hrefPrefix) => {
-    set(({ posts }) => {
+    set(({ posts, read }) => {
       const i = posts.findIndex(post => post.id === postId);
       if (i === -1) {
         return {};
       }
 
-      const post = posts[i];
-      if (post.is_read === false) {
+      if (posts[i].is_read === false) {
         api.markAsRead(postId, true).catch(handleError);
       }
 
@@ -172,24 +172,16 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
         }
       }
 
-      if (nextPostIndex != null) {
-        navigate(`${hrefPrefix}/post/${posts[nextPostIndex].id}`);
-      } else {
+      if (nextPostIndex == null) {
         navigate(`${hrefPrefix}`);
+      } else {
+        const nextPost = posts[nextPostIndex];
+        read(nextPost.id, true);
+        navigate(`${hrefPrefix}/post/${nextPost.id}`);
       }
 
       return {
-        posts: remove(
-          posts.map((post, i) => {
-            if (i === nextPostIndex && post.is_read === false) {
-              api.markAsRead(post.id, true).catch(handleError);
-              return { ...post, is_read: true };
-            } else {
-              return post;
-            }
-          }),
-          i
-        )
+        posts: remove(posts, i)
       };
     });
   }
