@@ -91,8 +91,8 @@ function getPosts(): Promise<Array<Post>> {
           .map((_, i) => {
             return {
               id: i + 1,
-              is_read: randomInt(0, 1) === 1,
-              is_read_later: randomInt(0, 1) === 1,
+              is_read: false,
+              is_read_later: false,
               feed: {
                 id: 1,
                 category_id: 1,
@@ -130,10 +130,28 @@ function getPosts(): Promise<Array<Post>> {
   });
 }
 
+function markAsRead(postId: number, isRead: Boolean): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, DELAY);
+  });
+}
+
+function markAsReadLater(postId: number, isRead: Boolean): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, DELAY);
+  });
+}
+
 export default {
   getCurrentUser,
   login,
   logout,
   getCategoriesWithFeeds,
-  getPosts
+  getPosts,
+  markAsRead,
+  markAsReadLater
 };

@@ -1,6 +1,11 @@
 import create from "zustand";
 import api from "../api";
+import { navigate } from "../components/common/NoStateLink";
 import { CategoriesWithFeeds, Post, Section, User } from "../domain";
+
+function remove(array: any[], index: number) {
+  return [...array.slice(0, index), ...array.slice(index + 1)];
+}
 
 interface ErrorStore {
   error: string | undefined;
@@ -106,10 +111,10 @@ interface PostsStore {
   get: (section: Section) => void;
   read: (postId: number, isRead: boolean) => void;
   readLater: (postId: number, isReadLater: boolean) => void;
-  close: (postId: number) => void;
+  close: (postId: number, isSelected: boolean, hrefPrefix: string) => void;
 }
 
-export const [usePosts] = create<PostsStore>(set => ({
+export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
   posts: [],
   postsGetInProgress: false,
   get: section => {
@@ -120,7 +125,45 @@ export const [usePosts] = create<PostsStore>(set => ({
       .catch(handleError)
       .finally(() => set({ postsGetInProgress: false }));
   },
-  read: (postId, isRead) => undefined,
-  readLater: (postId, isReadLater) => undefined,
-  close: postId => undefined
+  read: (postId, isRead) =>
+    set(({ posts }) => {
+      api.markAsRead(postId, isRead).catch(handleError);
+      return {
+        posts: posts.map(post =>
+          post.id === postId ? { ...post, is_read: isRead } : post
+        )
+      };
+    }),
+  readLater: (postId, isReadLater) =>
+    set(({ posts }) => {
+      api.markAsReadLater(postId, isReadLater).catch(handleError);
+      return {
+        posts: posts.map(post =>
+          post.id === postId ? { ...post, is_read_later: isReadLater } : post
+        )
+      };
+    }),
+  close: (postId, isSelected, hrefPrefix) => {
+    postsStoreApi.getState().read(postId, true);
+    set(({ posts }) => {
+      const i = posts.findIndex(post => post.id === postId);
+      if (i === -1) {
+        return {};
+      }
+
+      if (isSelected) {
+        if (i < posts.length - 1) {
+          navigate(`${hrefPrefix}/post/${posts[i + 1].id}`);
+        } else if (i > 0) {
+          navigate(`${hrefPrefix}/post/${posts[i - 1].id}`);
+        } else {
+          navigate(`${hrefPrefix}`);
+        }
+      }
+
+      return {
+        posts: remove(posts, i)
+      };
+    });
+  }
 }));

@@ -6,7 +6,7 @@
 }
 
 .r-posts-list-item.read {
-    opacity: 0.3;
+    color: var(--color-foreground-muted);
 }
 
 .r-posts-list-item.selected .border {
@@ -55,6 +55,20 @@
     display: flex;
     align-items: flex-start;
     visibility: hidden;
+}
+
+.r-posts-list-item .actions button:focus {
+    color: var(--color-foreground);
+}
+
+.r-posts-list-item .actions button:hover {
+    color: var(--color-accent);
+}
+
+.r-posts-list-item.read-later .actions .read-later .r-icon {
+    color: var(--color-accent);
+    stroke: var(--color-accent);
+    fill: var(--color-accent);
 }
 
 .r-posts-list-item:hover .actions, .r-posts-list-item:focus .actions, .r-posts-list-item:focus-within .actions {

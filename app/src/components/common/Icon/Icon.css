@@ -1,7 +1,6 @@
 .r-icon {
     height: 19px;
     width: 19px;
-    transition: stroke 0.2s;
 }
 
 .large .r-icon, .r-icon.large {

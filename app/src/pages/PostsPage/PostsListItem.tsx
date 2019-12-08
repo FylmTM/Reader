@@ -1,10 +1,13 @@
 import React, { FC } from "react";
 import { IconButton } from "../../components/common/Button/Button";
-import { NoStateLink } from "../../components/common/NoStateLink";
+import {
+  NoStateLink,
+  NoStateSpanLink
+} from "../../components/common/NoStateLink";
 import { Post } from "../../domain";
 import { classNames } from "../../utils";
 import "./PostsListItem.css";
-import { usePosts } from "../../stores";
+import { postsStoreApi } from "../../stores";
 
 interface Props {
   post: Post;
@@ -19,11 +22,8 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   hrefPrefix,
   isSelected
 }) {
-  const { read, readLater, close } = usePosts(({ read, readLater, close }) => ({
-    read,
-    readLater,
-    close
-  }));
+  console.log(post.id, post.is_read, post.is_read_later, isSelected);
+  const { read, readLater, close } = postsStoreApi.getState();
   let summary = post.summary;
   if (post.summary && post.summary?.length > MAX_SUMMARY_LENGTH) {
     summary = post.summary.substring(0, MAX_SUMMARY_LENGTH) + "...";
@@ -36,7 +36,8 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
 
   const className = classNames("r-posts-list-item", {
     read: post.is_read,
-    selected: isSelected
+    selected: isSelected,
+    "read-later": post.is_read_later
   });
 
   return (
@@ -44,7 +45,6 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
       href={post.link}
       className={className}
       onClickHref={`${hrefPrefix}/post/${post.id}`}
-      onClick={() => read(post.id, true)}
     >
       <div className="border">
         {isMediaImage && (
@@ -57,22 +57,39 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
             <span className="title">{post.title}</span>
             <span className="actions">
               <IconButton
+                className="read-later"
                 icon="bookmark"
                 look="minimal"
                 size="small"
-                onClick={() => readLater(post.id, post.is_read)}
+                tabIndex={-1}
+                onClick={event => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  readLater(post.id, !post.is_read_later);
+                }}
               />
               <IconButton
+                className="read"
                 icon="check"
                 look="minimal"
                 size="small"
-                onClick={() => read(post.id, post.is_read)}
+                tabIndex={-1}
+                onClick={event => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  read(post.id, !post.is_read);
+                }}
               />
               <IconButton
                 icon="close"
                 look="minimal"
                 size="small"
-                onClick={() => close(post.id)}
+                tabIndex={-1}
+                onClick={event => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  close(post.id, isSelected, hrefPrefix);
+                }}
               />
             </span>
           </div>
@@ -81,12 +98,12 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
             <span className="date">{post.date}</span>
             <span>&nbsp;|&nbsp;</span>
             <span className="feed">
-              <NoStateLink
+              <NoStateSpanLink
                 href={`/category/${post.feed.category_id}/feed/${post.feed.id}`}
                 onClick={event => event.stopPropagation()}
               >
                 {post.feed.title}
-              </NoStateLink>
+              </NoStateSpanLink>
             </span>
           </span>
         </div>

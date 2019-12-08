@@ -2,7 +2,12 @@ import React, { FC, useEffect } from "react";
 import { Activity } from "../../components/common/Activity/Activity";
 import { IconButton } from "../../components/common/Button/Button";
 import { Section } from "../../domain";
-import { useCategories, usePosts, useSection } from "../../stores";
+import {
+  useCategories,
+  usePosts,
+  useSection,
+  postsStoreApi
+} from "../../stores";
 import { PostsListItem } from "./PostsListItem";
 import "./PostsPage.css";
 
@@ -41,8 +46,8 @@ function itemData(
 export const PostsPage: FC = function PostsPage() {
   const section = useSection(state => state.section);
   const type = section?.type;
-  let categoryId: number | undefined;
-  let feedId: number | undefined;
+  let categoryId: number | undefined = undefined;
+  let feedId: number | undefined = undefined;
 
   const title = useCategories(({ categories }) => {
     switch (section?.type) {
@@ -83,6 +88,12 @@ export const PostsPage: FC = function PostsPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, categoryId, feedId]);
+
+  useEffect(() => {
+    if (postId) {
+      postsStoreApi.getState().read(postId, true);
+    }
+  }, [postId]);
 
   return (
     <div className="r-page-posts">
