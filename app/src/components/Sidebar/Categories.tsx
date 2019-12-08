@@ -1,19 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect } from "react";
-import { useCategories } from "../../stores";
+import { useCategories, useApp, useSection } from "../../stores";
 import { Activity } from "../common/Activity/Activity";
 import { AllCategory, Category, ReadLaterCategory } from "./Category";
 import "./Categories.css";
 
-export const Categories: FC = function Categorries() {
+export const Categories: FC = function Categories() {
+  const app = useApp();
+  const { section } = useSection();
   const {
     categories,
     categoriesGetInProgress,
-    getCategories
+    getCategories,
+    getCategoriesUnreadCounts,
   } = useCategories();
 
   useEffect(() => {
     getCategories();
-  }, [getCategories]);
+  }, []);
+
+  useEffect(() => {
+    getCategoriesUnreadCounts();
+  }, [app.refreshMark, section]);
 
   return (
     <Activity inProgress={categoriesGetInProgress}>

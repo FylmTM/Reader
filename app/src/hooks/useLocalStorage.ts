@@ -17,10 +17,10 @@ function parse<T>(value: string | null, fallback: T): T {
  */
 export function useLocalStorage<T>(
   key: string,
-  initialState: T
+  initialState: T,
 ): [T, (state: T) => void] {
   const [state, setState] = useState(
-    parse(localStorage.getItem(key), initialState)
+    parse(localStorage.getItem(key), initialState),
   );
 
   function writeAndSetState(value: T) {

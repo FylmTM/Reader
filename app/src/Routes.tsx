@@ -22,7 +22,7 @@ export function Routes() {
             {params => {
               const postId = parseInt(params.postId);
               sectionStoreApi.setState({
-                section: { type: "read-later", postId }
+                section: { type: "read-later", postId },
               });
               return <PostsPage />;
             }}
@@ -44,7 +44,7 @@ export function Routes() {
             {params => {
               const categoryId = parseInt(params.categoryId);
               sectionStoreApi.setState({
-                section: { type: "category", categoryId }
+                section: { type: "category", categoryId },
               });
               return <PostsPage />;
             }}
@@ -57,7 +57,7 @@ export function Routes() {
               const categoryId = parseInt(params.categoryId);
               const postId = parseInt(params.postId);
               sectionStoreApi.setState({
-                section: { type: "category", categoryId, postId }
+                section: { type: "category", categoryId, postId },
               });
               return <PostsPage />;
             }}
@@ -70,7 +70,7 @@ export function Routes() {
               const categoryId = parseInt(params.categoryId);
               const feedId = parseInt(params.feedId);
               sectionStoreApi.setState({
-                section: { type: "feed", feedId, categoryId }
+                section: { type: "feed", feedId, categoryId },
               });
               return <PostsPage />;
             }}
@@ -85,7 +85,7 @@ export function Routes() {
               const feedId = parseInt(params.feedId);
               const postId = parseInt(params.postId);
               sectionStoreApi.setState({
-                section: { type: "feed", feedId, categoryId, postId }
+                section: { type: "feed", feedId, categoryId, postId },
               });
               return <PostsPage />;
             }}

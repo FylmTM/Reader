@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { IconButton } from "../../components/common/Button/Button";
 import {
   NoStateLink,
-  NoStateSpanLink
+  NoStateSpanLink,
 } from "../../components/common/NoStateLink";
 import { Post } from "../../domain";
 import { classNames } from "../../utils";
@@ -20,7 +20,7 @@ const MAX_SUMMARY_LENGTH = 150;
 export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   post,
   hrefPrefix,
-  isSelected
+  isSelected,
 }) {
   const { read, readLater, close } = postsStoreApi.getState();
   let summary = post.summary;
@@ -36,7 +36,7 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   const className = classNames("r-posts-list-item", {
     read: post.is_read,
     selected: isSelected,
-    "read-later": post.is_read_later
+    "read-later": post.is_read_later,
   });
 
   return (

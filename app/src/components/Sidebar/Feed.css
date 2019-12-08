@@ -1,4 +1,12 @@
 .r-feed {
-    display: block;
+    display: flex;
     padding: 10px 10px 10px 29px;
+}
+
+.r-feed .title {
+    flex: 1;
+}
+
+.r-feed .unread {
+    margin-left: 5px;
 }

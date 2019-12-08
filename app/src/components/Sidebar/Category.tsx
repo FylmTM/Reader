@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import * as domain from "../../domain";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { appStoreApi, useSection } from "../../stores";
+import { appStoreApi, useSection, useCategories } from "../../stores";
 import { classNames } from "../../utils";
 import { Icon } from "../common/Icon/Icon";
 import { NoStateLink } from "../common/NoStateLink";
@@ -31,7 +31,8 @@ export const ReadLaterCategory: FC = function ReadLaterCategory() {
       <div className="r-category-toggle">
         <Icon type="bookmark" />
       </div>
-      <span className="ellipsis">Read later</span>
+      <span className="name ellipsis">Read later</span>
+      <span className="unread">8</span>
     </NoStateLink>
   );
 };
@@ -50,20 +51,27 @@ export const AllCategory: FC = function AllCategory() {
       <div className="r-category-toggle">
         <Icon type="radio" />
       </div>
-      <span className="ellipsis">All</span>
+      <span className="name ellipsis">All</span>
+      <span className="unread">8</span>
     </NoStateLink>
   );
 };
 
 export const Category: FC<Props> = function Category({ category, feeds }) {
-  const [
-    { expanded },
-    setState
-  ] = useLocalStorage(`category-${category.id}-expanded`, { expanded: false });
+  const [{ isExpanded }, setState] = useLocalStorage(
+    `category-${category.id}-expanded`,
+    {
+      isExpanded: false,
+    },
+  );
 
   const isActive = useSection(
     ({ section }) =>
-      section?.type === "category" && section.categoryId === category.id
+      section?.type === "category" && section.categoryId === category.id,
+  );
+
+  const unreadCount = useCategories(
+    state => state.unreadCounts.categories[category.id],
   );
 
   const className = classNames("r-category", { "r-active": isActive });
@@ -86,14 +94,15 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
           onClick={event => {
             event.preventDefault();
             event.stopPropagation();
-            setState({ expanded: !expanded });
+            setState({ isExpanded: !isExpanded });
           }}
         >
-          <Icon type={expanded ? "expanded" : "collapsed"} />
+          <Icon type={isExpanded ? "expanded" : "collapsed"} />
         </div>
-        <span className="ellipsis">{category.name}</span>
+        <span className="name ellipsis">{category.name}</span>
+        {unreadCount && <span className="unread">{unreadCount}</span>}
       </NoStateLink>
-      {(expanded && feeds.length) > 0 && (
+      {(isExpanded && feeds.length) > 0 && (
         <div className="r-category-feeds">
           {feeds.map(feed => (
             <Feed key={feed.id} categoryId={category.id} feed={feed} />

@@ -8,7 +8,7 @@ interface Props {
 
 export const Activity: FC<Props> = function Activity({
   inProgress = true,
-  children
+  children,
 }) {
   if (inProgress) {
     return (

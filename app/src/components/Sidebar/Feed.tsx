@@ -12,7 +12,7 @@ interface Props {
 
 export const Feed: FC<Props> = function Feed({ categoryId, feed }) {
   const isActive = useSection(
-    ({ section }) => section?.type === "feed" && section.feedId === feed.id
+    ({ section }) => section?.type === "feed" && section.feedId === feed.id,
   );
   function forceRefresh() {
     if (isActive) {
@@ -27,7 +27,8 @@ export const Feed: FC<Props> = function Feed({ categoryId, feed }) {
       className={className}
       onClick={forceRefresh}
     >
-      {feed.title}
+      <span className="title ellipsis">{feed.title}</span>
+      <span className="unread">123</span>
     </NoStateLink>
   );
 };

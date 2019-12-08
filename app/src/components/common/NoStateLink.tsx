@@ -40,7 +40,7 @@ export const NoStateLink: FC<NativeAnchorElement> = function NoStateLink({
       navigate(onClickHref || href);
       onClick && onClick(event);
     },
-    [href, onClick, onClickHref]
+    [href, onClick, onClickHref],
   );
 
   return (
@@ -75,7 +75,7 @@ export const NoStateSpanLink: FC<NativeAnchorElement> = function NoStateSpanLink
       navigate(href);
       onClick && onClick(event);
     },
-    [href, onClick]
+    [href, onClick],
   );
 
   return (

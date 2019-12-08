@@ -7,6 +7,14 @@
     align-items: center;
 }
 
+.r-category .name {
+    flex: 1;
+}
+
+.r-category .unread {
+    margin-left: 5px;
+}
+
 .r-category-toggle {
     display: flex;
     align-content: center;

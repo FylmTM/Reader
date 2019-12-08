@@ -3,10 +3,11 @@ import api from "../api";
 import { navigate } from "../components/common/NoStateLink";
 import {
   CategoriesWithFeeds,
+  CategoriesWithFeedsUnreadCounts,
   Post,
   PostsSection,
   Section,
-  User
+  User,
 } from "../domain";
 import { remove } from "../utils";
 
@@ -17,11 +18,10 @@ interface ErrorStore {
 
 export const [useError, errorStoreApi] = create<ErrorStore>(set => ({
   error: undefined,
-  clear: () => set({ error: undefined })
+  clear: () => set({ error: undefined }),
 }));
 
 function handleError(error: any) {
-  console.log(error);
   errorStoreApi.setState({ error: error.toString() });
 }
 
@@ -30,7 +30,7 @@ interface SectionStore {
 }
 
 export const [useSection, sectionStoreApi] = create<SectionStore>(set => ({
-  section: undefined
+  section: undefined,
 }));
 
 export const usePostsSection: () => PostsSection = () =>
@@ -63,7 +63,7 @@ export const [useApp, appStoreApi] = create<AppStore>(set => ({
       .catch(handleError)
       .finally(() => set({ initialized: true }));
   },
-  refresh: () => set(({ refreshMark }) => ({ refreshMark: refreshMark + 1 }))
+  refresh: () => set(({ refreshMark }) => ({ refreshMark: refreshMark + 1 })),
 }));
 
 interface UserStore {
@@ -93,7 +93,7 @@ export const [useUser, userStoreApi] = create<UserStore>(set => ({
       .then(() => set({ current: undefined }))
       .catch(handleError)
       .finally(() => set({ logoutInProgress: false }));
-  }
+  },
 }));
 
 export function useAuthenticatedUser(): { current: User } & UserStore {
@@ -106,13 +106,19 @@ export function useAuthenticatedUser(): { current: User } & UserStore {
 
 interface CategoriesStore {
   categories: CategoriesWithFeeds;
+  unreadCounts: CategoriesWithFeedsUnreadCounts;
   categoriesGetInProgress: boolean;
   getCategories: () => void;
+  getCategoriesUnreadCounts: () => void;
 }
 
 export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
   set => ({
     categories: [],
+    unreadCounts: {
+      categories: { all: undefined, read_later: undefined },
+      feeds: {},
+    },
     categoriesGetInProgress: false,
     getCategories: () => {
       set({ categoriesGetInProgress: true });
@@ -121,8 +127,14 @@ export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
         .then(categories => set({ categories }))
         .catch(handleError)
         .finally(() => set({ categoriesGetInProgress: false }));
-    }
-  })
+    },
+    getCategoriesUnreadCounts: () => {
+      api
+        .getCategoriesWithFeedsUnreadCounts()
+        .then(unreadCounts => set({ unreadCounts }))
+        .catch(handleError);
+    },
+  }),
 );
 
 interface PostsStore {
@@ -173,7 +185,7 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
           } else {
             return post;
           }
-        })
+        }),
       };
     }),
   readLater: (postId, isReadLater) =>
@@ -186,7 +198,7 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
           } else {
             return post;
           }
-        })
+        }),
       };
     }),
   close: (postId, isSelected, hrefPrefix) => {
@@ -218,8 +230,8 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
       }
 
       return {
-        posts: remove(posts, i)
+        posts: remove(posts, i),
       };
     });
-  }
+  },
 }));

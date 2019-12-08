@@ -32,8 +32,13 @@ export type CategoryWithFeeds = {
 
 export type CategoriesWithFeeds = Array<CategoryWithFeeds>;
 
-export type MediaType = {
-  mime: string;
+export type CategoriesWithFeedsUnreadCounts = {
+  categories: {
+    read_later: number | undefined;
+    all: number | undefined;
+    [categoryId: number]: number | undefined;
+  };
+  feeds: { [feedId: number]: number | undefined };
 };
 
 export type Post = {

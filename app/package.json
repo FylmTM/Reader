@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "postbuild": "gzipper -t 1000 -i html,js,css ./build",
     "test": "react-scripts test",
-    "fmt": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "fmt": "prettier --trailing-comma all --write \"src/**/*.{ts,tsx}\"",
     "fmt-check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --ext js,ts,tsx src && tsc",
     "lint-fix": "eslint --fix --ext js,ts,tsx src && tsc",

@@ -7,28 +7,28 @@ import { PostsListItem } from "./PostsListItem";
 import "./PostsPage.css";
 
 function itemData(
-  section: PostsSection
+  section: PostsSection,
 ): { hrefPrefix: string; postId: number | undefined } {
   switch (section.type) {
     case "read-later":
       return {
         hrefPrefix: "/read-later",
-        postId: section.postId
+        postId: section.postId,
       };
     case "all":
       return {
         hrefPrefix: "/all",
-        postId: section.postId
+        postId: section.postId,
       };
     case "category":
       return {
         hrefPrefix: `/category/${section.categoryId}`,
-        postId: section.postId
+        postId: section.postId,
       };
     case "feed":
       return {
         hrefPrefix: `/category/${section.categoryId}/feed/${section.feedId}`,
-        postId: section.postId
+        postId: section.postId,
       };
   }
 }
@@ -51,20 +51,20 @@ export const PostsPage: FC = function PostsPage() {
       case "category":
         categoryId = section.categoryId;
         const category = categories.find(
-          ({ category }) => category.id === section.categoryId
+          ({ category }) => category.id === section.categoryId,
         );
         return category?.category.name;
       case "feed":
         categoryId = section.categoryId;
         feedId = section.feedId;
         const categoryWithFeeds = categories.find(
-          ({ category }) => category.id === section.categoryId
+          ({ category }) => category.id === section.categoryId,
         );
         if (categoryWithFeeds == null) {
           return "";
         }
         const feed = categoryWithFeeds.feeds.find(
-          feed => feed.id === section.feedId
+          feed => feed.id === section.feedId,
         );
         return feed?.title;
     }
