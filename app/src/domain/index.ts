@@ -1,9 +1,9 @@
-export type Section =
+export type PostsSection =
   | { type: "read-later"; postId?: number }
   | { type: "all"; postId?: number }
   | { type: "category"; categoryId: number; postId?: number }
-  | { type: "feed"; categoryId: number; feedId: number; postId?: number }
-  | { type: "not-found" };
+  | { type: "feed"; categoryId: number; feedId: number; postId?: number };
+export type Section = PostsSection | { type: "not-found" };
 
 export type User = {
   id: number;

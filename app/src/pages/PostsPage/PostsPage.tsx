@@ -1,15 +1,15 @@
 import React, { FC, useEffect } from "react";
 import { Activity } from "../../components/common/Activity/Activity";
 import { IconButton } from "../../components/common/Button/Button";
-import { Section } from "../../domain";
-import { useCategories, usePosts, useSection, useApp } from "../../stores";
+import { PostsSection } from "../../domain";
+import { useApp, useCategories, usePosts, usePostsSection } from "../../stores";
 import { PostsListItem } from "./PostsListItem";
 import "./PostsPage.css";
 
 function itemData(
-  section: Section | undefined
+  section: PostsSection
 ): { hrefPrefix: string; postId: number | undefined } {
-  switch (section?.type) {
+  switch (section.type) {
     case "read-later":
       return {
         hrefPrefix: "/read-later",
@@ -30,25 +30,20 @@ function itemData(
         hrefPrefix: `/category/${section.categoryId}/feed/${section.feedId}`,
         postId: section.postId
       };
-    default:
-      return {
-        hrefPrefix: "",
-        postId: undefined
-      };
   }
 }
 
 export const PostsPage: FC = function PostsPage() {
-  const section = useSection(state => state.section);
+  const section = usePostsSection();
   const posts = usePosts();
   const refreshMark = useApp(state => state.refreshMark);
 
-  const type = section?.type;
+  const type = section.type;
   let categoryId: number | undefined = undefined;
   let feedId: number | undefined = undefined;
 
   const title = useCategories(({ categories }) => {
-    switch (section?.type) {
+    switch (section.type) {
       case "read-later":
         return "Read later";
       case "all":
@@ -72,8 +67,6 @@ export const PostsPage: FC = function PostsPage() {
           feed => feed.id === section.feedId
         );
         return feed?.title;
-      default:
-        return "";
     }
   });
 
@@ -103,7 +96,13 @@ export const PostsPage: FC = function PostsPage() {
             </span>
           </div>
           <div className="right">
-            <IconButton icon="check" look="outline" />
+            <IconButton
+              icon="check"
+              look="outline"
+              onClick={() => {
+                posts.markAllAsRead(section);
+              }}
+            />
           </div>
         </div>
         <div className="r-posts-list-content">

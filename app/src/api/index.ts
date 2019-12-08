@@ -1,6 +1,7 @@
-import { CategoriesWithFeeds, Post, User } from "../domain";
+import { CategoriesWithFeeds, Post, PostsSection, User } from "../domain";
+import { randomBoolean, randomInt } from "../utils";
 
-const DELAY = 50;
+const DELAY = 100;
 
 function getCurrentUser(): Promise<User> {
   return new Promise((resolve, reject) => {
@@ -78,15 +79,11 @@ function getCategoriesWithFeeds(): Promise<CategoriesWithFeeds> {
   });
 }
 
-function randomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function getPosts(): Promise<Array<Post>> {
+function getPosts(section: PostsSection): Promise<Array<Post>> {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(
-        Array(15)
+        Array(randomInt(5, 20))
           .fill(".")
           .map((_, i) => {
             return {
@@ -99,33 +96,38 @@ function getPosts(): Promise<Array<Post>> {
                 title: "Hacker News"
               },
               link: "http://example.com",
-              title:
-                randomInt(0, 1) === 1
-                  ? "World is finally living on mars."
-                  : "World is falling down to the works of ancient civilization who is going to do a revolution.",
-              summary:
-                randomInt(0, 1) === 1
-                  ? Array(randomInt(1, 100))
-                      .fill("lorem")
-                      .join(" ")
-                  : undefined,
+              title: randomBoolean()
+                ? "World is finally living on mars."
+                : "World is falling down to the works of ancient civilization who is going to do a revolution.",
+              summary: randomBoolean()
+                ? Array(randomInt(1, 100))
+                    .fill("lorem")
+                    .join(" ")
+                : undefined,
               date: `${randomInt(1, 10)}h`,
-              media:
-                randomInt(0, 1) === 1
-                  ? {
-                      type: "image/jpeg",
-                      // link: "http://localhost:3000/android-chrome-512x512.png"
-                      link:
-                        "https://stopga.me/images/video/2019/12/07/M8MFv_nN.jpg"
-                    }
-                  : undefined,
-              comments_link:
-                randomInt(0, 1) === 1
-                  ? "http://example.com/#comments"
-                  : undefined
+              media: randomBoolean()
+                ? {
+                    type: "image/jpeg",
+                    link: "http://localhost:3000/android-chrome-512x512.png"
+                  }
+                : undefined,
+              comments_link: randomBoolean()
+                ? "http://example.com/#comments"
+                : undefined
             };
           })
       );
+    }, DELAY);
+  });
+}
+
+function markAllAsRead(
+  section: PostsSection,
+  lastPostId: number
+): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
     }, DELAY);
   });
 }
@@ -152,6 +154,7 @@ export default {
   logout,
   getCategoriesWithFeeds,
   getPosts,
+  markAllAsRead,
   markAsRead,
   markAsReadLater
 };

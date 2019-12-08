@@ -1,7 +1,13 @@
 import create from "zustand";
 import api from "../api";
 import { navigate } from "../components/common/NoStateLink";
-import { CategoriesWithFeeds, Post, Section, User } from "../domain";
+import {
+  CategoriesWithFeeds,
+  Post,
+  PostsSection,
+  Section,
+  User
+} from "../domain";
 import { remove } from "../utils";
 
 interface ErrorStore {
@@ -26,6 +32,19 @@ interface SectionStore {
 export const [useSection, sectionStoreApi] = create<SectionStore>(set => ({
   section: undefined
 }));
+
+export const usePostsSection: () => PostsSection = () =>
+  useSection(({ section }) => {
+    switch (section?.type) {
+      case "read-later":
+      case "all":
+      case "category":
+      case "feed":
+        return section;
+      default:
+        throw Error("Section unexpectedly does not belong to posts subtype");
+    }
+  });
 
 interface AppStore {
   initialized: boolean;
@@ -109,7 +128,8 @@ export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
 interface PostsStore {
   posts: Array<Post>;
   postsGetInProgress: boolean;
-  get: (section: Section) => void;
+  get: (section: PostsSection) => void;
+  markAllAsRead: (section: PostsSection) => void;
   read: (postId: number, isRead: boolean) => void;
   readLater: (postId: number, isReadLater: boolean) => void;
   close: (postId: number, isSelected: boolean, hrefPrefix: string) => void;
@@ -121,10 +141,27 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
   get: section => {
     set({ posts: [], postsGetInProgress: true });
     api
-      .getPosts()
+      .getPosts(section)
       .then(posts => set({ posts }))
       .catch(handleError)
       .finally(() => set({ postsGetInProgress: false }));
+  },
+  markAllAsRead: section => {
+    set(({ posts }) => {
+      if (posts.length === 0) {
+        appStoreApi.getState().refresh();
+        return {};
+      }
+
+      const lastPostId = posts[0].id;
+      api
+        .markAllAsRead(section, lastPostId)
+        .then(() => {
+          appStoreApi.getState().refresh();
+        })
+        .catch(handleError);
+      return { posts: [] };
+    });
   },
   read: (postId, isRead) =>
     set(({ posts }) => {
