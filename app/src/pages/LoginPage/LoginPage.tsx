@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Activity } from "../../components/common/Activity/Activity";
 import { IconButton } from "../../components/common/Button/Button";
 import { Input } from "../../components/common/Input/Input";
@@ -7,6 +7,7 @@ import "./LoginPage.css";
 
 export const LoginPage = function LoginPage() {
   const user = useUser();
+  const [apiKey, setApiKey] = useState("");
   return (
     <Activity inProgress={user.loginInProgress}>
       <form
@@ -16,7 +17,7 @@ export const LoginPage = function LoginPage() {
           if (user.loginInProgress) {
             return;
           }
-          user.login();
+          user.login(apiKey);
         }}
       >
         <Input
@@ -24,6 +25,8 @@ export const LoginPage = function LoginPage() {
           type="password"
           placeholder="API key"
           autoFocus={true}
+          value={apiKey}
+          onChange={event => setApiKey(event.target.value)}
         />
         <IconButton
           icon="login"

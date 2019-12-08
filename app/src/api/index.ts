@@ -14,7 +14,7 @@ function getCurrentUser(): Promise<User> {
   });
 }
 
-function login(): Promise<User> {
+function login(apiKey: string): Promise<User> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({

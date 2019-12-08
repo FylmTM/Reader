@@ -70,7 +70,7 @@ interface UserStore {
   current: User | undefined;
   loginInProgress: boolean;
   logoutInProgress: boolean;
-  login: () => void;
+  login: (apiKey: string) => void;
   logout: () => void;
 }
 
@@ -78,10 +78,10 @@ export const [useUser, userStoreApi] = create<UserStore>(set => ({
   current: undefined,
   loginInProgress: false,
   logoutInProgress: false,
-  login: () => {
+  login: apiKey => {
     set({ loginInProgress: true });
     api
-      .login()
+      .login(apiKey)
       .then(user => set({ current: user }))
       .catch(handleError)
       .finally(() => set({ loginInProgress: false }));
