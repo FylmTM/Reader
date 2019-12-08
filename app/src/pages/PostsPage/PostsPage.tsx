@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect } from "react";
 import { Activity } from "../../components/common/Activity/Activity";
 import { IconButton } from "../../components/common/Button/Button";
@@ -37,6 +38,9 @@ export const PostsPage: FC = function PostsPage() {
   const section = usePostsSection();
   const posts = usePosts();
   const refreshMark = useApp(state => state.refreshMark);
+  const getUnreadCounts = useCategories(
+    state => state.getCategoriesUnreadCounts,
+  );
 
   const type = section.type;
   let categoryId: number | undefined = undefined;
@@ -74,16 +78,15 @@ export const PostsPage: FC = function PostsPage() {
 
   useEffect(() => {
     if (section) {
+      getUnreadCounts();
       posts.get(section);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshMark, type, categoryId, feedId]);
 
   useEffect(() => {
     if (postId) {
       posts.read(postId, true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId]);
 
   return (
@@ -100,7 +103,7 @@ export const PostsPage: FC = function PostsPage() {
               icon="check"
               look="outline"
               onClick={() => {
-                posts.markAllAsRead(section);
+                posts.markAllAsRead(section, hrefPrefix);
               }}
             />
           </div>

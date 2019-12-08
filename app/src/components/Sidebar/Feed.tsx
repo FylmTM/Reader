@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import * as domain from "../../domain";
-import { appStoreApi, useSection } from "../../stores";
+import { appStoreApi, useCategories, useSection } from "../../stores";
 import { classNames } from "../../utils";
 import { NoStateLink } from "../common/NoStateLink";
 import "./Feed.css";
@@ -19,6 +19,7 @@ export const Feed: FC<Props> = function Feed({ categoryId, feed }) {
       appStoreApi.getState().refresh();
     }
   }
+  const unreadCount = useCategories(state => state.unreadCounts.feeds[feed.id]);
 
   const className = classNames("r-feed ellipsis", { "r-active": isActive });
   return (
@@ -28,7 +29,7 @@ export const Feed: FC<Props> = function Feed({ categoryId, feed }) {
       onClick={forceRefresh}
     >
       <span className="title ellipsis">{feed.title}</span>
-      <span className="unread">123</span>
+      {unreadCount && <span className="unread">{unreadCount}</span>}
     </NoStateLink>
   );
 };

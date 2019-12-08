@@ -141,7 +141,7 @@ interface PostsStore {
   posts: Array<Post>;
   postsGetInProgress: boolean;
   get: (section: PostsSection) => void;
-  markAllAsRead: (section: PostsSection) => void;
+  markAllAsRead: (section: PostsSection, href: string) => void;
   read: (postId: number, isRead: boolean) => void;
   readLater: (postId: number, isReadLater: boolean) => void;
   close: (postId: number, isSelected: boolean, hrefPrefix: string) => void;
@@ -158,8 +158,9 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
       .catch(handleError)
       .finally(() => set({ postsGetInProgress: false }));
   },
-  markAllAsRead: section => {
+  markAllAsRead: (section, href) => {
     set(({ posts }) => {
+      navigate(href);
       if (posts.length === 0) {
         appStoreApi.getState().refresh();
         return {};
@@ -222,7 +223,7 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
       }
 
       if (nextPostIndex == null) {
-        navigate(`${hrefPrefix}`);
+        navigate(hrefPrefix);
       } else {
         const nextPost = posts[nextPostIndex];
         read(nextPost.id, true);
