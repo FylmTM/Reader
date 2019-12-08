@@ -19,7 +19,9 @@ export const Feed: FC<Props> = function Feed({ categoryId, feed }) {
       appStoreApi.getState().refresh();
     }
   }
-  const unreadCount = useCategories(state => state.unreadCounts.feeds[feed.id]);
+  const unreadCount = useCategories(
+    state => state.unreadCounts.feeds[feed.id] || 0,
+  );
 
   const className = classNames("r-feed ellipsis", { "r-active": isActive });
   return (
@@ -29,7 +31,7 @@ export const Feed: FC<Props> = function Feed({ categoryId, feed }) {
       onClick={forceRefresh}
     >
       <span className="title ellipsis">{feed.title}</span>
-      {unreadCount && <span className="unread">{unreadCount}</span>}
+      {unreadCount > 0 && <span className="unread">{unreadCount}</span>}
     </NoStateLink>
   );
 };

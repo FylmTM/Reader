@@ -4,15 +4,15 @@ import { IconButton } from "../common/Button/Button";
 import "./Error.css";
 
 export const Error: FC = function Error() {
-  const { error, clear } = useError();
+  const error = useError();
 
-  if (error == null) {
+  if (error.error == null) {
     return <></>;
   }
 
   return (
     <div className="r-error">
-      <IconButton icon="close" look="outline" onClick={clear} />
+      <IconButton icon="close" look="outline" onClick={error.clear} />
       {error}
     </div>
   );

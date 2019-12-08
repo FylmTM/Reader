@@ -21,7 +21,7 @@ export const ReadLaterCategory: FC = function ReadLaterCategory() {
     }
   }
   const unreadCount = useCategories(
-    state => state.unreadCounts.categories.read_later,
+    state => state.unreadCounts.categories.read_later || 0,
   );
 
   const className = classNames("r-category", { "r-active": isActive });
@@ -35,7 +35,7 @@ export const ReadLaterCategory: FC = function ReadLaterCategory() {
         <Icon type="bookmark" />
       </div>
       <span className="name ellipsis">Read later</span>
-      {unreadCount && <span className="unread">{unreadCount}</span>}
+      {unreadCount > 0 && <span className="unread">{unreadCount}</span>}
     </NoStateLink>
   );
 };
@@ -48,7 +48,9 @@ export const AllCategory: FC = function AllCategory() {
     }
   }
 
-  const unreadCount = useCategories(state => state.unreadCounts.categories.all);
+  const unreadCount = useCategories(
+    state => state.unreadCounts.categories.all || 0,
+  );
 
   const className = classNames("r-category", { "r-active": isActive });
   return (
@@ -57,7 +59,7 @@ export const AllCategory: FC = function AllCategory() {
         <Icon type="radio" />
       </div>
       <span className="name ellipsis">All</span>
-      {unreadCount && <span className="unread">{unreadCount}</span>}
+      {unreadCount > 0 && <span className="unread">{unreadCount}</span>}
     </NoStateLink>
   );
 };
@@ -76,7 +78,7 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
   );
 
   const unreadCount = useCategories(
-    state => state.unreadCounts.categories[category.id],
+    state => state.unreadCounts.categories[category.id] || 0,
   );
 
   const className = classNames("r-category", { "r-active": isActive });
@@ -105,7 +107,7 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
           <Icon type={isExpanded ? "expanded" : "collapsed"} />
         </div>
         <span className="name ellipsis">{category.name}</span>
-        {unreadCount && <span className="unread">{unreadCount}</span>}
+        {unreadCount > 0 && <span className="unread">{unreadCount}</span>}
       </NoStateLink>
       {(isExpanded && feeds.length) > 0 && (
         <div className="r-category-feeds">

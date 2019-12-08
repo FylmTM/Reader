@@ -43,6 +43,9 @@ export type CategoriesWithFeedsUnreadCounts = {
 
 export type Post = {
   id: number;
+  category: {
+    id: number;
+  };
   feed: {
     id: number;
     category_id: number;

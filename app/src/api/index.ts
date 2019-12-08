@@ -118,6 +118,9 @@ function getPosts(section: PostsSection): Promise<Array<Post>> {
               id: i + 1,
               is_read: false,
               is_read_later: false,
+              category: {
+                id: 1,
+              },
               feed: {
                 id: 1,
                 category_id: 1,

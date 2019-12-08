@@ -110,6 +110,8 @@ interface CategoriesStore {
   categoriesGetInProgress: boolean;
   getCategories: () => void;
   getCategoriesUnreadCounts: () => void;
+  decrementUnreadCount: (categoryId: number, feedId: number) => void;
+  incrementUnreadCount: (categoryId: number, feedId: number) => void;
 }
 
 export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
@@ -134,6 +136,52 @@ export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
         .then(unreadCounts => set({ unreadCounts }))
         .catch(handleError);
     },
+    decrementUnreadCount: (categoryId, feedId) =>
+      set(({ unreadCounts }) => {
+        const all = unreadCounts.categories.all
+          ? unreadCounts.categories.all - 1
+          : 0;
+
+        const categoryCurrentCount = unreadCounts.categories[categoryId];
+        const category = categoryCurrentCount ? categoryCurrentCount - 1 : 0;
+
+        const feedCurrentCount = unreadCounts.feeds[feedId];
+        const feed = feedCurrentCount ? feedCurrentCount - 1 : 0;
+
+        return {
+          unreadCounts: {
+            categories: {
+              ...unreadCounts.categories,
+              all,
+              [categoryId]: category,
+            },
+            feeds: {
+              ...unreadCounts.feeds,
+              [feedId]: feed,
+            },
+          },
+        };
+      }),
+    incrementUnreadCount: (categoryId, feedId) =>
+      set(({ unreadCounts }) => {
+        const all = (unreadCounts.categories.all || 0) + 1;
+        const category = (unreadCounts.categories[categoryId] || 0) + 1;
+        const feed = (unreadCounts.feeds[feedId] || 0) + 1;
+
+        return {
+          unreadCounts: {
+            categories: {
+              ...unreadCounts.categories,
+              all,
+              [categoryId]: category,
+            },
+            feeds: {
+              ...unreadCounts.feeds,
+              [feedId]: feed,
+            },
+          },
+        };
+      }),
   }),
 );
 
@@ -182,6 +230,15 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
         posts: posts.map(post => {
           if (post.id === postId && post.is_read !== isRead) {
             api.markAsRead(postId, isRead).catch(handleError);
+            if (isRead) {
+              categoriesStoreApi
+                .getState()
+                .decrementUnreadCount(post.category.id, post.feed.id);
+            } else {
+              categoriesStoreApi
+                .getState()
+                .incrementUnreadCount(post.category.id, post.feed.id);
+            }
             return { ...post, is_read: isRead };
           } else {
             return post;
@@ -209,25 +266,22 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
         return {};
       }
 
-      if (posts[i].is_read === false) {
-        api.markAsRead(postId, true).catch(handleError);
-      }
+      read(posts[i].id, true);
 
-      let nextPostIndex: number | undefined = undefined;
       if (isSelected) {
+        let nextPostIndex: number | undefined = undefined;
+
         if (i < posts.length - 1) {
           nextPostIndex = i + 1;
         } else if (i > 0) {
           nextPostIndex = i - 1;
         }
-      }
 
-      if (nextPostIndex == null) {
-        navigate(hrefPrefix);
-      } else {
-        const nextPost = posts[nextPostIndex];
-        read(nextPost.id, true);
-        navigate(`${hrefPrefix}/post/${nextPost.id}`);
+        if (nextPostIndex == null) {
+          navigate(hrefPrefix);
+        } else {
+          navigate(`${hrefPrefix}/post/${posts[nextPostIndex].id}`);
+        }
       }
 
       return {
