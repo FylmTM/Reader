@@ -22,7 +22,6 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   hrefPrefix,
   isSelected
 }) {
-  console.log(post.id, post.is_read, post.is_read_later, isSelected);
   const { read, readLater, close } = postsStoreApi.getState();
   let summary = post.summary;
   if (post.summary && post.summary?.length > MAX_SUMMARY_LENGTH) {

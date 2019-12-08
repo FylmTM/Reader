@@ -127,42 +127,69 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
   },
   read: (postId, isRead) =>
     set(({ posts }) => {
-      api.markAsRead(postId, isRead).catch(handleError);
       return {
-        posts: posts.map(post =>
-          post.id === postId ? { ...post, is_read: isRead } : post
-        )
+        posts: posts.map(post => {
+          if (post.id === postId && post.is_read !== isRead) {
+            api.markAsRead(postId, isRead).catch(handleError);
+            return { ...post, is_read: isRead };
+          } else {
+            return post;
+          }
+        })
       };
     }),
   readLater: (postId, isReadLater) =>
     set(({ posts }) => {
-      api.markAsReadLater(postId, isReadLater).catch(handleError);
       return {
-        posts: posts.map(post =>
-          post.id === postId ? { ...post, is_read_later: isReadLater } : post
-        )
+        posts: posts.map(post => {
+          if (post.id === postId && post.is_read_later !== isReadLater) {
+            api.markAsReadLater(postId, isReadLater).catch(handleError);
+            return { ...post, is_read_later: isReadLater };
+          } else {
+            return post;
+          }
+        })
       };
     }),
   close: (postId, isSelected, hrefPrefix) => {
-    postsStoreApi.getState().read(postId, true);
     set(({ posts }) => {
       const i = posts.findIndex(post => post.id === postId);
       if (i === -1) {
         return {};
       }
 
+      const post = posts[i];
+      if (post.is_read === false) {
+        api.markAsRead(postId, true).catch(handleError);
+      }
+
+      let nextPostIndex: number | undefined = undefined;
       if (isSelected) {
         if (i < posts.length - 1) {
-          navigate(`${hrefPrefix}/post/${posts[i + 1].id}`);
+          nextPostIndex = i + 1;
         } else if (i > 0) {
-          navigate(`${hrefPrefix}/post/${posts[i - 1].id}`);
-        } else {
-          navigate(`${hrefPrefix}`);
+          nextPostIndex = i - 1;
         }
       }
 
+      if (nextPostIndex != null) {
+        navigate(`${hrefPrefix}/post/${posts[nextPostIndex].id}`);
+      } else {
+        navigate(`${hrefPrefix}`);
+      }
+
       return {
-        posts: remove(posts, i)
+        posts: remove(
+          posts.map((post, i) => {
+            if (i === nextPostIndex && post.is_read === false) {
+              api.markAsRead(post.id, true).catch(handleError);
+              return { ...post, is_read: true };
+            } else {
+              return post;
+            }
+          }),
+          i
+        )
       };
     });
   }

@@ -86,7 +86,7 @@ function getPosts(): Promise<Array<Post>> {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(
-        Array(100)
+        Array(15)
           .fill(".")
           .map((_, i) => {
             return {
