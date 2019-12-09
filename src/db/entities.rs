@@ -43,6 +43,7 @@ pub struct Post {
     pub link: String,
     pub title: String,
     pub date: chrono::NaiveDateTime,
+    pub summary: Option<String>,
     pub content: Option<String>,
     pub media_type: Option<MediaType>,
     pub media_link: Option<String>,

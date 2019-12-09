@@ -29,7 +29,7 @@ create table feeds
 create table category_feeds
 (
     category_id integer references categories (id) not null,
-    feed_id     integer references categories (id) not null,
+    feed_id     integer references feeds (id)      not null,
 
     primary key (category_id, feed_id)
 );
@@ -42,6 +42,7 @@ create table posts
     link          text                          not null,
     title         text                          not null,
     date          text                          not null,
+    summary       text                          null,
     content       text                          null,
     media_type    text                          null,
     media_link    text                          null,
@@ -53,12 +54,13 @@ create table posts
 create table user_posts
 (
     -- id is used for ordering, therefore autoincrement is used to prevent reuse of ROWID's from previously deleted rows.
-    id        integer primary key autoincrement,
-    user_id   integer references users (id) not null,
-    post_id   integer references posts (id) not null,
+    id            integer primary key autoincrement,
+    user_id       integer references users (id) not null,
+    post_id       integer references posts (id) not null,
 
-    is_read   boolean default (false) not null,
-    read_date text                          null,
+    is_read       boolean default (false) not null,
+    is_read_later boolean default (false) not null,
+    read_date     text                          null,
 
     unique (user_id, post_id)
 );

@@ -17,9 +17,6 @@
             <outline type="rss" text="Hacker News Best" title="Hacker News Best" xmlUrl="http://hnbest.heroku.com/rss" htmlUrl="https://news.ycombinator.com/best"/>
             <outline type="rss" text="vc.ru: популярное" title="vc.ru: популярное" xmlUrl="https://vc.ru/rss/all" htmlUrl="https://vc.ru/"/>
         </outline>
-        <outline text="Events" title="Events">
-            <outline type="rss" text="www.bilesuserviss.lv" title="www.bilesuserviss.lv" xmlUrl="http://www.bilesuserviss.lv/rss/category:1002/" htmlUrl="http://www.bilesuserviss.lv/"/>
-        </outline>
         <outline text="Fun" title="Fun">
             <outline type="rss" text="Dilbert Daily Strip" title="Dilbert Daily Strip" xmlUrl="http://feeds.feedburner.com/DilbertDailyStrip" htmlUrl="http://dilbert.com"/>
             <outline type="rss" text="xkcd" title="xkcd" xmlUrl="http://xkcd.com/rss.xml" htmlUrl="https://xkcd.com/"/>

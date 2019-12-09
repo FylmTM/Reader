@@ -11,7 +11,7 @@ const SCHEMA_VERSION: u16 = 1;
 /// If current version is less that required version, it will sequentially apply all missing migrations,
 /// and then update `schema_version`.
 pub fn initialize_schema(conn: &Connection) {
-    conn.execute_batch(include_str!("migrations/_schema_version.sql"))
+    conn.execute_batch(include_str!("migrations/schema_version.sql"))
         .expect("Failed to create schema_version table.");
 
     let mut current_version: u16 = conn
@@ -52,7 +52,7 @@ pub fn initialize_schema(conn: &Connection) {
 ///
 /// If applied, will insert sample data into a database.
 /// Useful for development purposes.
-pub fn initialize_fixture(conn: &Connection) {
-    conn.execute_batch(include_str!("migrations/_fixture.sql"))
+pub fn initialize_fixture(conn: &Connection, fixture: &str) {
+    conn.execute_batch(fixture)
         .expect("Failed to apply fixture.");
 }

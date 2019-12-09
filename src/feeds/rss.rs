@@ -63,10 +63,11 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             .ok_or(Error::App(ApplicationError::RSSParsingMissingItemLink))?
             .to_string();
         let date = match item.pub_date() {
-            Some(date) => chrono::DateTime::parse_from_rfc2822(date)?.naive_utc(),
+            Some(date) => parse_date(date)?,
             None => chrono::Utc::now().naive_utc(),
         };
-        let content = item.content().or(item.description()).map(String::from);
+        let summary = item.description().map(String::from);
+        let content = item.content().map(String::from);
         let comments_link = item.comments().map(String::from);
         let media = item.enclosure().and_then(|enclosure| {
             let url = enclosure.url();
@@ -86,6 +87,7 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             link,
             title,
             date,
+            summary,
             content,
             media_type: media.map(|m| db::MediaType {
                 mime: m.0.to_string(),
@@ -102,10 +104,22 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
     Ok(posts)
 }
 
+fn parse_date(date: &str) -> Result<chrono::NaiveDateTime> {
+    let result = chrono::DateTime::parse_from_rfc2822(date)
+        .or_else(|_| {
+            // chrono consider "-0000" timezone to be "missing"
+            // We will blindly replace it with +0000 if it exists, and try to parse again.
+            let date = date.replace("-0000", "+0000");
+            chrono::DateTime::parse_from_rfc2822(&date)
+        })
+        .map(|date| date.naive_utc())?;
+    Ok(result)
+}
+
 #[cfg(test)]
 mod tests {
     use crate::db;
-    use crate::feeds::rss::parse;
+    use crate::feeds::rss::{parse, parse_date};
 
     #[test]
     fn test_parse_rss_hacker_news() {
@@ -120,10 +134,11 @@ mod tests {
                 date: "2019-11-30T12:47:19"
                     .parse::<chrono::NaiveDateTime>()
                     .unwrap(),
-                content: Some(
-                    "<a href=\"https://news.ycombinator.com/item?id=21669726\">Comments</a>"
+                summary: Some(
+                    r#"<a href="https://news.ycombinator.com/item?id=21669726">Comments</a>"#
                         .to_string()
                 ),
+                content: None,
                 media_type: None,
                 media_link: None,
                 comments_link: Some("https://news.ycombinator.com/item?id=21669726".to_string()),
@@ -144,7 +159,8 @@ mod tests {
                 date: "2019-11-30T14:55:03"
                     .parse::<chrono::NaiveDateTime>()
                     .unwrap(),
-                content: Some("<b>Ghost Recon: Breakpoint</b> стала".to_string()),
+                summary: Some("<b>Ghost Recon: Breakpoint</b> стала".to_string()),
+                content: None,
                 media_type: Some(db::MediaType { mime: "image/jpeg".to_string() }),
                 media_link: Some("https://images.stopgame.ru/news/2019/11/30/AwQ7-p3_W.jpg".to_string()),
                 comments_link: Some("https://stopgame.ru/newsdata/41005#comments".to_string()),
@@ -166,6 +182,10 @@ mod tests {
                 date: "2019-11-18T16:45:58"
                     .parse::<chrono::NaiveDateTime>()
                     .unwrap(),
+                summary: Some(
+                    "Description We’re happy to present the new release today, Kotlin 1.3.60."
+                        .to_string()
+                ),
                 content: Some(
                     "<p>Content We’re happy to present the new release today, Kotlin 1.3.60.</p>"
                         .to_string()
@@ -177,6 +197,17 @@ mod tests {
                         .to_string()
                 ),
             }]
+        );
+    }
+
+    #[test]
+    fn test_parse_date_handle_negative_zero_timezone() {
+        let expected =
+            chrono::NaiveDateTime::parse_from_str("2019-12-04T05:00:00", "%Y-%m-%dT%H:%M:%S%.f")
+                .unwrap();
+        assert_eq!(
+            expected,
+            parse_date("Wed, 04 Dec 2019 05:00:00 -0000").unwrap()
         );
     }
 }

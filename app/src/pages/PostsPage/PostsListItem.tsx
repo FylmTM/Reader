@@ -14,7 +14,7 @@ interface Props {
   style: CSSProperties;
 }
 
-const MAX_SUMMARY_LENGTH = 500;
+const MAX_SUMMARY_LENGTH = 300;
 
 export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   post,
@@ -23,9 +23,9 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   style,
 }) {
   const { read, readLater, close } = postsStoreApi.getState();
-  let summary = post.summary;
-  if (post.summary && post.summary?.length > MAX_SUMMARY_LENGTH) {
-    summary = post.summary.substring(0, MAX_SUMMARY_LENGTH) + "...";
+  let summary = post.summary || post.content;
+  if (summary && summary?.length > MAX_SUMMARY_LENGTH) {
+    summary = summary.substring(0, MAX_SUMMARY_LENGTH) + "...";
   }
 
   let isMediaImage = false;
