@@ -18,7 +18,7 @@ pub fn authenticated() -> Client {
     let app = reader::app(true);
     let client = Client::new(app).expect("failed to construct rocket client");
     client
-        .post_uri(uri!(authenticate))
+        .post_uri(uri!(auth_login))
         .json(ApiKey {
             api_key: "api_key".to_string(),
         })

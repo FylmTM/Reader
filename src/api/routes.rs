@@ -11,8 +11,8 @@ pub struct ApiKey {
     pub api_key: String,
 }
 
-#[post("/api/v1/authenticate", data = "<api_key>")]
-pub fn authenticate(
+#[post("/api/v1/auth/login", data = "<api_key>")]
+pub fn auth_login(
     api_key: Json<ApiKey>,
     conn: db::PoolConnection,
     mut cookies: Cookies,
@@ -28,6 +28,19 @@ pub fn authenticate(
     );
 
     ok(user)
+}
+
+#[post("/api/v1/auth/logout")]
+pub fn auth_logout(mut cookies: Cookies) -> Response<()> {
+    cookies.add(
+        Cookie::build("api_key", "")
+            .path("/")
+            .http_only(true)
+            .expires(time::now().add(time::Duration::milliseconds(1)))
+            .finish(),
+    );
+
+    ok(())
 }
 
 #[get("/api/v1/current_user")]

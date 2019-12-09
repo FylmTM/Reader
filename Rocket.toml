@@ -1,8 +1,6 @@
 [global]
 address = "0.0.0.0"
 port = 8080
-# Hardcoded for development purpose ONLY. Change for production!
-secret_key = "RCgOPP6w2RgdIWDnS774kj4SL9+kVw2BcYIGyNPwHLc="
 
 db_in_memory = false
 db_path = "db.sqlite"

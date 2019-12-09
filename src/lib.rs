@@ -112,7 +112,8 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
         .mount(
             "/",
             routes![
-                api::routes::authenticate,
+                api::routes::auth_login,
+                api::routes::auth_logout,
                 api::routes::current_user,
                 api::assets::index,
                 api::assets::assets
