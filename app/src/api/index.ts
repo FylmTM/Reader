@@ -137,7 +137,7 @@ function getPosts(section: PostsSection): Promise<Array<Post>> {
                     .join(" ")
                 : undefined,
               content: randomBoolean()
-                ? Array(randomInt(1, 100))
+                ? Array(randomInt(1000, 5000))
                     .fill("content")
                     .join(" ")
                 : undefined,

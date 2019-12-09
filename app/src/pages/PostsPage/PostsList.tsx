@@ -1,4 +1,4 @@
-import React, { ComponentType, FC } from "react";
+import React, { ComponentType, FC, useRef } from "react";
 import { Post } from "../../domain";
 import { PostsListItem } from "./PostsListItem";
 import { FixedSizeList, ListChildComponentProps } from "react-window";
@@ -15,6 +15,7 @@ export const PostsList: FC<Props> = function PostsList({
   postId,
   hrefPrefix,
 }) {
+  const ref = useRef(null);
   const Row: ComponentType<ListChildComponentProps> = ({
     index,
     style,
@@ -32,10 +33,17 @@ export const PostsList: FC<Props> = function PostsList({
     );
   };
 
+  const index = posts.findIndex(post => post.id === postId);
+  if (index != -1) {
+    // @ts-ignore
+    ref.current?.scrollToItem(index);
+  }
+
   return (
     <AutoSizer>
       {({ height, width }) => (
         <FixedSizeList
+          ref={ref}
           height={height}
           itemCount={posts.length}
           itemSize={130}

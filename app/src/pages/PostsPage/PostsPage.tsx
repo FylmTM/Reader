@@ -2,13 +2,15 @@
 import React, { FC, useEffect } from "react";
 import { Activity } from "../../components/common/Activity/Activity";
 import { IconButton } from "../../components/common/Button/Button";
-import { PostsSection } from "../../domain";
+import { navigate } from "../../components/common/NoStateLink";
+import * as domain from "../../domain";
 import { useApp, useCategories, usePosts, usePostsSection } from "../../stores";
+import { Post } from "./Post";
 import { PostsList } from "./PostsList";
 import "./PostsPage.css";
 
 function itemData(
-  section: PostsSection,
+  section: domain.PostsSection,
 ): { hrefPrefix: string; postId: number | undefined } {
   switch (section.type) {
     case "read-later":
@@ -89,6 +91,11 @@ export const PostsPage: FC = function PostsPage() {
     }
   }, [postId]);
 
+  const post = posts.posts.find(post => post.id === postId);
+  if (postId != null && post == null) {
+    navigate(hrefPrefix);
+  }
+
   return (
     <div className="r-page-posts">
       <div className="r-posts-list">
@@ -118,12 +125,7 @@ export const PostsPage: FC = function PostsPage() {
           </Activity>
         </div>
       </div>
-      <div className="r-post">
-        <div className="r-page-post-navbar">
-          <div className="left" />
-          <div className="right" />
-        </div>
-      </div>
+      <Post postId={postId} hrefPrefix={hrefPrefix} />
     </div>
   );
 };

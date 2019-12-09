@@ -43,14 +43,3 @@
     overflow-y: auto;
     flex: 1;
 }
-
-.r-post {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.r-post-content {
-    overflow-y: auto;
-    flex: 1;
-}

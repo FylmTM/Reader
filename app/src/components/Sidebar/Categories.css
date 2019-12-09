@@ -6,6 +6,10 @@
     background: var(--color-accent-muted);
 }
 
+.r-categories a:hover .r-icon {
+    stroke: var(--color-foreground);
+}
+
 .r-categories a.r-active {
     background: var(--color-accent);
 }

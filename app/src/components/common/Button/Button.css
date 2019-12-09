@@ -1,10 +1,9 @@
-button {
+.r-button {
     padding: 5px;
     font-size: var(--font-size);
     background: var(--color-seconary);
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background-color 0.1s;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -12,47 +11,55 @@ button {
     border: none;
 }
 
-button:hover, button:focus {
+.r-button .r-icon {
+    stroke: var(--color-foreground);
+}
+
+.r-button:hover, .r-button:focus {
     background: var(--color-accent);
 }
 
-button:disabled {
+.r-button:disabled {
     background: var(--color-seconary-muted);
     color: var(--color-foreground-muted);
     cursor: auto;
 }
 
-button:disabled .r-icon {
+.r-button:disabled .r-icon {
     stroke: var(--color-foreground-muted);
 }
 
-button.small {
+.r-button.small {
     font-size: var(--font-size-small);
 }
 
-button.large {
+.r-button.large {
     font-size: var(--font-size-large);
 }
 
-button.outline {
+.r-button.outline {
     background: transparent;
 }
 
-button.outline:hover, button.outline:focus {
+.r-button.outline:hover, .r-button.outline:focus {
     background: var(--color-accent);
 }
 
-button.outline:disabled {
+.r-button.outline:disabled {
     background: transparent;
 }
 
-button.minimal {
+.r-button.minimal {
     background: transparent;
     padding: 1px;
 }
 
-button.minimal:hover, button.minimal:focus {
+.r-button.minimal:hover, .r-button.minimal:focus {
     background: transparent;
     color: var(--color-accent);
+    stroke: var(--color-accent);
+}
+
+.r-button.minimal:hover .r-icon, .r-button.minimal:focus .r-icon{
     stroke: var(--color-accent);
 }

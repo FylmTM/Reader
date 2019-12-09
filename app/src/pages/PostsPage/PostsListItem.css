@@ -76,10 +76,6 @@
     align-items: center;
 }
 
-.r-posts-list-item .actions a {
-    display: flex;
-}
-
 .r-posts-list-item .actions button:focus {
     color: var(--color-foreground);
 }
