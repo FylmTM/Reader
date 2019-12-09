@@ -1,14 +1,11 @@
 import React, { CSSProperties, FC } from "react";
 import { IconButton } from "../../components/common/Button/Button";
 import { Icon } from "../../components/common/Icon/Icon";
-import {
-  NoStateLink,
-  NoStateSpanLink,
-} from "../../components/common/NoStateLink";
+import { NoStateLink } from "../../components/common/NoStateLink";
 import { Post } from "../../domain";
+import { postsStoreApi } from "../../stores";
 import { classNames } from "../../utils";
 import "./PostsListItem.css";
-import { postsStoreApi } from "../../stores";
 
 interface Props {
   post: Post;
@@ -112,8 +109,8 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
             {summary && <span className="summary">{summary}</span>}
           </div>
         </div>
+        <div className="fade" />
       </NoStateLink>
-      <div className="fade" />
     </div>
   );
 });

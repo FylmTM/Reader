@@ -116,13 +116,15 @@ export const PostsPage: FC = function PostsPage() {
           </div>
         </div>
         <div className="r-posts-list-content">
-          <Activity inProgress={posts.postsGetInProgress}>
+          {posts.postsGetInProgress ? (
+            <Activity />
+          ) : (
             <PostsList
               posts={posts.posts}
               postId={postId}
               hrefPrefix={hrefPrefix}
             />
-          </Activity>
+          )}
         </div>
       </div>
       <Post postId={postId} hrefPrefix={hrefPrefix} />
