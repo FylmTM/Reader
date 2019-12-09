@@ -5,7 +5,9 @@ authors = ["Dmitry Vrublevsky <dmitry@vrublevsky.me>"]
 edition = "2018"
 
 [dependencies]
+ammonia = "3.0.0"
 env_logger = "0.7.1"
+lazy_static = "1.4.0"
 log = "0.4.8"
 mime = "0.3.14"
 rust-embed = "5.1.0"

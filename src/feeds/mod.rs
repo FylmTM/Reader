@@ -4,6 +4,7 @@ use std::time::Duration;
 use crate::db::{self, Queries};
 
 pub mod rss;
+pub mod utils;
 
 pub fn initialize(pool: &db::Pool, interval: u64) {
     let pool = pool.clone();

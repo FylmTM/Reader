@@ -11,7 +11,13 @@ extern crate rusqlite;
 extern crate rust_embed;
 #[macro_use]
 extern crate serde_derive;
+extern crate ammonia;
 extern crate time;
+#[macro_use]
+extern crate lazy_static;
+#[cfg(test)]
+#[macro_use]
+extern crate insta;
 
 pub mod api;
 pub mod db;

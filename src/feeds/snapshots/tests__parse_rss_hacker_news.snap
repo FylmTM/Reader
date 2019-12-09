@@ -1,0 +1,516 @@
+---
+source: src/feeds/rss.rs
+expression: result
+---
+[
+    Post {
+        id: -1,
+        link: "https://www.reuters.com/article/us-eu-batteries/eu-approves-3-2-billion-euro-state-aid-for-battery-research-idUSKBN1YD0WJ",
+        title: "EU approves 3.2B euro state aid for battery research",
+        date: 2019-12-09T21:15:22,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21746673\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21746673",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.vitavonni.de/blog/201503/2015031201-the-sad-state-of-sysadmin-in-the-age-of-containers.html",
+        title: "The sad state of sysadmin in the age of containers (2015)",
+        date: 2019-12-09T10:05:26,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21741504\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21741504",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.tmakiguchi.org/geographer/asgeographer/geographyhuman.html",
+        title: "Tsunebaro Makaguchi – Education Through Interest",
+        date: 2019-12-08T06:21:34,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21734605\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21734605",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.newyorker.com/magazine/2019/12/16/how-william-gibson-keeps-his-science-fiction-real",
+        title: "How William Gibson Keeps His Science Fiction Real",
+        date: 2019-12-09T18:35:49,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21745074\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21745074",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://github.com/Risk3sixty-Labs/geoapi",
+        title: "Show HN: Tiny, fast, and free API to geolocate IP addresses",
+        date: 2019-12-09T12:18:47,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21741991\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21741991",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.bbc.com/news/technology-50713723",
+        title: "E-scooter company goes bust after spending big on Facebook ads",
+        date: 2019-12-09T19:13:16,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21745389\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21745389",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.thestar.com.my/news/regional/2019/12/09/breaking-news-russia-banned-from-2020-olympics",
+        title: "Russia Banned from 2020 Olympics",
+        date: 2019-12-09T21:16:07,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21746679\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21746679",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "http://web.archive.org/web/20040929041451/http://www.shrovetuesdayobserved.com/flight.html",
+        title: "If All Stories Were Written Like Science Fiction Stories (2004)",
+        date: 2019-12-09T21:05:24,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21746574\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21746574",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://fivebooks.com/best-books/science-2019-barbara-kiser/",
+        title: "Science Books of 2019",
+        date: 2019-12-09T17:59:35,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21744772\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21744772",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://jamesmunns.com/blog/fmt-unreasonably-expensive/",
+        title: "Formatting Is Unreasonably Expensive for Embedded Rust",
+        date: 2019-12-09T15:41:11,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21743513\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21743513",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://github.com/ecaron/smart-nightlight-manager",
+        title: "Show HN: My in-network Node app for controlling my kids\' nightlights",
+        date: 2019-12-08T22:52:12,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21739000\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21739000",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.wsj.com/articles/five-cities-account-for-vast-majority-of-growth-in-tech-jobs-study-finds-11575867660",
+        title: "Five cities account for vast majority of growth in U.S. tech jobs: study",
+        date: 2019-12-09T14:56:35,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21743129\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21743129",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://github.com/infostreams/db",
+        title: "Show HN: Version Control for Databases",
+        date: 2019-12-09T13:06:35,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21742222\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21742222",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.bloomberg.com/news/articles/2019-12-08/repo-blowup-was-fueled-by-big-banks-and-hedge-funds-bis-says",
+        title: "Repo Blowup Was Fueled by Big Banks and Hedge Funds, BIS Says",
+        date: 2019-12-09T14:05:49,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21742702\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21742702",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.theatlantic.com/ideas/archive/2019/11/why-child-care-so-expensive/602599",
+        title: "Why Child Care Is So Expensive",
+        date: 2019-12-09T18:41:48,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21745124\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21745124",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.atlasobscura.com/articles/cool-bar-montana",
+        title: "For Sale: The Only Bar in a 14-Person Montana Town",
+        date: 2019-12-09T19:40:03,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21745673\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21745673",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=e7096c131e5161fa3b8e52a650d7719d2857adfd",
+        title: "WireGuard is in net-next",
+        date: 2019-12-09T08:21:03,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21741133\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21741133",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://queue.acm.org/detail.cfm?id=3341158",
+        title: "Must and Must Not: On writing documentation",
+        date: 2019-12-09T14:53:02,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21743100\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21743100",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "http://scholar.harvard.edu/files/mickens/files/towashitallaway.pdf",
+        title: "To Wash It All Away (2014) [pdf]",
+        date: 2019-12-09T18:00:56,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21744785\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21744785",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://emacsair.me/2017/09/01/magit-walk-through/",
+        title: "A walk through the Magit interface",
+        date: 2019-12-07T10:55:30,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21729597\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21729597",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://web.archive.org/web/20030812081713/http://klausler.com/cnotes.txt",
+        title: "Some things every C programmer should know about C (2002)",
+        date: 2019-12-09T15:59:55,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21743696\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21743696",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.quantamagazine.org/how-simple-rules-bootstrap-the-laws-of-physics-20191209/",
+        title: "Simple Rules ‘Bootstrap’ the Laws of Physics",
+        date: 2019-12-09T16:20:49,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21743847\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21743847",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.wsj.com/articles/if-bitcoin-looks-like-it-isnt-trading-its-because-it-isnt-11575637204",
+        title: "If Bitcoin Looks Like It Isn’t Trading, It’s Because It Isn’t",
+        date: 2019-12-09T21:06:13,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21746582\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21746582",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.sametab.com/blog/operations-and-internal-communication-strategies-for-effective-ceos",
+        title: "Operations for Effective CEOs",
+        date: 2019-12-09T14:11:22,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21742739\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21742739",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://signal.org/blog/signal-private-group-system/",
+        title: "Technology Preview: Signal Private Group System",
+        date: 2019-12-09T17:10:11,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21744274\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21744274",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.nytimes.com/2019/12/08/obituaries/caroll-spinney-dead.html",
+        title: "Caroll Spinney has died",
+        date: 2019-12-08T19:31:16,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21737697\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21737697",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://www.wsj.com/articles/american-factories-demand-white-collar-education-for-blue-collar-work-11575907185",
+        title: "College-educated workers are taking over the American factory floor",
+        date: 2019-12-09T19:43:30,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21745704\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21745704",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://randomascii.wordpress.com/2019/12/08/on2-again-now-in-wmi/",
+        title: "O(n^2), again, now in Windows Management Instrumentation",
+        date: 2019-12-09T15:30:35,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21743424\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21743424",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://en.wikipedia.org/wiki/Transputer",
+        title: "Transputer",
+        date: 2019-12-09T21:22:57,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21746739\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21746739",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://blog.cynthia.re/post/nintendo-switch-ethernet-switch",
+        title: "The Nintendo Switch Switch",
+        date: 2019-12-09T19:46:52,
+        summary: Some(
+            "Comments",
+        ),
+        content: Some(
+            "<a href=\"https://news.ycombinator.com/item?id=21745731\" rel=\"noopener noreferrer\">Comments</a>",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: Some(
+            "https://news.ycombinator.com/item?id=21745731",
+        ),
+    },
+]

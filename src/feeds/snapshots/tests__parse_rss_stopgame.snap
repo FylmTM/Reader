@@ -1,0 +1,1100 @@
+---
+source: src/feeds/rss.rs
+expression: result
+---
+[
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106877/sniper_ghost_warrior_contracts_screenshots",
+        title: "Sniper: Ghost Warrior Contracts: Скриншоты",
+        date: 2019-12-01T10:05:39,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/games/2019/06/07/kXpEPQH.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106877/sniper_ghost_warrior_contracts_screenshots#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106878/istoriya_serii_final_fantasy",
+        title: "История серии Final Fantasy",
+        date: 2019-12-01T12:23:34,
+        summary: Some(
+            "После неожиданного успеха «Последней фантазии» разработчики из Square решили остепениться и организовать серьёзный подход к делу — сотворить большой и впечатляющий сиквел. По идее, Final Fantasy II должна была направить жанр JRPG в совершенно новую колею и запомниться игрокам на всю жизнь. Что ж, в принципе, так оно и вышло — все её запомнили. Только вот какой.",
+        ),
+        content: Some(
+            "После неожиданного успеха «Последней фантазии» разработчики из Square решили остепениться и организовать серьёзный подход к делу — сотворить большой и впечатляющий сиквел. По идее, Final Fantasy II должна была направить жанр JRPG в совершенно новую колею и запомниться игрокам на всю жизнь. Что ж, в принципе, так оно и вышло — все её запомнили. Только вот какой.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/01/EEEewc9d.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106878/istoriya_serii_final_fantasy#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106879/vampire_the_masquerade_coteries_of_new_york_trailer_kompanonov",
+        title: "Vampire: The Masquerade - Coteries of New York: Трейлер компаньонов",
+        date: 2019-12-01T14:16:27,
+        summary: Some(
+            "В Coteries of New York мы сможем собрать разношёрстную команду вампиров. Потенциальные соратники различаются происхождением, целями и чертами характера. Познакомиться с персонажами можно уже сейчас, посмотрев это видео.",
+        ),
+        content: Some(
+            "В Coteries of New York мы сможем собрать разношёрстную команду вампиров. Потенциальные соратники различаются происхождением, целями и чертами характера. Познакомиться с персонажами можно уже сейчас, посмотрев это видео.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/01/6Uwg9L_OQ.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106879/vampire_the_masquerade_coteries_of_new_york_trailer_kompanonov#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106880/ast_rix_ob_lix_xxl_3_the_crystal_menhir_reliznyy_trailer",
+        title: "Astérix & Obélix XXL 3: The Crystal Menhir: Релизный трейлер",
+        date: 2019-12-01T14:16:35,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/01/czi1j99.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106880/ast_rix_ob_lix_xxl_3_the_crystal_menhir_reliznyy_trailer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106881/phoenix_point_reliznyy_trailer",
+        title: "Phoenix Point: Релизный трейлер",
+        date: 2019-12-01T14:16:44,
+        summary: Some(
+            "Phoenix Point — духовная наследница классической серии X-Com и её современного перезапуска. Тут нам тоже предстоит руководить борцами с пришельцами на глобальном уровне и в тактических вылазках. Взглянуть на героев и враждебных мутантов можно в релизном ролике.",
+        ),
+        content: Some(
+            "Phoenix Point — духовная наследница классической серии X-Com и её современного перезапуска. Тут нам тоже предстоит руководить борцами с пришельцами на глобальном уровне и в тактических вылазках. Взглянуть на героев и враждебных мутантов можно в релизном ролике.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/01/ADD2UJnWi.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106881/phoenix_point_reliznyy_trailer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106882/infact_02_12_2019",
+        title: "Инфакт [02.12.2019]",
+        date: 2019-12-02T17:58:11,
+        summary: Some(
+            "• Выбираем лучшие игры этого года на StopGame.ru;\n• Результаты опроса сообщества Ghost Recon: Breakpoint;\n• Halo 3 на гитаре от Guitar Hero;\n• Состав подарка-извинения в Red Dead Redemption 2;\n• История серии Final Fantasy, часть 2;\n• Свободная камера в MGS 5. Как работает игра за кадром?\n• Главное из интервью с Rockstar; \n• Обзор Shenmue III; \n• Обзор Sniper: Ghost Warrior Contracts;\n• Обзор Asterix &amp; Obelix XXL 3;\n• Обзор Some Distant Memor.\n\nФранцузский суд наказал Quantic Dream, Ubisoft провела опрос, чтобы починить Ghost Recon: Breakpoint; создатель оригинальных X-Com доделал Phoenix Point, рукастый геймер прошёл Halo 3 на легендарной сложности при помощи гитары от Guitar Hero, Epic Games Store начал раздавать Rayman Legends, Rockstar подготовила подарок в качестве извинения за проблемы PC-версии Red Dead Redemption 2, ну а Elden Ring может выйти в начале следующего года.",
+        ),
+        content: Some(
+            "• <a href=\"https://bestgames.stopgame.ru\" rel=\"noopener noreferrer\">Выбираем лучшие игры этого года на StopGame.ru</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41005\" rel=\"noopener noreferrer\">Результаты опроса сообщества Ghost Recon: Breakpoint</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41001\" rel=\"noopener noreferrer\">Halo 3 на гитаре от Guitar Hero</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/40995\" rel=\"noopener noreferrer\">Состав подарка-извинения в Red Dead Redemption 2</a>;<br>\n• <a href=\"https://stopgame.ru/show/106878/istoriya_serii_final_fantasy\" rel=\"noopener noreferrer\">История серии Final Fantasy, часть 2</a>;<br>\n• <a href=\"https://stopgame.ru/show/106863/svobodnaya_kamera_v_mgs_5_kak_rabotaet_igra_za_kadrom\" rel=\"noopener noreferrer\">Свободная камера в MGS 5. Как работает игра за кадром?</a><br>\n• <a href=\"https://stopgame.ru/show/106862/proshloe_nastoyaschee_i_buduschee_gta_online_glavnoe_iz_interview_s_rockstar\" rel=\"noopener noreferrer\">Главное из интервью с Rockstar</a>; <br>\n• <a href=\"https://stopgame.ru/show/106869/shenmue_iii_videoreview\" rel=\"noopener noreferrer\">Обзор Shenmue III</a>; <br>\n• <a href=\"https://stopgame.ru/show/106876/sniper_ghost_warrior_contracts_review\" rel=\"noopener noreferrer\">Обзор Sniper: Ghost Warrior Contracts</a>;<br>\n• <a href=\"https://stopgame.ru/show/106874/ast_rix_ob_lix_xxl_3_the_crystal_menhir_review\" rel=\"noopener noreferrer\">Обзор Asterix &amp; Obelix XXL 3</a>;<br>\n• <a href=\"https://stopgame.ru/show/106866/some_distant_memory_review\" rel=\"noopener noreferrer\">Обзор Some Distant Memor</a>.<br>\n<br>\nФранцузский суд наказал Quantic Dream, Ubisoft провела опрос, чтобы починить Ghost Recon: Breakpoint; создатель оригинальных X-Com доделал Phoenix Point, рукастый геймер прошёл Halo 3 на легендарной сложности при помощи гитары от Guitar Hero, Epic Games Store начал раздавать Rayman Legends, Rockstar подготовила подарок в качестве извинения за проблемы PC-версии Red Dead Redemption 2, ну а Elden Ring может выйти в начале следующего года.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/02/PbNX0tPZP.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106882/infact_02_12_2019#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106883/kotor_za_53_minuty_spidran_v_detalyah",
+        title: "Star Wars: Knights of the Old Republic: KotOR за 53 минуты [Спидран в деталях]",
+        date: 2019-12-02T18:03:04,
+        summary: Some(
+            "Конец года богат на «Звёздные войны», причём пока что всё очень хорошо: «Мандалорец» и Fallen Order получили высокие оценки критиков и зрителей с игроками. И даже нет особой потребности вспоминать былые времена, когда трава была зеленее, но мы всё же попробуем: культовая KotOR до сих пор активно спидранится, и это заслуживает отдельного разбора.",
+        ),
+        content: Some(
+            "Конец года богат на «Звёздные войны», причём пока что всё очень хорошо: «Мандалорец» и Fallen Order получили высокие оценки критиков и зрителей с игроками. И даже нет особой потребности вспоминать былые времена, когда трава была зеленее, но мы всё же попробуем: культовая KotOR до сих пор активно спидранится, и это заслуживает отдельного разбора.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/02/JhHOGYQLj.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106883/kotor_za_53_minuty_spidran_v_detalyah#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106884/infact_03_12_2019",
+        title: "Инфакт [03.12.2019]",
+        date: 2019-12-03T03:20:11,
+        summary: Some(
+            "Star Citizen собрала четверть миллиарда, Ватикан открывает представительство в Minecraft, Кодзима рассказывает об источниках вдохновения, в Modern Warfare готовится к обновлению режим Gunfight, искусственный интеллект улучшает Quake II, GiantWaffle настримил за ноябрь 572 часа, а Государственная Дума вновь заинтересовалась видеоиграми.\n\n• Кодзима о том, как его детство повлияло на Death Stranding;\n• Искусственный интеллект улучшил текстуры из Quake II;\n• ЛДПР проведёт заседание, посвящённое состоянию российской игровой индустрии;\n\n• Ракета-бумеранг / Лучшие моменты на StopGame;\n• KotOR за 53 минуты [Спидран в деталях].",
+        ),
+        content: Some(
+            "<a href=\"https://stopgame.ru/game/star_citizen\" rel=\"noopener noreferrer\"><strong>Star Citizen</strong></a> собрала четверть миллиарда, Ватикан открывает представительство в <a href=\"https://stopgame.ru/game/minecraft\" rel=\"noopener noreferrer\"><strong>Minecraft</strong></a>, Кодзима рассказывает об источниках вдохновения, в <a href=\"https://stopgame.ru/game/call_of_duty_modern_warfare\" rel=\"noopener noreferrer\"><strong>Modern Warfare</strong></a> готовится к обновлению режим Gunfight, искусственный интеллект улучшает <a href=\"https://stopgame.ru/game/quake_2\" rel=\"noopener noreferrer\"><strong>Quake II</strong></a>, GiantWaffle настримил за ноябрь 572 часа, а Государственная Дума вновь заинтересовалась видеоиграми.<br>\n<br>\n• <a href=\"https://stopgame.ru/newsdata/41014\" rel=\"noopener noreferrer\">Кодзима о том, как его детство повлияло на Death Stranding</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41015\" rel=\"noopener noreferrer\">Искусственный интеллект улучшил текстуры из Quake II</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41016\" rel=\"noopener noreferrer\">ЛДПР проведёт заседание, посвящённое состоянию российской игровой индустрии</a>;<br>\n<br>\n• <a href=\"https://stopgame.ru/show/106875/raketa_bumerang_luchshie_momenty_na_stopgame\" rel=\"noopener noreferrer\">Ракета-бумеранг / Лучшие моменты на StopGame</a>;<br>\n• <a href=\"https://stopgame.ru/show/106883/kotor_za_53_minuty_spidran_v_detalyah\" rel=\"noopener noreferrer\">KotOR за 53 минуты [Спидран в деталях]</a>.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/03/1Fg8AfQDR.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106884/infact_03_12_2019#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106885/kings_of_lorn_the_fall_of_ebris_screenshots",
+        title: "Kings of Lorn: The Fall of Ebris: Скриншоты",
+        date: 2019-12-03T10:17:02,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/games/2019/12/03/ALQbnGY4N.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106885/kings_of_lorn_the_fall_of_ebris_screenshots#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106886/kings_of_lorn_the_fall_of_ebris_review",
+        title: "Kings of Lorn: The Fall of Ebris: Обзор",
+        date: 2019-12-03T10:20:02,
+        summary: Some(
+            "Kings of Lorn: The Fall of Ebris, несмотря на сложное и претенциозное название, ещё до релиза привлекала внимание своими трейлерами. Судя по ним, нас ожидала помесь Dark Souls с Dark Messiah of Might and Magic, Hexen и Heretic — выглядело это сильно. Поэтому я хоть разумом и понимал, что независимая студия едва ли сразу слепит из этого конфетку, но в душе всё равно надеялся на лучшее. И ведь нельзя сказать, что совсем уж разочаровался…\n\nhttps://www.youtube.com/watch?v=-L0K-UcTOdY\n\nСмертельное бессмертие\n\nИ в первую очередь не разочаровывает то, как авторы работают с атмосферой и сюжетной подачей. Из всех щелей тут веет смрадом смерти и разложения. Мы падаем в груды черепов и трупов, встаём, сражаемся под серым небом и дождём с разными видами скелетов (есть даже скелеты-лошади), потом очередной босс нас снова бросает в груду черепов, но уже в другом измерении. А там опять — мрак, трупы и полный упадок, разложение, которое чувствуется буквально во всём вокруг.\n\nВ атмосфере серого, дождливого отчаяния и мрака нам рассказывают соответствующую историю — о том, как преданный собственными людьми, избитый и покалеченный король чуть ли не ползком по трупам, крови и черепам пробирается через чужие измерения домой, чтобы отомстить. А начинается всё с того, что нам подробно и жестоко, с видом из глаз демонстрируют, как короля бьют и пытают, а собственный регент отрезает ему язык и пинает царя в портал.\n\nОчнувшись, король слышит женский голос, который потом периодически будет нам являться и что-то подсказывать (хотя и нечасто). Сюжет подаётся в основном через редкие ролики и диалоги перед битвой с очередным боссом да через записи в манускриптах, которые мы иногда находим. А там, в этих записях, — вполне поучительная",
+        ),
+        content: Some(
+            "<a href=\"https://stopgame.ru/game/kings_of_lorn_the_fall_of_ebris\" rel=\"noopener noreferrer\"><strong>Kings of Lorn: The Fall of Ebris</strong></a>, несмотря на сложное и претенциозное название, ещё до релиза привлекала внимание своими трейлерами. Судя по ним, нас ожидала помесь <strong>Dark Souls</strong> с <a href=\"https://stopgame.ru/game/dark_messiah_of_might_and_magic\" rel=\"noopener noreferrer\"><strong>Dark Messiah of Might and Magic</strong></a>, <strong>Hexen</strong> и <strong>Heretic</strong> — выглядело это сильно. Поэтому я хоть разумом и понимал, что независимая студия едва ли сразу слепит из этого конфетку, но в душе всё равно надеялся на лучшее. И ведь нельзя сказать, что совсем уж разочаровался…<br>\n<br>\nhttps://www.youtube.com/watch?v=-L0K-UcTOdY<br>\n<br>\nСмертельное бессмертие<br>\n<br>\nИ в первую очередь не разочаровывает то, как авторы работают с атмосферой и сюжетной подачей. Из всех щелей тут веет смрадом смерти и разложения. Мы падаем в груды черепов и трупов, встаём, сражаемся под серым небом и дождём с разными видами скелетов (есть даже скелеты-лошади), потом очередной босс нас снова бросает в груду черепов, но уже в другом измерении. А там опять — мрак, трупы и полный упадок, разложение, которое чувствуется буквально во всём вокруг.<br>\n<br>\nВ атмосфере серого, дождливого отчаяния и мрака нам рассказывают соответствующую историю — о том, как преданный собственными людьми, избитый и покалеченный король чуть ли не ползком по трупам, крови и черепам пробирается через чужие измерения домой, чтобы отомстить. А начинается всё с того, что нам подробно и жестоко, с видом из глаз демонстрируют, как короля бьют и пытают, а собственный регент отрезает ему язык и пинает царя в портал.<br>\n<br>\nОчнувшись, король слышит женский голос, который потом периодически будет нам являться и что-то подсказывать (хотя и нечасто). Сюжет подаётся в основном через редкие ролики и диалоги перед битвой с очередным боссом да через записи в манускриптах, которые мы иногда находим. А там, в этих записях, — вполне поучительная",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/articles/2019/12/03/p9PvK9G.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106886/kings_of_lorn_the_fall_of_ebris_review#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106887/glavnaya_ulovka_kodzimy_v_death_stranding",
+        title: "Death Stranding: Главная уловка Кодзимы в Death Stranding",
+        date: 2019-12-03T17:24:30,
+        summary: Some(
+            "Death Stranding вышла уже практически месяц назад, а игроки до сих пор не могут определиться: это гениальный шедевр, который способен понять далеко не каждый, или большой мыльный рекламный пузырь? Мы решили пока не ударяться в теоретизирования или в разбор истории мира, а постараться объёмно высказаться на тему того, чем же является игра.",
+        ),
+        content: Some(
+            "Death Stranding вышла уже практически месяц назад, а игроки до сих пор не могут определиться: это гениальный шедевр, который способен понять далеко не каждый, или большой мыльный рекламный пузырь? Мы решили пока не ударяться в теоретизирования или в разбор истории мира, а постараться объёмно высказаться на тему того, чем же является игра.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/03/jJT9xQNl.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106887/glavnaya_ulovka_kodzimy_v_death_stranding#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106888/kings_of_lorn_the_fall_of_ebris_anons_igry",
+        title: "Kings of Lorn: The Fall of Ebris: Анонс игры",
+        date: 2019-12-03T17:27:42,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/03/kdgCY8ogH.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106888/kings_of_lorn_the_fall_of_ebris_anons_igry#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106889/kings_of_lorn_the_fall_of_ebris_oficialnyy_trailer",
+        title: "Kings of Lorn: The Fall of Ebris: Официальный трейлер",
+        date: 2019-12-03T17:28:59,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/03/e3BAAaL.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106889/kings_of_lorn_the_fall_of_ebris_oficialnyy_trailer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106890/kings_of_lorn_the_fall_of_ebris_reliznyy_trailer",
+        title: "Kings of Lorn: The Fall of Ebris: Релизный трейлер",
+        date: 2019-12-03T17:29:32,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/03/EcZ-mwJ.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106890/kings_of_lorn_the_fall_of_ebris_reliznyy_trailer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106891/call_of_duty_modern_warfare_2_trailer_pervogo_sezona",
+        title: "Call of Duty: Modern Warfare 2: Трейлер первого сезона",
+        date: 2019-12-03T17:31:07,
+        summary: Some(
+            "В Call of Duty: Modern Warfare стартовал первый сезон поддержки. Авторы обещают самую крупную бесплатную добавку в истории Call of Duty — в игре появятся новые карты, режимы, пушки и не только. К запуску сезона разработчики подготовили лаконичный ролик.",
+        ),
+        content: Some(
+            "В Call of Duty: Modern Warfare стартовал первый сезон поддержки. Авторы обещают самую крупную бесплатную добавку в истории Call of Duty — в игре появятся новые карты, режимы, пушки и не только. К запуску сезона разработчики подготовили лаконичный ролик.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/03/88Brd1I.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106891/call_of_duty_modern_warfare_2_trailer_pervogo_sezona#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106892/infact_04_12_2019",
+        title: "Инфакт [04.12.2019]",
+        date: 2019-12-04T03:54:12,
+        summary: Some(
+            "Намёки на скорое явление ремейка Resident Evil 3 всё жирнее, бренд PlayStation вошёл в Книгу рекордов Гиннесса, артбук Cyberpunk 2077 показал карту игры, а в Red Dead Online скоро можно будет заняться самогоноварением.\n\nБесплатная онлайн-конференция от Skillbox.\n\n• В PSN нашли обложки ремейка Resident Evil 3;\n• PlayStation признали самым продаваемым консольным брендом в истории;\n• Артбук Cyberpunk 2077 демонстрирует карту игры;\n• Обзор Kings of Lorn: The Fall of Ebris;\n• Главная уловка Кодзимы в Death Stranding.",
+        ),
+        content: Some(
+            "Намёки на скорое явление ремейка <a href=\"https://stopgame.ru/game/resident_evil_3\" rel=\"noopener noreferrer\"><strong>Resident Evil 3</strong></a> всё жирнее, бренд PlayStation вошёл в Книгу рекордов Гиннесса, артбук <a href=\"https://stopgame.ru/game/cyberpunk_2077\" rel=\"noopener noreferrer\"><strong>Cyberpunk 2077</strong></a> показал карту игры, а в <a href=\"https://stopgame.ru/game/red_dead_online\" rel=\"noopener noreferrer\"><strong>Red Dead Online</strong></a> скоро можно будет заняться самогоноварением.<br>\n<br>\n<a href=\"https://clc.to/3LgDJw\" rel=\"noopener noreferrer\"><strong>Бесплатная онлайн-конференция от Skillbox</strong></a>.<br>\n<br>\n• <a href=\"https://stopgame.ru/newsdata/41032\" rel=\"noopener noreferrer\">В PSN нашли обложки ремейка Resident Evil 3</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41031\" rel=\"noopener noreferrer\">PlayStation признали самым продаваемым консольным брендом в истории</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41026\" rel=\"noopener noreferrer\">Артбук Cyberpunk 2077 демонстрирует карту игры</a>;<br>\n• <a href=\"https://stopgame.ru/show/106886/kings_of_lorn_the_fall_of_ebris_review\" rel=\"noopener noreferrer\">Обзор Kings of Lorn: The Fall of Ebris</a>;<br>\n• <a href=\"https://stopgame.ru/show/106887/glavnaya_ulovka_kodzimy_v_death_stranding\" rel=\"noopener noreferrer\">Главная уловка Кодзимы в Death Stranding</a>.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/04/LdVlofQgU.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106892/infact_04_12_2019#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106893/story_of_a_gladiator_screenshots",
+        title: "Story of a Gladiator: Скриншоты",
+        date: 2019-12-04T07:29:19,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/games/2019/12/04/BoUjrfxS.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106893/story_of_a_gladiator_screenshots#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106894/story_of_a_gladiator_review",
+        title: "Story of a Gladiator: Обзор",
+        date: 2019-12-04T07:37:20,
+        summary: Some(
+            "Неизменная составляющая многих экшен-RPG — это бои на аренах, где за последовательные победы над всё более сильными противниками мы зарабатываем особые призы и звания. Авторы Story of a Gladiator, как вы догадываетесь, построили на этом всю игру. Ничего кроме гладиаторских боёв тут нет, но реализованы они так, что скучать просто некогда.\n\nhttps://www.youtube.com/watch?v=PKyZUnOCSNk\n\nЗдесь по праздникам ходят смотреть, как в агонии бьётся человек\n\nСтартовый ролик, рассказывающий о злоключениях героя, прежде чем он стал гладиатором, можно пропустить — история, несмотря на название игры, здесь играет исключительно роль фона и повода для мордобоя. Да её и нет фактически.\n\nВся Story of a Gladiator — это более 30 драк плюс три боя с боссами, которые разбиты на три кампании (арены): греческую, африканскую и римскую. На старте нужно выбрать происхождение своего гладиатора — грек получает бонус к урону, уроженец Карфагена (а по сути, Туниса) — прибавку к здоровью, а древний египтянин стартует с дополнительным очком умений.\n\nНо независимо от выбора каждый начинает свой путь с прохождения греческой кампании, потом откроется африканская, а только затем — римская. Чем дальше, тем сложнее. Но и возможностей, чтобы стать сильнее и хорошенько подготовиться к очередному бою, тоже становится больше.\n\nСловно псы, что дерутся за кость, обречённые рвут друг другу плоть\n\nПо механике это двухмерный beat ’em up с сильным акцентом на прокачке. Настолько сильным, что даже перекат и банальный бег изначально недоступны — эти способности нужно выучить за очки умений, который выдаются на каждом новом уровне. На первых порах мы умеем только ходить, бить и ставить блок, но с набором опыта и уровней открываются и другие приёмы — например, удар щитом, атаки в прыжке или пинок, отбрасывающий врага на землю и обездвиживающий его. Кроме того, можно улучша",
+        ),
+        content: Some(
+            "Неизменная составляющая многих экшен-RPG — это бои на аренах, где за последовательные победы над всё более сильными противниками мы зарабатываем особые призы и звания. Авторы <a href=\"https://stopgame.ru/game/story_of_a_gladiator\" rel=\"noopener noreferrer\"><strong>Story of a Gladiator</strong></a>, как вы догадываетесь, построили на этом всю игру. Ничего кроме гладиаторских боёв тут нет, но реализованы они так, что скучать просто некогда.<br>\n<br>\nhttps://www.youtube.com/watch?v=PKyZUnOCSNk<br>\n<br>\nЗдесь по праздникам ходят смотреть, как в агонии бьётся человек<br>\n<br>\nСтартовый ролик, рассказывающий о злоключениях героя, прежде чем он стал гладиатором, можно пропустить — история, несмотря на название игры, здесь играет исключительно роль фона и повода для мордобоя. Да её и нет фактически.<br>\n<br>\nВся <strong>Story of a Gladiator</strong> — это более 30 драк плюс три боя с боссами, которые разбиты на три кампании (арены): греческую, африканскую и римскую. На старте нужно выбрать происхождение своего гладиатора — грек получает бонус к урону, уроженец Карфагена (а по сути, Туниса) — прибавку к здоровью, а древний египтянин стартует с дополнительным очком умений.<br>\n<br>\nНо независимо от выбора каждый начинает свой путь с прохождения греческой кампании, потом откроется африканская, а только затем — римская. Чем дальше, тем сложнее. Но и возможностей, чтобы стать сильнее и хорошенько подготовиться к очередному бою, тоже становится больше.<br>\n<br>\nСловно псы, что дерутся за кость, обречённые рвут друг другу плоть<br>\n<br>\nПо механике это двухмерный beat ’em up с сильным акцентом на прокачке. Настолько сильным, что даже перекат и банальный бег изначально недоступны — эти способности нужно выучить за очки умений, который выдаются на каждом новом уровне. На первых порах мы умеем только ходить, бить и ставить блок, но с набором опыта и уровней открываются и другие приёмы — например, удар щитом, атаки в прыжке или пинок, отбрасывающий врага на землю и обездвиживающий его. Кроме того, можно улучша",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/articles/2019/12/04/1umZesJj.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106894/story_of_a_gladiator_review#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106895/call_of_duty_modern_warfare_zamesiteli_final",
+        title: "Call of Duty: Modern Warfare: CALL OF DUTY: MODERN WARFARE. Замесители: Финал",
+        date: 2019-12-04T12:02:45,
+        summary: Some(
+            "Последнее испытание в Call of Duty: Modern Warfare прошло вновь под командованием рыжебородой воительницы! Режимы Cyber Attack, Search and Destroy, Headquarters и снова Gunfight столкнули Даура Авидзба, Александру Кост, Антона Паули, Дмитрия Кунгурова и Ивана Лоева в финальной схватке за хоть какие-нибудь результаты.",
+        ),
+        content: Some(
+            "Последнее испытание в Call of Duty: Modern Warfare прошло вновь под командованием рыжебородой воительницы! Режимы Cyber Attack, Search and Destroy, Headquarters и снова Gunfight столкнули Даура Авидзба, Александру Кост, Антона Паули, Дмитрия Кунгурова и Ивана Лоева в финальной схватке за хоть какие-нибудь результаты.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/04/VCYo7QZr.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106895/call_of_duty_modern_warfare_zamesiteli_final#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106896/call_of_duty_modern_warfare_trailer_boevogo_propuska",
+        title: "Call of Duty: Modern Warfare: Трейлер боевого пропуска",
+        date: 2019-12-04T18:14:44,
+        summary: Some(
+            "Как и многие другие современные шутеры, Modern Warfare не обойдётся без сезонных пропусков. Первый из них позволяет открыть не только массу элементов визуальной кастомизации, но и новые пушки. Чуть подробнее о пропуске рассказывают в этом видео.",
+        ),
+        content: Some(
+            "Как и многие другие современные шутеры, Modern Warfare не обойдётся без сезонных пропусков. Первый из них позволяет открыть не только массу элементов визуальной кастомизации, но и новые пушки. Чуть подробнее о пропуске рассказывают в этом видео.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/04/cRsr5DMUV.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106896/call_of_duty_modern_warfare_trailer_boevogo_propuska#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106897/story_of_a_gladiator_reliznyy_trailer",
+        title: "Story of a Gladiator: Релизный трейлер",
+        date: 2019-12-04T18:15:05,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/04/09IJ8qB.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106897/story_of_a_gladiator_reliznyy_trailer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106898/story_of_a_gladiator_geympleynyy_trailer",
+        title: "Story of a Gladiator: Геймплейный трейлер",
+        date: 2019-12-04T18:15:26,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/04/vd7YaUu.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106898/story_of_a_gladiator_geympleynyy_trailer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106899/dayz_trailer_karty_livoniya",
+        title: "DayZ: Трейлер карты «Ливония»",
+        date: 2019-12-04T18:15:46,
+        summary: Some(
+            "В DayZ появилась карта «Ливония», при создании которой авторы вдохновлялись пейзажами Восточной Европы. На уровне можно найти поля, густые леса и реки. Одно из нововведений «Ливонии» — бурые медведи, которых лучше обходить стороной. Подробности — в трейлере.",
+        ),
+        content: Some(
+            "В DayZ появилась карта «Ливония», при создании которой авторы вдохновлялись пейзажами Восточной Европы. На уровне можно найти поля, густые леса и реки. Одно из нововведений «Ливонии» — бурые медведи, которых лучше обходить стороной. Подробности — в трейлере.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/04/EwahYeL.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106899/dayz_trailer_karty_livoniya#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106900/persona_5_the_royal_anons_zapadnoy_daty_reliza",
+        title: "Persona 5: The Royal: Анонс западной даты релиза",
+        date: 2019-12-04T18:16:24,
+        summary: Some(
+            "Persona 5 Royal уже вышла в Японии, а американским и европейским геймерам, как это часто бывает с азиатскими релизами, приходится ждать. В случае с Royal ожидание завершится 31 марта 2020-го — именно эта дата указана в стильном трейлере переиздания.",
+        ),
+        content: Some(
+            "Persona 5 Royal уже вышла в Японии, а американским и европейским геймерам, как это часто бывает с азиатскими релизами, приходится ждать. В случае с Royal ожидание завершится 31 марта 2020-го — именно эта дата указана в стильном трейлере переиздания.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/04/TudWVYhE6.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106900/persona_5_the_royal_anons_zapadnoy_daty_reliza#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106901/infact_05_12_2019",
+        title: "Инфакт [05.12.2019]",
+        date: 2019-12-05T03:13:20,
+        summary: Some(
+            "В Call of Duty: Modern Warfare стартует первый сезон, CD Projekt RED прекращает поддержку «ГВИНТА» для консолей, авторы A Plague Tale: Innocence и Pathfinder: Kingmaker работают над продолжениями, Red Barrels анонсирует The Outlast Trials, GTFO стартует в Steam Early Access уже на следующей неделе, Life is Strange 2 получает финальный эпизод, а DayZ — новую карту «Ливония»; In The Valley of Gods отправляется в заморозку, а Генри Кавилл поясняет, почему его Геральт из Ривии так похож на Геральта из The Witcher 3: Wild Hunt.\n\n• CD Projekt RED прекращает поддержку «ГВИНТА» для консолей;\n• Генри Кавилл вдохновлялся Геральтом Дага Кокла;\n• Карта «Ливония» для DayZ;\n• Обзор игры Story of a Gladiator.",
+        ),
+        content: Some(
+            "В <a href=\"https://stopgame.ru/game/call_of_duty_modern_warfare\" rel=\"noopener noreferrer\"><strong>Call of Duty: Modern Warfare</strong></a> стартует первый сезон, CD Projekt RED прекращает поддержку <a href=\"https://stopgame.ru/game/gwent_the_witcher_card_game\" rel=\"noopener noreferrer\"><strong>«ГВИНТА»</strong></a> для консолей, авторы <a href=\"https://stopgame.ru/game/plague_tale_innocence_a\" rel=\"noopener noreferrer\"><strong>A Plague Tale: Innocence</strong></a> и <a href=\"https://stopgame.ru/game/pathfinder_kingmaker\" rel=\"noopener noreferrer\"><strong>Pathfinder: Kingmaker</strong></a> работают над продолжениями, Red Barrels анонсирует <a href=\"https://stopgame.ru/game/outlast_trials\" rel=\"noopener noreferrer\"><strong>The Outlast Trials</strong></a>, <a href=\"https://stopgame.ru/game/gtfo\" rel=\"noopener noreferrer\"><strong>GTFO</strong></a> стартует в Steam Early Access уже на следующей неделе, <a href=\"https://stopgame.ru/game/life_is_strange_2\" rel=\"noopener noreferrer\"><strong>Life is Strange 2</strong></a> получает финальный эпизод, а <a href=\"https://stopgame.ru/game/dayz\" rel=\"noopener noreferrer\"><strong>DayZ</strong></a> — новую карту «Ливония»; <a href=\"https://stopgame.ru/game/in_the_valley_of_gods\" rel=\"noopener noreferrer\"><strong>In The Valley of Gods</strong></a> отправляется в заморозку, а Генри Кавилл поясняет, почему его Геральт из Ривии так похож на Геральта из <a href=\"https://stopgame.ru/game/witcher_3_wild_hunt\" rel=\"noopener noreferrer\"><strong>The Witcher 3: Wild Hunt</strong></a>.<br>\n<br>\n• <a href=\"https://stopgame.ru/newsdata/41052\" rel=\"noopener noreferrer\">CD Projekt RED прекращает поддержку «ГВИНТА» для консолей</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41043\" rel=\"noopener noreferrer\">Генри Кавилл вдохновлялся Геральтом Дага Кокла</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41041\" rel=\"noopener noreferrer\">Карта «Ливония» для DayZ</a>;<br>\n• <a href=\"https://stopgame.ru/show/106894/story_of_a_gladiator_review\" rel=\"noopener noreferrer\">Обзор игры Story of a Gladiator</a>.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/05/AI8bsej.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106901/infact_05_12_2019#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106902/wrath_aeon_of_ruin_preview_po_ranney_versii",
+        title: "Wrath: Aeon of Ruin: Превью по ранней версии",
+        date: 2019-12-05T14:34:50,
+        summary: Some(
+            "«Нам очень понравилось работать над Ion Fury вместе с Voidpoint. Мы поступили мудро, решив сотрудничать с лучшими моддерами движка Build, — говорил в интервью Фредерик Шрайбер (Frederik Schreiber), вице-президент 3D Realms. — В нашей следующей игре мы решили пойти ещё дальше: разработать её на движке Quake в настоящем 3D. Мы воспользовались тем же подходом: стали искать лучших моддеров и создателей карт для Quake. В конце концов, они уже знают этот движок, как с ним работать и всё такое. Так мы и вышли на [моддера] KillPixel, который вместе со своим другом уже пилил что-то своё. Нам понравился его проект, и мы вышли с ним на контакт. Вскоре мы решили профинансировать разработку и увеличить размер команды с двух человек до 25. И вуаля! Мы показали миру Wrath и сами с нетерпением ждём её релиза!»\n\nСложно представить, что этот разговор об «игре на движке Quake в настоящем 3D» состоялся в 2019 году. Что-то подобное лет 20 назад мог говорить Джон Ромеро (John Romero), который активно нанимал моддеров для разработки своей провалившейся Daikatana, в чём впоследствии раскаивался. Сотрудничество 3D Realms с моддерами старых движков, впрочем, пока идёт неплохо: Ion Fury получила от нас «Похвально», а недавно вышедшая в ранний доступ Wrath: Aeon of Ruin обещает быть как минимум не хуже.\n\nhttps://www.youtube.com/watch?v=5QOfQ0Rf-yA\n\nВ поисках утраченно",
+        ),
+        content: Some(
+            "«Нам очень понравилось работать над <a href=\"https://stopgame.ru/game/ion_maiden\" rel=\"noopener noreferrer\"><strong>Ion Fury</strong></a> вместе с <strong>Voidpoint</strong>. Мы поступили мудро, решив сотрудничать с лучшими моддерами движка Build, — говорил в <a href=\"https://www.moddb.com/features/interview-3d-realms-on-wrath-aeon-of-ruins-modding-scene-heritage\" rel=\"noopener noreferrer\">интервью</a> Фредерик Шрайбер (Frederik Schreiber), вице-президент <strong>3D Realms</strong>. — В нашей следующей игре мы решили пойти ещё дальше: разработать её на движке <a href=\"https://stopgame.ru/game/quake\" rel=\"noopener noreferrer\"><strong>Quake</strong></a> в настоящем 3D. Мы воспользовались тем же подходом: стали искать лучших моддеров и создателей карт для <strong>Quake</strong>. В конце концов, они уже знают этот движок, как с ним работать и всё такое. Так мы и вышли на [моддера] KillPixel, который вместе со своим другом уже пилил что-то своё. Нам понравился его проект, и мы вышли с ним на контакт. Вскоре мы решили профинансировать разработку и увеличить размер команды с двух человек до 25. И вуаля! Мы показали миру <a href=\"https://stopgame.ru/game/wrath_aeon_of_ruin\" rel=\"noopener noreferrer\"><strong>Wrath</strong></a> и сами с нетерпением ждём её релиза!»<br>\n<br>\nСложно представить, что этот разговор об «игре на движке <strong>Quake</strong> в настоящем 3D» состоялся в 2019 году. Что-то подобное лет 20 назад мог говорить Джон Ромеро (John Romero), который активно нанимал моддеров для разработки своей провалившейся <a href=\"https://stopgame.ru/game/daikatana\" rel=\"noopener noreferrer\"><strong>Daikatana</strong></a>, в чём впоследствии раскаивался. Сотрудничество <strong>3D Realms</strong> с моддерами старых движков, впрочем, пока идёт неплохо: <a href=\"https://stopgame.ru/game/ion_maiden\" rel=\"noopener noreferrer\"><strong>Ion Fury</strong></a> получила от нас <a href=\"https://stopgame.ru/show/105662/ion_maiden_review\" rel=\"noopener noreferrer\">«Похвально»</a>, а недавно вышедшая в ранний доступ <strong>Wrath: Aeon of Ruin</strong> обещает быть как минимум не хуже.<br>\n<br>\nhttps://www.youtube.com/watch?v=5QOfQ0Rf-yA<br>\n<br>\nВ поисках утраченно",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/articles/2019/12/05/Gveco1_J.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106902/wrath_aeon_of_ruin_preview_po_ranney_versii#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106903/infact_06_12_2019",
+        title: "Инфакт [06.12.2019]",
+        date: 2019-12-06T03:26:33,
+        summary: Some(
+            "Фил Спенсер делится впечатлениями от Project Scarlett, в Plague Inc. идёт борьба с фейковыми новостями, LOST ARK открывает «Новые высоты», Мокси собирается грабить казино Джека в Borderlands 3, Геральт появляется в Daemon X Machina, Pillars of Eternity II: Deadfire готовится к выходу на консолях, а The Division 2 становится хардкорней.\n\n• Достигни новых высот в Lost Ark;\n\n• Первые 13 минут из дополнения Moxxi’s Heist of the Handsome Jackpot для Borderlands 3;\n• В The Division 2 вводят хардкорный режим с необратимой смертью;\n• CALL OF DUTY: MODERN WARFARE. Замесители: Финал;\n• Wrath: Aeon of Ruin: Превью по ранней версии;\n\n• Философия Fallout: New Vegas — Курьер в плену прошлого;\n• Sniper Ghost Warrior Contracts — Обзор. Охота в снежной Сибири.",
+        ),
+        content: Some(
+            "Фил Спенсер делится впечатлениями от Project Scarlett, в <a href=\"https://stopgame.ru/game/plague_tale_innocence_a\" rel=\"noopener noreferrer\"><strong>Plague Inc.</strong></a> идёт борьба с фейковыми новостями, <a href=\"https://stopgame.ru/game/lostark\" rel=\"noopener noreferrer\"><strong>LOST ARK</strong></a> открывает «Новые высоты», Мокси собирается грабить казино Джека в <a href=\"https://stopgame.ru/game/borderlands_3_moxxi_s_heist_of_the_handsome_jackpot\" rel=\"noopener noreferrer\"><strong>Borderlands 3</strong></a>, Геральт появляется в <a href=\"https://stopgame.ru/game/daemon_x_machina\" rel=\"noopener noreferrer\"><strong>Daemon X Machina</strong></a>, <a href=\"https://stopgame.ru/game/pillars_of_eternity_2_deadfire\" rel=\"noopener noreferrer\"><strong>Pillars of Eternity II: Deadfire</strong></a> готовится к выходу на консолях, а <a href=\"https://stopgame.ru/game/tom_clancy_s_the_division_2\" rel=\"noopener noreferrer\"><strong>The Division 2</strong></a> становится хардкорней.<br>\n<br>\n• <a href=\"https://1l-go.mail.ru/r/adid/2919237_2012658/pid/103069/pof/1/f/3/\" rel=\"noopener noreferrer\"><strong>Достигни новых высот в Lost Ark</strong></a>;<br>\n<br>\n• <a href=\"https://stopgame.ru/newsdata/41066\" rel=\"noopener noreferrer\">Первые 13 минут из дополнения Moxxi’s Heist of the Handsome Jackpot для Borderlands 3</a>;<br>\n• <a href=\"https://stopgame.ru/newsdata/41060\" rel=\"noopener noreferrer\">В The Division 2 вводят хардкорный режим с необратимой смертью</a>;<br>\n• <a href=\"https://stopgame.ru/show/106895/call_of_duty_modern_warfare_zamesiteli_final\" rel=\"noopener noreferrer\">CALL OF DUTY: MODERN WARFARE. Замесители: Финал</a>;<br>\n• <a href=\"https://stopgame.ru/show/106902/wrath_aeon_of_ruin_preview_po_ranney_versii\" rel=\"noopener noreferrer\">Wrath: Aeon of Ruin: Превью по ранней версии</a>;<br>\n<br>\n• <a href=\"https://stopgame.ru/blogs/topic/99452\" rel=\"noopener noreferrer\">Философия Fallout: New Vegas — Курьер в плену прошлого</a>;<br>\n• <a href=\"https://stopgame.ru/blogs/topic/99509\" rel=\"noopener noreferrer\">Sniper Ghost Warrior Contracts — Обзор. Охота в снежной Сибири</a>.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/06/RR_LS7Q.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106903/infact_06_12_2019#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106904/life_is_strange_2_trailer_polnogo_sezona",
+        title: "Life Is Strange 2: Трейлер полного сезона",
+        date: 2019-12-06T03:31:05,
+        summary: Some(
+            "Все эпизоды Life is Strange 2 отправились в релиз — теперь историю Шона и Дэниела можно пройти от начала до конца. Познакомить новоприбывших с завязкой сюжета и главными героями призван этот ролик.",
+        ),
+        content: Some(
+            "Все эпизоды Life is Strange 2 отправились в релиз — теперь историю Шона и Дэниела можно пройти от начала до конца. Познакомить новоприбывших с завязкой сюжета и главными героями призван этот ролик.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/06/iCemDSn.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106904/life_is_strange_2_trailer_polnogo_sezona#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106905/dead_cells_the_bad_seed_screenshots",
+        title: "Dead Cells: The Bad Seed: Скриншоты",
+        date: 2019-12-06T03:32:55,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/games/2019/12/06/FzVxMt3nR.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106905/dead_cells_the_bad_seed_screenshots#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106906/pillars_of_eternity_2_deadfire_anons_daty_reliza_na_konsolyah",
+        title: "Pillars of Eternity 2: Deadfire: Анонс даты релиза на консолях",
+        date: 2019-12-06T03:33:54,
+        summary: Some(
+            "Pillars of Eternity II доберётся до консолей с опозданием — релиз на PlayStation 4 и Xbox One состоится в январе 2020-го. В качестве награды за ожидание консольщики получат полную версию со всеми расширениями в комплекте. Оценить разнообразие контента можно по этому видео.",
+        ),
+        content: Some(
+            "Pillars of Eternity II доберётся до консолей с опозданием — релиз на PlayStation 4 и Xbox One состоится в январе 2020-го. В качестве награды за ожидание консольщики получат полную версию со всеми расширениями в комплекте. Оценить разнообразие контента можно по этому видео.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/06/hDLdONm.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106906/pillars_of_eternity_2_deadfire_anons_daty_reliza_na_konsolyah#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106907/dead_cells_the_bad_seed_anons_dopolneniya",
+        title: "Dead Cells: The Bad Seed: Анонс дополнения",
+        date: 2019-12-06T03:34:15,
+        summary: Some(
+            "The Bad Seed — платное дополнение, которое добавит в Dead Cells нового босса, два биома и не только. К анонсу DLC разработчики подошли с юмором — дебютный ролик демонстрирует семейство грибов, которое безжалостно истребляет главный герой.",
+        ),
+        content: Some(
+            "The Bad Seed — платное дополнение, которое добавит в Dead Cells нового босса, два биома и не только. К анонсу DLC разработчики подошли с юмором — дебютный ролик демонстрирует семейство грибов, которое безжалостно истребляет главный герой.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/06/T1oS-XA.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106907/dead_cells_the_bad_seed_anons_dopolneniya#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106908/lost_ember_review",
+        title: "Lost Ember: Обзор",
+        date: 2019-12-06T12:59:28,
+        summary: Some(
+            "Игры, в которых нам приходится влезать в шкуру самых настоящих диких зверей, появляются не так уж часто. На ум приходят разве что серия Shelter да Life of Black Tiger — судя по одному только трейлеру, худшая игра для PlayStation 4. Ещё до релиза «Жизни чёрного тигра» маленькая немецкая студия Mooneye предвидела, что миру будет сильно не хватать хороших игр, где мы управляем животными, и в 2016-ом году запустила на Kickstarter кампанию по сбору средств для Lost Ember.\n\nНужное количество денег, 100 тысяч евро, было собрано всего за два дня, в итоге же бэкеры поддержали игру на сумму в три раза больше ожидаемой. Фундамент для независимой команды из пяти человек был заложен очень даже неплохой. Оставалось только оправдать ожидания публики. Определённые опасения на этот счёт имелись, ведь Lost Ember — это дебютный проект Mooneye Studios. Сотрудники компании пошли за своей мечтой: они бросили офисную работу и основали собственную инди-студию. Творческая свобода — штука, конечно, хорошая, но получилось ли у немцев не опьянеть от неё и не подвести своих бэкеров? \n\nhttps://www.youtube.com/watch?v=br_b7JqM7Ps\n\nВ мире животных\n\nЗавязка Lost Ember незатейлива: в безлюдном мире разговорчивый дух-огонёк находит волчицу, которая его понимает, и просит её о помощи. Огоньку очень хочется выбраться из леса и попасть в некий Город Света, но его не пускает барьер. Волчица хоть и не может говорить по-человечески, но всем своим поведением даёт понять, что она не против отправиться в дорогу и помочь новому знакомому. На протяжении своего путешествия парочка будет постепенно вспоминать прошлое и по крупицам восстанавливать историю тех мест, по которым проходит её путь.\n\nУглубляться в сюжетные дебри — значит рушить всю интригу:",
+        ),
+        content: Some(
+            "Игры, в которых нам приходится влезать в шкуру самых настоящих диких зверей, появляются не так уж часто. На ум приходят разве что серия <strong>Shelter</strong> да <strong>Life of Black Tiger</strong> — судя по одному только <a href=\"https://www.youtube.com/watch?v=uM523jjrvf4\" rel=\"noopener noreferrer\">трейлеру</a>, худшая игра для PlayStation 4. Ещё до релиза «Жизни чёрного тигра» маленькая немецкая студия <strong>Mooneye</strong> предвидела, что миру будет сильно не хватать хороших игр, где мы управляем животными, и в 2016-ом году запустила на Kickstarter кампанию по сбору средств для <a href=\"https://stopgame.ru/game/lost_ember\" rel=\"noopener noreferrer\"><strong>Lost Ember</strong></a>.<br>\n<br>\nНужное количество денег, 100 тысяч евро, было собрано всего за два дня, в итоге же бэкеры поддержали игру на сумму в три раза больше ожидаемой. Фундамент для независимой команды из пяти человек был заложен очень даже неплохой. Оставалось только оправдать ожидания публики. Определённые опасения на этот счёт имелись, ведь <strong>Lost Ember</strong> — это дебютный проект <strong>Mooneye Studios</strong>. Сотрудники компании пошли за своей мечтой: они бросили офисную работу и основали собственную инди-студию. Творческая свобода — штука, конечно, хорошая, но получилось ли у немцев не опьянеть от неё и не подвести своих бэкеров? <br>\n<br>\nhttps://www.youtube.com/watch?v=br_b7JqM7Ps<br>\n<br>\nВ мире животных<br>\n<br>\nЗавязка <strong>Lost Ember</strong> незатейлива: в безлюдном мире разговорчивый дух-огонёк находит волчицу, которая его понимает, и просит её о помощи. Огоньку очень хочется выбраться из леса и попасть в некий Город Света, но его не пускает барьер. Волчица хоть и не может говорить по-человечески, но всем своим поведением даёт понять, что она не против отправиться в дорогу и помочь новому знакомому. На протяжении своего путешествия парочка будет постепенно вспоминать прошлое и по крупицам восстанавливать историю тех мест, по которым проходит её путь.<br>\n<br>\nУглубляться в сюжетные дебри — значит рушить всю интригу:",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/articles/2019/12/06/gPQGaOU7x.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106908/lost_ember_review#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106909/borderlands_3_moxxi_s_heist_of_the_handsome_jackpot_13_minut_geympleya",
+        title: "Borderlands 3: Moxxi\'s Heist of the Handsome Jackpot: 13 минут геймплея",
+        date: 2019-12-07T03:50:52,
+        summary: Some(
+            "В первом сюжетном DLC для Borderlands 3 мы отправимся в казино Красавчика Джека. Разработчики явно уверены в качестве добавки — они опубликовали продолжительный геймплейный фрагмент, позволяющий взглянуть на яркий дизайн заведения и традиционный для серии экшен.",
+        ),
+        content: Some(
+            "В первом сюжетном DLC для Borderlands 3 мы отправимся в казино Красавчика Джека. Разработчики явно уверены в качестве добавки — они опубликовали продолжительный геймплейный фрагмент, позволяющий взглянуть на яркий дизайн заведения и традиционный для серии экшен.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/07/6YEIBE5Q.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106909/borderlands_3_moxxi_s_heist_of_the_handsome_jackpot_13_minut_geympleya#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106910/mechwarrior_5_mercenaries_reliznyy_trailer",
+        title: "MechWarrior 5: Mercenaries: Релизный трейлер",
+        date: 2019-12-07T03:51:06,
+        summary: Some(
+            "Главный элемент MechWarrior 5 — это, конечно, огромные боевые машины. Разработчики игры безошибочно рассудили, что битвам этих гигантов и должен быть посвящён релизный ролик.",
+        ),
+        content: Some(
+            "Главный элемент MechWarrior 5 — это, конечно, огромные боевые машины. Разработчики игры безошибочно рассудили, что битвам этих гигантов и должен быть посвящён релизный ролик.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/07/ISmzXy19.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106910/mechwarrior_5_mercenaries_reliznyy_trailer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106911/darksiders_genesis_trailer_k_relizu_na_pc_i_stadia",
+        title: "Darksiders: Genesis: Трейлер к релизу на PC и Stadia",
+        date: 2019-12-07T03:51:24,
+        summary: Some(
+            "Судя по первым отзывам, Darksiders Genesis — один из редких случаев, когда ответвление в новом жанре не запятнало репутацию основной серии: критики хвалят бодрый геймплей новинки. Взглянуть на него можно в этом видео.",
+        ),
+        content: Some(
+            "Судя по первым отзывам, Darksiders Genesis — один из редких случаев, когда ответвление в новом жанре не запятнало репутацию основной серии: критики хвалят бодрый геймплей новинки. Взглянуть на него можно в этом видео.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/07/pTZKLcf.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106911/darksiders_genesis_trailer_k_relizu_na_pc_i_stadia#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106912/starship_troopers_terran_command_screenshots",
+        title: "Starship Troopers: Terran Command: Скриншоты",
+        date: 2019-12-07T03:56:24,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/games/2019/12/07/Z1EXobm.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106912/starship_troopers_terran_command_screenshots#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106913/starship_troopers_terran_command_anons_igry",
+        title: "Starship Troopers: Terran Command: Анонс игры",
+        date: 2019-12-07T03:57:04,
+        summary: Some(
+            "Terran Command — ещё одна игра по мотивам «Звёздного десанта». В этой RTS вам предстоит победить арахнидов, управляя войсками людей. Судя по премьерному видео, надежда на выход приличной интерактивной адаптации ещё жива.",
+        ),
+        content: Some(
+            "Terran Command — ещё одна игра по мотивам «Звёздного десанта». В этой RTS вам предстоит победить арахнидов, управляя войсками людей. Судя по премьерному видео, надежда на выход приличной интерактивной адаптации ещё жива.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/07/I1Euutyw7.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106913/starship_troopers_terran_command_anons_igry#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106914/starship_troopers_terran_command_geympleynyy_tizer",
+        title: "Starship Troopers: Terran Command: Геймплейный тизер",
+        date: 2019-12-07T04:00:58,
+        summary: Some(
+            "Вслед за анонсом игры разработчики Terran Command показали небольшой фрагмент геймплея. Кадры традиционные для стратегий в реальном времени — вид сверху, стрельба, взрывы и мельтешение юнитов.",
+        ),
+        content: Some(
+            "Вслед за анонсом игры разработчики Terran Command показали небольшой фрагмент геймплея. Кадры традиционные для стратегий в реальном времени — вид сверху, стрельба, взрывы и мельтешение юнитов.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/07/CNcSckLFI.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106914/starship_troopers_terran_command_geympleynyy_tizer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106915/istoriya_piratskoy_dayz",
+        title: "DayZ: История пиратской DayZ",
+        date: 2019-12-07T07:41:34,
+        summary: Some(
+            "Нет повести печальнее на свете, чем путь DayZ от «альфы» к релизу. Игра была сырой и кривой. Но смогла проникнуть в сердечки миллионов игроков, а многих не отпускает до сих пор. И на волне популярности, как пивные ларьки в спальном районе, повсюду выросли пиратские серверы со своими правилами и скриптами. Это жажда заработать на чужой собственности? Желание собрать свою (ту самую!) DayZ или что-то иное? Запаковав эти вопросы в сумку, мы взяли билет до Черноруссии, дабы получить информацию из первых рук.",
+        ),
+        content: Some(
+            "Нет повести печальнее на свете, чем путь DayZ от «альфы» к релизу. Игра была сырой и кривой. Но смогла проникнуть в сердечки миллионов игроков, а многих не отпускает до сих пор. И на волне популярности, как пивные ларьки в спальном районе, повсюду выросли пиратские серверы со своими правилами и скриптами. Это жажда заработать на чужой собственности? Желание собрать свою (ту самую!) DayZ или что-то иное? Запаковав эти вопросы в сумку, мы взяли билет до Черноруссии, дабы получить информацию из первых рук.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/07/M8MFv_nN.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106915/istoriya_piratskoy_dayz#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106916/arise_a_simple_story_review",
+        title: "Arise: A Simple Story: Обзор",
+        date: 2019-12-07T09:32:08,
+        summary: Some(
+            "Появление в декабре душевных инди-игр, вызывающих во время прохождения самые разные эмоции, уже стало традицией. Одним из последних релизов 2017 года была прекрасная Gorogoa, прошлый год завершился несравненной Gris, а сейчас на PC и консолях вышла Arise: A Simple Story. Испанская команда Piccolo Studio предлагает игрокам вспомнить вместе с главным героем самые яркие моменты из его жизни — порадоваться, погрустить и увидеть простую историю о таких же простых людях.\n\nhttps://www.youtube.com/watch?v=VJRnaCaRLH4\n\nКрасота в простоте\n\nПо сюжету седовласый протагонист с густой бородой умирает в самом начале игры. Он прожил долгую жизнь — настолько, что её удалось поделить на десять примерно равных частей, каждую из которых предстоит изучить. От раннего детства до глубокой старости было достаточно интересных эпизодов, чтобы герою захотелось вновь их пережить, пусть некоторые из них и оказываются далеко не такими весёлыми, как остальные. Его счастье, горе, взлёты и переживания мы будем наблюдать вплоть до финальных титров.\n\nОдно из главных умений дедули — способность перематывать время вперёд и назад. На этой механике построены абсолютно все уровни, и без её использования завершить их невозможно. Перемотка увеличивает и уменьшает сугробы, двигает листья кувшинок в разные стороны, меняет направление ветра — на таком взаимодействии с окружением и основаны все платформенные загадки. Локации почти полностью линейны, запутаться в них невозможно, поэтому, если дальнейшие действия непонятны, достаточно поэкспериментировать со временем — наверняка решение быстро найдётся.\n\nУдивительно, но разработчики смогли сделать все десять уровней непохожими друг на друга в плане того, чем игроку нужно на них заниматься. Казалось, по первой",
+        ),
+        content: Some(
+            "Появление в декабре душевных инди-игр, вызывающих во время прохождения самые разные эмоции, уже стало традицией. Одним из последних релизов 2017 года была прекрасная <a href=\"https://stopgame.ru/game/gorogoa\" rel=\"noopener noreferrer\"><strong>Gorogoa</strong></a>, прошлый год завершился несравненной <a href=\"https://stopgame.ru/game/gris\" rel=\"noopener noreferrer\"><strong>Gris</strong></a>, а сейчас на PC и консолях вышла <a href=\"https://stopgame.ru/game/arise_a_simple_story\" rel=\"noopener noreferrer\"><strong>Arise: A Simple Story</strong></a>. Испанская команда <strong>Piccolo Studio</strong> предлагает игрокам вспомнить вместе с главным героем самые яркие моменты из его жизни — порадоваться, погрустить и увидеть простую историю о таких же простых людях.<br>\n<br>\nhttps://www.youtube.com/watch?v=VJRnaCaRLH4<br>\n<br>\nКрасота в простоте<br>\n<br>\nПо сюжету седовласый протагонист с густой бородой умирает в самом начале игры. Он прожил долгую жизнь — настолько, что её удалось поделить на десять примерно равных частей, каждую из которых предстоит изучить. От раннего детства до глубокой старости было достаточно интересных эпизодов, чтобы герою захотелось вновь их пережить, пусть некоторые из них и оказываются далеко не такими весёлыми, как остальные. Его счастье, горе, взлёты и переживания мы будем наблюдать вплоть до финальных титров.<br>\n<br>\nОдно из главных умений дедули — способность перематывать время вперёд и назад. На этой механике построены абсолютно все уровни, и без её использования завершить их невозможно. Перемотка увеличивает и уменьшает сугробы, двигает листья кувшинок в разные стороны, меняет направление ветра — на таком взаимодействии с окружением и основаны все платформенные загадки. Локации почти полностью линейны, запутаться в них невозможно, поэтому, если дальнейшие действия непонятны, достаточно поэкспериментировать со временем — наверняка решение быстро найдётся.<br>\n<br>\nУдивительно, но разработчики смогли сделать все десять уровней непохожими друг на друга в плане того, чем игроку нужно на них заниматься. Казалось, по первой",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/articles/2019/12/07/xuDD3vaE.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106916/arise_a_simple_story_review#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106917/battlefield_v_reviewnyy_trailer_ostrova_ueyk",
+        title: "Battlefield V: Обзорный трейлер «Острова Уэйк»",
+        date: 2019-12-08T07:11:54,
+        summary: Some(
+            "«Остров Уэйк» — одна из самых популярных карт в Battlefield, появлявшаяся в разных частях серии. В версии для Battlefield V локацию расширили и улучшили. Как именно — увидите в этом трейлере.",
+        ),
+        content: Some(
+            "«Остров Уэйк» — одна из самых популярных карт в Battlefield, появлявшаяся в разных частях серии. В версии для Battlefield V локацию расширили и улучшили. Как именно — увидите в этом трейлере.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/08/XJQdg5dsl.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106917/battlefield_v_reviewnyy_trailer_ostrova_ueyk#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106918/arise_a_simple_story_reliznyy_trailer",
+        title: "Arise: A Simple Story: Релизный трейлер",
+        date: 2019-12-08T07:12:06,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/08/DHNxm15-Q.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106918/arise_a_simple_story_reliznyy_trailer#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106919/dying_light_trailer_krossovera_s_chivalry",
+        title: "Dying Light: Трейлер кроссовера с Chivalry",
+        date: 2019-12-08T07:12:51,
+        summary: Some(
+            "После кроссовера с Left 4 Dead 2 авторы Dying Light решили скрестить свою игру ещё с одним боевиком — Chivalry: Medieval Warfare. За участие в ивенте можно получить средневековое снаряжение — щит, меч и, если сообщество выполнит задачу, наряд. Демонстрация призов — в ролике.",
+        ),
+        content: Some(
+            "После кроссовера с Left 4 Dead 2 авторы Dying Light решили скрестить свою игру ещё с одним боевиком — Chivalry: Medieval Warfare. За участие в ивенте можно получить средневековое снаряжение — щит, меч и, если сообщество выполнит задачу, наряд. Демонстрация призов — в ролике.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/08/4VcTNYVJM.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106919/dying_light_trailer_krossovera_s_chivalry#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106920/stoit_li_vernutsya_v_postal_2_razbor_poletov",
+        title: "Postal 2: Стоит ли вернуться в Postal 2? [Разбор полетов]",
+        date: 2019-12-08T16:52:22,
+        summary: Some(
+            "Сегодня игру с подобным содержанием раскритиковали бы все западные СМИ, но в те времена шумихи вокруг Postal 2 было меньше, чем сейчас вокруг чьего-нибудь безобидного твита. Если вы хотите вспомнить, что же раньше разрешалось делать разработчикам игр, избегая при этом публичного порицания, то этот выпуск «Разбора полётов» для вас.",
+        ),
+        content: Some(
+            "Сегодня игру с подобным содержанием раскритиковали бы все западные СМИ, но в те времена шумихи вокруг Postal 2 было меньше, чем сейчас вокруг чьего-нибудь безобидного твита. Если вы хотите вспомнить, что же раньше разрешалось делать разработчикам игр, избегая при этом публичного порицания, то этот выпуск «Разбора полётов» для вас.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/08/SRrythgE.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106920/stoit_li_vernutsya_v_postal_2_razbor_poletov#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106921/daemon_x_machina_trailer_krossovera_s_vedmakom",
+        title: "Daemon X Machina: Трейлер кроссовера с «Ведьмаком»",
+        date: 2019-12-08T16:57:07,
+        summary: Some(
+            "Похоже, Геральт неспроста ненавидит порталы — его то и дело переносит в японские игры. На этот раз ведьмак и его приёмная дочь Цири наведались в экшен про боевых роботов Daemon X Machina. Посмотреть на диковатое сочетание фэнтезийных героев и футуристичных машин можно в этом ролике.",
+        ),
+        content: Some(
+            "Похоже, Геральт неспроста ненавидит порталы — его то и дело переносит в японские игры. На этот раз ведьмак и его приёмная дочь Цири наведались в экшен про боевых роботов Daemon X Machina. Посмотреть на диковатое сочетание фэнтезийных героев и футуристичных машин можно в этом ролике.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/08/0c2OF6B.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106921/daemon_x_machina_trailer_krossovera_s_vedmakom#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106922/infact_09_12_2019",
+        title: "Инфакт [09.12.2019]",
+        date: 2019-12-09T02:53:13,
+        summary: Some(
+            "И всё-таки ремейка Resident Evil 3 не будет на The Game Awards. Зато там будет новая игра во вселенной League of Legends. Помимо этого, сегодня вы узнаете о переносе Beyond a Steel Sky, прекращении развития The Elder Scrolls: Legends, новом облике Witchfire и особенности стартовой линейки игр для PlayStation 5.\n\n• Стоит ли вернуться в Postal 2? \n• Обзор Lost Ember;\n• Обзор Arise: A Simple Story;\n• История пиратской DayZ.",
+        ),
+        content: Some(
+            "И всё-таки ремейка <a href=\"https://stopgame.ru/game/resident_evil_3\" rel=\"noopener noreferrer\"><strong>Resident Evil 3</strong></a> не будет на The Game Awards. Зато там будет новая игра во вселенной <a href=\"https://stopgame.ru/game/league_of_legends_clash_of_fates\" rel=\"noopener noreferrer\"><strong>League of Legends</strong></a>. Помимо этого, сегодня вы узнаете о переносе <a href=\"https://stopgame.ru/game/beyond_a_steel_sky\" rel=\"noopener noreferrer\"><strong>Beyond a Steel Sky</strong></a>, прекращении развития <a href=\"https://stopgame.ru/game/elder_scrolls_legends\" rel=\"noopener noreferrer\"><strong>The Elder Scrolls: Legends</strong></a>, новом облике <a href=\"https://stopgame.ru/game/witchfire\" rel=\"noopener noreferrer\"><strong>Witchfire</strong></a> и особенности стартовой линейки игр для PlayStation 5.<br>\n<br>\n• <a href=\"https://stopgame.ru/show/106920/stoit_li_vernutsya_v_postal_2_razbor_poletov\" rel=\"noopener noreferrer\">Стоит ли вернуться в Postal 2?</a> <br>\n• <a href=\"https://stopgame.ru/show/106908/lost_ember_review\" rel=\"noopener noreferrer\">Обзор Lost Ember</a>;<br>\n• <a href=\"https://stopgame.ru/show/106916/arise_a_simple_story_review\" rel=\"noopener noreferrer\">Обзор Arise: A Simple Story</a>;<br>\n• <a href=\"https://stopgame.ru/show/106915/istoriya_piratskoy_dayz\" rel=\"noopener noreferrer\">История пиратской DayZ</a>.",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/09/YuKXo6rD.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106922/infact_09_12_2019#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106923/i_am_jesus_christ_anons_igry",
+        title: "I Am Jesus Christ: Анонс игры",
+        date: 2019-12-09T08:56:52,
+        summary: Some(
+            "Когда-нибудь мечтали оказаться на месте Иисуса? Ну, то есть не чтобы вас распяли, а чтобы творить чудеса и помогать людям. I Am Jesus Christ предоставит вам такую возможность — вы будете выручать простой люд и даже сразитесь с самим Сатаной!",
+        ),
+        content: Some(
+            "Когда-нибудь мечтали оказаться на месте Иисуса? Ну, то есть не чтобы вас распяли, а чтобы творить чудеса и помогать людям. I Am Jesus Christ предоставит вам такую возможность — вы будете выручать простой люд и даже сразитесь с самим Сатаной!",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/video/2019/12/09/1xiCnJNZ.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106923/i_am_jesus_christ_anons_igry#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106924/i_am_jesus_christ_screenshots",
+        title: "I Am Jesus Christ: Скриншоты",
+        date: 2019-12-09T08:58:35,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/games/2019/12/09/kASOKSy.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106924/i_am_jesus_christ_screenshots#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106925/bug_fables_the_everlasting_sapling_screenshots",
+        title: "Bug Fables: The Everlasting Sapling: Скриншоты",
+        date: 2019-12-09T15:51:58,
+        summary: None,
+        content: None,
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/games/2019/12/09/pnSNefms.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106925/bug_fables_the_everlasting_sapling_screenshots#comments",
+        ),
+    },
+    Post {
+        id: -1,
+        link: "https://stopgame.ru/show/106926/bug_fables_the_everlasting_sapling_review",
+        title: "Bug Fables: The Everlasting Sapling: Обзор",
+        date: 2019-12-09T15:56:40,
+        summary: Some(
+            "Как известно, изначально все ролевые игры были бумажными. Видимо, в том числе поэтому разработчики периодически делают и видеоигровые RPG, стилизованные под бумажные. Самый яркий пример — серия Paper Mario. Именно на неё больше всего похожа Bug Fables: The Everlasting Sapling.\n\nhttps://www.youtube.com/watch?v=x3ahTPimui8\n\nWho Wants to Live Forever\n\nСхожесть эта прослеживается хотя бы в детской, что ли, направленности игры. Правда, таких персонажей детишки редко считают героями и часто боятся — в Bug Fables: The Everlasting Sapling мы выступаем в роли забавных пчёл, муравьёв и жуков. Хотя если заменить их людьми, эльфами или гномами, то мало что изменится: они тоже живут в своих королевствах, совершают подвиги, сражаются со злом и периодически ищут Очень Важные Артефакты. В данном случае речь идёт о реликвиях для королевы муравьёв, которая вслед за своей матерью ищет секрет бессмертия. И в данном случае это особенно актуально — насекомые живут очень недолго.\n\nЧтобы помочь королеве, три героя в составе пчелы, муравья и жука делают то же, что и герои всех классических RPG, — общаются, выполняют квесты, прокачиваются, решают загадки, покупают всякие полезные расходники и сражаются с врагами, в том числе с огромными боссами. А ещё, как практически в каждой японской игре, они любят есть — собирают рецепты блюд и отдают ингредиенты поварам, чтобы те изготовили из них что-нибудь восстанавливающее здоровье, поднимающего павшего союзника и так далее. При этом в качестве валюты служат красные и синие ягодки.\n\nНасекомые в поисках приключений\n\nСюжет подаётся интересно — история, как водится, совсем не так проста, как кажется поначалу. Событий и приключений много, как и разнообразных локаций, куда мы постепенно получаем доступ: тут и королевские хоромы с тронными залами и библиотеками, и подземелья, и шахты, и",
+        ),
+        content: Some(
+            "Как известно, изначально все ролевые игры были бумажными. Видимо, в том числе поэтому разработчики периодически делают и видеоигровые RPG, стилизованные под бумажные. Самый яркий пример — серия <strong>Paper Mario</strong>. Именно на неё больше всего похожа <a href=\"https://stopgame.ru/game/bug_fables_the_everlasting_sapling\" rel=\"noopener noreferrer\"><strong>Bug Fables: The Everlasting Sapling</strong></a>.<br>\n<br>\nhttps://www.youtube.com/watch?v=x3ahTPimui8<br>\n<br>\nWho Wants to Live Forever<br>\n<br>\nСхожесть эта прослеживается хотя бы в детской, что ли, направленности игры. Правда, таких персонажей детишки редко считают героями и часто боятся — в <strong>Bug Fables: The Everlasting Sapling</strong> мы выступаем в роли забавных пчёл, муравьёв и жуков. Хотя если заменить их людьми, эльфами или гномами, то мало что изменится: они тоже живут в своих королевствах, совершают подвиги, сражаются со злом и периодически ищут Очень Важные Артефакты. В данном случае речь идёт о реликвиях для королевы муравьёв, которая вслед за своей матерью ищет секрет бессмертия. И в данном случае это особенно актуально — насекомые живут очень недолго.<br>\n<br>\nЧтобы помочь королеве, три героя в составе пчелы, муравья и жука делают то же, что и герои всех классических RPG, — общаются, выполняют квесты, прокачиваются, решают загадки, покупают всякие полезные расходники и сражаются с врагами, в том числе с огромными боссами. А ещё, как практически в каждой японской игре, они любят есть — собирают рецепты блюд и отдают ингредиенты поварам, чтобы те изготовили из них что-нибудь восстанавливающее здоровье, поднимающего павшего союзника и так далее. При этом в качестве валюты служат красные и синие ягодки.<br>\n<br>\nНасекомые в поисках приключений<br>\n<br>\nСюжет подаётся интересно — история, как водится, совсем не так проста, как кажется поначалу. Событий и приключений много, как и разнообразных локаций, куда мы постепенно получаем доступ: тут и королевские хоромы с тронными залами и библиотеками, и подземелья, и шахты, и",
+        ),
+        media_type: Some(
+            MediaType {
+                mime: "image/jpeg",
+            },
+        ),
+        media_link: Some(
+            "https://stopga.me/images/articles/2019/12/09/-6rFfpd.jpg",
+        ),
+        comments_link: Some(
+            "https://stopgame.ru/show/106926/bug_fables_the_everlasting_sapling_review#comments",
+        ),
+    },
+]

@@ -1,5 +1,6 @@
 use crate::db::{self, Queries};
 use crate::error::{ApplicationError, Error, Result};
+use crate::feeds::utils;
 
 pub fn update(conn: &mut db::Connection, feed: &db::Feed) -> Result<()> {
     let user_ids = conn.find_user_ids_by_feed(feed.id)?;
@@ -66,8 +67,12 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             Some(date) => parse_date(date)?,
             None => chrono::Utc::now().naive_utc(),
         };
-        let summary = item.description().map(String::from);
-        let content = item.content().map(String::from);
+
+        let summary = item.description().map(utils::clean_to_text);
+        let content = item
+            .content()
+            .or(item.description())
+            .map(utils::clean_to_safe_html);
         let comments_link = item.comments().map(String::from);
 
         let media_type = item.enclosure().and_then(|enclosure| {
@@ -125,86 +130,27 @@ fn parse_date(date: &str) -> Result<chrono::NaiveDateTime> {
 
 #[cfg(test)]
 mod tests {
-    use crate::db;
     use crate::feeds::rss::{parse, parse_date};
 
     #[test]
     fn test_parse_rss_hacker_news() {
-        let content = include_str!("snapshots/rss_hacker_news.xml").to_string();
+        let content = include_str!("examples/rss/hacker_news.xml").to_string();
         let result = parse(&content).unwrap();
-        assert_eq!(
-            result,
-            vec![db::Post {
-                id: -1,
-                link: "https://tomcritchlow.com/2019/11/18/yes-and/".to_string(),
-                title: "Yes, And – How to be effective in the theatre of work".to_string(),
-                date: "2019-11-30T12:47:19"
-                    .parse::<chrono::NaiveDateTime>()
-                    .unwrap(),
-                summary: Some(
-                    r#"<a href="https://news.ycombinator.com/item?id=21669726">Comments</a>"#
-                        .to_string()
-                ),
-                content: None,
-                media_type: None,
-                media_link: None,
-                comments_link: Some("https://news.ycombinator.com/item?id=21669726".to_string()),
-            }]
-        );
+        assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_stopgame() {
-        let content = include_str!("snapshots/rss_stopgame.xml").to_string();
+        let content = include_str!("examples/rss/stopgame.xml").to_string();
         let result = parse(&content).unwrap();
-        assert_eq!(
-            result,
-            vec![db::Post {
-                id: -1,
-                link: "https://stopgame.ru/newsdata/41005".to_string(),
-                title: "Результаты опроса сообщества Ghost Recon: Breakpoint — чего игроки хотят в первую очередь".to_string(),
-                date: "2019-11-30T14:55:03"
-                    .parse::<chrono::NaiveDateTime>()
-                    .unwrap(),
-                summary: Some("<b>Ghost Recon: Breakpoint</b> стала".to_string()),
-                content: None,
-                media_type: Some(db::MediaType { mime: "image/jpeg".to_string() }),
-                media_link: Some("https://images.stopgame.ru/news/2019/11/30/AwQ7-p3_W.jpg".to_string()),
-                comments_link: Some("https://stopgame.ru/newsdata/41005#comments".to_string()),
-            }]
-        );
+        assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_kotlin() {
-        let content = include_str!("snapshots/rss_kotlin.xml").to_string();
+        let content = include_str!("examples/rss/kotlin.xml").to_string();
         let result = parse(&content).unwrap();
-        assert_eq!(
-            result,
-            vec![db::Post {
-                id: -1,
-                link: "https://blog.jetbrains.com/kotlin/2019/11/kotlin-1-3-60-released/"
-                    .to_string(),
-                title: "Kotlin 1.3.60 Released".to_string(),
-                date: "2019-11-18T16:45:58"
-                    .parse::<chrono::NaiveDateTime>()
-                    .unwrap(),
-                summary: Some(
-                    "Description We’re happy to present the new release today, Kotlin 1.3.60."
-                        .to_string()
-                ),
-                content: Some(
-                    "<p>Content We’re happy to present the new release today, Kotlin 1.3.60.</p>"
-                        .to_string()
-                ),
-                media_type: None,
-                media_link: None,
-                comments_link: Some(
-                    "https://blog.jetbrains.com/kotlin/2019/11/kotlin-1-3-60-released/#comments"
-                        .to_string()
-                ),
-            }]
-        );
+        assert_debug_snapshot!(result);
     }
 
     #[test]
