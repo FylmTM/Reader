@@ -35,7 +35,7 @@
 .r-posts-list {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 450px;
     border-right: 1px solid var(--color-seconary-muted);
 }
 

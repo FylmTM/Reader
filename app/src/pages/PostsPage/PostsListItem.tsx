@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { CSSProperties, FC } from "react";
 import { IconButton } from "../../components/common/Button/Button";
 import {
   NoStateLink,
@@ -13,14 +13,16 @@ interface Props {
   post: Post;
   hrefPrefix: string;
   isSelected: boolean;
+  style: CSSProperties;
 }
 
-const MAX_SUMMARY_LENGTH = 150;
+const MAX_SUMMARY_LENGTH = 500;
 
 export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   post,
   hrefPrefix,
   isSelected,
+  style,
 }) {
   const { read, readLater, close } = postsStoreApi.getState();
   let summary = post.summary;
@@ -44,6 +46,7 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
       href={post.link}
       className={className}
       onClickHref={`${hrefPrefix}/post/${post.id}`}
+      style={style}
     >
       <div className="border">
         {isMediaImage && (
@@ -52,8 +55,17 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
           </div>
         )}
         <div className="text">
-          <div className="title-row">
-            <span className="title">{post.title}</span>
+          <span className="meta">
+            <span className="date">{post.date}</span>
+            <span>&nbsp;|&nbsp;</span>
+            <span className="feed">
+              <NoStateSpanLink
+                href={`/category/${post.feed.category_id}/feed/${post.feed.id}`}
+                onClick={event => event.stopPropagation()}
+              >
+                {post.feed.title}
+              </NoStateSpanLink>
+            </span>
             <span className="actions">
               <IconButton
                 className="read-later"
@@ -91,21 +103,11 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
                 }}
               />
             </span>
-          </div>
-          {summary && <span className="summary">{summary}</span>}
-          <span className="meta">
-            <span className="date">{post.date}</span>
-            <span>&nbsp;|&nbsp;</span>
-            <span className="feed">
-              <NoStateSpanLink
-                href={`/category/${post.feed.category_id}/feed/${post.feed.id}`}
-                onClick={event => event.stopPropagation()}
-              >
-                {post.feed.title}
-              </NoStateSpanLink>
-            </span>
           </span>
+          <span className="title">{post.title}</span>
+          {summary && <span className="summary">{summary}</span>}
         </div>
+        <div className="fade" />
       </div>
     </NoStateLink>
   );

@@ -4,6 +4,7 @@
     border-bottom: 1px solid var(--color-seconary-muted);
     text-decoration: none;
     transition: opacity 0.2s;
+    height: 130px;
 }
 
 .r-posts-list-item.read {
@@ -21,11 +22,22 @@
 }
 
 .r-posts-list-item .border {
-    padding: 10px 5px;
+    height: 100%;
+    padding: 5px;
     display: flex;
     flex-direction: row;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
+    overflow: hidden;
+}
+
+.r-posts-list-item .fade {
+    height: 20px;
+    left: 10px;
+    right: 10px;
+    position: absolute;
+    bottom: 5px;
+    background-image: linear-gradient(to bottom, transparent, var(--color-background));
 }
 
 .r-posts-list-item:hover .border, .r-posts-list-item:focus .border {
@@ -33,29 +45,27 @@
     border-right: 5px solid var(--color-accent-muted);
 }
 
-.r-posts-list-item .media {
-    margin-right: 5px;
-}
-
-.r-posts-list-item .media img {
-    width: 80px;
-}
-
-.r-posts-list-item .text {
-    flex: 1;
+.r-posts-list-item .meta {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    margin-bottom: 3px;
+    color: var(--color-foreground-muted);
+    font-size: var(--font-size-small);
+    align-items: center;
 }
 
-.r-posts-list-item .title-row {
-    display: flex;
-    justify-content: space-between;
+.r-posts-list-item .meta a {
+    color: var(--color-foreground-muted);
+}
+
+.r-posts-list-item .meta a:hover, .r-posts-list-item .meta a:focus {
+    text-decoration: underline;
 }
 
 .r-posts-list-item .actions {
     display: flex;
-    align-items: flex-start;
     visibility: hidden;
+    margin-left: auto;
 }
 
 .r-posts-list-item .actions button:focus {
@@ -80,22 +90,22 @@
     margin-left: 3px;
 }
 
+.r-posts-list-item .media {
+    margin-right: 5px;
+}
+
+.r-posts-list-item .media img {
+    width: 70px;
+}
+
+.r-posts-list-item .text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 .r-posts-list-item .summary {
     margin-top: 5px;
     color: var(--color-foreground-muted);
     font-size: var(--font-size-small);
-}
-
-.r-posts-list-item .meta {
-    margin-top: 5px;
-    color: var(--color-foreground-muted);
-    font-size: var(--font-size-small);
-}
-
-.r-posts-list-item .meta a {
-    color: var(--color-foreground-muted);
-}
-
-.r-posts-list-item .meta a:hover, .r-posts-list-item .meta a:focus {
-    text-decoration: underline;
+    overflow: hidden;
 }

@@ -111,7 +111,7 @@ function getPosts(section: PostsSection): Promise<Array<Post>> {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(
-        Array(randomInt(5, 20))
+        Array(randomInt(10000, 10000))
           .fill(".")
           .map((_, i) => {
             return {

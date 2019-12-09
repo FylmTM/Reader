@@ -4,7 +4,7 @@ import { Activity } from "../../components/common/Activity/Activity";
 import { IconButton } from "../../components/common/Button/Button";
 import { PostsSection } from "../../domain";
 import { useApp, useCategories, usePosts, usePostsSection } from "../../stores";
-import { PostsListItem } from "./PostsListItem";
+import { PostsList } from "./PostsList";
 import "./PostsPage.css";
 
 function itemData(
@@ -110,14 +110,11 @@ export const PostsPage: FC = function PostsPage() {
         </div>
         <div className="r-posts-list-content">
           <Activity inProgress={posts.postsGetInProgress}>
-            {posts.posts.map(post => (
-              <PostsListItem
-                key={post.id}
-                post={post}
-                hrefPrefix={hrefPrefix}
-                isSelected={postId ? postId === post.id : false}
-              />
-            ))}
+            <PostsList
+              posts={posts.posts}
+              postId={postId}
+              hrefPrefix={hrefPrefix}
+            />
           </Activity>
         </div>
       </div>
