@@ -1,5 +1,6 @@
 import React, { CSSProperties, FC } from "react";
 import { IconButton } from "../../components/common/Button/Button";
+import { Icon } from "../../components/common/Icon/Icon";
 import {
   NoStateLink,
   NoStateSpanLink,
@@ -42,73 +43,78 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   });
 
   return (
-    <NoStateLink
-      href={post.link}
-      className={className}
-      onClickHref={`${hrefPrefix}/post/${post.id}`}
-      style={style}
-    >
-      <div className="border">
-        {isMediaImage && (
-          <div className="media">
-            <img src={post.media?.link} alt="" />
+    <div className={className} style={style}>
+      <span className="meta">
+        <span className="date">{post.date}</span>
+        <span>&nbsp;\&nbsp;</span>
+        <span className="feed">
+          <NoStateLink
+            href={`/category/${post.feed.category_id}/feed/${post.feed.id}`}
+            onClick={event => event.stopPropagation()}
+          >
+            {post.feed.title}
+          </NoStateLink>
+        </span>
+        <span className="actions">
+          {post.comments_link && (
+            <a href={post.comments_link}>
+              <Icon type="message" size="small" />
+            </a>
+          )}
+          <IconButton
+            className="read-later"
+            icon="bookmark"
+            look="minimal"
+            size="small"
+            tabIndex={-1}
+            onClick={event => {
+              event.preventDefault();
+              event.stopPropagation();
+              readLater(post.id, !post.is_read_later);
+            }}
+          />
+          <IconButton
+            className="read"
+            icon="check"
+            look="minimal"
+            size="small"
+            tabIndex={-1}
+            onClick={event => {
+              event.preventDefault();
+              event.stopPropagation();
+              read(post.id, !post.is_read);
+            }}
+          />
+          <IconButton
+            icon="close"
+            look="minimal"
+            size="small"
+            tabIndex={-1}
+            onClick={event => {
+              event.preventDefault();
+              event.stopPropagation();
+              close(post.id, isSelected, hrefPrefix);
+            }}
+          />
+        </span>
+      </span>
+      <NoStateLink
+        href={post.link}
+        onClickHref={`${hrefPrefix}/post/${post.id}`}
+      >
+        <div className="border">
+          {isMediaImage && (
+            <div className="media">
+              <img src={post.media?.link} alt="" />
+            </div>
+          )}
+          <div className="text">
+            <span className="title">{post.title}</span>
+            {summary && <span className="summary">{summary}</span>}
           </div>
-        )}
-        <div className="text">
-          <span className="meta">
-            <span className="date">{post.date}</span>
-            <span>&nbsp;|&nbsp;</span>
-            <span className="feed">
-              <NoStateSpanLink
-                href={`/category/${post.feed.category_id}/feed/${post.feed.id}`}
-                onClick={event => event.stopPropagation()}
-              >
-                {post.feed.title}
-              </NoStateSpanLink>
-            </span>
-            <span className="actions">
-              <IconButton
-                className="read-later"
-                icon="bookmark"
-                look="minimal"
-                size="small"
-                tabIndex={-1}
-                onClick={event => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  readLater(post.id, !post.is_read_later);
-                }}
-              />
-              <IconButton
-                className="read"
-                icon="check"
-                look="minimal"
-                size="small"
-                tabIndex={-1}
-                onClick={event => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  read(post.id, !post.is_read);
-                }}
-              />
-              <IconButton
-                icon="close"
-                look="minimal"
-                size="small"
-                tabIndex={-1}
-                onClick={event => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  close(post.id, isSelected, hrefPrefix);
-                }}
-              />
-            </span>
-          </span>
-          <span className="title">{post.title}</span>
-          {summary && <span className="summary">{summary}</span>}
         </div>
-        <div className="fade" />
-      </div>
-    </NoStateLink>
+      </NoStateLink>
+      <div className="fade" />
+    </div>
   );
 });

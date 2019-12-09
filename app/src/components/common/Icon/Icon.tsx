@@ -21,6 +21,7 @@ import { ReactComponent as Close } from "./icons/x.svg";
 import { ReactComponent as Bookmark } from "./icons/bookmark.svg";
 import { ReactComponent as Check } from "./icons/check.svg";
 import { ReactComponent as Refresh } from "./icons/refresh-cw.svg";
+import { ReactComponent as Message } from "./icons/message-circle.svg";
 
 export type IconType =
   | "login"
@@ -34,7 +35,8 @@ export type IconType =
   | "close"
   | "bookmark"
   | "check"
-  | "refresh";
+  | "refresh"
+  | "message";
 
 type Size = "default" | "small" | "large";
 
@@ -70,5 +72,7 @@ export const Icon: FC<Props> = ({ type, size }) => {
       return <Check className={className} />;
     case "refresh":
       return <Refresh className={className} />;
+    case "message":
+      return <Message className={className} />;
   }
 };

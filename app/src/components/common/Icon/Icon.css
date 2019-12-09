@@ -12,3 +12,11 @@
     height: 15px;
     width: 15px;
 }
+
+a .r-icon {
+    stroke: var(--color-foreground);
+}
+
+a:hover .r-icon {
+    stroke: var(--color-accent);
+}

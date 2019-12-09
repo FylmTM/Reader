@@ -116,8 +116,6 @@ function getPosts(section: PostsSection): Promise<Array<Post>> {
           .map((_, i) => {
             return {
               id: i + 1,
-              is_read: false,
-              is_read_later: false,
               category: {
                 id: 1,
               },
@@ -126,16 +124,23 @@ function getPosts(section: PostsSection): Promise<Array<Post>> {
                 category_id: 1,
                 title: "Hacker News",
               },
+              is_read: false,
+              is_read_later: false,
               link: "http://example.com",
               title: randomBoolean()
                 ? "World is finally living on mars."
                 : "World is falling down to the works of ancient civilization who is going to do a revolution.",
+              date: `${randomInt(1, 10)}h`,
               summary: randomBoolean()
                 ? Array(randomInt(1, 100))
-                    .fill("lorem")
+                    .fill("summary")
                     .join(" ")
                 : undefined,
-              date: `${randomInt(1, 10)}h`,
+              content: randomBoolean()
+                ? Array(randomInt(1, 100))
+                    .fill("content")
+                    .join(" ")
+                : undefined,
               media: randomBoolean()
                 ? {
                     type: "image/jpeg",
