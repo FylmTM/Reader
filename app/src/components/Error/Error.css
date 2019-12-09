@@ -5,6 +5,14 @@
     align-items: center;
 }
 
-.r-error button:hover, .r-error button:focus {
+.r-error .r-button {
+    margin-right: 10px;
+}
+
+.r-error .r-button:hover, .r-error button:focus {
     background: none;
+}
+
+.r-error .r-button:hover .r-icon {
+    stroke: var(--color-foreground)
 }

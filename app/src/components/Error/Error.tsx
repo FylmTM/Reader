@@ -12,8 +12,8 @@ export const Error: FC = function Error() {
 
   return (
     <div className="r-error">
-      <IconButton icon="close" look="outline" onClick={error.clear} />
-      {error}
+      <IconButton icon="close" look="minimal" onClick={error.clear} />
+      {error.error}
     </div>
   );
 };

@@ -7,6 +7,14 @@
     font-size: var(--font-size-large);
 }
 
+.r-page-not-found > * {
+    margin-top: 10px;
+}
+
 .r-page-not-found a {
     margin-top: 10px;
+}
+
+.r-page-not-found a:hover {
+    text-decoration: underline;
 }

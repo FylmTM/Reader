@@ -6,37 +6,20 @@ import {
   User,
 } from "../domain";
 import { randomBoolean, randomInt } from "../utils";
+import client from "./client";
 
 const DELAY = 100;
 
 function getCurrentUser(): Promise<User> {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        id: 1,
-        username: "me",
-      });
-    }, DELAY);
-  });
+  return client.get("/api/v1/current_user");
 }
 
 function login(apiKey: string): Promise<User> {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        id: 1,
-        username: "me",
-      });
-    }, DELAY);
-  });
+  return client.post("/api/v1/auth/login", { api_key: apiKey });
 }
 
 function logout(): Promise<void> {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, DELAY);
-  });
+  return client.post("/api/v1/auth/logout", {});
 }
 
 function getCategoriesWithFeeds(): Promise<CategoriesWithFeeds> {

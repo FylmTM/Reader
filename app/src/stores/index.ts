@@ -22,6 +22,7 @@ export const [useError, errorStoreApi] = create<ErrorStore>(set => ({
 }));
 
 function handleError(error: any) {
+  console.error(error);
   errorStoreApi.setState({ error: error.toString() });
 }
 
@@ -59,8 +60,13 @@ export const [useApp, appStoreApi] = create<AppStore>(set => ({
   init: () => {
     api
       .getCurrentUser()
-      .then(user => userStoreApi.setState({ current: user }))
-      .catch(handleError)
+      .then(user => {
+        userStoreApi.setState({ current: user });
+      })
+      .catch(() => {
+        // Ignore any errors during init.
+        // Most likely user is unauthorized.
+      })
       .finally(() => set({ initialized: true }));
   },
   refresh: () => set(({ refreshMark }) => ({ refreshMark: refreshMark + 1 })),
