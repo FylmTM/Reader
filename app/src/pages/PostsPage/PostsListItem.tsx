@@ -23,13 +23,17 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   style,
 }) {
   const { read, readLater, close } = postsStoreApi.getState();
-  let summary = post.summary || post.content;
+  let summary = post.summary;
   if (summary && summary?.length > MAX_SUMMARY_LENGTH) {
     summary = summary.substring(0, MAX_SUMMARY_LENGTH) + "...";
   }
 
   let isMediaImage = false;
-  if (post.media && post.media.type.startsWith("image")) {
+  if (
+    post.media_type != null &&
+    post.media_link != null &&
+    post.media_type.startsWith("image")
+  ) {
     isMediaImage = true;
   }
 
@@ -48,10 +52,10 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
         <span>&nbsp;\&nbsp;</span>
         <span className="feed">
           <NoStateLink
-            href={`/category/${post.feed.category_id}/feed/${post.feed.id}`}
+            href={`/category/${post.category_id}/feed/${post.feed_id}`}
             onClick={event => event.stopPropagation()}
           >
-            {post.feed.title}
+            {post.feed_title}
           </NoStateLink>
         </span>
         <span className="actions">
@@ -101,7 +105,7 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
         <div className="border">
           {isMediaImage && (
             <div className="media">
-              <img src={post.media?.link} alt="" />
+              <img src={post.media_link} alt="" />
             </div>
           )}
           <div className="text">

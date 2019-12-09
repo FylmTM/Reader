@@ -239,11 +239,11 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
             if (isRead) {
               categoriesStoreApi
                 .getState()
-                .decrementUnreadCount(post.category.id, post.feed.id);
+                .decrementUnreadCount(post.category_id, post.feed_id);
             } else {
               categoriesStoreApi
                 .getState()
-                .incrementUnreadCount(post.category.id, post.feed.id);
+                .incrementUnreadCount(post.category_id, post.feed_id);
             }
             return { ...post, is_read: isRead };
           } else {

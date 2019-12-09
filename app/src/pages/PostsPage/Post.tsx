@@ -95,38 +95,36 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
           <span>&nbsp;\&nbsp;</span>
           <span className="feed">
             <NoStateLink
-              href={`/category/${post.feed.category_id}/feed/${post.feed.id}`}
+              href={`/category/${post.category_id}/feed/${post.feed_id}`}
             >
-              {post.feed.title}
+              {post.feed_title}
             </NoStateLink>
           </span>
         </div>
-        <PostMedia media={post.media} />
-        <div className="text">{post.content || post.summary}</div>
+        <PostMedia type={post.media_type} link={post.media_link} />
+        <div className="text">TODO</div>
       </div>
     </div>
   );
 };
 
 interface PostMediaProps {
-  media?: {
-    type: string;
-    link: string;
-  };
+  type?: string;
+  link?: string;
 }
 
-const PostMedia: FC<PostMediaProps> = function PostMedia({ media }) {
-  if (media == null) {
+const PostMedia: FC<PostMediaProps> = function PostMedia({ type, link }) {
+  if (type == null || link == null) {
     return <div></div>;
   }
 
-  if (media && media.type.startsWith("image")) {
+  if (type.startsWith("image")) {
     return (
       <div className="media">
-        <img src={media.link} alt="" />
+        <img src={link} alt="" />
       </div>
     );
   }
 
-  return <div>media</div>;
+  return <div></div>;
 };

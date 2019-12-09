@@ -42,6 +42,7 @@ pub type CategoriesWithFeeds = Vec<CategoryWithFeeds>;
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct MediaType {
+    #[serde(rename = "media_type")]
     pub mime: String,
 }
 
@@ -53,9 +54,34 @@ pub struct Post {
     pub date: chrono::NaiveDateTime,
     pub summary: Option<String>,
     pub content: Option<String>,
+    #[serde(flatten)]
     pub media_type: Option<MediaType>,
     pub media_link: Option<String>,
     pub comments_link: Option<String>,
+}
+
+#[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
+pub struct UserPost {
+    pub id: i64,
+    pub category_id: i64,
+    pub feed_id: i64,
+    pub feed_title: String,
+    pub is_read: bool,
+    pub is_read_later: bool,
+    pub link: String,
+    pub title: String,
+    pub date: chrono::NaiveDateTime,
+    pub summary: Option<String>,
+    #[serde(flatten)]
+    pub media_type: Option<MediaType>,
+    pub media_link: Option<String>,
+    pub comments_link: Option<String>,
+}
+
+#[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
+pub struct UserPostContent {
+    pub id: i64,
+    pub content: Option<String>,
 }
 
 impl FromSql for FeedKind {

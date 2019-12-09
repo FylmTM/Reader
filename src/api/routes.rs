@@ -53,16 +53,48 @@ pub fn categories_with_feeds(
     user: db::User,
     conn: db::PoolConnection,
 ) -> Response<db::CategoriesWithFeeds> {
-    let categories = conn.find_categories_by_user_id(user.id)?;
+    let categories = conn.find_categories_by_user(user.id)?;
 
     // todo: consider optimizing by doing one query to get all feeds,
     //       and then mapping them to their categories
     //       Will it actually be faster?
     let mut categories_with_feeds = Vec::with_capacity(categories.len());
     for category in categories {
-        let feeds = conn.find_feeds_by_category_id(category.id)?;
+        let feeds = conn.find_feeds_by_category(category.id)?;
         categories_with_feeds.push(db::CategoryWithFeeds { category, feeds })
     }
 
     ok(categories_with_feeds)
+}
+
+#[get("/api/v1/posts/all")]
+pub fn posts_all(user: db::User, conn: db::PoolConnection) -> Response<Vec<db::UserPost>> {
+    let posts = conn.find_posts_by_user(user.id)?;
+    ok(posts)
+}
+
+#[get("/api/v1/posts/read_later")]
+pub fn posts_read_later(user: db::User, conn: db::PoolConnection) -> Response<Vec<db::UserPost>> {
+    let posts = conn.find_posts_read_later_by_user(user.id)?;
+    ok(posts)
+}
+
+#[get("/api/v1/posts/category/<category_id>")]
+pub fn posts_category(
+    category_id: i64,
+    user: db::User,
+    conn: db::PoolConnection,
+) -> Response<Vec<db::UserPost>> {
+    let posts = conn.find_posts_by_user_and_category(user.id, category_id)?;
+    ok(posts)
+}
+
+#[get("/api/v1/posts/feed/<feed_id>")]
+pub fn posts_feed(
+    feed_id: i64,
+    user: db::User,
+    conn: db::PoolConnection,
+) -> Response<Vec<db::UserPost>> {
+    let posts = conn.find_posts_by_user_and_feed(user.id, feed_id)?;
+    ok(posts)
 }

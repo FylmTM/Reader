@@ -9,7 +9,6 @@ use rocket::uri;
 
 use common::client::{self, ClientOperations, RequestOperations, ResponseOperations};
 use reader::api::routes::*;
-use reader::db;
 
 pub mod common;
 
@@ -73,5 +72,37 @@ fn test_get_categories_with_feeds() {
     let client = client::authenticated();
 
     let mut response = client.get_uri(uri!(categories_with_feeds)).dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
+fn test_get_posts_all() {
+    let client = client::authenticated();
+
+    let mut response = client.get_uri(uri!(posts_all)).dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
+fn test_get_posts_read_later() {
+    let client = client::authenticated();
+
+    let mut response = client.get_uri(uri!(posts_read_later)).dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
+fn test_get_posts_category() {
+    let client = client::authenticated();
+
+    let mut response = client.get_uri(uri!(posts_category: 1)).dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
+fn test_get_posts_feed() {
+    let client = client::authenticated();
+
+    let mut response = client.get_uri(uri!(posts_feed: 1)).dispatch();
     assert_json_snapshot!(response.json_entity());
 }

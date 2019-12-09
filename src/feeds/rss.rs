@@ -69,17 +69,26 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
         let summary = item.description().map(String::from);
         let content = item.content().map(String::from);
         let comments_link = item.comments().map(String::from);
-        let media = item.enclosure().and_then(|enclosure| {
-            let url = enclosure.url();
+
+        let media_type = item.enclosure().and_then(|enclosure| {
             let mime_type = enclosure.mime_type();
-            if url.is_empty() || mime_type.is_empty() {
+            if mime_type.is_empty() {
                 return None;
             }
             if mime_type.parse::<mime::Mime>().is_err() {
                 return None;
             }
-
-            Some((mime_type, url))
+            Some(db::MediaType {
+                mime: mime_type.to_string(),
+            })
+        });
+        let media_link = item.enclosure().and_then(|enclosure| {
+            let url = enclosure.url();
+            if url.is_empty() {
+                None
+            } else {
+                Some(url.to_string())
+            }
         });
 
         let post = db::Post {
@@ -89,10 +98,8 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             date,
             summary,
             content,
-            media_type: media.map(|m| db::MediaType {
-                mime: m.0.to_string(),
-            }),
-            media_link: media.map(|m| m.1.to_string()),
+            media_type,
+            media_link,
             comments_link,
         };
         posts.push(post);

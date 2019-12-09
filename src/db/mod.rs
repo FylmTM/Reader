@@ -18,10 +18,22 @@ pub type UserPostId = i64;
 pub trait Queries {
     fn find_user_by_api_key(&self, api_key: &str) -> Result<User>;
     fn find_user_ids_by_feed(&self, feed_id: FeedId) -> Result<Vec<UserId>>;
-    fn find_categories_by_user_id(&self, id: UserId) -> Result<Vec<Category>>;
+    fn find_categories_by_user(&self, user_id: UserId) -> Result<Vec<Category>>;
     fn find_feeds(&self) -> Result<Vec<Feed>>;
-    fn find_feeds_by_category_id(&self, category_id: CategoryId) -> Result<Vec<Feed>>;
-    fn find_feed_by_id(&self, id: FeedId) -> Result<Feed>;
+    fn find_feeds_by_category(&self, category_id: CategoryId) -> Result<Vec<Feed>>;
+    fn find_feed(&self, id: FeedId) -> Result<Feed>;
+    fn find_posts_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>>;
+    fn find_posts_read_later_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>>;
+    fn find_posts_by_user_and_category(
+        &self,
+        user_id: UserId,
+        category_id: CategoryId,
+    ) -> Result<Vec<UserPost>>;
+    fn find_posts_by_user_and_feed(
+        &self,
+        user_id: UserId,
+        feed_id: FeedId,
+    ) -> Result<Vec<UserPost>>;
     fn count_posts_by_user(&self, id: UserId) -> Result<i64>;
     fn count_posts_by_category(&self, id: CategoryId) -> Result<i64>;
     fn count_posts_by_feed(&self, id: FeedId) -> Result<i64>;
@@ -35,12 +47,12 @@ impl Queries for Connection {
         let query = "
             select u.id, u.username
             from users u
-            where u.api_key = ?
+            where u.api_key = :api_key
         ";
-        let user = self.query_row(query, &[api_key], |row| {
+        let user = self.query_row_named(query, &[(":api_key", &api_key)], |row| {
             Ok(User {
-                id: row.get(0)?,
-                username: row.get(1)?,
+                id: row.get("id")?,
+                username: row.get("username")?,
             })
         })?;
         Ok(user)
@@ -53,10 +65,11 @@ impl Queries for Connection {
             from users u
             inner join categories c on u.id = c.user_id
             inner join category_feeds cf on c.id = cf.category_id
-            where cf.feed_id = ?
+            where cf.feed_id = :feed_id
         ";
         let mut statement = self.prepare(query)?;
-        let user_ids_rows = statement.query_map(&[feed_id], |row| Ok(row.get(0)?))?;
+        let user_ids_rows =
+            statement.query_map_named(&[(":feed_id", &feed_id)], |row| Ok(row.get("id")?))?;
 
         let mut user_ids = Vec::new();
         for user_id in user_ids_rows {
@@ -65,18 +78,18 @@ impl Queries for Connection {
         Ok(user_ids)
     }
 
-    fn find_categories_by_user_id(self: &Connection, id: UserId) -> Result<Vec<Category>> {
+    fn find_categories_by_user(self: &Connection, user_id: UserId) -> Result<Vec<Category>> {
         // language=SQLite
         let query = "
             select c.id, c.name
             from categories c
-            where c.user_id = ?
+            where c.user_id = :user_id
         ";
         let mut statement = self.prepare(query)?;
-        let categories_rows = statement.query_map(&[id], |row| {
+        let categories_rows = statement.query_map_named(&[(":user_id", &user_id)], |row| {
             Ok(Category {
-                id: row.get(0)?,
-                name: row.get(1)?,
+                id: row.get("id")?,
+                name: row.get("name")?,
             })
         })?;
 
@@ -104,16 +117,17 @@ impl Queries for Connection {
         Ok(feeds)
     }
 
-    fn find_feeds_by_category_id(self: &Connection, category_id: CategoryId) -> Result<Vec<Feed>> {
+    fn find_feeds_by_category(self: &Connection, category_id: CategoryId) -> Result<Vec<Feed>> {
         // language=SQLite
         let query = "
             select f.id, f.kind, f.title, f.link, f.feed
             from category_feeds cf
             left join feeds f on cf.feed_id = f.id
-            where cf.category_id = ?
+            where cf.category_id = :category_id
         ";
         let mut statement = self.prepare(query)?;
-        let feeds_rows = statement.query_map(&[category_id], map_row_to_feed)?;
+        let feeds_rows =
+            statement.query_map_named(&[(":category_id", &category_id)], map_row_to_feed)?;
 
         let mut feeds = Vec::new();
         for feed in feeds_rows {
@@ -123,57 +137,156 @@ impl Queries for Connection {
     }
 
     //noinspection DuplicatedCode
-    fn find_feed_by_id(self: &Connection, id: FeedId) -> Result<Feed> {
+    fn find_feed(self: &Connection, id: FeedId) -> Result<Feed> {
         // language=SQLite
         let query = "
             select f.id, f.kind, f.title, f.link, f.feed
             from feeds f
-            where f.id = ?
+            where f.id = :id
         ";
-        let feed = self.query_row(query, &[id], |row| {
-            Ok(Feed {
-                id: row.get(0)?,
-                kind: row.get(1)?,
-                title: row.get(2)?,
-                link: row.get(3)?,
-                feed: row.get(4)?,
-            })
-        })?;
+        let feed = self.query_row_named(query, &[(":id", &id)], map_row_to_feed)?;
         Ok(feed)
     }
 
-    fn count_posts_by_user(self: &Connection, id: UserId) -> Result<i64> {
+    fn find_posts_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>> {
         // language=SQLite
         let query = "
-            select count(up.post_id)
+            select p.id, cf.category_id, f.id as feed_id, f.title as feed_title, up.is_read, up.is_read_later,
+                   p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
             from user_posts up
-            where up.user_id = ?
+            inner join posts p on up.post_id = p.id
+            inner join feeds f on p.feed_id = f.id
+            inner join category_feeds cf on f.id = cf.feed_id
+            where up.user_id = :user_id
         ";
-        let count = self.query_row(query, &[id], |row| row.get(0))?;
+        let mut statement = self.prepare(query)?;
+        let user_post_rows =
+            statement.query_map_named(&[(":user_id", &user_id)], map_row_to_user_post)?;
+
+        let mut user_posts = Vec::new();
+        for user_post in user_post_rows {
+            user_posts.push(user_post?)
+        }
+        Ok(user_posts)
+    }
+
+    fn find_posts_read_later_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>> {
+        // language=SQLite
+        let query = "
+            select p.id, cf.category_id, f.id as feed_id, f.title as feed_title, up.is_read, up.is_read_later,
+                   p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
+            from user_posts up
+            inner join posts p on up.post_id = p.id
+            inner join feeds f on p.feed_id = f.id
+            inner join category_feeds cf on f.id = cf.feed_id
+            where up.user_id = :user_id
+            and up.is_read_later = true
+        ";
+        let mut statement = self.prepare(query)?;
+        let user_post_rows =
+            statement.query_map_named(&[(":user_id", &user_id)], map_row_to_user_post)?;
+
+        let mut user_posts = Vec::new();
+        for user_post in user_post_rows {
+            user_posts.push(user_post?)
+        }
+        Ok(user_posts)
+    }
+
+    fn find_posts_by_user_and_category(
+        &self,
+        user_id: UserId,
+        category_id: CategoryId,
+    ) -> Result<Vec<UserPost>> {
+        // language=SQLite
+        let query = "
+            select p.id, cf.category_id, f.id as feed_id, f.title as feed_title, up.is_read, up.is_read_later,
+                   p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
+            from user_posts up
+            inner join posts p on up.post_id = p.id
+            inner join feeds f on p.feed_id = f.id
+            inner join category_feeds cf on f.id = cf.feed_id
+            where up.user_id = :user_id
+            and cf.category_id = :category_id
+        ";
+        let mut statement = self.prepare(query)?;
+        let user_post_rows = statement.query_map_named(
+            &[(":user_id", &user_id), (":category_id", &category_id)],
+            map_row_to_user_post,
+        )?;
+
+        let mut user_posts = Vec::new();
+        for user_post in user_post_rows {
+            user_posts.push(user_post?)
+        }
+        Ok(user_posts)
+    }
+
+    fn find_posts_by_user_and_feed(
+        &self,
+        user_id: UserId,
+        feed_id: FeedId,
+    ) -> Result<Vec<UserPost>> {
+        // language=SQLite
+        let query = "
+            select p.id, cf.category_id, f.id as feed_id, f.title as feed_title, up.is_read, up.is_read_later,
+                   p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
+            from user_posts up
+            inner join posts p on up.post_id = p.id
+            inner join feeds f on p.feed_id = f.id
+            inner join category_feeds cf on f.id = cf.feed_id
+            where up.user_id = :user_id
+            and f.id = :feed_id
+        ";
+        let mut statement = self.prepare(query)?;
+        let user_post_rows = statement.query_map_named(
+            &[(":user_id", &user_id), (":feed_id", &feed_id)],
+            map_row_to_user_post,
+        )?;
+
+        let mut user_posts = Vec::new();
+        for user_post in user_post_rows {
+            user_posts.push(user_post?)
+        }
+        Ok(user_posts)
+    }
+
+    fn count_posts_by_user(self: &Connection, user_id: UserId) -> Result<i64> {
+        // language=SQLite
+        let query = "
+            select count(up.post_id) as count
+            from user_posts up
+            where up.user_id = :user_id
+        ";
+        let count =
+            self.query_row_named(query, &[(":user_id", &user_id)], |row| row.get("count"))?;
         Ok(count)
     }
 
-    fn count_posts_by_category(self: &Connection, id: CategoryId) -> Result<i64> {
+    fn count_posts_by_category(self: &Connection, category_id: CategoryId) -> Result<i64> {
         // language=SQLite
         let query = "
-            select count(p.id)
+            select count(p.id) as count
             from categories c
             inner join category_feeds cf on c.id = cf.category_id
             inner join posts p on cf.feed_id = p.feed_id
-            where c.id = ?
+            where c.id = :category_id
         ";
-        let count = self.query_row(query, &[id], |row| row.get(0))?;
+        let count = self.query_row_named(query, &[(":category_id", &category_id)], |row| {
+            row.get("count")
+        })?;
         Ok(count)
     }
 
-    fn count_posts_by_feed(self: &Connection, id: FeedId) -> Result<i64> {
+    fn count_posts_by_feed(self: &Connection, feed_id: FeedId) -> Result<i64> {
         // language=SQLite
         let query = "
-            select count(p.id)
+            select count(p.id) as count
             from posts p
-            where p.feed_id = ?
+            where p.feed_id = :feed_id
         ";
-        let count = self.query_row(query, &[id], |row| row.get(0))?;
+        let count =
+            self.query_row_named(query, &[(":feed_id", &feed_id)], |row| row.get("count"))?;
         Ok(count)
     }
 
@@ -212,13 +325,31 @@ impl Queries for Connection {
     }
 }
 
+fn map_row_to_user_post(row: &rusqlite::Row) -> rusqlite::Result<UserPost> {
+    Ok(UserPost {
+        id: row.get("id")?,
+        category_id: row.get("category_id")?,
+        feed_id: row.get("feed_id")?,
+        feed_title: row.get("feed_title")?,
+        is_read: row.get("is_read")?,
+        is_read_later: row.get("is_read_later")?,
+        link: row.get("link")?,
+        title: row.get("title")?,
+        date: row.get("date")?,
+        summary: row.get("summary")?,
+        media_type: row.get("media_type")?,
+        media_link: row.get("media_link")?,
+        comments_link: row.get("comments_link")?,
+    })
+}
+
 fn map_row_to_feed(row: &rusqlite::Row) -> rusqlite::Result<Feed> {
     Ok(Feed {
-        id: row.get(0)?,
-        kind: row.get(1)?,
-        title: row.get(2)?,
-        link: row.get(3)?,
-        feed: row.get(4)?,
+        id: row.get("id")?,
+        kind: row.get("kind")?,
+        title: row.get("title")?,
+        link: row.get("link")?,
+        feed: row.get("feed")?,
     })
 }
 

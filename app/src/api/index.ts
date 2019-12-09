@@ -49,53 +49,16 @@ function getCategoriesWithFeedsUnreadCounts(): Promise<
 }
 
 function getPosts(section: PostsSection): Promise<Array<Post>> {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(
-        Array(randomInt(10000, 10000))
-          .fill(".")
-          .map((_, i) => {
-            return {
-              id: i + 1,
-              category: {
-                id: 1,
-              },
-              feed: {
-                id: 1,
-                category_id: 1,
-                title: "Hacker News",
-              },
-              is_read: false,
-              is_read_later: false,
-              link: "http://example.com",
-              title: randomBoolean()
-                ? "World is finally living on mars."
-                : "World is falling down to the works of ancient civilization who is going to do a revolution.",
-              date: `${randomInt(1, 10)}h`,
-              summary: randomBoolean()
-                ? Array(randomInt(1, 100))
-                    .fill("summary")
-                    .join(" ")
-                : undefined,
-              content: randomBoolean()
-                ? Array(randomInt(1000, 5000))
-                    .fill("content")
-                    .join(" ")
-                : undefined,
-              media: randomBoolean()
-                ? {
-                    type: "image/jpeg",
-                    link: "http://localhost:3000/android-chrome-512x512.png",
-                  }
-                : undefined,
-              comments_link: randomBoolean()
-                ? "http://example.com/#comments"
-                : undefined,
-            };
-          }),
-      );
-    }, DELAY);
-  });
+  switch (section.type) {
+    case "read-later":
+      return client.get("/api/v1/posts/read_later");
+    case "all":
+      return client.get("/api/v1/posts/all");
+    case "category":
+      return client.get(`/api/v1/posts/category/${section.categoryId}`);
+    case "feed":
+      return client.get(`/api/v1/posts/feed/${section.feedId}`);
+  }
 }
 
 function markAllAsRead(

@@ -1,0 +1,54 @@
+---
+source: tests/it_api.rs
+expression: response.json_entity()
+---
+[
+  "200 OK",
+  {
+    "payload": [
+      {
+        "category_id": 1,
+        "comments_link": "https://news.ycombinator.com/item?id=21743513",
+        "date": "2019-12-09T15:41:11",
+        "feed_id": 1,
+        "feed_title": "Hacker News",
+        "id": 1,
+        "is_read": false,
+        "is_read_later": true,
+        "link": "https://jamesmunns.com/blog/fmt-unreasonably-expensive/",
+        "media_link": null,
+        "summary": "<a href=\"https://news.ycombinator.com/item?id=21743513\">Comments</a>",
+        "title": "Formatting Is Unreasonably Expensive for Embedded Rust"
+      },
+      {
+        "category_id": 1,
+        "comments_link": "https://news.ycombinator.com/item?id=21742898",
+        "date": "2019-12-09T14:27:35",
+        "feed_id": 1,
+        "feed_title": "Hacker News",
+        "id": 2,
+        "is_read": false,
+        "is_read_later": true,
+        "link": "http://gocheese.cypherpunks.ru/",
+        "media_link": null,
+        "summary": "<a href=\"https://news.ycombinator.com/item?id=21742898\">Comments</a>",
+        "title": "Show HN: GoCheese: Python private package repository and caching proxy"
+      },
+      {
+        "category_id": 1,
+        "comments_link": "https://news.ycombinator.com/item?id=21741668",
+        "date": "2019-12-09T10:51:19",
+        "feed_id": 1,
+        "feed_title": "Hacker News",
+        "id": 3,
+        "is_read": false,
+        "is_read_later": true,
+        "link": "https://thecloud.christmas/2019/9",
+        "media_link": null,
+        "summary": "<a href=\"https://news.ycombinator.com/item?id=21741668\">Comments</a>",
+        "title": "Serverless Development with Serverless Framework"
+      }
+    ],
+    "status": "ok"
+  }
+]

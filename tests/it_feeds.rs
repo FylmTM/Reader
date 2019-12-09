@@ -15,7 +15,7 @@ const RSS_FEED_ID: i64 = 1;
 fn test_rss_update() {
     common::mock_server::test(|| {
         let mut conn = common::db();
-        let feed = conn.find_feed_by_id(RSS_FEED_ID).unwrap();
+        let feed = conn.find_feed(RSS_FEED_ID).unwrap();
 
         // Should be empty
         assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 0);
