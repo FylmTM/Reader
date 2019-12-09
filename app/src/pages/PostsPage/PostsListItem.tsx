@@ -42,6 +42,8 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
     "read-later": post.is_read_later,
   });
 
+  const onClickHref = isSelected ? hrefPrefix : `${hrefPrefix}/post/${post.id}`;
+
   return (
     <div className={className} style={style}>
       <span className="meta">
@@ -98,10 +100,7 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
           />
         </span>
       </span>
-      <NoStateLink
-        href={post.link}
-        onClickHref={`${hrefPrefix}/post/${post.id}`}
-      >
+      <NoStateLink href={post.link} onClickHref={onClickHref}>
         <div className="border">
           {isMediaImage && (
             <div className="media">
