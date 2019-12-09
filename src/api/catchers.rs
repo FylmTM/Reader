@@ -9,7 +9,7 @@ pub fn catcher_unauthorized() -> Json<ApiError> {
 
 #[catch(404)]
 pub fn catcher_not_found() -> Json<ApiError> {
-    Json(ApiError::with("Not found.".to_string()))
+    Json(ApiError::with("Page not found.".to_string()))
 }
 
 #[catch(500)]

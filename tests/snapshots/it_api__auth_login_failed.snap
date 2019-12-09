@@ -1,0 +1,11 @@
+---
+source: tests/it_api.rs
+expression: response.entity_value()
+---
+[
+  "404 Not Found",
+  {
+    "message": "Entity not found.",
+    "status": "error"
+  }
+]

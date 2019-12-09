@@ -114,6 +114,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
                 api::routes::auth_login,
                 api::routes::auth_logout,
                 api::routes::current_user,
+                api::routes::categories_with_feeds,
                 api::assets::index,
                 api::assets::assets
             ],

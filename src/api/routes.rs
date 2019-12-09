@@ -47,3 +47,22 @@ pub fn auth_logout(mut cookies: Cookies) -> Response<()> {
 pub fn current_user(user: db::User) -> Response<db::User> {
     ok(user)
 }
+
+#[get("/api/v1/categories_with_feeds")]
+pub fn categories_with_feeds(
+    user: db::User,
+    conn: db::PoolConnection,
+) -> Response<db::CategoriesWithFeeds> {
+    let categories = conn.find_categories_by_user_id(user.id)?;
+
+    // todo: consider optimizing by doing one query to get all feeds,
+    //       and then mapping them to their categories
+    //       Will it actually be faster?
+    let mut categories_with_feeds = Vec::with_capacity(categories.len());
+    for category in categories {
+        let feeds = conn.find_feeds_by_category_id(category.id)?;
+        categories_with_feeds.push(db::CategoryWithFeeds { category, feeds })
+    }
+
+    ok(categories_with_feeds)
+}

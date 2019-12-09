@@ -21,6 +21,10 @@ args = ["test"]
 command = "cargo"
 args = ["build", "--release"]
 
+[tasks.frontend-install]
+cwd = "./app"
+install_script = ["yarn install"]
+
 [tasks.frontend-format]
 cwd = "./app"
 install_script = ["yarn fmt"]
@@ -45,8 +49,16 @@ install_script = ["yarn test --watchAll=false"]
 cwd = "./app"
 install_script = ["yarn build"]
 
+[tasks.build]
+dependencies = [
+    "frontend-install",
+    "frontend-build",
+    "backend-build",
+]
+
 [tasks.verify]
 dependencies = [
+    "frontend-install",
     "frontend-format-check",
     "frontend-lint",
     "backend-check",
@@ -54,14 +66,9 @@ dependencies = [
     "backend-test",
 ]
 
-[tasks.build]
-dependencies = [
-    "frontend-build",
-    "backend-build",
-]
-
 [tasks.fix]
 dependencies = [
+    "frontend-install",
     "frontend-format",
     "frontend-lint-fix",
     "backend-check",

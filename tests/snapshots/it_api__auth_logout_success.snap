@@ -1,0 +1,11 @@
+---
+source: tests/it_api.rs
+expression: response.entity_value()
+---
+[
+  "401 Unauthorized",
+  {
+    "message": "Unauthorized.",
+    "status": "error"
+  }
+]

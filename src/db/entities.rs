@@ -33,6 +33,14 @@ pub struct Feed {
 }
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
+pub struct CategoryWithFeeds {
+    pub category: Category,
+    pub feeds: Vec<Feed>,
+}
+
+pub type CategoriesWithFeeds = Vec<CategoryWithFeeds>;
+
+#[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct MediaType {
     pub mime: String,
 }

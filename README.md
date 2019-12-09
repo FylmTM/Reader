@@ -55,12 +55,21 @@ WIP.
 
 * Rust nightly (install via [rustup](https://rustup.rs/)).
 * [Cargo make](https://github.com/sagiegurari/cargo-make)
+* [rustfmt](https://github.com/rust-lang/rustfmt)
 * [Node](https://nodejs.org)
 * [Yarn](https://yarnpkg.com)
 
+**Optional:**
+
+* [insta](https://github.com/mitsuhiko/insta)
+
 ```sh
 rustup default nightly
+rustup component add rustfmt
 cargo install cargo-make
+
+# For user-friendly review of snapshots in integration tests, when they fail.
+cargo install cargo-insta
 ```
 
 Build process is orchestrated by `cargo make`.
@@ -85,6 +94,11 @@ cargo make fix
 # or
 cargo make
 ```
+
+### Testing
+
+Backend uses [insta](https://github.com/mitsuhiko/insta) for some tests.
+Look at the README of insta to find out what is recommended workflow for working with snapshots.
 
 ## License
 

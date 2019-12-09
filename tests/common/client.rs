@@ -66,6 +66,7 @@ impl<'c> RequestOperations for LocalRequest<'c> {
 
 pub trait ResponseOperations {
     fn entity(&mut self) -> (Status, String);
+    fn json_entity(&mut self) -> (String, serde_json::Value);
 }
 
 impl<'c> ResponseOperations for LocalResponse<'c> {
@@ -74,6 +75,13 @@ impl<'c> ResponseOperations for LocalResponse<'c> {
             self.status(),
             self.body_string().expect("Response body is empty"),
         )
+    }
+
+    fn json_entity(&mut self) -> (String, serde_json::Value) {
+        let body = self.body_string().expect("Response body is empty");
+        let value: serde_json::Value =
+            serde_json::from_str(&body).expect("Failed to deserialize body");
+        (self.status().to_string(), value)
     }
 }
 

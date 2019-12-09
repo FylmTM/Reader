@@ -18,7 +18,9 @@ pub type UserPostId = i64;
 pub trait Queries {
     fn find_user_by_api_key(&self, api_key: &str) -> Result<User>;
     fn find_user_ids_by_feed(&self, feed_id: FeedId) -> Result<Vec<UserId>>;
+    fn find_categories_by_user_id(&self, id: UserId) -> Result<Vec<Category>>;
     fn find_feeds(&self) -> Result<Vec<Feed>>;
+    fn find_feeds_by_category_id(&self, category_id: CategoryId) -> Result<Vec<Feed>>;
     fn find_feed_by_id(&self, id: FeedId) -> Result<Feed>;
     fn count_posts_by_user(&self, id: UserId) -> Result<i64>;
     fn count_posts_by_category(&self, id: CategoryId) -> Result<i64>;
@@ -63,6 +65,28 @@ impl Queries for Connection {
         Ok(user_ids)
     }
 
+    fn find_categories_by_user_id(self: &Connection, id: UserId) -> Result<Vec<Category>> {
+        // language=SQLite
+        let query = "
+            select c.id, c.name
+            from categories c
+            where c.user_id = ?
+        ";
+        let mut statement = self.prepare(query)?;
+        let categories_rows = statement.query_map(&[id], |row| {
+            Ok(Category {
+                id: row.get(0)?,
+                name: row.get(1)?,
+            })
+        })?;
+
+        let mut categories = Vec::new();
+        for category in categories_rows {
+            categories.push(category?)
+        }
+        Ok(categories)
+    }
+
     //noinspection DuplicatedCode
     fn find_feeds(self: &Connection) -> Result<Vec<Feed>> {
         // language=SQLite
@@ -71,15 +95,25 @@ impl Queries for Connection {
             from feeds f
         ";
         let mut statement = self.prepare(query)?;
-        let feeds_rows = statement.query_map(NO_PARAMS, |row| {
-            Ok(Feed {
-                id: row.get(0)?,
-                kind: row.get(1)?,
-                title: row.get(2)?,
-                link: row.get(3)?,
-                feed: row.get(4)?,
-            })
-        })?;
+        let feeds_rows = statement.query_map(NO_PARAMS, map_row_to_feed)?;
+
+        let mut feeds = Vec::new();
+        for feed in feeds_rows {
+            feeds.push(feed?)
+        }
+        Ok(feeds)
+    }
+
+    fn find_feeds_by_category_id(self: &Connection, category_id: CategoryId) -> Result<Vec<Feed>> {
+        // language=SQLite
+        let query = "
+            select f.id, f.kind, f.title, f.link, f.feed
+            from category_feeds cf
+            left join feeds f on cf.feed_id = f.id
+            where cf.category_id = ?
+        ";
+        let mut statement = self.prepare(query)?;
+        let feeds_rows = statement.query_map(&[category_id], map_row_to_feed)?;
 
         let mut feeds = Vec::new();
         for feed in feeds_rows {
@@ -176,6 +210,16 @@ impl Queries for Connection {
         check_one_entity_inserted(count)?;
         Ok(self.last_insert_rowid())
     }
+}
+
+fn map_row_to_feed(row: &rusqlite::Row) -> rusqlite::Result<Feed> {
+    Ok(Feed {
+        id: row.get(0)?,
+        kind: row.get(1)?,
+        title: row.get(2)?,
+        link: row.get(3)?,
+        feed: row.get(4)?,
+    })
 }
 
 fn check_one_entity_inserted(count: usize) -> Result<()> {

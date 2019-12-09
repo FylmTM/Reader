@@ -31,3 +31,6 @@ features = ["json", "helmet"]
 [dependencies.rusqlite]
 version = "0.20.0"
 features = ["bundled", "chrono"]
+
+[dev-dependencies]
+insta = "0.12.0"

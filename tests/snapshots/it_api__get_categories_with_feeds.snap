@@ -1,0 +1,64 @@
+---
+source: tests/it_api.rs
+expression: response.entityValue()
+---
+[
+  "200 OK",
+  {
+    "payload": [
+      {
+        "category": {
+          "id": 1,
+          "name": "General"
+        },
+        "feeds": [
+          {
+            "feed": "https://news.ycombinator.com/rss",
+            "id": 1,
+            "kind": "RSS",
+            "link": "https://news.ycombinator.com",
+            "title": "Hacker News"
+          }
+        ]
+      },
+      {
+        "category": {
+          "id": 2,
+          "name": "Comics"
+        },
+        "feeds": [
+          {
+            "feed": "http://xkcd.com/rss.xml",
+            "id": 2,
+            "kind": "RSS",
+            "link": "https://xkcd.com",
+            "title": "xkcd"
+          }
+        ]
+      },
+      {
+        "category": {
+          "id": 3,
+          "name": "Development"
+        },
+        "feeds": [
+          {
+            "feed": "http://blog.jetbrains.com/feed/",
+            "id": 3,
+            "kind": "RSS",
+            "link": "https://blog.jetbrains.com",
+            "title": "JetBrains Blog"
+          },
+          {
+            "feed": "https://reactjs.org/feed.xml",
+            "id": 4,
+            "kind": "RSS",
+            "link": "https://reactjs.org",
+            "title": "React"
+          }
+        ]
+      }
+    ],
+    "status": "ok"
+  }
+]
