@@ -766,7 +766,8 @@ expression: response.json_entity()
         "is_read": false,
         "is_read_later": false,
         "link": "https://xkcd.com/2239/",
-        "media_link": null,
+        "media_link": "https://imgs.xkcd.com/comics/data_error.png",
+        "media_type": "image/*",
         "summary": "",
         "title": "Data Error"
       },
@@ -780,7 +781,8 @@ expression: response.json_entity()
         "is_read": false,
         "is_read_later": false,
         "link": "https://xkcd.com/2238/",
-        "media_link": null,
+        "media_link": "https://imgs.xkcd.com/comics/flu_shot.png",
+        "media_type": "image/*",
         "summary": "",
         "title": "Flu Shot"
       },
@@ -794,7 +796,8 @@ expression: response.json_entity()
         "is_read": false,
         "is_read_later": false,
         "link": "https://xkcd.com/2237/",
-        "media_link": null,
+        "media_link": "https://imgs.xkcd.com/comics/ai_hiring_algorithm.png",
+        "media_type": "image/*",
         "summary": "",
         "title": "AI Hiring Algorithm"
       },
@@ -808,7 +811,8 @@ expression: response.json_entity()
         "is_read": false,
         "is_read_later": false,
         "link": "https://xkcd.com/2236/",
-        "media_link": null,
+        "media_link": "https://imgs.xkcd.com/comics/is_it_christmas.png",
+        "media_type": "image/*",
         "summary": "",
         "title": "Is it Christmas?"
       },

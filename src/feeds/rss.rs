@@ -75,26 +75,48 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             .map(|content| utils::clean_to_safe_html(content, &link));
         let comments_link = item.comments().map(String::from);
 
-        let media_type = item.enclosure().and_then(|enclosure| {
-            let mime_type = enclosure.mime_type();
-            if mime_type.is_empty() {
-                return None;
-            }
-            if mime_type.parse::<mime::Mime>().is_err() {
-                return None;
-            }
-            Some(db::MediaType {
-                mime: mime_type.to_string(),
-            })
-        });
-        let media_link = item.enclosure().and_then(|enclosure| {
-            let url = enclosure.url();
-            if url.is_empty() {
-                None
+        let (media_type, media_link) = {
+            if item.enclosure().is_some() {
+                let enclosure = item.enclosure().unwrap();
+                let media_type = {
+                    let mime_type = enclosure.mime_type();
+                    if mime_type.is_empty() {
+                        None
+                    } else if mime_type.parse::<mime::Mime>().is_err() {
+                        None
+                    } else {
+                        Some(db::MediaType {
+                            mime: mime_type.to_string(),
+                        })
+                    }
+                };
+                let media_link = {
+                    let url = enclosure.url();
+                    if url.is_empty() {
+                        None
+                    } else {
+                        Some(url.to_string())
+                    }
+                };
+
+                (media_type, media_link)
+            } else if content.is_some() {
+                // If there is no enclosure in feed, let's try to cut out first image in content
+                let content = content.as_ref().unwrap();
+                utils::find_image(content)
+                    .map(|image| {
+                        (
+                            Some(db::MediaType {
+                                mime: "image/*".to_string(),
+                            }),
+                            Some(image),
+                        )
+                    })
+                    .unwrap_or((None, None))
             } else {
-                Some(url.to_string())
+                (None, None)
             }
-        });
+        };
 
         let post = db::Post {
             id: -1, // Post is not retrieved from database

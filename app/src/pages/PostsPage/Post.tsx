@@ -52,9 +52,10 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
     "read-later": post.is_read_later,
   });
 
-  let content = undefined;
-  if (postContent.postContent?.content != null) {
-    content = { __html: postContent.postContent.content };
+  const isContentLoaded = postContent.postContent?.id === post.id;
+  let contentHTML = undefined;
+  if (isContentLoaded && postContent.postContent?.content != null) {
+    contentHTML = { __html: postContent.postContent.content };
   }
 
   const since = formatDistanceToNow(parseISO(post.date));
@@ -118,8 +119,18 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
             </NoStateLink>
           </span>
         </div>
-        <PostMedia type={post.media_type} link={post.media_link} />
-        {content && <div className="text" dangerouslySetInnerHTML={content} />}
+        {isContentLoaded && (
+          <>
+            <PostMedia
+              type={post.media_type}
+              link={post.media_link}
+              content={postContent.postContent?.content}
+            />
+            {contentHTML && (
+              <div className="text" dangerouslySetInnerHTML={contentHTML} />
+            )}
+          </>
+        )}
       </div>
     </div>
   );
@@ -128,10 +139,20 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
 interface PostMediaProps {
   type?: string;
   link?: string;
+  content?: string;
 }
 
-const PostMedia: FC<PostMediaProps> = function PostMedia({ type, link }) {
+const PostMedia: FC<PostMediaProps> = function PostMedia({
+  type,
+  link,
+  content,
+}) {
   if (type == null || link == null) {
+    return <div></div>;
+  }
+
+  // If content already has this media, don't double show it.
+  if (content && content.includes(link)) {
     return <div></div>;
   }
 

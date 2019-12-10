@@ -18,6 +18,7 @@ extern crate lazy_static;
 #[cfg(test)]
 #[macro_use]
 extern crate insta;
+extern crate regex;
 
 pub mod api;
 pub mod db;

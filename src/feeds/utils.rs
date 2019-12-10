@@ -17,3 +17,12 @@ pub fn clean_to_safe_html(html: &str, base_url: &str) -> String {
     ));
     builder.clean(html).to_string()
 }
+
+pub fn find_image(html: &str) -> Option<String> {
+    // language=RegExp
+    let regexp = regex::Regex::new(r#"<img.*?src="(.+?)""#).unwrap();
+    regexp
+        .captures(html)
+        .and_then(|captures| captures.get(1))
+        .map(|src| src.as_str().to_string())
+}
