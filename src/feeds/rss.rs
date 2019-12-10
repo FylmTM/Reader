@@ -72,7 +72,7 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
         let content = item
             .content()
             .or(item.description())
-            .map(utils::clean_to_safe_html);
+            .map(|content| utils::clean_to_safe_html(content, &link));
         let comments_link = item.comments().map(String::from);
 
         let media_type = item.enclosure().and_then(|enclosure| {
