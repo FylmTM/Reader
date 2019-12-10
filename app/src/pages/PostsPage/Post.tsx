@@ -38,6 +38,8 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
     }
     if (post != null) {
       postContent.get(post.id);
+    } else {
+      postContent.unset();
     }
   }, [postId]);
 

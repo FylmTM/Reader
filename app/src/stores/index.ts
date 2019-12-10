@@ -302,6 +302,7 @@ interface PostContentStore {
   postContent: PostContent | undefined;
   getInProgress: boolean;
   get: (postId: number) => void;
+  unset: () => void;
 }
 
 export const [usePostContent] = create<PostContentStore>(set => ({
@@ -314,5 +315,8 @@ export const [usePostContent] = create<PostContentStore>(set => ({
       .then(postContent => set({ postContent }))
       .catch(handleError)
       .finally(() => set({ getInProgress: false }));
+  },
+  unset: () => {
+    set({ postContent: undefined });
   },
 }));
