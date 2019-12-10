@@ -5,50 +5,7 @@ expression: response.json_entity()
 [
   "200 OK",
   {
-    "payload": [
-      {
-        "category_id": 1,
-        "comments_link": "https://news.ycombinator.com/item?id=21744772",
-        "date": "2019-12-09T17:59:35Z",
-        "feed_id": 1,
-        "feed_title": "Hacker News",
-        "id": 3,
-        "is_read": false,
-        "is_read_later": true,
-        "link": "https://fivebooks.com/best-books/science-2019-barbara-kiser/",
-        "media_link": null,
-        "summary": "Comments",
-        "title": "Science Books of 2019"
-      },
-      {
-        "category_id": 1,
-        "comments_link": "https://news.ycombinator.com/item?id=21743129",
-        "date": "2019-12-09T14:56:35Z",
-        "feed_id": 1,
-        "feed_title": "Hacker News",
-        "id": 2,
-        "is_read": false,
-        "is_read_later": true,
-        "link": "https://www.wsj.com/articles/five-cities-account-for-vast-majority-of-growth-in-tech-jobs-study-finds-11575867660",
-        "media_link": null,
-        "summary": "Comments",
-        "title": "Five cities account for vast majority of growth in U.S. tech jobs: study"
-      },
-      {
-        "category_id": 1,
-        "comments_link": "https://news.ycombinator.com/item?id=21744688",
-        "date": "2019-12-09T17:50:17Z",
-        "feed_id": 1,
-        "feed_title": "Hacker News",
-        "id": 1,
-        "is_read": false,
-        "is_read_later": true,
-        "link": "https://savo.la/introduction-to-gate.html",
-        "media_link": null,
-        "summary": "Comments",
-        "title": "Introduction to Gate"
-      }
-    ],
+    "payload": [],
     "status": "ok"
   }
 ]

@@ -1,6 +1,6 @@
 ---
 source: tests/it_api.rs
-expression: response.entityValue()
+expression: response.json_entity()
 ---
 [
   "200 OK",
@@ -13,48 +13,47 @@ expression: response.entityValue()
         },
         "feeds": [
           {
-            "feed": "https://news.ycombinator.com/rss",
+            "feed": "http://127.0.0.1:8080/mock/rss/hacker_news.xml",
             "id": 1,
             "kind": "RSS",
             "link": "https://news.ycombinator.com",
             "title": "Hacker News"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/rss/xkcd.xml",
+            "id": 2,
+            "kind": "RSS",
+            "link": "https://xkcd.com",
+            "title": "xkcd"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/rss/stopgame.xml",
+            "id": 3,
+            "kind": "RSS",
+            "link": "https://stopgame.ru/",
+            "title": "StopGame"
           }
         ]
       },
       {
         "category": {
           "id": 2,
-          "name": "Comics"
-        },
-        "feeds": [
-          {
-            "feed": "http://xkcd.com/rss.xml",
-            "id": 2,
-            "kind": "RSS",
-            "link": "https://xkcd.com",
-            "title": "xkcd"
-          }
-        ]
-      },
-      {
-        "category": {
-          "id": 3,
           "name": "Development"
         },
         "feeds": [
           {
-            "feed": "http://blog.jetbrains.com/feed/",
-            "id": 3,
-            "kind": "RSS",
-            "link": "https://blog.jetbrains.com",
-            "title": "JetBrains Blog"
-          },
-          {
-            "feed": "https://reactjs.org/feed.xml",
+            "feed": "http://127.0.0.1:8080/mock/rss/kotlin.xml",
             "id": 4,
             "kind": "RSS",
+            "link": "https://blog.jetbrains.com/kotlin/",
+            "title": "Kotlin Blog"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/rss/react.xml",
+            "id": 5,
+            "kind": "RSS",
             "link": "https://reactjs.org",
-            "title": "React"
+            "title": "React.js"
           }
         ]
       }

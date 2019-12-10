@@ -1,4 +1,4 @@
-use std::ops::Deref;
+use std::ops::{Deref, DerefMut};
 
 use rocket::http::Status;
 use rocket::request::FromRequest;
@@ -18,6 +18,12 @@ impl Deref for PoolConnection {
 
     fn deref(&self) -> &Self::Target {
         &self.connection
+    }
+}
+
+impl DerefMut for PoolConnection {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.connection
     }
 }
 

@@ -6,7 +6,7 @@ db_in_memory = false
 db_path = "db.sqlite"
 db_pool_size = 10
 
-feeds_update_enabled = false
+feeds_update_enabled = true
 feeds_update_interval = 30
 
 load_fixture = true

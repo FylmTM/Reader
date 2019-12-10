@@ -6,7 +6,7 @@ expression: response.json_entity()
   "200 OK",
   {
     "payload": {
-      "content": "<a href=\"https://news.ycombinator.com/item?id=21744688\" rel=\"noopener noreferrer\">Comments</a>",
+      "content": "<a href=\"https://news.ycombinator.com/item?id=21746673\" rel=\"noopener noreferrer\">Comments</a>",
       "id": 1
     },
     "status": "ok"

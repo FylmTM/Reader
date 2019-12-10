@@ -341,7 +341,8 @@ impl Queries for Connection {
                 (":date", &post.date),
                 (":summary", &post.summary),
                 (":content", &post.content),
-                (":media_type", &post.media_link),
+                (":media_type", &post.media_type),
+                (":media_link", &post.media_link),
                 (":comments_link", &post.comments_link),
             ],
         )?;

@@ -6,6 +6,21 @@ use rocket_contrib::json::Json;
 use crate::api::{ok, Response};
 use crate::db::{self, Queries};
 
+// In debug build (tests) allow force updating feeds manually.
+#[cfg(debug_assertions)]
+#[get("/api/v1/feeds/update")]
+pub fn feeds_update(mut conn: db::PoolConnection) -> Response<()> {
+    crate::feeds::update(&mut conn);
+    ok(())
+}
+
+// In production build do not allow force updating feeds.
+// TODO: return an error.
+#[cfg(not(debug_assertions))]
+pub fn feeds_update() -> Response<()> {
+    ok(())
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct ApiKey {
     pub api_key: String,

@@ -10,13 +10,18 @@ use reader::api::routes::*;
 use reader::api::{ApiError, ApiResponse};
 
 pub fn get() -> Client {
+    crate::common::mock_server::start();
     let app = reader::app(true);
-    Client::new(app).expect("failed to construct rocket client")
+    let client = Client::new(app).expect("failed to construct rocket client");
+
+    let feeds_update_status = client.get_uri(uri!(feeds_update)).dispatch().status().code;
+    assert_eq!(feeds_update_status, 200);
+
+    client
 }
 
 pub fn authenticated() -> Client {
-    let app = reader::app(true);
-    let client = Client::new(app).expect("failed to construct rocket client");
+    let client = get();
     client
         .post_uri(uri!(auth_login))
         .json(ApiKey {

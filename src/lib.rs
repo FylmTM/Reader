@@ -71,22 +71,12 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
         .max_size(db_pool_size)
         .build(manager)
         .unwrap();
-    let connection = pool.get().expect("Failed to acquire connection.");
-    db::bootstrap::initialize_schema(&connection);
+    let conn = pool.get().expect("Failed to acquire connection.");
+    db::bootstrap::initialize_schema(&conn);
 
     if load_fixture {
         info!("Apply fixture.");
-        db::bootstrap::load_fixture(&connection);
-    }
-
-    //-----------------
-    // Feeds updater
-    //-----------------
-
-    if feeds_update_enabled {
-        feeds::initialize(&pool, feeds_update_interval);
-    } else {
-        info!("Feeds updater is disabled.")
+        db::bootstrap::load_fixture(&conn);
     }
 
     //-----------------
@@ -109,6 +99,17 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
                 );
             },
         ))
+        .attach(rocket::fairing::AdHoc::on_launch("Feeds update", move |rocket| {
+            //-----------------
+            // Feeds updater
+            //-----------------
+            if feeds_update_enabled {
+                let pool = rocket.state::<db::Pool>().expect("State must be present");
+                feeds::initialize(&pool.clone(), feeds_update_interval);
+            } else {
+                info!("Feeds updater is disabled.");
+            }
+        }))
         .register(catchers![
             api::catchers::catcher_unauthorized,
             api::catchers::catcher_not_found,
@@ -117,6 +118,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
         .mount(
             "/",
             routes![
+                api::routes::feeds_update,
                 api::routes::auth_login,
                 api::routes::auth_logout,
                 api::routes::current_user,

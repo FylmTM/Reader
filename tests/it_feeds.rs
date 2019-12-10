@@ -13,27 +13,27 @@ const RSS_FEED_ID: i64 = 1;
 
 #[test]
 fn test_rss_update() {
-    common::mock_server::test(|| {
-        let mut conn = common::db();
-        let feed = conn.find_feed(RSS_FEED_ID).unwrap();
+    common::mock_server::start();
 
-        // Should be empty
-        assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 0);
-        assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 0);
-        assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 0);
+    let mut conn = common::db();
+    let feed = conn.find_feed(RSS_FEED_ID).unwrap();
 
-        rss::update(&mut conn, &feed).unwrap();
+    // Should be empty
+    assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 0);
+    assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 0);
+    assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 0);
 
-        // All posts should be present
-        assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 30);
-        assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 30);
-        assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 30);
+    rss::update(&mut conn, &feed).unwrap();
 
-        rss::update(&mut conn, &feed).unwrap();
+    // All posts should be present
+    assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 30);
+    assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 30);
+    assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 30);
 
-        // All posts already present, no more should be added
-        assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 30);
-        assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 30);
-        assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 30);
-    });
+    rss::update(&mut conn, &feed).unwrap();
+
+    // All posts already present, no more should be added
+    assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 30);
+    assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 30);
+    assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 30);
 }

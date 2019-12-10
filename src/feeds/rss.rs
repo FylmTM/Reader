@@ -134,28 +134,28 @@ mod tests {
 
     #[test]
     fn test_parse_rss_hacker_news() {
-        let content = include_str!("examples/rss/hacker_news.xml").to_string();
+        let content = include_str!("../../static/mock/rss/hacker_news.xml").to_string();
         let result = parse(&content).unwrap();
         assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_stopgame() {
-        let content = include_str!("examples/rss/stopgame.xml").to_string();
+        let content = include_str!("../../static/mock/rss/stopgame.xml").to_string();
         let result = parse(&content).unwrap();
         assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_kotlin() {
-        let content = include_str!("examples/rss/kotlin.xml").to_string();
+        let content = include_str!("../../static/mock/rss/kotlin.xml").to_string();
         let result = parse(&content).unwrap();
         assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_react() {
-        let content = include_str!("examples/rss/react.xml").to_string();
+        let content = include_str!("../../static/mock/rss/react.xml").to_string();
         let result = parse(&content).unwrap();
         assert_debug_snapshot!(result);
     }
