@@ -1,19 +1,3 @@
-create table users
-(
-    id       integer primary key,
-
-    username text not null,
-    api_key  text not null unique
-);
-
-create table categories
-(
-    id      integer primary key,
-    user_id integer references users (id) not null,
-
-    name    text                          not null
-);
-
 create table feeds
 (
     id    integer primary key,
@@ -21,17 +5,7 @@ create table feeds
     kind  text not null,
     title text not null,
     link  text not null,
-    feed  text not null,
-
-    unique (kind, link)
-);
-
-create table category_feeds
-(
-    category_id integer references categories (id) not null,
-    feed_id     integer references feeds (id)      not null,
-
-    primary key (category_id, feed_id)
+    feed  text not null unique
 );
 
 create table posts
@@ -49,6 +23,32 @@ create table posts
     comments_link text                          null,
 
     unique (feed_id, link)
+);
+
+create table users
+(
+    id       integer primary key,
+
+    username text not null,
+    api_key  text not null unique
+);
+
+create table user_categories
+(
+    id      integer primary key,
+    user_id integer references users (id) not null,
+
+    title   text                          not null
+);
+
+create table user_category_feeds
+(
+    category_id integer references user_categories (id) not null,
+    feed_id     integer references feeds (id)           not null,
+
+    title       text                                    not null,
+
+    primary key (category_id, feed_id)
 );
 
 create table user_posts

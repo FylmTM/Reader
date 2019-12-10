@@ -68,9 +68,9 @@ impl Queries for Connection {
         let query = "
             select u.id
             from users u
-            inner join categories c on u.id = c.user_id
-            inner join category_feeds cf on c.id = cf.category_id
-            where cf.feed_id = :feed_id
+            inner join user_categories uc on u.id = uc.user_id
+            inner join user_category_feeds ucf on uc.id = ucf.category_id
+            where ucf.feed_id = :feed_id
         ";
         let mut statement = self.prepare(query)?;
         let user_ids_rows =
@@ -86,15 +86,15 @@ impl Queries for Connection {
     fn find_categories_by_user(self: &Connection, user_id: UserId) -> Result<Vec<Category>> {
         // language=SQLite
         let query = "
-            select c.id, c.name
-            from categories c
-            where c.user_id = :user_id
+            select uc.id, uc.title
+            from user_categories uc
+            where uc.user_id = :user_id
         ";
         let mut statement = self.prepare(query)?;
         let categories_rows = statement.query_map_named(&[(":user_id", &user_id)], |row| {
             Ok(Category {
                 id: row.get("id")?,
-                name: row.get("name")?,
+                title: row.get("title")?,
             })
         })?;
 
@@ -105,7 +105,6 @@ impl Queries for Connection {
         Ok(categories)
     }
 
-    //noinspection DuplicatedCode
     fn find_feeds(self: &Connection) -> Result<Vec<Feed>> {
         // language=SQLite
         let query = "
@@ -125,10 +124,10 @@ impl Queries for Connection {
     fn find_feeds_by_category(self: &Connection, category_id: CategoryId) -> Result<Vec<Feed>> {
         // language=SQLite
         let query = "
-            select f.id, f.kind, f.title, f.link, f.feed
-            from category_feeds cf
-            left join feeds f on cf.feed_id = f.id
-            where cf.category_id = :category_id
+            select f.id, f.kind, ucf.title, f.link, f.feed
+            from user_category_feeds ucf
+            inner join feeds f on ucf.feed_id = f.id
+            where ucf.category_id = :category_id
         ";
         let mut statement = self.prepare(query)?;
         let feeds_rows =
@@ -183,14 +182,13 @@ impl Queries for Connection {
     fn find_posts_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>> {
         // language=SQLite
         let query = "
-            select p.id, cf.category_id, f.id as feed_id, f.title as feed_title, up.is_read, up.is_read_later,
+            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
                    p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
             from user_posts up
             inner join posts p on up.post_id = p.id
-            inner join feeds f on p.feed_id = f.id
-            inner join category_feeds cf on f.id = cf.feed_id
+            inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
             where up.user_id = :user_id
-            order by up.id desc
+            order by up.id desc;
         ";
         let mut statement = self.prepare(query)?;
         let user_post_rows =
@@ -206,15 +204,14 @@ impl Queries for Connection {
     fn find_posts_read_later_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>> {
         // language=SQLite
         let query = "
-            select p.id, cf.category_id, f.id as feed_id, f.title as feed_title, up.is_read, up.is_read_later,
+            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
                    p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
             from user_posts up
             inner join posts p on up.post_id = p.id
-            inner join feeds f on p.feed_id = f.id
-            inner join category_feeds cf on f.id = cf.feed_id
+            inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
             where up.user_id = :user_id
             and up.is_read_later = true
-            order by up.id desc
+            order by up.id desc;
         ";
         let mut statement = self.prepare(query)?;
         let user_post_rows =
@@ -234,15 +231,14 @@ impl Queries for Connection {
     ) -> Result<Vec<UserPost>> {
         // language=SQLite
         let query = "
-            select p.id, cf.category_id, f.id as feed_id, f.title as feed_title, up.is_read, up.is_read_later,
+            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
                    p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
             from user_posts up
             inner join posts p on up.post_id = p.id
-            inner join feeds f on p.feed_id = f.id
-            inner join category_feeds cf on f.id = cf.feed_id
+            inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
             where up.user_id = :user_id
-            and cf.category_id = :category_id
-            order by up.id desc
+            and ucf.category_id = :category_id
+            order by up.id desc;
         ";
         let mut statement = self.prepare(query)?;
         let user_post_rows = statement.query_map_named(
@@ -264,15 +260,14 @@ impl Queries for Connection {
     ) -> Result<Vec<UserPost>> {
         // language=SQLite
         let query = "
-            select p.id, cf.category_id, f.id as feed_id, f.title as feed_title, up.is_read, up.is_read_later,
+            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
                    p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
             from user_posts up
             inner join posts p on up.post_id = p.id
-            inner join feeds f on p.feed_id = f.id
-            inner join category_feeds cf on f.id = cf.feed_id
+            inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
             where up.user_id = :user_id
-            and f.id = :feed_id
-            order by up.id desc
+            and ucf.feed_id = :feed_id
+            order by up.id desc;
         ";
         let mut statement = self.prepare(query)?;
         let user_post_rows = statement.query_map_named(
@@ -303,10 +298,10 @@ impl Queries for Connection {
         // language=SQLite
         let query = "
             select count(p.id) as count
-            from categories c
-            inner join category_feeds cf on c.id = cf.category_id
-            inner join posts p on cf.feed_id = p.feed_id
-            where c.id = :category_id
+            from user_categories uc
+            inner join user_category_feeds ucf on uc.id = ucf.category_id
+            inner join posts p on ucf.feed_id = p.feed_id
+            where uc.id = :category_id
         ";
         let count = self.query_row_named(query, &[(":category_id", &category_id)], |row| {
             row.get("count")

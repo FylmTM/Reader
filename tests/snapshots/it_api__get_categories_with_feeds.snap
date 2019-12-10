@@ -9,7 +9,7 @@ expression: response.json_entity()
       {
         "category": {
           "id": 1,
-          "name": "General"
+          "title": "General"
         },
         "feeds": [
           {
@@ -38,7 +38,7 @@ expression: response.json_entity()
       {
         "category": {
           "id": 2,
-          "name": "Development"
+          "title": "Development"
         },
         "feeds": [
           {

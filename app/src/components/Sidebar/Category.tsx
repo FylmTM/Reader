@@ -106,7 +106,7 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
         >
           <Icon type={isExpanded ? "expanded" : "collapsed"} />
         </div>
-        <span className="name ellipsis">{category.name}</span>
+        <span className="name ellipsis">{category.title}</span>
         {unreadCount > 0 && <span className="unread">{unreadCount}</span>}
       </NoStateLink>
       {(isExpanded && feeds.length) > 0 && (

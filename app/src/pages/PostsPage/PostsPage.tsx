@@ -59,7 +59,7 @@ export const PostsPage: FC = function PostsPage() {
         const category = categories.find(
           ({ category }) => category.id === section.categoryId,
         );
-        return category?.category.name;
+        return category?.category.title;
       case "feed":
         categoryId = section.categoryId;
         feedId = section.feedId;

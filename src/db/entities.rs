@@ -13,7 +13,7 @@ pub struct User {
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct Category {
     pub id: i64,
-    pub name: String,
+    pub title: String,
 }
 
 #[derive(Copy, Clone, PartialEq, Debug, Serialize, Deserialize)]
