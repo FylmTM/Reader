@@ -1,0 +1,66 @@
+---
+source: src/feeds/rss.rs
+expression: result
+---
+[
+    Post {
+        id: -1,
+        link: "https://xkcd.com/2236/",
+        title: "Is it Christmas?",
+        date: 2019-12-02T05:00:00Z,
+        summary: Some(
+            "",
+        ),
+        content: Some(
+            "<img src=\"https://imgs.xkcd.com/comics/is_it_christmas.png\" title=\"We\'ve tested it on 30 different days and it hasn\'t gotten one wrong yet.\" alt=\"We\'ve tested it on 30 different days and it hasn\'t gotten one wrong yet.\">",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: None,
+    },
+    Post {
+        id: -1,
+        link: "https://xkcd.com/2237/",
+        title: "AI Hiring Algorithm",
+        date: 2019-12-04T05:00:00Z,
+        summary: Some(
+            "",
+        ),
+        content: Some(
+            "<img src=\"https://imgs.xkcd.com/comics/ai_hiring_algorithm.png\" title=\"So glad Kate over in R&amp;D pushed for using the AlgoMaxAnalyzer to look into this. Hiring her was a great decisio- waaaait.\" alt=\"So glad Kate over in R&amp;D pushed for using the AlgoMaxAnalyzer to look into this. Hiring her was a great decisio- waaaait.\">",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: None,
+    },
+    Post {
+        id: -1,
+        link: "https://xkcd.com/2238/",
+        title: "Flu Shot",
+        date: 2019-12-06T05:00:00Z,
+        summary: Some(
+            "",
+        ),
+        content: Some(
+            "<img src=\"https://imgs.xkcd.com/comics/flu_shot.png\" title=\"&quot;Wait, how often are you getting bitten by snakes? And why are you boiling water?&quot; &quot;Dunno, the CDC people keep showing up with complicated questions about the \'history of the property\' and \'possible curses\' but I kinda tune them out. At least one of them offered me the flu shot.&quot;\" alt=\"&quot;Wait, how often are you getting bitten by snakes? And why are you boiling water?&quot; &quot;Dunno, the CDC people keep showing up with complicated questions about the \'history of the property\' and \'possible curses\' but I kinda tune them out. At least one of them offered me the flu shot.&quot;\">",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: None,
+    },
+    Post {
+        id: -1,
+        link: "https://xkcd.com/2239/",
+        title: "Data Error",
+        date: 2019-12-09T05:00:00Z,
+        summary: Some(
+            "",
+        ),
+        content: Some(
+            "<img src=\"https://imgs.xkcd.com/comics/data_error.png\" title=\"Cyanobacteria wiped out nearly all life on Earth once before, and they can do it again!\" alt=\"Cyanobacteria wiped out nearly all life on Earth once before, and they can do it again!\">",
+        ),
+        media_type: None,
+        media_link: None,
+        comments_link: None,
+    },
+]

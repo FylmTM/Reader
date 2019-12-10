@@ -140,13 +140,6 @@ mod tests {
     }
 
     #[test]
-    fn test_parse_rss_stopgame() {
-        let content = include_str!("../../static/mock/rss/stopgame.xml").to_string();
-        let result = parse(&content).unwrap();
-        assert_debug_snapshot!(result);
-    }
-
-    #[test]
     fn test_parse_rss_kotlin() {
         let content = include_str!("../../static/mock/rss/kotlin.xml").to_string();
         let result = parse(&content).unwrap();
@@ -156,6 +149,20 @@ mod tests {
     #[test]
     fn test_parse_rss_react() {
         let content = include_str!("../../static/mock/rss/react.xml").to_string();
+        let result = parse(&content).unwrap();
+        assert_debug_snapshot!(result);
+    }
+
+    #[test]
+    fn test_parse_rss_stopgame() {
+        let content = include_str!("../../static/mock/rss/stopgame.xml").to_string();
+        let result = parse(&content).unwrap();
+        assert_debug_snapshot!(result);
+    }
+
+    #[test]
+    fn test_parse_rss_xkcd() {
+        let content = include_str!("../../static/mock/rss/xkcd.xml").to_string();
         let result = parse(&content).unwrap();
         assert_debug_snapshot!(result);
     }
