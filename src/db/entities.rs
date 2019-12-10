@@ -5,6 +5,12 @@ use rusqlite::types::{FromSql, FromSqlError, FromSqlResult, ToSql, ToSqlOutput, 
 use serde::export::Formatter;
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
+pub struct Page<T> {
+    pub has_next_page: bool,
+    pub items: Vec<T>,
+}
+
+#[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct User {
     pub id: i64,
     pub username: String,

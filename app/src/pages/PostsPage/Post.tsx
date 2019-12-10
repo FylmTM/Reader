@@ -33,13 +33,13 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
 
   useEffect(() => {
     if (contentRef != null) {
-      // @ts-ignore
+      // @ts-ignore scroll to initial position of content element
       contentRef.current?.scrollTo(0, 0);
     }
-    if (post != null) {
-      postContent.get(post.id);
-    } else {
+    if (post == null) {
       postContent.unset();
+    } else {
+      postContent.get(post.id);
     }
   }, [postId]);
 

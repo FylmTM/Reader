@@ -82,39 +82,28 @@ pub fn categories_with_feeds(
     ok(categories_with_feeds)
 }
 
-#[get("/api/v1/posts/all")]
-pub fn posts_all(user: db::User, conn: db::PoolConnection) -> Response<Vec<db::UserPost>> {
-    let posts = conn.find_posts_by_user(user.id)?;
-    ok(posts)
-}
-
-#[get("/api/v1/posts/read_later")]
-pub fn posts_read_later(user: db::User, conn: db::PoolConnection) -> Response<Vec<db::UserPost>> {
-    let posts = conn.find_posts_read_later_by_user(user.id)?;
-    ok(posts)
-}
-
-#[get("/api/v1/posts/category/<category_id>")]
-pub fn posts_category(
-    category_id: i64,
+#[get("/api/v1/posts?<from_post_id>&<is_read_later>&<is_read>&<category_id>&<feed_id>")]
+pub fn posts(
+    from_post_id: Option<i64>,
+    is_read_later: Option<bool>,
+    is_read: Option<bool>,
+    category_id: Option<i64>,
+    feed_id: Option<i64>,
     user: db::User,
     conn: db::PoolConnection,
-) -> Response<Vec<db::UserPost>> {
-    let posts = conn.find_posts_by_user_and_category(user.id, category_id)?;
+) -> Response<db::Page<db::UserPost>> {
+    let posts = conn.find_posts(
+        user.id,
+        from_post_id,
+        is_read_later,
+        is_read,
+        category_id,
+        feed_id,
+    )?;
     ok(posts)
 }
 
-#[get("/api/v1/posts/feed/<feed_id>")]
-pub fn posts_feed(
-    feed_id: i64,
-    user: db::User,
-    conn: db::PoolConnection,
-) -> Response<Vec<db::UserPost>> {
-    let posts = conn.find_posts_by_user_and_feed(user.id, feed_id)?;
-    ok(posts)
-}
-
-#[get("/api/v1/posts/<post_id>/content", rank = 2)]
+#[get("/api/v1/posts/<post_id>/content")]
 pub fn post_content(
     post_id: i64,
     user: db::User,

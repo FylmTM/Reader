@@ -1,9 +1,7 @@
 #![allow(dead_code)]
 
-use rocket::http::uri::Origin;
 use rocket::http::Status;
 use rocket::local::{Client, LocalRequest, LocalResponse};
-use rocket::uri;
 
 use reader;
 use reader::api::routes::*;
@@ -14,7 +12,7 @@ pub fn get() -> Client {
     let app = reader::app(true);
     let client = Client::new(app).expect("failed to construct rocket client");
 
-    let feeds_update_status = client.get_uri(uri!(feeds_update)).dispatch().status().code;
+    let feeds_update_status = client.get("/api/v1/feeds/update").dispatch().status().code;
     assert_eq!(feeds_update_status, 200);
 
     client
@@ -23,34 +21,12 @@ pub fn get() -> Client {
 pub fn authenticated() -> Client {
     let client = get();
     client
-        .post_uri(uri!(auth_login))
+        .post("/api/v1/auth/login")
         .json(ApiKey {
             api_key: "api_key".to_string(),
         })
         .dispatch();
     client
-}
-
-pub trait ClientOperations {
-    fn get_uri(&self, uri: Origin) -> LocalRequest;
-
-    fn delete_uri(&self, uri: Origin) -> LocalRequest;
-
-    fn post_uri(&self, uri: Origin) -> LocalRequest;
-}
-
-impl ClientOperations for Client {
-    fn get_uri(&self, uri: Origin) -> LocalRequest {
-        self.get(uri.to_string())
-    }
-
-    fn delete_uri(&self, uri: Origin) -> LocalRequest {
-        self.delete(uri.to_string())
-    }
-
-    fn post_uri(&self, uri: Origin) -> LocalRequest {
-        self.post(uri.to_string())
-    }
 }
 
 pub trait RequestOperations {

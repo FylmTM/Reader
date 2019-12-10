@@ -2,6 +2,11 @@
     overflow: hidden;
 }
 
+.r-posts-list-item.loading {
+    height: 130px;
+    border-bottom: 1px solid var(--color-seconary-muted);
+}
+
 .r-posts-list-item > a {
     display: flex;
     flex-direction: column;

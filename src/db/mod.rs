@@ -15,6 +15,8 @@ pub type FeedId = i64;
 pub type PostId = i64;
 pub type UserPostId = i64;
 
+const PAGE_SIZE: usize = 50;
+
 pub trait Queries {
     fn find_user_by_api_key(&self, api_key: &str) -> Result<User>;
     fn find_user_ids_by_feed(&self, feed_id: FeedId) -> Result<Vec<UserId>>;
@@ -27,18 +29,15 @@ pub trait Queries {
         user_id: UserId,
         post_id: PostId,
     ) -> Result<UserPostContent>;
-    fn find_posts_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>>;
-    fn find_posts_read_later_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>>;
-    fn find_posts_by_user_and_category(
+    fn find_posts(
         &self,
         user_id: UserId,
-        category_id: CategoryId,
-    ) -> Result<Vec<UserPost>>;
-    fn find_posts_by_user_and_feed(
-        &self,
-        user_id: UserId,
-        feed_id: FeedId,
-    ) -> Result<Vec<UserPost>>;
+        from_post_id: Option<PostId>,
+        is_read_later: Option<bool>,
+        is_read: Option<bool>,
+        category_id: Option<CategoryId>,
+        feed_id: Option<FeedId>,
+    ) -> Result<Page<UserPost>>;
     fn count_posts_by_user(&self, id: UserId) -> Result<i64>;
     fn count_posts_by_category(&self, id: CategoryId) -> Result<i64>;
     fn count_posts_by_feed(&self, id: FeedId) -> Result<i64>;
@@ -162,7 +161,7 @@ impl Queries for Connection {
             select p.id, p.content
             from user_posts up
             inner join posts p on up.post_id = p.id
-            where up.id = :post_id
+            where up.post_id = :post_id
             and up.user_id = :user_id
         ";
         let mut statement = self.prepare(query)?;
@@ -179,107 +178,78 @@ impl Queries for Connection {
         Ok(user_post_content)
     }
 
-    fn find_posts_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>> {
-        // language=SQLite
-        let query = "
-            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
-                   p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
-            from user_posts up
-            inner join posts p on up.post_id = p.id
-            inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
-            where up.user_id = :user_id
-            order by up.id desc;
-        ";
-        let mut statement = self.prepare(query)?;
-        let user_post_rows =
-            statement.query_map_named(&[(":user_id", &user_id)], map_row_to_user_post)?;
-
-        let mut user_posts = Vec::new();
-        for user_post in user_post_rows {
-            user_posts.push(user_post?)
-        }
-        Ok(user_posts)
-    }
-
-    fn find_posts_read_later_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>> {
-        // language=SQLite
-        let query = "
-            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
-                   p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
-            from user_posts up
-            inner join posts p on up.post_id = p.id
-            inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
-            where up.user_id = :user_id
-            and up.is_read_later = true
-            order by up.id desc;
-        ";
-        let mut statement = self.prepare(query)?;
-        let user_post_rows =
-            statement.query_map_named(&[(":user_id", &user_id)], map_row_to_user_post)?;
-
-        let mut user_posts = Vec::new();
-        for user_post in user_post_rows {
-            user_posts.push(user_post?)
-        }
-        Ok(user_posts)
-    }
-
-    fn find_posts_by_user_and_category(
+    fn find_posts(
         &self,
         user_id: UserId,
-        category_id: CategoryId,
-    ) -> Result<Vec<UserPost>> {
+        from_post_id: Option<PostId>,
+        is_read_later: Option<bool>,
+        is_read: Option<bool>,
+        category_id: Option<CategoryId>,
+        feed_id: Option<FeedId>,
+    ) -> Result<Page<UserPost>> {
+        let sql_from_post_id = from_post_id
+            .map(|_| "and up.post_id < :post_id")
+            .unwrap_or("");
+        let sql_is_read_later = is_read_later
+            .map(|_| "and up.is_read_later = :is_read_later")
+            .unwrap_or("");
+        let sql_is_read = is_read.map(|_| "and up.is_read = :is_read").unwrap_or("");
+        let sql_category_id = category_id
+            .map(|_| "and ucf.category_id = :category_id")
+            .unwrap_or("");
+        let sql_feed_id = feed_id.map(|_| "and ucf.feed_id = :feed_id").unwrap_or("");
+
         // language=SQLite
-        let query = "
+        let query = format!("
             select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
                    p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
             from user_posts up
             inner join posts p on up.post_id = p.id
             inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
             where up.user_id = :user_id
-            and ucf.category_id = :category_id
-            order by up.id desc;
-        ";
-        let mut statement = self.prepare(query)?;
-        let user_post_rows = statement.query_map_named(
-            &[(":user_id", &user_id), (":category_id", &category_id)],
-            map_row_to_user_post,
-        )?;
+            {}
+            {}
+            {}
+            {}
+            {}
+            order by up.post_id desc
+            limit {};
+        ", sql_from_post_id, sql_is_read_later, sql_is_read, sql_category_id, sql_feed_id, PAGE_SIZE + 1);
+        let mut statement = self.prepare(&query)?;
 
+        let mut params: Vec<(&str, &dyn rusqlite::ToSql)> = Vec::new();
+        params.push((":user_id", &user_id));
+
+        if from_post_id.is_some() {
+            params.push((":post_id", from_post_id.as_ref().unwrap()));
+        }
+        if is_read_later.is_some() {
+            params.push((":is_read_later", is_read_later.as_ref().unwrap()));
+        }
+        if is_read.is_some() {
+            params.push((":is_read", is_read.as_ref().unwrap()));
+        }
+        if category_id.is_some() {
+            params.push((":category_id", category_id.as_ref().unwrap()));
+        }
+        if feed_id.is_some() {
+            params.push((":feed_id", feed_id.as_ref().unwrap()));
+        }
+
+        let user_post_rows = statement.query_map_named(params.as_slice(), map_row_to_user_post)?;
         let mut user_posts = Vec::new();
         for user_post in user_post_rows {
             user_posts.push(user_post?)
         }
-        Ok(user_posts)
-    }
 
-    fn find_posts_by_user_and_feed(
-        &self,
-        user_id: UserId,
-        feed_id: FeedId,
-    ) -> Result<Vec<UserPost>> {
-        // language=SQLite
-        let query = "
-            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
-                   p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
-            from user_posts up
-            inner join posts p on up.post_id = p.id
-            inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
-            where up.user_id = :user_id
-            and ucf.feed_id = :feed_id
-            order by up.id desc;
-        ";
-        let mut statement = self.prepare(query)?;
-        let user_post_rows = statement.query_map_named(
-            &[(":user_id", &user_id), (":feed_id", &feed_id)],
-            map_row_to_user_post,
-        )?;
-
-        let mut user_posts = Vec::new();
-        for user_post in user_post_rows {
-            user_posts.push(user_post?)
-        }
-        Ok(user_posts)
+        // We are querying for PAGE_SIZE + 1.
+        // If there is more elements than PAGE_SIZE, then there is another non-empty page.
+        let has_next_page = user_posts.len() > PAGE_SIZE;
+        user_posts.truncate(PAGE_SIZE);
+        Ok(Page {
+            has_next_page,
+            items: user_posts,
+        })
     }
 
     fn count_posts_by_user(self: &Connection, user_id: UserId) -> Result<i64> {

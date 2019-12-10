@@ -61,3 +61,8 @@ export type PostContent = {
   id: number;
   content?: string;
 };
+
+export type Page<T> = {
+  has_next_page: boolean;
+  items: Array<T>;
+};

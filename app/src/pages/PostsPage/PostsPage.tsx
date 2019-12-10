@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect } from "react";
-import { Activity } from "../../components/common/Activity/Activity";
 import { IconButton } from "../../components/common/Button/Button";
 import { navigate } from "../../components/common/NoStateLink";
 import * as domain from "../../domain";
@@ -44,10 +43,10 @@ export const PostsPage: FC = function PostsPage() {
     state => state.getCategoriesUnreadCounts,
   );
 
+  // Extract section data into individual variables for hook.
   const type = section.type;
   let categoryId: number | undefined = undefined;
   let feedId: number | undefined = undefined;
-
   const title = useCategories(({ categories }) => {
     switch (section.type) {
       case "read-later":
@@ -76,8 +75,9 @@ export const PostsPage: FC = function PostsPage() {
     }
   });
 
-  const { hrefPrefix, postId } = itemData(section);
+  const { hrefPrefix, postId: selectedPostId } = itemData(section);
 
+  // Whenever section is changed, load first page of posts
   useEffect(() => {
     if (section) {
       getUnreadCounts();
@@ -86,15 +86,17 @@ export const PostsPage: FC = function PostsPage() {
   }, [refreshMark, type, categoryId, feedId]);
 
   useEffect(() => {
-    if (postId) {
-      posts.read(postId, true);
-    }
-  }, [postId]);
+    if (selectedPostId) {
+      // Mark post as read, when it's selected
+      posts.read(selectedPostId, true);
 
-  const post = posts.posts.find(post => post.id === postId);
-  if (postId != null && post == null) {
-    navigate(hrefPrefix);
-  }
+      // If there is post selected, but such post does not exists, deselect it.
+      const post = posts.posts.find(post => post.id === selectedPostId);
+      if (post == null) {
+        navigate(hrefPrefix);
+      }
+    }
+  }, [selectedPostId]);
 
   return (
     <div className="r-page-posts">
@@ -116,18 +118,14 @@ export const PostsPage: FC = function PostsPage() {
           </div>
         </div>
         <div className="r-posts-list-content">
-          {posts.postsGetInProgress ? (
-            <Activity />
-          ) : (
-            <PostsList
-              posts={posts.posts}
-              postId={postId}
-              hrefPrefix={hrefPrefix}
-            />
-          )}
+          <PostsList
+            selectedPostId={selectedPostId}
+            hrefPrefix={hrefPrefix}
+            section={section}
+          />
         </div>
       </div>
-      <Post postId={postId} hrefPrefix={hrefPrefix} />
+      <Post postId={selectedPostId} hrefPrefix={hrefPrefix} />
     </div>
   );
 };

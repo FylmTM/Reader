@@ -1,6 +1,7 @@
 import {
   CategoriesWithFeeds,
   CategoriesWithFeedsUnreadCounts,
+  Page,
   Post,
   PostContent,
   PostsSection,
@@ -49,17 +50,33 @@ function getCategoriesWithFeedsUnreadCounts(): Promise<
   });
 }
 
-function getPosts(section: PostsSection): Promise<Array<Post>> {
+function getPosts(
+  section: PostsSection,
+  fromPostId?: number,
+): Promise<Page<Post>> {
+  const query = [];
+
+  if (fromPostId != null) {
+    query.push(`from_post_id=${fromPostId}`);
+  }
+
   switch (section.type) {
     case "read-later":
-      return client.get("/api/v1/posts/read_later");
+      query.push(`is_read_later=true`);
+      break;
     case "all":
-      return client.get("/api/v1/posts/all");
+      // nothing
+      break;
     case "category":
-      return client.get(`/api/v1/posts/category/${section.categoryId}`);
+      query.push(`category_id=${section.categoryId}`);
+      break;
     case "feed":
-      return client.get(`/api/v1/posts/feed/${section.feedId}`);
+      query.push(`feed_id=${section.feedId}`);
+      break;
   }
+
+  const queryString = query.length === 0 ? "" : `?${query.join("&")}`;
+  return client.get(`/api/v1/posts${queryString}`);
 }
 
 function getPostContent(postId: number): Promise<PostContent> {

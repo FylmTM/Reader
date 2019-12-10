@@ -1,59 +1,97 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { ComponentType, FC, useEffect, useRef } from "react";
-import { Post } from "../../domain";
+import InfiniteLoader from "react-window-infinite-loader";
+import { Activity } from "../../components/common/Activity/Activity";
+import { PostsSection } from "../../domain";
 import { PostsListItem } from "./PostsListItem";
 import { FixedSizeList, ListChildComponentProps } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
+import { usePosts } from "../../stores";
 
 interface Props {
-  posts: Array<Post>;
-  postId: number | undefined;
+  section: PostsSection;
+  selectedPostId: number | undefined;
   hrefPrefix: string;
 }
 
 export const PostsList: FC<Props> = function PostsList({
-  posts,
-  postId,
+  section,
+  selectedPostId,
   hrefPrefix,
 }) {
-  const ref = useRef(null);
-  const Row: ComponentType<ListChildComponentProps> = ({
-    index,
-    style,
-    data,
-  }) => {
-    const post = posts[index];
+  const posts = usePosts();
+  const listRef = useRef<FixedSizeList>(null);
+
+  useEffect(() => {
+    const index = posts.posts.findIndex(post => post.id === selectedPostId);
+    if (index !== -1) {
+      listRef.current?.scrollToItem(index);
+    }
+  }, [selectedPostId]);
+
+  const hasNextPage = posts.hasNextPage;
+  const isNextPageLoading = posts.postsGetInProgress;
+  const items = posts.posts;
+  const loadNextPage = () => {
+    if (items.length > 0) {
+      posts.getNextPage(section, items[items.length - 1].id);
+    }
+    return null;
+  };
+
+  const itemCount = hasNextPage ? items.length + 1 : items.length;
+  const loadMoreItems = isNextPageLoading ? () => null : loadNextPage;
+  const isItemLoaded = (index: number) => !hasNextPage || index < items.length;
+
+  const Row: ComponentType<ListChildComponentProps> = ({ index, style }) => {
+    if (!isItemLoaded(index)) {
+      return (
+        <div className="r-posts-list-item loading" style={style}>
+          <Activity />
+        </div>
+      );
+    }
+    const post = posts.posts[index];
     return (
       <PostsListItem
         key={post.id}
         post={post}
         hrefPrefix={hrefPrefix}
-        isSelected={postId ? postId === post.id : false}
+        isSelected={selectedPostId ? selectedPostId === post.id : false}
         style={style}
       />
     );
   };
 
-  useEffect(() => {
-    const index = posts.findIndex(post => post.id === postId);
-    if (index !== -1) {
-      // @ts-ignore
-      ref.current?.scrollToItem(index);
-    }
-  }, [postId]);
-
   return (
     <AutoSizer>
       {({ height, width }) => (
-        <FixedSizeList
-          ref={ref}
-          height={height}
-          itemCount={posts.length}
-          itemSize={130}
-          width={width}
+        <InfiniteLoader
+          isItemLoaded={isItemLoaded}
+          itemCount={itemCount}
+          loadMoreItems={loadMoreItems}
+          threshold={5}
         >
-          {Row}
-        </FixedSizeList>
+          {({ onItemsRendered, ref: loaderRef }) => (
+            <FixedSizeList
+              // hack to set single ref to 2 places.
+              // maybe there is better way to do this?
+              ref={ref => {
+                // @ts-ignore
+                listRef.current = ref;
+                // @ts-ignore
+                loaderRef(ref);
+              }}
+              itemSize={130}
+              height={height}
+              width={width}
+              itemCount={itemCount}
+              onItemsRendered={onItemsRendered}
+            >
+              {Row}
+            </FixedSizeList>
+          )}
+        </InfiniteLoader>
       )}
     </AutoSizer>
   );

@@ -194,8 +194,10 @@ export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
 
 interface PostsStore {
   posts: Array<Post>;
+  hasNextPage: boolean;
   postsGetInProgress: boolean;
   get: (section: PostsSection) => void;
+  getNextPage: (section: PostsSection, fromPostId: number) => void;
   markAllAsRead: (section: PostsSection, href: string) => void;
   read: (postId: number, isRead: boolean) => void;
   readLater: (postId: number, isReadLater: boolean) => void;
@@ -204,12 +206,31 @@ interface PostsStore {
 
 export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
   posts: [],
+  hasNextPage: true,
   postsGetInProgress: false,
   get: section => {
-    set({ posts: [], postsGetInProgress: true });
+    set({ posts: [], postsGetInProgress: true, hasNextPage: true });
     api
       .getPosts(section)
-      .then(posts => set({ posts }))
+      .then(newPosts => {
+        set(({ posts }) => ({
+          posts: [...posts, ...newPosts.items],
+          hasNextPage: newPosts.has_next_page,
+        }));
+      })
+      .catch(handleError)
+      .finally(() => set({ postsGetInProgress: false }));
+  },
+  getNextPage: (section, fromPostId) => {
+    set({ postsGetInProgress: true });
+    api
+      .getPosts(section, fromPostId)
+      .then(newPosts => {
+        set(({ posts }) => ({
+          posts: [...posts, ...newPosts.items],
+          hasNextPage: newPosts.has_next_page,
+        }));
+      })
       .catch(handleError)
       .finally(() => set({ postsGetInProgress: false }));
   },

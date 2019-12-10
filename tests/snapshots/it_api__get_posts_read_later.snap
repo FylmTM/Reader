@@ -5,7 +5,10 @@ expression: response.json_entity()
 [
   "200 OK",
   {
-    "payload": [],
+    "payload": {
+      "has_next_page": false,
+      "items": []
+    },
     "status": "ok"
   }
 ]
