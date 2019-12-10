@@ -6,6 +6,7 @@ import { Post } from "../../domain";
 import { postsStoreApi } from "../../stores";
 import { classNames } from "../../utils";
 import "./PostsListItem.css";
+import { formatDistanceToNow, parseISO } from "date-fns";
 
 interface Props {
   post: Post;
@@ -44,11 +45,12 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   });
 
   const onClickHref = isSelected ? hrefPrefix : `${hrefPrefix}/post/${post.id}`;
+  const since = formatDistanceToNow(parseISO(post.date));
 
   return (
     <div className={className} style={style}>
       <span className="meta">
-        <span className="date">{post.date}</span>
+        <span className="date">{since}</span>
         <span>&nbsp;\&nbsp;</span>
         <span className="feed">
           <NoStateLink

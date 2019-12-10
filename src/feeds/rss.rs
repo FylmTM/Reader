@@ -65,7 +65,7 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             .to_string();
         let date = match item.pub_date() {
             Some(date) => parse_date(date)?,
-            None => chrono::Utc::now().naive_utc(),
+            None => chrono::DateTime::from(chrono::Utc::now()),
         };
 
         let summary = item.description().map(utils::clean_to_text);
@@ -116,7 +116,7 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
     Ok(posts)
 }
 
-fn parse_date(date: &str) -> Result<chrono::NaiveDateTime> {
+fn parse_date(date: &str) -> Result<chrono::DateTime<chrono::Utc>> {
     let result = chrono::DateTime::parse_from_rfc2822(date)
         .or_else(|_| {
             // chrono consider "-0000" timezone to be "missing"
@@ -124,7 +124,7 @@ fn parse_date(date: &str) -> Result<chrono::NaiveDateTime> {
             let date = date.replace("-0000", "+0000");
             chrono::DateTime::parse_from_rfc2822(&date)
         })
-        .map(|date| date.naive_utc())?;
+        .map(|date| chrono::DateTime::from(date))?;
     Ok(result)
 }
 
@@ -155,9 +155,7 @@ mod tests {
 
     #[test]
     fn test_parse_date_handle_negative_zero_timezone() {
-        let expected =
-            chrono::NaiveDateTime::parse_from_str("2019-12-04T05:00:00", "%Y-%m-%dT%H:%M:%S%.f")
-                .unwrap();
+        let expected = chrono::DateTime::parse_from_rfc3339("2019-12-04T05:00:00+00:00").unwrap();
         assert_eq!(
             expected,
             parse_date("Wed, 04 Dec 2019 05:00:00 -0000").unwrap()

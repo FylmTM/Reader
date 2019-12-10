@@ -51,7 +51,7 @@ pub struct Post {
     pub id: i64,
     pub link: String,
     pub title: String,
-    pub date: chrono::NaiveDateTime,
+    pub date: chrono::DateTime<chrono::Utc>,
     pub summary: Option<String>,
     pub content: Option<String>,
     #[serde(flatten)]
@@ -70,7 +70,7 @@ pub struct UserPost {
     pub is_read_later: bool,
     pub link: String,
     pub title: String,
-    pub date: chrono::NaiveDateTime,
+    pub date: chrono::DateTime<chrono::Utc>,
     pub summary: Option<String>,
     #[serde(flatten)]
     pub media_type: Option<MediaType>,

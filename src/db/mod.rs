@@ -158,6 +158,7 @@ impl Queries for Connection {
             inner join feeds f on p.feed_id = f.id
             inner join category_feeds cf on f.id = cf.feed_id
             where up.user_id = :user_id
+            order by up.id desc
         ";
         let mut statement = self.prepare(query)?;
         let user_post_rows =
@@ -181,6 +182,7 @@ impl Queries for Connection {
             inner join category_feeds cf on f.id = cf.feed_id
             where up.user_id = :user_id
             and up.is_read_later = true
+            order by up.id desc
         ";
         let mut statement = self.prepare(query)?;
         let user_post_rows =
@@ -208,6 +210,7 @@ impl Queries for Connection {
             inner join category_feeds cf on f.id = cf.feed_id
             where up.user_id = :user_id
             and cf.category_id = :category_id
+            order by up.id desc
         ";
         let mut statement = self.prepare(query)?;
         let user_post_rows = statement.query_map_named(
@@ -237,6 +240,7 @@ impl Queries for Connection {
             inner join category_feeds cf on f.id = cf.feed_id
             where up.user_id = :user_id
             and f.id = :feed_id
+            order by up.id desc
         ";
         let mut statement = self.prepare(query)?;
         let user_post_rows = statement.query_map_named(
