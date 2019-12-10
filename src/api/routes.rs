@@ -98,3 +98,13 @@ pub fn posts_feed(
     let posts = conn.find_posts_by_user_and_feed(user.id, feed_id)?;
     ok(posts)
 }
+
+#[get("/api/v1/posts/<post_id>/content", rank = 2)]
+pub fn post_content(
+    post_id: i64,
+    user: db::User,
+    conn: db::PoolConnection,
+) -> Response<db::UserPostContent> {
+    let content = conn.find_post_content_by_user(user.id, post_id)?;
+    ok(content)
+}

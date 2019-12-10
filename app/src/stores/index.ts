@@ -5,6 +5,7 @@ import {
   CategoriesWithFeeds,
   CategoriesWithFeedsUnreadCounts,
   Post,
+  PostContent,
   PostsSection,
   Section,
   User,
@@ -294,5 +295,24 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
         posts: remove(posts, i),
       };
     });
+  },
+}));
+
+interface PostContentStore {
+  postContent: PostContent | undefined;
+  getInProgress: boolean;
+  get: (postId: number) => void;
+}
+
+export const [usePostContent] = create<PostContentStore>(set => ({
+  postContent: undefined,
+  getInProgress: false,
+  get: (postId: number) => {
+    set({ getInProgress: true, postContent: undefined });
+    api
+      .getPostContent(postId)
+      .then(postContent => set({ postContent }))
+      .catch(handleError)
+      .finally(() => set({ getInProgress: false }));
   },
 }));

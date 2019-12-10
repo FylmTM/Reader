@@ -1,10 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect, useRef } from "react";
 import { IconButton } from "../../components/common/Button/Button";
 import { Icon } from "../../components/common/Icon/Icon";
 import { NoStateLink } from "../../components/common/NoStateLink";
-import { usePosts } from "../../stores";
+import { usePosts, usePostContent } from "../../stores";
 import { classNames } from "../../utils";
 import "./Post.css";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import parseISO from "date-fns/parseISO";
 
 const NoPost: FC = function NoPost() {
   return (
@@ -26,10 +29,15 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
   const contentRef = useRef(null);
   const { posts, read, readLater, close } = usePosts();
   const post = posts.find(post => post.id === postId);
+  const postContent = usePostContent();
+
   useEffect(() => {
     if (contentRef != null) {
       // @ts-ignore
       contentRef.current?.scrollTo(0, 0);
+    }
+    if (post != null) {
+      postContent.get(post.id);
     }
   }, [postId]);
 
@@ -41,6 +49,13 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
     read: post.is_read,
     "read-later": post.is_read_later,
   });
+
+  let content = undefined;
+  if (postContent.postContent?.content != null) {
+    content = { __html: postContent.postContent.content };
+  }
+
+  const since = formatDistanceToNow(parseISO(post.date));
 
   return (
     <div className={className}>
@@ -91,7 +106,7 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
           <a href={post.link}>{post.title}</a>
         </h1>
         <div className="meta">
-          <span className="date">{post.date}</span>
+          <span className="date">{since}</span>
           <span>&nbsp;\&nbsp;</span>
           <span className="feed">
             <NoStateLink
@@ -102,7 +117,7 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
           </span>
         </div>
         <PostMedia type={post.media_type} link={post.media_link} />
-        <div className="text">TODO</div>
+        {content && <div className="text" dangerouslySetInnerHTML={content} />}
       </div>
     </div>
   );

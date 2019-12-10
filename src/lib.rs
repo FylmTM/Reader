@@ -48,7 +48,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
     let mut db_pool_size = config.get_int("db_pool_size").unwrap_or(10) as u32;
     let mut feeds_update_enabled = config.get_bool("feeds_update_enabled").unwrap_or(true);
     let feeds_update_interval = config.get_int("feeds_update_interval").unwrap_or(30) as u64;
-    let fixture = config.get_str("fixture").unwrap_or("");
+    let load_fixture = config.get_bool("load_fixture").unwrap_or(false);
 
     if is_testing {
         db_in_memory = true; // Do not store database on disk.
@@ -74,9 +74,9 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
     let connection = pool.get().expect("Failed to acquire connection.");
     db::bootstrap::initialize_schema(&connection);
 
-    if !fixture.is_empty() {
+    if load_fixture {
         info!("Apply fixture.");
-        db::bootstrap::initialize_fixture(&connection, fixture);
+        db::bootstrap::load_fixture(&connection);
     }
 
     //-----------------
@@ -125,6 +125,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
                 api::routes::posts_read_later,
                 api::routes::posts_category,
                 api::routes::posts_feed,
+                api::routes::post_content,
                 api::assets::index,
                 api::assets::assets
             ],

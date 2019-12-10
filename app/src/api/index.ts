@@ -2,6 +2,7 @@ import {
   CategoriesWithFeeds,
   CategoriesWithFeedsUnreadCounts,
   Post,
+  PostContent,
   PostsSection,
   User,
 } from "../domain";
@@ -61,6 +62,10 @@ function getPosts(section: PostsSection): Promise<Array<Post>> {
   }
 }
 
+function getPostContent(postId: number): Promise<PostContent> {
+  return client.get(`/api/v1/posts/${postId}/content`);
+}
+
 function markAllAsRead(
   section: PostsSection,
   lastPostId: number,
@@ -95,6 +100,7 @@ export default {
   getCategoriesWithFeeds,
   getCategoriesWithFeedsUnreadCounts,
   getPosts,
+  getPostContent,
   markAllAsRead,
   markAsRead,
   markAsReadLater,

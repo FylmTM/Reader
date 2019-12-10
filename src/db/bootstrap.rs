@@ -52,7 +52,9 @@ pub fn initialize_schema(conn: &Connection) {
 ///
 /// If applied, will insert sample data into a database.
 /// Useful for development purposes.
-pub fn initialize_fixture(conn: &Connection, fixture: &str) {
-    conn.execute_batch(fixture)
+pub fn load_fixture(conn: &Connection) {
+    let fixture = std::fs::read_to_string("fixture.sql").expect("Failed to load fixture.sql");
+    println!("{}", fixture);
+    conn.execute_batch(&fixture)
         .expect("Failed to apply fixture.");
 }

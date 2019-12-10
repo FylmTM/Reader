@@ -1,7 +1,7 @@
 :root {
     --color-background: #15181d;
 
-    --color-foreground: #ffffff;
+    --color-foreground: #fafafa;
     --color-foreground-muted: #9b9b9b;
 
     --color-seconary: #404b69;
@@ -52,7 +52,7 @@ body, html, #root {
     flex-direction: column;
 }
 
-pre, code {
+pre, code, pre *, code * {
     font-family: 'Inconsolata', monospace;
 }
 

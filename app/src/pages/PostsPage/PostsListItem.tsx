@@ -6,7 +6,8 @@ import { Post } from "../../domain";
 import { postsStoreApi } from "../../stores";
 import { classNames } from "../../utils";
 import "./PostsListItem.css";
-import { formatDistanceToNow, parseISO } from "date-fns";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import parseISO from "date-fns/parseISO";
 
 interface Props {
   post: Post;

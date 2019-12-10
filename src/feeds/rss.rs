@@ -154,6 +154,13 @@ mod tests {
     }
 
     #[test]
+    fn test_parse_rss_react() {
+        let content = include_str!("examples/rss/react.xml").to_string();
+        let result = parse(&content).unwrap();
+        assert_debug_snapshot!(result);
+    }
+
+    #[test]
     fn test_parse_date_handle_negative_zero_timezone() {
         let expected = chrono::DateTime::parse_from_rfc3339("2019-12-04T05:00:00+00:00").unwrap();
         assert_eq!(

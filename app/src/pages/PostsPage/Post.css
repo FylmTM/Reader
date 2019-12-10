@@ -53,7 +53,21 @@
     max-width: 100%;
 }
 
-.r-post-content .text a:hover {
+.r-post-content .text a, .r-post-content .text a:hover {
     text-decoration: underline;
 }
 
+.r-post-content .text img {
+    max-width: 100%;
+}
+
+.r-post-content .text pre {
+    background: var(--color-seconary-muted);
+    padding: 10px;
+}
+
+.r-post-content .text blockquote {
+    margin: 0;
+    padding: 5px;
+    border-left: 5px solid var(--color-accent);
+}

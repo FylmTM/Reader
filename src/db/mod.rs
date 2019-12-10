@@ -22,6 +22,11 @@ pub trait Queries {
     fn find_feeds(&self) -> Result<Vec<Feed>>;
     fn find_feeds_by_category(&self, category_id: CategoryId) -> Result<Vec<Feed>>;
     fn find_feed(&self, id: FeedId) -> Result<Feed>;
+    fn find_post_content_by_user(
+        &self,
+        user_id: UserId,
+        post_id: PostId,
+    ) -> Result<UserPostContent>;
     fn find_posts_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>>;
     fn find_posts_read_later_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>>;
     fn find_posts_by_user_and_category(
@@ -146,6 +151,33 @@ impl Queries for Connection {
         ";
         let feed = self.query_row_named(query, &[(":id", &id)], map_row_to_feed)?;
         Ok(feed)
+    }
+
+    fn find_post_content_by_user(
+        &self,
+        user_id: UserId,
+        post_id: PostId,
+    ) -> Result<UserPostContent> {
+        // language=SQLite
+        let query = "
+            select p.id, p.content
+            from user_posts up
+            inner join posts p on up.post_id = p.id
+            where up.id = :post_id
+            and up.user_id = :user_id
+        ";
+        let mut statement = self.prepare(query)?;
+        let user_post_content = statement.query_row_named(
+            &[(":user_id", &user_id), (":post_id", &post_id)],
+            |row| {
+                Ok(UserPostContent {
+                    id: row.get("id")?,
+                    content: row.get("content")?,
+                })
+            },
+        )?;
+
+        Ok(user_post_content)
     }
 
     fn find_posts_by_user(&self, user_id: UserId) -> Result<Vec<UserPost>> {

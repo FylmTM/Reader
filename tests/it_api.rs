@@ -106,3 +106,11 @@ fn test_get_posts_feed() {
     let mut response = client.get_uri(uri!(posts_feed: 1)).dispatch();
     assert_json_snapshot!(response.json_entity());
 }
+
+#[test]
+fn test_get_post_content() {
+    let client = client::authenticated();
+
+    let mut response = client.get_uri(uri!(post_content: 1)).dispatch();
+    assert_json_snapshot!(response.json_entity());
+}

@@ -1,0 +1,14 @@
+---
+source: tests/it_api.rs
+expression: response.json_entity()
+---
+[
+  "200 OK",
+  {
+    "payload": {
+      "content": "<a href=\"https://news.ycombinator.com/item?id=21739519\" rel=\"noopener noreferrer\">Comments</a>",
+      "id": 1
+    },
+    "status": "ok"
+  }
+]
