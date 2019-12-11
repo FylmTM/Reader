@@ -80,6 +80,7 @@ pub struct UserPost {
     pub feed_id: FeedId,
     pub feed_title: String,
     pub is_read: bool,
+    pub read_date: Option<chrono::DateTime<chrono::Utc>>,
     pub is_read_later: bool,
     pub link: String,
     pub title: String,

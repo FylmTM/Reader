@@ -19,6 +19,7 @@ expression: response.json_entity()
           "is_read_later": true,
           "link": "https://www.reuters.com/article/us-eu-batteries/eu-approves-3-2-billion-euro-state-aid-for-battery-research-idUSKBN1YD0WJ",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "EU approves 3.2B euro state aid for battery research"
         }

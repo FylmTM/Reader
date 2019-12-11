@@ -184,8 +184,10 @@ impl Queries for Connection {
         let sql_feed_id = feed_id.map(|_| "and ucf.feed_id = :feed_id").unwrap_or("");
 
         // language=SQLite
-        let query = format!("
-            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title, up.is_read, up.is_read_later,
+        let query = format!(
+            "
+            select p.id, ucf.category_id, ucf.feed_id as feed_id, ucf.title as feed_title,
+                   up.is_read, up.read_date, up.is_read_later,
                    p.link, p.title, p.date, p.summary, p.media_type, p.media_link, p.comments_link
             from user_posts up
             inner join posts p on up.post_id = p.id
@@ -198,7 +200,14 @@ impl Queries for Connection {
             {}
             order by up.post_id desc
             limit {};
-        ", sql_from_post_id, sql_is_read_later, sql_is_read, sql_category_id, sql_feed_id, PAGE_SIZE + 1);
+        ",
+            sql_from_post_id,
+            sql_is_read_later,
+            sql_is_read,
+            sql_category_id,
+            sql_feed_id,
+            PAGE_SIZE + 1
+        );
         let mut statement = self.prepare(&query)?;
 
         let mut params: Vec<(&str, &dyn rusqlite::ToSql)> = Vec::new();
@@ -267,16 +276,23 @@ impl Queries for Connection {
         // language=SQLite
         let query = "
             update user_posts
-            set is_read = :is_read
+            set is_read = :is_read,
+                read_date = :read_date
             where post_id = :post_id
             and user_id = :user_id
         ";
+        let read_date: Option<chrono::DateTime<chrono::Utc>> = if is_read {
+            Some(chrono::DateTime::from(chrono::Utc::now()))
+        } else {
+            None
+        };
         let count = self.execute_named(
             query,
             &[
                 (":user_id", &user_id),
                 (":post_id", &post_id),
                 (":is_read", &is_read),
+                (":read_date", &read_date),
             ],
         )?;
         check_one_entity_updated(count)?;
@@ -432,6 +448,7 @@ fn map_row_to_user_post(row: &rusqlite::Row) -> rusqlite::Result<UserPost> {
         feed_id: row.get("feed_id")?,
         feed_title: row.get("feed_title")?,
         is_read: row.get("is_read")?,
+        read_date: row.get("read_date")?,
         is_read_later: row.get("is_read_later")?,
         link: row.get("link")?,
         title: row.get("title")?,

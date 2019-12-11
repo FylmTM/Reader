@@ -19,6 +19,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://blog.cynthia.re/post/nintendo-switch-ethernet-switch",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "The Nintendo Switch Switch"
         },
@@ -33,6 +34,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://en.wikipedia.org/wiki/Transputer",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Transputer"
         },
@@ -47,6 +49,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://randomascii.wordpress.com/2019/12/08/on2-again-now-in-wmi/",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "O(n^2), again, now in Windows Management Instrumentation"
         },
@@ -61,6 +64,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.wsj.com/articles/american-factories-demand-white-collar-education-for-blue-collar-work-11575907185",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "College-educated workers are taking over the American factory floor"
         },
@@ -75,6 +79,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.nytimes.com/2019/12/08/obituaries/caroll-spinney-dead.html",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Caroll Spinney has died"
         },
@@ -89,6 +94,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://signal.org/blog/signal-private-group-system/",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Technology Preview: Signal Private Group System"
         },
@@ -103,6 +109,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.sametab.com/blog/operations-and-internal-communication-strategies-for-effective-ceos",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Operations for Effective CEOs"
         },
@@ -117,6 +124,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.wsj.com/articles/if-bitcoin-looks-like-it-isnt-trading-its-because-it-isnt-11575637204",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "If Bitcoin Looks Like It Isn’t Trading, It’s Because It Isn’t"
         },
@@ -131,6 +139,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.quantamagazine.org/how-simple-rules-bootstrap-the-laws-of-physics-20191209/",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Simple Rules ‘Bootstrap’ the Laws of Physics"
         },
@@ -145,6 +154,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://web.archive.org/web/20030812081713/http://klausler.com/cnotes.txt",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Some things every C programmer should know about C (2002)"
         },
@@ -159,6 +169,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://emacsair.me/2017/09/01/magit-walk-through/",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "A walk through the Magit interface"
         },
@@ -173,6 +184,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "http://scholar.harvard.edu/files/mickens/files/towashitallaway.pdf",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "To Wash It All Away (2014) [pdf]"
         },
@@ -187,6 +199,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://queue.acm.org/detail.cfm?id=3341158",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Must and Must Not: On writing documentation"
         },
@@ -201,6 +214,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=e7096c131e5161fa3b8e52a650d7719d2857adfd",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "WireGuard is in net-next"
         },
@@ -215,6 +229,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.atlasobscura.com/articles/cool-bar-montana",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "For Sale: The Only Bar in a 14-Person Montana Town"
         },
@@ -229,6 +244,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.theatlantic.com/ideas/archive/2019/11/why-child-care-so-expensive/602599",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Why Child Care Is So Expensive"
         },
@@ -243,6 +259,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.bloomberg.com/news/articles/2019-12-08/repo-blowup-was-fueled-by-big-banks-and-hedge-funds-bis-says",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Repo Blowup Was Fueled by Big Banks and Hedge Funds, BIS Says"
         },
@@ -257,6 +274,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://github.com/infostreams/db",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Show HN: Version Control for Databases"
         },
@@ -271,6 +289,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.wsj.com/articles/five-cities-account-for-vast-majority-of-growth-in-tech-jobs-study-finds-11575867660",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Five cities account for vast majority of growth in U.S. tech jobs: study"
         },
@@ -285,6 +304,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://github.com/ecaron/smart-nightlight-manager",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Show HN: My in-network Node app for controlling my kids' nightlights"
         },
@@ -299,6 +319,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://jamesmunns.com/blog/fmt-unreasonably-expensive/",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Formatting Is Unreasonably Expensive for Embedded Rust"
         },
@@ -313,6 +334,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://fivebooks.com/best-books/science-2019-barbara-kiser/",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Science Books of 2019"
         },
@@ -327,6 +349,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "http://web.archive.org/web/20040929041451/http://www.shrovetuesdayobserved.com/flight.html",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "If All Stories Were Written Like Science Fiction Stories (2004)"
         },
@@ -341,6 +364,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.thestar.com.my/news/regional/2019/12/09/breaking-news-russia-banned-from-2020-olympics",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Russia Banned from 2020 Olympics"
         },
@@ -355,6 +379,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.bbc.com/news/technology-50713723",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "E-scooter company goes bust after spending big on Facebook ads"
         },
@@ -369,6 +394,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://github.com/Risk3sixty-Labs/geoapi",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Show HN: Tiny, fast, and free API to geolocate IP addresses"
         },
@@ -383,6 +409,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.newyorker.com/magazine/2019/12/16/how-william-gibson-keeps-his-science-fiction-real",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "How William Gibson Keeps His Science Fiction Real"
         },
@@ -397,6 +424,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.tmakiguchi.org/geographer/asgeographer/geographyhuman.html",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "Tsunebaro Makaguchi – Education Through Interest"
         },
@@ -411,6 +439,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.vitavonni.de/blog/201503/2015031201-the-sad-state-of-sysadmin-in-the-age-of-containers.html",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "The sad state of sysadmin in the age of containers (2015)"
         },
@@ -425,6 +454,7 @@ expression: response.json_entity()
           "is_read_later": false,
           "link": "https://www.reuters.com/article/us-eu-batteries/eu-approves-3-2-billion-euro-state-aid-for-battery-research-idUSKBN1YD0WJ",
           "media_link": null,
+          "read_date": null,
           "summary": "Comments",
           "title": "EU approves 3.2B euro state aid for battery research"
         }

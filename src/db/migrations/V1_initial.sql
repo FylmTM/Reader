@@ -62,5 +62,6 @@ create table user_posts
     is_read_later boolean default (false) not null,
     read_date     text                          null,
 
-    primary key (user_id, post_id)
+    primary key (user_id, post_id),
+    check ( (is_read = false and read_date is null) or (is_read = true and read_date is not null) )
 );
