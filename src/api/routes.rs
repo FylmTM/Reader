@@ -103,6 +103,15 @@ pub fn posts(
     ok(posts)
 }
 
+#[get("/api/v1/posts/unread_count")]
+pub fn posts_unread_count(
+    user: db::User,
+    conn: db::PoolConnection,
+) -> Response<db::UserPostsUnreadCount> {
+    let count = conn.count_posts_unread(user.id)?;
+    ok(count)
+}
+
 #[get("/api/v1/posts/<post_id>/content")]
 pub fn post_content(
     post_id: i64,

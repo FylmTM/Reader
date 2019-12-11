@@ -3,7 +3,7 @@ import api from "../api";
 import { navigate } from "../components/common/NoStateLink";
 import {
   CategoriesWithFeeds,
-  CategoriesWithFeedsUnreadCounts,
+  PostsUnreadCount,
   Post,
   PostContent,
   PostsSection,
@@ -113,7 +113,7 @@ export function useAuthenticatedUser(): { current: User } & UserStore {
 
 interface CategoriesStore {
   categories: CategoriesWithFeeds;
-  unreadCounts: CategoriesWithFeedsUnreadCounts;
+  unreadCounts: PostsUnreadCount;
   categoriesGetInProgress: boolean;
   getCategories: () => void;
   getCategoriesUnreadCounts: () => void;
@@ -125,7 +125,8 @@ export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
   set => ({
     categories: [],
     unreadCounts: {
-      categories: { all: undefined, read_later: undefined },
+      all: 0,
+      categories: {},
       feeds: {},
     },
     categoriesGetInProgress: false,
@@ -145,9 +146,7 @@ export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
     },
     decrementUnreadCount: (categoryId, feedId) =>
       set(({ unreadCounts }) => {
-        const all = unreadCounts.categories.all
-          ? unreadCounts.categories.all - 1
-          : 0;
+        const all = unreadCounts.all ? unreadCounts.all - 1 : 0;
 
         const categoryCurrentCount = unreadCounts.categories[categoryId];
         const category = categoryCurrentCount ? categoryCurrentCount - 1 : 0;
@@ -157,9 +156,9 @@ export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
 
         return {
           unreadCounts: {
+            all,
             categories: {
               ...unreadCounts.categories,
-              all,
               [categoryId]: category,
             },
             feeds: {
@@ -171,15 +170,15 @@ export const [useCategories, categoriesStoreApi] = create<CategoriesStore>(
       }),
     incrementUnreadCount: (categoryId, feedId) =>
       set(({ unreadCounts }) => {
-        const all = (unreadCounts.categories.all || 0) + 1;
+        const all = (unreadCounts.all || 0) + 1;
         const category = (unreadCounts.categories[categoryId] || 0) + 1;
         const feed = (unreadCounts.feeds[feedId] || 0) + 1;
 
         return {
           unreadCounts: {
+            all,
             categories: {
               ...unreadCounts.categories,
-              all,
               [categoryId]: category,
             },
             feeds: {

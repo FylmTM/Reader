@@ -125,6 +125,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
                 api::routes::current_user,
                 api::routes::categories_with_feeds,
                 api::routes::posts,
+                api::routes::posts_unread_count,
                 api::routes::post_content,
                 api::assets::index,
                 api::assets::assets

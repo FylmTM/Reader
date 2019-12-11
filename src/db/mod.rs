@@ -4,16 +4,11 @@ pub use entities::*;
 pub use pool::{Pool, PoolConnection};
 
 use crate::error::{ApplicationError, Error, Result};
+use std::collections::HashMap;
 
 pub mod bootstrap;
 pub mod entities;
 pub mod pool;
-
-pub type UserId = i64;
-pub type CategoryId = i64;
-pub type FeedId = i64;
-pub type PostId = i64;
-pub type UserPostId = i64;
 
 const PAGE_SIZE: usize = 50;
 
@@ -38,6 +33,7 @@ pub trait Queries {
         category_id: Option<CategoryId>,
         feed_id: Option<FeedId>,
     ) -> Result<Page<UserPost>>;
+    fn count_posts_unread(&self, user_id: UserId) -> Result<UserPostsUnreadCount>;
     fn count_posts_by_user(&self, id: UserId) -> Result<i64>;
     fn count_posts_by_category(&self, id: CategoryId) -> Result<i64>;
     fn count_posts_by_feed(&self, id: FeedId) -> Result<i64>;
@@ -250,6 +246,48 @@ impl Queries for Connection {
             has_next_page,
             items: user_posts,
         })
+    }
+
+    fn count_posts_unread(&self, user_id: UserId) -> Result<UserPostsUnreadCount> {
+        let mut count = UserPostsUnreadCount {
+            all: 0,
+            categories: HashMap::new(),
+            feeds: HashMap::new(),
+        };
+        // language=SQLite
+        let query = "
+            select ucf.category_id as category_id, ucf.feed_id as feed_id, count(up.post_id) as count
+            from user_posts up
+            inner join posts p on up.post_id = p.id
+            inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
+            where up.user_id = :user_id
+            and up.is_read = false
+            group by ucf.feed_id
+        ";
+        let mut statement = self.prepare(query)?;
+        let rows = statement.query_map_named(&[(":user_id", &user_id)], |row| {
+            Ok(CategoryFeedUnreadCount {
+                category_id: row.get("category_id")?,
+                feed_id: row.get("feed_id")?,
+                count: row.get("count")?,
+            })
+        })?;
+
+        for row in rows {
+            let row = row?;
+            count.all += row.count;
+            count.categories.insert(
+                row.category_id,
+                count
+                    .categories
+                    .get(&row.category_id)
+                    .map(|c| c + row.count)
+                    .unwrap_or(row.count),
+            );
+            count.feeds.insert(row.feed_id, row.count);
+        }
+
+        Ok(count)
     }
 
     fn count_posts_by_user(self: &Connection, user_id: UserId) -> Result<i64> {

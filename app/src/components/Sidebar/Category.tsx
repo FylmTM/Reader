@@ -20,9 +20,6 @@ export const ReadLaterCategory: FC = function ReadLaterCategory() {
       appStoreApi.getState().refresh();
     }
   }
-  const unreadCount = useCategories(
-    state => state.unreadCounts.categories.read_later || 0,
-  );
 
   const className = classNames("r-category", { "r-active": isActive });
   return (
@@ -35,7 +32,6 @@ export const ReadLaterCategory: FC = function ReadLaterCategory() {
         <Icon type="bookmark" />
       </div>
       <span className="name ellipsis">Read later</span>
-      {unreadCount > 0 && <span className="unread">{unreadCount}</span>}
     </NoStateLink>
   );
 };
@@ -48,9 +44,7 @@ export const AllCategory: FC = function AllCategory() {
     }
   }
 
-  const unreadCount = useCategories(
-    state => state.unreadCounts.categories.all || 0,
-  );
+  const unreadCount = useCategories(state => state.unreadCounts.all || 0);
 
   const className = classNames("r-category", { "r-active": isActive });
   return (

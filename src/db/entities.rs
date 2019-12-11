@@ -3,6 +3,13 @@ use std::fmt;
 
 use rusqlite::types::{FromSql, FromSqlError, FromSqlResult, ToSql, ToSqlOutput, ValueRef};
 use serde::export::Formatter;
+use std::collections::HashMap;
+
+pub type UserId = i64;
+pub type CategoryId = i64;
+pub type FeedId = i64;
+pub type PostId = i64;
+pub type UserPostId = i64;
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct Page<T> {
@@ -12,13 +19,13 @@ pub struct Page<T> {
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct User {
-    pub id: i64,
+    pub id: UserId,
     pub username: String,
 }
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct Category {
-    pub id: i64,
+    pub id: CategoryId,
     pub title: String,
 }
 
@@ -29,7 +36,7 @@ pub enum FeedKind {
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct Feed {
-    pub id: i64,
+    pub id: FeedId,
     pub kind: FeedKind,
     pub title: String,
     /// Link to feed, that can be opened normally from browser.
@@ -54,7 +61,7 @@ pub struct MediaType {
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct Post {
-    pub id: i64,
+    pub id: PostId,
     pub link: String,
     pub title: String,
     pub date: chrono::DateTime<chrono::Utc>,
@@ -68,9 +75,9 @@ pub struct Post {
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct UserPost {
-    pub id: i64,
-    pub category_id: i64,
-    pub feed_id: i64,
+    pub id: PostId,
+    pub category_id: CategoryId,
+    pub feed_id: FeedId,
     pub feed_title: String,
     pub is_read: bool,
     pub is_read_later: bool,
@@ -85,8 +92,21 @@ pub struct UserPost {
 }
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
+pub struct UserPostsUnreadCount {
+    pub all: i64,
+    pub categories: HashMap<CategoryId, i64>,
+    pub feeds: HashMap<FeedId, i64>,
+}
+
+pub struct CategoryFeedUnreadCount {
+    pub category_id: CategoryId,
+    pub feed_id: FeedId,
+    pub count: i64,
+}
+
+#[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct UserPostContent {
-    pub id: i64,
+    pub id: PostId,
     pub content: Option<String>,
 }
 

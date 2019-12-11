@@ -106,6 +106,14 @@ fn test_get_posts_feed() {
 }
 
 #[test]
+fn test_get_posts_unread_count() {
+    let client = client::authenticated();
+
+    let mut response = client.get("/api/v1/posts/unread_count").dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
 fn test_get_post_content() {
     let client = client::authenticated();
 

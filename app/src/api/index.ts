@@ -1,13 +1,12 @@
 import {
   CategoriesWithFeeds,
-  CategoriesWithFeedsUnreadCounts,
+  PostsUnreadCount,
   Page,
   Post,
   PostContent,
   PostsSection,
   User,
 } from "../domain";
-import { randomBoolean, randomInt } from "../utils";
 import client from "./client";
 
 const DELAY = 100;
@@ -28,26 +27,8 @@ function getCategoriesWithFeeds(): Promise<CategoriesWithFeeds> {
   return client.get("/api/v1/categories_with_feeds");
 }
 
-function getCategoriesWithFeedsUnreadCounts(): Promise<
-  CategoriesWithFeedsUnreadCounts
-> {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve({
-        categories: {
-          read_later: randomBoolean() ? randomInt(0, 5) : undefined,
-          all: randomBoolean() ? randomInt(0, 5) : undefined,
-          1: randomBoolean() ? randomInt(0, 5) : undefined,
-          2: randomBoolean() ? randomInt(0, 5) : undefined,
-        },
-        feeds: {
-          1: randomBoolean() ? randomInt(0, 5) : undefined,
-          2: randomBoolean() ? randomInt(0, 5) : undefined,
-          3: randomBoolean() ? randomInt(0, 5) : undefined,
-        },
-      });
-    }, DELAY);
-  });
+function getCategoriesWithFeedsUnreadCounts(): Promise<PostsUnreadCount> {
+  return client.get("/api/v1/posts/unread_count");
 }
 
 function getPosts(

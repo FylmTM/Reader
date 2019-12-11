@@ -32,12 +32,9 @@ export type CategoryWithFeeds = {
 
 export type CategoriesWithFeeds = Array<CategoryWithFeeds>;
 
-export type CategoriesWithFeedsUnreadCounts = {
-  categories: {
-    read_later: number | undefined;
-    all: number | undefined;
-    [categoryId: number]: number | undefined;
-  };
+export type PostsUnreadCount = {
+  all: number;
+  categories: { [categoryId: number]: number | undefined };
   feeds: { [feedId: number]: number | undefined };
 };
 
