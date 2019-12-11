@@ -108,6 +108,8 @@ export const PostsPage: FC = function PostsPage() {
             </span>
           </div>
           <div className="right">
+            {/* Temporary disabled, until implemented */}
+            {/*
             <IconButton
               icon="check"
               look="outline"
@@ -115,6 +117,7 @@ export const PostsPage: FC = function PostsPage() {
                 posts.markAllAsRead(section, hrefPrefix);
               }}
             />
+            */}
           </div>
         </div>
         <div className="r-posts-list-content">

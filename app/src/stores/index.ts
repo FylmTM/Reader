@@ -241,14 +241,14 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
         return {};
       }
 
-      const lastPostId = posts[0].id;
+      const fromPostId = posts[0].id;
       api
-        .markAllAsRead(section, lastPostId)
+        .markAllAsRead(section, fromPostId)
         .then(() => {
           appStoreApi.getState().refresh();
         })
         .catch(handleError);
-      return { posts: [] };
+      return {};
     });
   },
   read: (postId, isRead) =>
