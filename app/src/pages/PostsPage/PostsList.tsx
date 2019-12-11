@@ -12,12 +12,14 @@ interface Props {
   section: PostsSection;
   selectedPostId: number | undefined;
   hrefPrefix: string;
+  isUnreadOnly: boolean;
 }
 
 export const PostsList: FC<Props> = function PostsList({
   section,
   selectedPostId,
   hrefPrefix,
+  isUnreadOnly,
 }) {
   const posts = usePosts();
   const listRef = useRef<FixedSizeList>(null);
@@ -34,7 +36,7 @@ export const PostsList: FC<Props> = function PostsList({
   const items = posts.posts;
   const loadNextPage = () => {
     if (items.length > 0) {
-      posts.getNextPage(section, items[items.length - 1].id);
+      posts.getNextPage(section, isUnreadOnly, items[items.length - 1].id);
     }
     return null;
   };

@@ -2,6 +2,7 @@
 import React, { FC, useEffect } from "react";
 import { navigate } from "../../components/common/NoStateLink";
 import * as domain from "../../domain";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useApp, useCategories, usePosts, usePostsSection } from "../../stores";
 import { Post } from "./Post";
 import { PostsList } from "./PostsList";
@@ -40,6 +41,10 @@ export const PostsPage: FC = function PostsPage() {
   const refreshMark = useApp(state => state.refreshMark);
   const getUnreadCounts = useCategories(
     state => state.getCategoriesUnreadCounts,
+  );
+  const [isUnreadOnly, setIsUnreadOnly] = useLocalStorage(
+    "posts-list-unread-only",
+    true,
   );
 
   // Extract section data into individual variables for hook.
@@ -80,9 +85,9 @@ export const PostsPage: FC = function PostsPage() {
   useEffect(() => {
     if (section) {
       getUnreadCounts();
-      posts.get(section);
+      posts.get(section, isUnreadOnly);
     }
-  }, [refreshMark, type, categoryId, feedId]);
+  }, [refreshMark, type, categoryId, feedId, isUnreadOnly]);
 
   useEffect(() => {
     if (selectedPostId) {
@@ -107,16 +112,14 @@ export const PostsPage: FC = function PostsPage() {
             </span>
           </div>
           <div className="right">
-            {/* Temporary disabled, until implemented */}
-            {/*
-            <IconButton
-              icon="check"
-              look="outline"
-              onClick={() => {
-                posts.markAllAsRead(section, hrefPrefix);
-              }}
-            />
-            */}
+            <div className="r-posts-list-action-unread-only">
+              <input
+                type="checkbox"
+                checked={isUnreadOnly}
+                onChange={() => setIsUnreadOnly(!isUnreadOnly)}
+              />
+              Unread only
+            </div>
           </div>
         </div>
         <div className="r-posts-list-content">
@@ -124,6 +127,7 @@ export const PostsPage: FC = function PostsPage() {
             selectedPostId={selectedPostId}
             hrefPrefix={hrefPrefix}
             section={section}
+            isUnreadOnly={isUnreadOnly}
           />
         </div>
       </div>

@@ -59,11 +59,9 @@ export const AllCategory: FC = function AllCategory() {
 };
 
 export const Category: FC<Props> = function Category({ category, feeds }) {
-  const [{ isExpanded }, setState] = useLocalStorage(
+  const [isExpanded, setIsExpanded] = useLocalStorage(
     `category-${category.id}-expanded`,
-    {
-      isExpanded: false,
-    },
+    false,
   );
 
   const isActive = useSection(
@@ -95,7 +93,7 @@ export const Category: FC<Props> = function Category({ category, feeds }) {
           onClick={event => {
             event.preventDefault();
             event.stopPropagation();
-            setState({ isExpanded: !isExpanded });
+            setIsExpanded(!isExpanded);
           }}
         >
           <Icon type={isExpanded ? "expanded" : "collapsed"} />

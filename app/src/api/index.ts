@@ -33,12 +33,16 @@ function getCategoriesWithFeedsUnreadCounts(): Promise<PostsUnreadCount> {
 
 function getPosts(
   section: PostsSection,
+  isUnreadOnly: boolean,
   fromPostId?: number,
 ): Promise<Page<Post>> {
   const query = [];
 
   if (fromPostId != null) {
     query.push(`from_post_id=${fromPostId}`);
+  }
+  if (isUnreadOnly) {
+    query.push(`is_read=false`);
   }
 
   switch (section.type) {

@@ -195,8 +195,12 @@ interface PostsStore {
   posts: Array<Post>;
   hasNextPage: boolean;
   postsGetInProgress: boolean;
-  get: (section: PostsSection) => void;
-  getNextPage: (section: PostsSection, fromPostId: number) => void;
+  get: (section: PostsSection, isUnreadOnly: boolean) => void;
+  getNextPage: (
+    section: PostsSection,
+    isUnreadOnly: boolean,
+    fromPostId: number,
+  ) => void;
   markAllAsRead: (section: PostsSection, href: string) => void;
   read: (postId: number, isRead: boolean) => void;
   readLater: (postId: number, isReadLater: boolean) => void;
@@ -207,10 +211,10 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
   posts: [],
   hasNextPage: true,
   postsGetInProgress: false,
-  get: section => {
+  get: (section, isUnreadOnly) => {
     set({ posts: [], postsGetInProgress: true, hasNextPage: true });
     api
-      .getPosts(section)
+      .getPosts(section, isUnreadOnly)
       .then(newPosts => {
         set(({ posts }) => ({
           posts: [...posts, ...newPosts.items],
@@ -220,10 +224,10 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
       .catch(handleError)
       .finally(() => set({ postsGetInProgress: false }));
   },
-  getNextPage: (section, fromPostId) => {
+  getNextPage: (section, isUnreadOnly, fromPostId) => {
     set({ postsGetInProgress: true });
     api
-      .getPosts(section, fromPostId)
+      .getPosts(section, isUnreadOnly, fromPostId)
       .then(newPosts => {
         set(({ posts }) => ({
           posts: [...posts, ...newPosts.items],
