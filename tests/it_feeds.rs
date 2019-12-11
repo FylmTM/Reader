@@ -1,6 +1,8 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 #[macro_use]
 extern crate rocket;
+#[macro_use]
+extern crate insta;
 
 use reader::db::Queries;
 use reader::feeds;
@@ -8,32 +10,35 @@ use reader::feeds;
 pub mod common;
 
 const USER_ID: i64 = 1;
-const CATEGORY_ID: i64 = 1;
-const RSS_FEED_ID: i64 = 1;
+const RSS_HACKER_NEWS_ID: i64 = 1;
 
 #[test]
 fn test_rss_update() {
     common::mock_server::start();
 
     let mut conn = common::db();
-    let feed = conn.find_feed(RSS_FEED_ID).unwrap();
+    let feed = conn.find_feed(RSS_HACKER_NEWS_ID).unwrap();
 
-    // Should be empty
-    assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 0);
-    assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 0);
-    assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 0);
+    // Empty
+    assert_json_snapshot!(
+        "rss_update_before",
+        conn.find_posts(USER_ID, None, None, None, None, Some(RSS_HACKER_NEWS_ID))
+            .unwrap()
+    );
 
+    // Updated
     feeds::update_feed(&mut conn, &feed).unwrap();
+    assert_json_snapshot!(
+        "rss_update_after",
+        conn.find_posts(USER_ID, None, None, None, None, Some(RSS_HACKER_NEWS_ID))
+            .unwrap()
+    );
 
-    // All posts should be present
-    assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 30);
-    assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 30);
-    assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 30);
-
+    // No changes
     feeds::update_feed(&mut conn, &feed).unwrap();
-
-    // All posts already present, no more should be added
-    assert_eq!(conn.count_posts_by_user(USER_ID).unwrap(), 30);
-    assert_eq!(conn.count_posts_by_category(CATEGORY_ID).unwrap(), 30);
-    assert_eq!(conn.count_posts_by_feed(RSS_FEED_ID).unwrap(), 30);
+    assert_json_snapshot!(
+        "rss_update_after",
+        conn.find_posts(USER_ID, None, None, None, None, Some(RSS_HACKER_NEWS_ID))
+            .unwrap()
+    );
 }

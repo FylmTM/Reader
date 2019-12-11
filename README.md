@@ -1,53 +1,72 @@
 Reader
 ======
 
-**Reader** is simple, small and fast news aggregator.
+**Reader** is simple, small and fast news aggregator written in Rust.
 
-* Available as a [single static binary](#deployment).
+* Available as a single static binary.
 * Sensible default [configuration](#configuration).
 * Multiple [sources](#sources).
-* [Fast](#benchmarks).
 * Low CPU and memory usage.
 
-### Features
-
-- [ ] Web UI
-- [ ] Organize feeds in categories
-- [ ] Read later
-- [ ] Search
-- [ ] Shortcuts
-- [ ] OPML Import/Export
-- [ ] Old posts cleanup
-- [ ] Rotten feeds
-- [ ] API documentation
+#### Features
 
 **Supported browsers:** latest versions of Chrome, Firefox, Edge, Safari.
 
-### Sources
+- [x] Web UI
+- [ ] Mobile Web UI
+- [x] Multi-user
+- [x] Categories
+- [x] Read later
+- [x] Option to show only unread posts
+- [ ] Feed management
+- [ ] User management
+- [ ] Shortcuts
+- [ ] Remove old read posts
 
-- [ ] RSS
-- [ ] Atom
-- [ ] Github
-- [ ] StackOverflow
-- [ ] Reddit
-- [ ] Hacker News
+#### Sources
+
+- [x] RSS
+- [x] Atom
+- [ ] Hacker News Best
 - [ ] Twitter
 
 ## Quickstart
 
-WIP.
+1. Download [latest release](https://github.com/FylmTM/Reader/releases) for your platform.
+1. Run it
 
 ## Configuration
 
-WIP.
+Reader can be configured with either `Rocket.toml` file or environment variables.
+
+Example, which lists all possible configuration parameters and their defaults:
+
+```
+# Rocket.toml
+[global]
+address = "0.0.0.0"           # ROCKET_ADDRESS
+port = 8000                   # ROCKET_PORT
+
+# Path where SQLite database will be created
+db_path = "db.sqlite"         # ROCKET_DB_PATH
+# SQLite connection pool size
+db_pool_size = 10             # ROCKET_DB_POOL_SIZE
+
+# Whether Reader should periodically update all feeds
+feeds_update_enabled = true   # ROCKET_FEEDS_UPDATE_ENABLED
+# How long to wait between feed updates in minutes
+feeds_update_interval = 10    # ROCKET_FEEDS_UPDATE_INTERVAL
+
+# If set to true Reader will look for `fixture.sql` file and apply it to a database.
+# As an example, it is used in development to load sample data.
+# Alternatively it can be used to add any data you want to a database (i.e. create users).
+# !!! Use cautiously !!!
+load_fixture = false
+```
 
 ## Deployment
 
-WIP.
-
-## Benchmarks
-
-WIP.
+Check out [docs/infrastructure.md](./docs/infrastructure.md) on deployment notes.
 
 ## Development
 
@@ -61,7 +80,7 @@ WIP.
 
 **Optional:**
 
-* [insta](https://github.com/mitsuhiko/insta)
+* [insta](https://github.com/mitsuhiko/insta) (nice snapshot review/update workflow)
 
 ```sh
 rustup default nightly
@@ -95,10 +114,9 @@ cargo make fix
 cargo make
 ```
 
-### Testing
+**Notes:**
 
-Backend uses [insta](https://github.com/mitsuhiko/insta) for some tests.
-Look at the README of insta to find out what is recommended workflow for working with snapshots.
+* Add `ROCKET_LOAD_FIXTURE=true` environment variable when running with `cargo run` to load sample data.
 
 ## License
 

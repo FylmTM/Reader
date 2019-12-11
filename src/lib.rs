@@ -51,7 +51,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
     let mut db_pool_size = config.get_int("db_pool_size").unwrap_or(10) as u32;
     let mut feeds_update_enabled = config.get_bool("feeds_update_enabled").unwrap_or(true);
     let feeds_update_interval = config.get_int("feeds_update_interval").unwrap_or(10) as u64;
-    let load_fixture = config.get_bool("load_fixture").unwrap_or(true);
+    let load_fixture = config.get_bool("load_fixture").unwrap_or(false);
 
     if is_testing {
         db_in_memory = true; // Do not store database on disk.

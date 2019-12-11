@@ -4,6 +4,7 @@ use std::time::Duration;
 use crate::db::{self, Queries};
 use crate::error::{ApplicationError, Error, Result};
 
+pub mod atom;
 pub mod rss;
 pub mod utils;
 

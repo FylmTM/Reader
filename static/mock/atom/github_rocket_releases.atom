@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:https://github.com/SergioBenitez/Rocket/releases</id>
+  <link type="text/html" rel="alternate" href="https://github.com/SergioBenitez/Rocket/releases"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/SergioBenitez/Rocket/releases.atom"/>
+  <title>Release notes from Rocket</title>
+  <updated>2019-12-11T05:17:37+02:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/async-pre-rebase3</id>
+    <updated>2019-12-11T05:17:37+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/async-pre-rebase3"/>
+    <title>async-pre-rebase3</title>
+    <content type="html">&lt;p&gt;Revert on_response lifetimes to more closely match 0.4.&lt;/p&gt;</content>
+    <author>
+      <name>jebrosen</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/7102588?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.4.2</id>
+    <updated>2019-06-29T04:26:16+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.4.2"/>
+    <title>Rocket v0.4.2</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.4.2/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.4.1</id>
+    <updated>2019-05-12T02:56:52+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.4.1"/>
+    <title>Rocket v0.4.1</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.4.1/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.4.0</id>
+    <updated>2018-12-08T18:50:40+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.4.0"/>
+    <title>Rocket v0.4.0</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.4.0/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; and &lt;a href=&quot;https://rocket.rs/v0.4/news/2018-12-08-version-0.4/&quot; rel=&quot;nofollow&quot;&gt;news article&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.4.0-rc.2</id>
+    <updated>2018-12-01T07:25:08+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.4.0-rc.2"/>
+    <title>Rocket v0.4-rc.2</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.4.0-rc.2/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; and &lt;a href=&quot;https://rocket.rs/v0.4/news/2018-11-30-version-0.4-rc-2/&quot; rel=&quot;nofollow&quot;&gt;news article&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.4.0-rc.1</id>
+    <updated>2018-11-01T00:09:18+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.4.0-rc.1"/>
+    <title>Rocket v0.4-rc.1</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.4.0-rc.1/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; and &lt;a href=&quot;https://rocket.rs/v0.4/news/2018-10-31-version-0.4-rc/&quot; rel=&quot;nofollow&quot;&gt;news article&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.3.17</id>
+    <updated>2018-09-30T04:05:28+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.3.17"/>
+    <title>Rocket v0.3.17</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.3.17/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.3.16</id>
+    <updated>2018-08-24T10:33:16+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.3.16"/>
+    <title>Rocket v0.3.16</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.3.16/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.3.15</id>
+    <updated>2018-07-16T11:23:30+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.3.15"/>
+    <title>Rocket v0.3.15</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.3.15/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/54168759/v0.3.14</id>
+    <updated>2018-06-23T09:39:06+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/SergioBenitez/Rocket/releases/tag/v0.3.14"/>
+    <title>Rocket v0.3.14</title>
+    <content type="html">&lt;p&gt;See the &lt;a href=&quot;/SergioBenitez/Rocket/blob/v0.3.14/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt; for more information.&lt;/p&gt;</content>
+    <author>
+      <name>SergioBenitez</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1480321?s=60&amp;v=4"/>
+  </entry>
+</feed>

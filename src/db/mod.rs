@@ -49,9 +49,6 @@ pub trait Queries {
         is_read_later: bool,
     ) -> Result<()>;
     fn count_posts_unread(&self, user_id: UserId) -> Result<UserPostsUnreadCount>;
-    fn count_posts_by_user(&self, id: UserId) -> Result<i64>;
-    fn count_posts_by_category(&self, id: CategoryId) -> Result<i64>;
-    fn count_posts_by_feed(&self, id: FeedId) -> Result<i64>;
     fn save_post(&self, feed_id: FeedId, post: &Post) -> Result<PostId>;
     fn save_user_post(&self, user_id: UserId, post_id: PostId) -> Result<UserPostId>;
 }
@@ -363,45 +360,6 @@ impl Queries for Connection {
             count.feeds.insert(row.feed_id, row.count);
         }
 
-        Ok(count)
-    }
-
-    fn count_posts_by_user(self: &Connection, user_id: UserId) -> Result<i64> {
-        // language=SQLite
-        let query = "
-            select count(up.post_id) as count
-            from user_posts up
-            where up.user_id = :user_id
-        ";
-        let count =
-            self.query_row_named(query, &[(":user_id", &user_id)], |row| row.get("count"))?;
-        Ok(count)
-    }
-
-    fn count_posts_by_category(self: &Connection, category_id: CategoryId) -> Result<i64> {
-        // language=SQLite
-        let query = "
-            select count(p.id) as count
-            from user_categories uc
-            inner join user_category_feeds ucf on uc.id = ucf.category_id
-            inner join posts p on ucf.feed_id = p.feed_id
-            where uc.id = :category_id
-        ";
-        let count = self.query_row_named(query, &[(":category_id", &category_id)], |row| {
-            row.get("count")
-        })?;
-        Ok(count)
-    }
-
-    fn count_posts_by_feed(self: &Connection, feed_id: FeedId) -> Result<i64> {
-        // language=SQLite
-        let query = "
-            select count(p.id) as count
-            from posts p
-            where p.feed_id = :feed_id
-        ";
-        let count =
-            self.query_row_named(query, &[(":feed_id", &feed_id)], |row| row.get("count"))?;
         Ok(count)
     }
 
