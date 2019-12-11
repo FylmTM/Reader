@@ -96,7 +96,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
             |_, res| {
                 res.set_raw_header(
                     "Content-Security-Policy",
-                    "default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src *; style-src 'self' 'unsafe-inline';",
+                    "default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src *; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com",
                 );
             },
         ))

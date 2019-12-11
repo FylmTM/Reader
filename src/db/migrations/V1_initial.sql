@@ -3,9 +3,11 @@ create table feeds
     id    integer primary key,
 
     kind  text not null,
+    feed  text not null,
     title text not null,
     link  text not null,
-    feed  text not null unique
+
+    unique (kind, feed)
 );
 
 create table posts
