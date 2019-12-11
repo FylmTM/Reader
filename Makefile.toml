@@ -1,6 +1,10 @@
 [config]
 skip_core_tasks = true
 
+[tasks.backend-clean]
+command = "cargo"
+args = ["clean"]
+
 [tasks.backend-check]
 command = "cargo"
 args = ["check", "--all-targets"]
@@ -20,6 +24,10 @@ args = ["test"]
 [tasks.backend-build]
 command = "cargo"
 args = ["build", "--release"]
+
+[tasks.frontend-clean]
+cwd = "./app"
+install_script = ["rm -rf build/"]
 
 [tasks.frontend-install]
 cwd = "./app"
@@ -49,6 +57,12 @@ install_script = ["yarn test --watchAll=false"]
 cwd = "./app"
 install_script = ["yarn build"]
 
+[tasks.clean]
+dependencies = [
+    "frontend-clean",
+    "backend-clean",
+]
+
 [tasks.build]
 dependencies = [
     "frontend-install",
@@ -74,6 +88,19 @@ dependencies = [
     "backend-check",
     "backend-format",
     "backend-test",
+]
+
+[tasks.deploy]
+install_script = [
+    "ssh reader 'systemctl stop reader || true'",
+    "ssh reader 'mkdir -p ~/reader'",
+    "scp target/release/reader reader:~/reader/reader",
+    "scp fixture_production.sql reader:~/reader/fixture.sql",
+    "scp docs/reader.service reader:/etc/systemd/system/reader.service",
+    "ssh reader 'systemctl daemon-reload'",
+    "ssh reader 'systemctl restart reader'",
+    "sleep 1",
+    "ssh reader 'systemctl status reader'",
 ]
 
 [tasks.default]

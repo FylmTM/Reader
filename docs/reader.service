@@ -1,0 +1,16 @@
+[Unit]
+Description=Reader
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+Environment=ROCKET_PORT=80
+WorkingDirectory=/root/reader
+ExecStart=/root/reader/reader
+
+[Install]
+WantedBy=multi-user.target

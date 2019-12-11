@@ -11,10 +11,6 @@ pub fn get() -> Client {
     crate::common::mock_server::start();
     let app = reader::app(true);
     let client = Client::new(app).expect("failed to construct rocket client");
-
-    let feeds_update_status = client.get("/api/v1/feeds/update").dispatch().status().code;
-    assert_eq!(feeds_update_status, 200);
-
     client
 }
 
@@ -26,6 +22,10 @@ pub fn authenticated() -> Client {
             api_key: "api_key".to_string(),
         })
         .dispatch();
+
+    let feeds_update_status = client.get("/api/v1/feeds/update").dispatch().status().code;
+    assert_eq!(feeds_update_status, 200);
+
     client
 }
 

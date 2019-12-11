@@ -48,8 +48,8 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
     let db_path = config.get_str("db_path").unwrap_or("db.sqlite");
     let mut db_pool_size = config.get_int("db_pool_size").unwrap_or(10) as u32;
     let mut feeds_update_enabled = config.get_bool("feeds_update_enabled").unwrap_or(true);
-    let feeds_update_interval = config.get_int("feeds_update_interval").unwrap_or(30) as u64;
-    let load_fixture = config.get_bool("load_fixture").unwrap_or(false);
+    let feeds_update_interval = config.get_int("feeds_update_interval").unwrap_or(10) as u64;
+    let load_fixture = config.get_bool("load_fixture").unwrap_or(true);
 
     if is_testing {
         db_in_memory = true; // Do not store database on disk.
@@ -96,7 +96,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
             |_, res| {
                 res.set_raw_header(
                     "Content-Security-Policy",
-                    "default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline';",
+                    "default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src *; style-src 'self' 'unsafe-inline';",
                 );
             },
         ))
