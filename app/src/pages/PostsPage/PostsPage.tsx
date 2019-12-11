@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect } from "react";
-import { IconButton } from "../../components/common/Button/Button";
 import { navigate } from "../../components/common/NoStateLink";
 import * as domain from "../../domain";
 import { useApp, useCategories, usePosts, usePostsSection } from "../../stores";

@@ -76,18 +76,14 @@ function markAllAsRead(
 }
 
 function markAsRead(postId: number, isRead: Boolean): Promise<void> {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, DELAY);
+  return client.post(`/api/v1/posts/${postId}/is_read`, {
+    is_read: isRead,
   });
 }
 
 function markAsReadLater(postId: number, isRead: Boolean): Promise<void> {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, DELAY);
+  return client.post(`/api/v1/posts/${postId}/is_read_later`, {
+    is_read_later: isRead,
   });
 }
 

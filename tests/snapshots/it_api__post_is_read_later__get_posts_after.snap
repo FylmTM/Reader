@@ -1,0 +1,29 @@
+---
+source: tests/it_api.rs
+expression: response.json_entity()
+---
+[
+  "200 OK",
+  {
+    "payload": {
+      "has_next_page": false,
+      "items": [
+        {
+          "category_id": 1,
+          "comments_link": "https://news.ycombinator.com/item?id=21746673",
+          "date": "2019-12-09T21:15:22Z",
+          "feed_id": 1,
+          "feed_title": "Hacker News",
+          "id": 1,
+          "is_read": false,
+          "is_read_later": true,
+          "link": "https://www.reuters.com/article/us-eu-batteries/eu-approves-3-2-billion-euro-state-aid-for-battery-research-idUSKBN1YD0WJ",
+          "media_link": null,
+          "summary": "Comments",
+          "title": "EU approves 3.2B euro state aid for battery research"
+        }
+      ]
+    },
+    "status": "ok"
+  }
+]

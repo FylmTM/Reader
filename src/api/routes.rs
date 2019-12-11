@@ -121,3 +121,35 @@ pub fn post_content(
     let content = conn.find_post_content_by_user(user.id, post_id)?;
     ok(content)
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct PostIsReadData {
+    pub is_read: bool,
+}
+
+#[post("/api/v1/posts/<post_id>/is_read", data = "<data>")]
+pub fn post_is_read(
+    post_id: i64,
+    data: Json<PostIsReadData>,
+    user: db::User,
+    conn: db::PoolConnection,
+) -> Response<()> {
+    conn.set_post_is_read(user.id, post_id, data.0.is_read)?;
+    return ok(());
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct PostIsReadLaterData {
+    pub is_read_later: bool,
+}
+
+#[post("/api/v1/posts/<post_id>/is_read_later", data = "<data>")]
+pub fn post_is_read_later(
+    post_id: i64,
+    data: Json<PostIsReadLaterData>,
+    user: db::User,
+    conn: db::PoolConnection,
+) -> Response<()> {
+    conn.set_post_is_read_later(user.id, post_id, data.0.is_read_later)?;
+    return ok(());
+}

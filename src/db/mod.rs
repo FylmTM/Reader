@@ -19,11 +19,6 @@ pub trait Queries {
     fn find_feeds(&self) -> Result<Vec<Feed>>;
     fn find_feeds_by_category(&self, category_id: CategoryId) -> Result<Vec<Feed>>;
     fn find_feed(&self, id: FeedId) -> Result<Feed>;
-    fn find_post_content_by_user(
-        &self,
-        user_id: UserId,
-        post_id: PostId,
-    ) -> Result<UserPostContent>;
     fn find_posts(
         &self,
         user_id: UserId,
@@ -33,6 +28,18 @@ pub trait Queries {
         category_id: Option<CategoryId>,
         feed_id: Option<FeedId>,
     ) -> Result<Page<UserPost>>;
+    fn find_post_content_by_user(
+        &self,
+        user_id: UserId,
+        post_id: PostId,
+    ) -> Result<UserPostContent>;
+    fn set_post_is_read(&self, user_id: UserId, post_id: PostId, is_read: bool) -> Result<()>;
+    fn set_post_is_read_later(
+        &self,
+        user_id: UserId,
+        post_id: PostId,
+        is_read_later: bool,
+    ) -> Result<()>;
     fn count_posts_unread(&self, user_id: UserId) -> Result<UserPostsUnreadCount>;
     fn count_posts_by_user(&self, id: UserId) -> Result<i64>;
     fn count_posts_by_category(&self, id: CategoryId) -> Result<i64>;
@@ -147,33 +154,6 @@ impl Queries for Connection {
         Ok(feed)
     }
 
-    fn find_post_content_by_user(
-        &self,
-        user_id: UserId,
-        post_id: PostId,
-    ) -> Result<UserPostContent> {
-        // language=SQLite
-        let query = "
-            select p.id, p.content
-            from user_posts up
-            inner join posts p on up.post_id = p.id
-            where up.post_id = :post_id
-            and up.user_id = :user_id
-        ";
-        let mut statement = self.prepare(query)?;
-        let user_post_content = statement.query_row_named(
-            &[(":user_id", &user_id), (":post_id", &post_id)],
-            |row| {
-                Ok(UserPostContent {
-                    id: row.get("id")?,
-                    content: row.get("content")?,
-                })
-            },
-        )?;
-
-        Ok(user_post_content)
-    }
-
     fn find_posts(
         &self,
         user_id: UserId,
@@ -246,6 +226,78 @@ impl Queries for Connection {
             has_next_page,
             items: user_posts,
         })
+    }
+
+    fn find_post_content_by_user(
+        &self,
+        user_id: UserId,
+        post_id: PostId,
+    ) -> Result<UserPostContent> {
+        // language=SQLite
+        let query = "
+            select p.id, p.content
+            from user_posts up
+            inner join posts p on up.post_id = p.id
+            where up.post_id = :post_id
+            and up.user_id = :user_id
+        ";
+        let mut statement = self.prepare(query)?;
+        let user_post_content = statement.query_row_named(
+            &[(":user_id", &user_id), (":post_id", &post_id)],
+            |row| {
+                Ok(UserPostContent {
+                    id: row.get("id")?,
+                    content: row.get("content")?,
+                })
+            },
+        )?;
+
+        Ok(user_post_content)
+    }
+
+    fn set_post_is_read(&self, user_id: UserId, post_id: PostId, is_read: bool) -> Result<()> {
+        // language=SQLite
+        let query = "
+            update user_posts
+            set is_read = :is_read
+            where post_id = :post_id
+            and user_id = :user_id
+        ";
+        let count = self.execute_named(
+            query,
+            &[
+                (":user_id", &user_id),
+                (":post_id", &post_id),
+                (":is_read", &is_read),
+            ],
+        )?;
+        check_one_entity_updated(count)?;
+        return Ok(());
+    }
+
+    fn set_post_is_read_later(
+        &self,
+        user_id: UserId,
+        post_id: PostId,
+        is_read_later: bool,
+    ) -> Result<()> {
+        // language=SQLite
+        let query = "
+            update user_posts
+            set is_read_later = :is_read_later
+            where post_id = :post_id
+            and user_id = :user_id
+        ";
+        let count = self.execute_named(
+            query,
+            &[
+                (":user_id", &user_id),
+                (":post_id", &post_id),
+                (":is_read_later", &is_read_later),
+            ],
+        )?;
+        check_one_entity_updated(count)?;
+        return Ok(());
     }
 
     fn count_posts_unread(&self, user_id: UserId) -> Result<UserPostsUnreadCount> {
@@ -393,11 +445,26 @@ fn map_row_to_feed(row: &rusqlite::Row) -> rusqlite::Result<Feed> {
     })
 }
 
+//noinspection DuplicatedCode
 fn check_one_entity_inserted(count: usize) -> Result<()> {
     if count == 1 {
         Ok(())
     } else if count == 0 {
         Err(Error::App(ApplicationError::QueryEntityAlreadyExists))
+    } else {
+        Err(Error::App(ApplicationError::QueryUnexpectedRowCount {
+            expected: 1,
+            actual: count as i64,
+        }))
+    }
+}
+
+//noinspection DuplicatedCode
+fn check_one_entity_updated(count: usize) -> Result<()> {
+    if count == 1 {
+        Ok(())
+    } else if count == 0 {
+        Err(Error::App(ApplicationError::QueryEntityNotFound))
     } else {
         Err(Error::App(ApplicationError::QueryUnexpectedRowCount {
             expected: 1,

@@ -1,0 +1,14 @@
+---
+source: tests/it_api.rs
+expression: response.json_entity()
+---
+[
+  "200 OK",
+  {
+    "payload": {
+      "has_next_page": false,
+      "items": []
+    },
+    "status": "ok"
+  }
+]

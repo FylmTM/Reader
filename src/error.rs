@@ -27,6 +27,7 @@ pub enum ApplicationError {
     RSSParsingMissingItemLink,
     RSSParsingMissingItemTitle,
     QueryEntityAlreadyExists,
+    QueryEntityNotFound,
     QueryUnexpectedRowCount { expected: i64, actual: i64 },
 }
 
