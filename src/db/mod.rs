@@ -1,3 +1,11 @@
+/// This whole module is using vanilla rusqlite, without Diesel.
+/// At the time of creating adding database support author wanted to stay
+/// as close as possible to low-level libraries and write plain-SQL queries.
+///
+/// Because of that you can find poor-mans migrations module here, and some
+/// nasty looking string manipulations for dynamic queries.
+///
+/// Author might reconsider his choice in future.
 pub use rusqlite::{Connection, NO_PARAMS};
 
 pub use entities::*;

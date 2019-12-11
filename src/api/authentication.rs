@@ -5,6 +5,8 @@ use rocket::{Outcome, Request};
 use crate::db::{self, Queries, User};
 use crate::error::{ApplicationError, Error as E};
 
+/// Request guard to get user from api_key cookie.
+/// Serves as authentication mechanism for all routes.
 impl<'a, 'r> FromRequest<'a, 'r> for User {
     type Error = E;
 
@@ -17,7 +19,7 @@ impl<'a, 'r> FromRequest<'a, 'r> for User {
             .cookies()
             .get("api_key")
             .and_then(|cookie| Some(cookie.value()))
-            .and_then(|api_key| match authenticate(&conn, api_key) {
+            .and_then(|api_key| match conn.find_user_by_api_key(api_key) {
                 Ok(user) => Some(Outcome::Success(user)),
                 Err(error) => {
                     info!("Failed to authenticate user: {:?}.", error);
@@ -36,8 +38,4 @@ impl<'a, 'r> FromRequest<'a, 'r> for User {
             }
         }
     }
-}
-
-fn authenticate(conn: &db::Connection, api_key: &str) -> Result<User, E> {
-    conn.find_user_by_api_key(api_key)
 }

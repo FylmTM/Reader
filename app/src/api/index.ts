@@ -12,7 +12,7 @@ import client from "./client";
 const DELAY = 100;
 
 function getCurrentUser(): Promise<User> {
-  return client.get("/api/v1/current_user");
+  return client.get("/api/v1/auth/current_user");
 }
 
 function login(apiKey: string): Promise<User> {

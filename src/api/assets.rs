@@ -28,6 +28,11 @@ pub struct Asset {
     is_gzipped: bool,
 }
 
+/// Serve bundled assets (frontend app).
+/// Also check if there are gzipped version of assets available,
+/// and serve those instead of original with appropriate headers.
+///
+/// All requests to /api will be silently forwarded on.
 impl<'a, 'r> FromRequest<'a, 'r> for Asset {
     type Error = E;
 

@@ -3,15 +3,19 @@ name = "reader"
 version = "0.1.0"
 authors = ["Dmitry Vrublevsky <dmitry@vrublevsky.me>"]
 edition = "2018"
+license = "GPL-3.0-only"
 
 [dependencies]
 ammonia = "3.0.0"
+chrono = { version = "0.4.10", features = ["serde"], default-features = false }
 env_logger = "0.7.1"
 lazy_static = "1.4.0"
 log = "0.4.8"
 mime = "0.3.14"
-rust-embed = "5.1.0"
 rocket = "0.4.2"
+rocket_contrib = { version = "0.4.2", features= ["json", "helmet"], default-features = false }
+rusqlite = { version = "0.20.0", features = ["bundled", "chrono"] }
+rust-embed = "5.1.0"
 r2d2 = "0.8.6"
 r2d2_sqlite = "0.12.0"
 regex = "1"
@@ -21,19 +25,6 @@ serde = "1.0.103"
 serde_json = "1.0.42"
 serde_derive = "1.0.103"
 time = "0.1.42"
-
-[dependencies.chrono]
-version = "0.4.10"
-features = ["serde"]
-
-[dependencies.rocket_contrib]
-version = "0.4.2"
-default-features = false
-features = ["json", "helmet"]
-
-[dependencies.rusqlite]
-version = "0.20.0"
-features = ["bundled", "chrono"]
 
 [dev-dependencies]
 insta = "0.12.0"

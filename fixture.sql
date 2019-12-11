@@ -1,3 +1,7 @@
+-- This is test fixture, that is intended to be used for development & testing.
+-- Default configuration should pick this one up.
+-- Feeds here have special URL that point to their mocked versions.
+
 insert or ignore into feeds(id, kind, title, link, feed)
 values (1, 'RSS', 'Hacker News (default)', 'https://news.ycombinator.com', 'http://127.0.0.1:8080/mock/rss/hacker_news.xml'),
        (2, 'RSS', 'xkcd (default)', 'https://xkcd.com', 'http://127.0.0.1:8080/mock/rss/xkcd.xml'),

@@ -6,12 +6,6 @@ use rocket_contrib::json::Json;
 use crate::api::{ok, Response};
 use crate::db::{self, Queries};
 
-#[get("/api/v1/feeds/update")]
-pub fn feeds_update(_user: db::User, mut conn: db::PoolConnection) -> Response<()> {
-    crate::feeds::update(&mut conn);
-    ok(())
-}
-
 #[derive(Serialize, Deserialize)]
 pub struct ApiKey {
     pub api_key: String,
@@ -49,9 +43,15 @@ pub fn auth_logout(mut cookies: Cookies) -> Response<()> {
     ok(())
 }
 
-#[get("/api/v1/current_user")]
-pub fn current_user(user: db::User) -> Response<db::User> {
+#[get("/api/v1/auth/current_user")]
+pub fn auth_current_user(user: db::User) -> Response<db::User> {
     ok(user)
+}
+
+#[get("/api/v1/feeds/update")]
+pub fn feeds_update(_user: db::User, mut conn: db::PoolConnection) -> Response<()> {
+    crate::feeds::update(&mut conn);
+    ok(())
 }
 
 #[get("/api/v1/categories_with_feeds")]
@@ -61,9 +61,6 @@ pub fn categories_with_feeds(
 ) -> Response<db::CategoriesWithFeeds> {
     let categories = conn.find_categories_by_user(user.id)?;
 
-    // todo: consider optimizing by doing one query to get all feeds,
-    //       and then mapping them to their categories
-    //       Will it actually be faster?
     let mut categories_with_feeds = Vec::with_capacity(categories.len());
     for category in categories {
         let feeds = conn.find_feeds_by_category(category.id)?;

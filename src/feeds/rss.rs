@@ -1,35 +1,12 @@
-use crate::db::{self, Queries};
+use crate::db::{self};
 use crate::error::{ApplicationError, Error, Result};
 use crate::feeds::utils;
 
-pub fn update(conn: &mut db::Connection, feed: &db::Feed) -> Result<()> {
-    let user_ids = conn.find_user_ids_by_feed(feed.id)?;
-    if user_ids.is_empty() {
-        debug!("{:?} does not belong to any user, skip update.", feed);
-        return Ok(());
-    }
+pub fn update(feed: &db::Feed) -> Result<Vec<db::Post>> {
     let content = get(&feed.feed)?;
     let posts = parse(&content)?;
 
-    for post in posts {
-        let tx = conn.transaction()?;
-
-        match tx.save_post(feed.id, &post) {
-            Ok(post_id) => {
-                debug!("{:?} saved.", post);
-                for user_id in &user_ids {
-                    tx.save_user_post(*user_id, post_id)?;
-                }
-                tx.commit()?;
-            }
-            Err(Error::App(ApplicationError::QueryEntityAlreadyExists)) => {
-                debug!("{:?} already exists.", &post)
-            }
-            Err(error) => return Err(error),
-        }
-    }
-
-    Ok(())
+    Ok(posts)
 }
 
 fn get(link: &String) -> Result<String> {
@@ -101,7 +78,7 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
 
                 (media_type, media_link)
             } else if content.is_some() {
-                // If there is no enclosure in feed, let's try to cut out first image in content
+                // If there is no enclosure in feed, let's try to cut out first image from content
                 let content = content.as_ref().unwrap();
                 utils::find_image(content)
                     .map(|image| {
