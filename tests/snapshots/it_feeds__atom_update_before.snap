@@ -1,0 +1,8 @@
+---
+source: tests/it_feeds.rs
+expression: "conn.find_posts(USER_ID, None, None, None, None,\n                Some(ATOM_JULIA_EVANS)).unwrap()"
+---
+{
+  "has_next_page": false,
+  "items": []
+}

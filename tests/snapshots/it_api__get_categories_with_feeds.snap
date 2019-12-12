@@ -54,6 +54,34 @@ expression: response.json_entity()
             "kind": "RSS",
             "link": "https://reactjs.org",
             "title": "React.js"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/atom/github_rocket_releases.atom",
+            "id": 6,
+            "kind": "Atom",
+            "link": "https://github.com/SergioBenitez/Rocket/releases",
+            "title": "GitHub Rocket Releases"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/atom/golang.atom",
+            "id": 7,
+            "kind": "Atom",
+            "link": "https://blog.golang.org",
+            "title": "Golang Blog"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/atom/julia_evans.atom",
+            "id": 8,
+            "kind": "Atom",
+            "link": "https://jvns.ca",
+            "title": "Julia Evans"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/atom/rust.atom",
+            "id": 9,
+            "kind": "Atom",
+            "link": "https://blog.rust-lang.org/",
+            "title": "Rust Blog"
           }
         ]
       }

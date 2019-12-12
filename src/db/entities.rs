@@ -119,6 +119,7 @@ impl FromSql for FeedKind {
 
         match kind.as_ref() {
             "RSS" => Ok(FeedKind::RSS),
+            "Atom" => Ok(FeedKind::Atom),
             _ => Err(FromSqlError::Other(Box::new(AppSqlError::UnknownFeedKind))),
         }
     }
