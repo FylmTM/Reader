@@ -78,6 +78,10 @@ pre, code, pre *, code * {
     font-family: 'Inconsolata', monospace;
 }
 
+pre, code {
+    overflow-x: auto;
+}
+
 .ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -98,8 +102,4 @@ a {
 
 :focus {
     scrollbar-color: var(--color-accent-muted) currentcolor;
-}
-
-.checkbox > input:active {
-    border: 2px solid #34495E;
 }
