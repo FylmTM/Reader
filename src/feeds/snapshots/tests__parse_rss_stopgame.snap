@@ -5,6 +5,7 @@ expression: result
 [
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106877/sniper_ghost_warrior_contracts_screenshots",
         link: "https://stopgame.ru/show/106877/sniper_ghost_warrior_contracts_screenshots",
         title: "Sniper: Ghost Warrior Contracts: Скриншоты",
         date: 2019-12-01T10:05:39Z,
@@ -24,6 +25,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106878/istoriya_serii_final_fantasy",
         link: "https://stopgame.ru/show/106878/istoriya_serii_final_fantasy",
         title: "История серии Final Fantasy",
         date: 2019-12-01T12:23:34Z,
@@ -47,6 +49,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106879/vampire_the_masquerade_coteries_of_new_york_trailer_kompanonov",
         link: "https://stopgame.ru/show/106879/vampire_the_masquerade_coteries_of_new_york_trailer_kompanonov",
         title: "Vampire: The Masquerade - Coteries of New York: Трейлер компаньонов",
         date: 2019-12-01T14:16:27Z,
@@ -70,6 +73,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106880/ast_rix_ob_lix_xxl_3_the_crystal_menhir_reliznyy_trailer",
         link: "https://stopgame.ru/show/106880/ast_rix_ob_lix_xxl_3_the_crystal_menhir_reliznyy_trailer",
         title: "Astérix & Obélix XXL 3: The Crystal Menhir: Релизный трейлер",
         date: 2019-12-01T14:16:35Z,
@@ -89,6 +93,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106881/phoenix_point_reliznyy_trailer",
         link: "https://stopgame.ru/show/106881/phoenix_point_reliznyy_trailer",
         title: "Phoenix Point: Релизный трейлер",
         date: 2019-12-01T14:16:44Z,
@@ -112,6 +117,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106882/infact_02_12_2019",
         link: "https://stopgame.ru/show/106882/infact_02_12_2019",
         title: "Инфакт [02.12.2019]",
         date: 2019-12-02T17:58:11Z,
@@ -135,6 +141,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106883/kotor_za_53_minuty_spidran_v_detalyah",
         link: "https://stopgame.ru/show/106883/kotor_za_53_minuty_spidran_v_detalyah",
         title: "Star Wars: Knights of the Old Republic: KotOR за 53 минуты [Спидран в деталях]",
         date: 2019-12-02T18:03:04Z,
@@ -158,6 +165,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106884/infact_03_12_2019",
         link: "https://stopgame.ru/show/106884/infact_03_12_2019",
         title: "Инфакт [03.12.2019]",
         date: 2019-12-03T03:20:11Z,
@@ -181,6 +189,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106885/kings_of_lorn_the_fall_of_ebris_screenshots",
         link: "https://stopgame.ru/show/106885/kings_of_lorn_the_fall_of_ebris_screenshots",
         title: "Kings of Lorn: The Fall of Ebris: Скриншоты",
         date: 2019-12-03T10:17:02Z,
@@ -200,6 +209,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106886/kings_of_lorn_the_fall_of_ebris_review",
         link: "https://stopgame.ru/show/106886/kings_of_lorn_the_fall_of_ebris_review",
         title: "Kings of Lorn: The Fall of Ebris: Обзор",
         date: 2019-12-03T10:20:02Z,
@@ -223,6 +233,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106887/glavnaya_ulovka_kodzimy_v_death_stranding",
         link: "https://stopgame.ru/show/106887/glavnaya_ulovka_kodzimy_v_death_stranding",
         title: "Death Stranding: Главная уловка Кодзимы в Death Stranding",
         date: 2019-12-03T17:24:30Z,
@@ -246,6 +257,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106888/kings_of_lorn_the_fall_of_ebris_anons_igry",
         link: "https://stopgame.ru/show/106888/kings_of_lorn_the_fall_of_ebris_anons_igry",
         title: "Kings of Lorn: The Fall of Ebris: Анонс игры",
         date: 2019-12-03T17:27:42Z,
@@ -265,6 +277,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106889/kings_of_lorn_the_fall_of_ebris_oficialnyy_trailer",
         link: "https://stopgame.ru/show/106889/kings_of_lorn_the_fall_of_ebris_oficialnyy_trailer",
         title: "Kings of Lorn: The Fall of Ebris: Официальный трейлер",
         date: 2019-12-03T17:28:59Z,
@@ -284,6 +297,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106890/kings_of_lorn_the_fall_of_ebris_reliznyy_trailer",
         link: "https://stopgame.ru/show/106890/kings_of_lorn_the_fall_of_ebris_reliznyy_trailer",
         title: "Kings of Lorn: The Fall of Ebris: Релизный трейлер",
         date: 2019-12-03T17:29:32Z,
@@ -303,6 +317,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106891/call_of_duty_modern_warfare_2_trailer_pervogo_sezona",
         link: "https://stopgame.ru/show/106891/call_of_duty_modern_warfare_2_trailer_pervogo_sezona",
         title: "Call of Duty: Modern Warfare 2: Трейлер первого сезона",
         date: 2019-12-03T17:31:07Z,
@@ -326,6 +341,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106892/infact_04_12_2019",
         link: "https://stopgame.ru/show/106892/infact_04_12_2019",
         title: "Инфакт [04.12.2019]",
         date: 2019-12-04T03:54:12Z,
@@ -349,6 +365,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106893/story_of_a_gladiator_screenshots",
         link: "https://stopgame.ru/show/106893/story_of_a_gladiator_screenshots",
         title: "Story of a Gladiator: Скриншоты",
         date: 2019-12-04T07:29:19Z,
@@ -368,6 +385,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106894/story_of_a_gladiator_review",
         link: "https://stopgame.ru/show/106894/story_of_a_gladiator_review",
         title: "Story of a Gladiator: Обзор",
         date: 2019-12-04T07:37:20Z,
@@ -391,6 +409,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106895/call_of_duty_modern_warfare_zamesiteli_final",
         link: "https://stopgame.ru/show/106895/call_of_duty_modern_warfare_zamesiteli_final",
         title: "Call of Duty: Modern Warfare: CALL OF DUTY: MODERN WARFARE. Замесители: Финал",
         date: 2019-12-04T12:02:45Z,
@@ -414,6 +433,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106896/call_of_duty_modern_warfare_trailer_boevogo_propuska",
         link: "https://stopgame.ru/show/106896/call_of_duty_modern_warfare_trailer_boevogo_propuska",
         title: "Call of Duty: Modern Warfare: Трейлер боевого пропуска",
         date: 2019-12-04T18:14:44Z,
@@ -437,6 +457,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106897/story_of_a_gladiator_reliznyy_trailer",
         link: "https://stopgame.ru/show/106897/story_of_a_gladiator_reliznyy_trailer",
         title: "Story of a Gladiator: Релизный трейлер",
         date: 2019-12-04T18:15:05Z,
@@ -456,6 +477,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106898/story_of_a_gladiator_geympleynyy_trailer",
         link: "https://stopgame.ru/show/106898/story_of_a_gladiator_geympleynyy_trailer",
         title: "Story of a Gladiator: Геймплейный трейлер",
         date: 2019-12-04T18:15:26Z,
@@ -475,6 +497,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106899/dayz_trailer_karty_livoniya",
         link: "https://stopgame.ru/show/106899/dayz_trailer_karty_livoniya",
         title: "DayZ: Трейлер карты «Ливония»",
         date: 2019-12-04T18:15:46Z,
@@ -498,6 +521,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106900/persona_5_the_royal_anons_zapadnoy_daty_reliza",
         link: "https://stopgame.ru/show/106900/persona_5_the_royal_anons_zapadnoy_daty_reliza",
         title: "Persona 5: The Royal: Анонс западной даты релиза",
         date: 2019-12-04T18:16:24Z,
@@ -521,6 +545,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106901/infact_05_12_2019",
         link: "https://stopgame.ru/show/106901/infact_05_12_2019",
         title: "Инфакт [05.12.2019]",
         date: 2019-12-05T03:13:20Z,
@@ -544,6 +569,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106902/wrath_aeon_of_ruin_preview_po_ranney_versii",
         link: "https://stopgame.ru/show/106902/wrath_aeon_of_ruin_preview_po_ranney_versii",
         title: "Wrath: Aeon of Ruin: Превью по ранней версии",
         date: 2019-12-05T14:34:50Z,
@@ -567,6 +593,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106903/infact_06_12_2019",
         link: "https://stopgame.ru/show/106903/infact_06_12_2019",
         title: "Инфакт [06.12.2019]",
         date: 2019-12-06T03:26:33Z,
@@ -590,6 +617,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106904/life_is_strange_2_trailer_polnogo_sezona",
         link: "https://stopgame.ru/show/106904/life_is_strange_2_trailer_polnogo_sezona",
         title: "Life Is Strange 2: Трейлер полного сезона",
         date: 2019-12-06T03:31:05Z,
@@ -613,6 +641,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106905/dead_cells_the_bad_seed_screenshots",
         link: "https://stopgame.ru/show/106905/dead_cells_the_bad_seed_screenshots",
         title: "Dead Cells: The Bad Seed: Скриншоты",
         date: 2019-12-06T03:32:55Z,
@@ -632,6 +661,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106906/pillars_of_eternity_2_deadfire_anons_daty_reliza_na_konsolyah",
         link: "https://stopgame.ru/show/106906/pillars_of_eternity_2_deadfire_anons_daty_reliza_na_konsolyah",
         title: "Pillars of Eternity 2: Deadfire: Анонс даты релиза на консолях",
         date: 2019-12-06T03:33:54Z,
@@ -655,6 +685,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106907/dead_cells_the_bad_seed_anons_dopolneniya",
         link: "https://stopgame.ru/show/106907/dead_cells_the_bad_seed_anons_dopolneniya",
         title: "Dead Cells: The Bad Seed: Анонс дополнения",
         date: 2019-12-06T03:34:15Z,
@@ -678,6 +709,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106908/lost_ember_review",
         link: "https://stopgame.ru/show/106908/lost_ember_review",
         title: "Lost Ember: Обзор",
         date: 2019-12-06T12:59:28Z,
@@ -701,6 +733,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106909/borderlands_3_moxxi_s_heist_of_the_handsome_jackpot_13_minut_geympleya",
         link: "https://stopgame.ru/show/106909/borderlands_3_moxxi_s_heist_of_the_handsome_jackpot_13_minut_geympleya",
         title: "Borderlands 3: Moxxi\'s Heist of the Handsome Jackpot: 13 минут геймплея",
         date: 2019-12-07T03:50:52Z,
@@ -724,6 +757,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106910/mechwarrior_5_mercenaries_reliznyy_trailer",
         link: "https://stopgame.ru/show/106910/mechwarrior_5_mercenaries_reliznyy_trailer",
         title: "MechWarrior 5: Mercenaries: Релизный трейлер",
         date: 2019-12-07T03:51:06Z,
@@ -747,6 +781,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106911/darksiders_genesis_trailer_k_relizu_na_pc_i_stadia",
         link: "https://stopgame.ru/show/106911/darksiders_genesis_trailer_k_relizu_na_pc_i_stadia",
         title: "Darksiders: Genesis: Трейлер к релизу на PC и Stadia",
         date: 2019-12-07T03:51:24Z,
@@ -770,6 +805,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106912/starship_troopers_terran_command_screenshots",
         link: "https://stopgame.ru/show/106912/starship_troopers_terran_command_screenshots",
         title: "Starship Troopers: Terran Command: Скриншоты",
         date: 2019-12-07T03:56:24Z,
@@ -789,6 +825,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106913/starship_troopers_terran_command_anons_igry",
         link: "https://stopgame.ru/show/106913/starship_troopers_terran_command_anons_igry",
         title: "Starship Troopers: Terran Command: Анонс игры",
         date: 2019-12-07T03:57:04Z,
@@ -812,6 +849,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106914/starship_troopers_terran_command_geympleynyy_tizer",
         link: "https://stopgame.ru/show/106914/starship_troopers_terran_command_geympleynyy_tizer",
         title: "Starship Troopers: Terran Command: Геймплейный тизер",
         date: 2019-12-07T04:00:58Z,
@@ -835,6 +873,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106915/istoriya_piratskoy_dayz",
         link: "https://stopgame.ru/show/106915/istoriya_piratskoy_dayz",
         title: "DayZ: История пиратской DayZ",
         date: 2019-12-07T07:41:34Z,
@@ -858,6 +897,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106916/arise_a_simple_story_review",
         link: "https://stopgame.ru/show/106916/arise_a_simple_story_review",
         title: "Arise: A Simple Story: Обзор",
         date: 2019-12-07T09:32:08Z,
@@ -881,6 +921,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106917/battlefield_v_reviewnyy_trailer_ostrova_ueyk",
         link: "https://stopgame.ru/show/106917/battlefield_v_reviewnyy_trailer_ostrova_ueyk",
         title: "Battlefield V: Обзорный трейлер «Острова Уэйк»",
         date: 2019-12-08T07:11:54Z,
@@ -904,6 +945,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106918/arise_a_simple_story_reliznyy_trailer",
         link: "https://stopgame.ru/show/106918/arise_a_simple_story_reliznyy_trailer",
         title: "Arise: A Simple Story: Релизный трейлер",
         date: 2019-12-08T07:12:06Z,
@@ -923,6 +965,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106919/dying_light_trailer_krossovera_s_chivalry",
         link: "https://stopgame.ru/show/106919/dying_light_trailer_krossovera_s_chivalry",
         title: "Dying Light: Трейлер кроссовера с Chivalry",
         date: 2019-12-08T07:12:51Z,
@@ -946,6 +989,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106920/stoit_li_vernutsya_v_postal_2_razbor_poletov",
         link: "https://stopgame.ru/show/106920/stoit_li_vernutsya_v_postal_2_razbor_poletov",
         title: "Postal 2: Стоит ли вернуться в Postal 2? [Разбор полетов]",
         date: 2019-12-08T16:52:22Z,
@@ -969,6 +1013,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106921/daemon_x_machina_trailer_krossovera_s_vedmakom",
         link: "https://stopgame.ru/show/106921/daemon_x_machina_trailer_krossovera_s_vedmakom",
         title: "Daemon X Machina: Трейлер кроссовера с «Ведьмаком»",
         date: 2019-12-08T16:57:07Z,
@@ -992,6 +1037,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106922/infact_09_12_2019",
         link: "https://stopgame.ru/show/106922/infact_09_12_2019",
         title: "Инфакт [09.12.2019]",
         date: 2019-12-09T02:53:13Z,
@@ -1015,6 +1061,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106923/i_am_jesus_christ_anons_igry",
         link: "https://stopgame.ru/show/106923/i_am_jesus_christ_anons_igry",
         title: "I Am Jesus Christ: Анонс игры",
         date: 2019-12-09T08:56:52Z,
@@ -1038,6 +1085,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106924/i_am_jesus_christ_screenshots",
         link: "https://stopgame.ru/show/106924/i_am_jesus_christ_screenshots",
         title: "I Am Jesus Christ: Скриншоты",
         date: 2019-12-09T08:58:35Z,
@@ -1057,6 +1105,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106925/bug_fables_the_everlasting_sapling_screenshots",
         link: "https://stopgame.ru/show/106925/bug_fables_the_everlasting_sapling_screenshots",
         title: "Bug Fables: The Everlasting Sapling: Скриншоты",
         date: 2019-12-09T15:51:58Z,
@@ -1076,6 +1125,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://stopgame.ru/show/106926/bug_fables_the_everlasting_sapling_review",
         link: "https://stopgame.ru/show/106926/bug_fables_the_everlasting_sapling_review",
         title: "Bug Fables: The Everlasting Sapling: Обзор",
         date: 2019-12-09T15:56:40Z,

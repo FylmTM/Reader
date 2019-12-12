@@ -366,13 +366,14 @@ impl Queries for Connection {
     fn save_post(self: &Connection, feed_id: FeedId, post: &Post) -> Result<PostId> {
         // language=SQLite
         let query = "
-            insert or ignore into posts(feed_id, link, title, date, summary, content, media_type, media_link, comments_link)
-            values (:feed_id, :link, :title, :date, :summary, :content, :media_type, :media_link, :comments_link)
+            insert or ignore into posts(feed_id, unique_id, link, title, date, summary, content, media_type, media_link, comments_link)
+            values (:feed_id, :unique_id, :link, :title, :date, :summary, :content, :media_type, :media_link, :comments_link)
         ";
         let count = self.execute_named(
             query,
             &[
                 (":feed_id", &feed_id),
+                (":unique_id", &post.unique_id),
                 (":link", &post.link),
                 (":title", &post.title),
                 (":date", &post.date),

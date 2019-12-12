@@ -32,6 +32,7 @@ pub struct Category {
 #[derive(Copy, Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub enum FeedKind {
     RSS,
+    Atom,
 }
 
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
@@ -62,6 +63,7 @@ pub struct MediaType {
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub struct Post {
     pub id: PostId,
+    pub unique_id: String,
     pub link: String,
     pub title: String,
     pub date: chrono::DateTime<chrono::Utc>,
@@ -126,6 +128,7 @@ impl ToSql for FeedKind {
     fn to_sql(&self) -> rusqlite::Result<ToSqlOutput<'_>> {
         let kind = match self {
             FeedKind::RSS => "RSS",
+            FeedKind::Atom => "Atom",
         };
         Ok(ToSqlOutput::from(kind))
     }

@@ -17,15 +17,17 @@ pub enum Error {
     DB(rusqlite::Error),
     HttpClient(reqwest::Error),
     RSS(rss::Error),
+    Atom(atom_syndication::Error),
     Chrono(chrono::ParseError),
 }
 
 #[derive(Debug)]
 pub enum ApplicationError {
     AuthenticationApiKeyNotFound,
-    RSSFailedToRetrieve(String),
+    FailedGetUrlContent(String),
     RSSParsingMissingItemLink,
     RSSParsingMissingItemTitle,
+    AtomParsingMissingEntryLink,
     QueryEntityAlreadyExists,
     QueryEntityNotFound,
     QueryUnexpectedRowCount { expected: i64, actual: i64 },
@@ -85,6 +87,12 @@ impl From<reqwest::Error> for Error {
 impl From<rss::Error> for Error {
     fn from(error: rss::Error) -> Error {
         Error::RSS(error)
+    }
+}
+
+impl From<atom_syndication::Error> for Error {
+    fn from(error: atom_syndication::Error) -> Error {
+        Error::Atom(error)
     }
 }
 

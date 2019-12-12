@@ -1,9 +1,28 @@
+use crate::error::{ApplicationError, Error, Result};
+
 lazy_static! {
     static ref AMMONIA_TEXT: ammonia::Builder<'static> = {
         let mut builder = ammonia::Builder::default();
         builder.tags(std::collections::HashSet::new());
         builder
     };
+}
+
+pub fn get_url_content(link: &String) -> Result<String> {
+    let mut response = reqwest::get(link)?;
+
+    if response.status() != reqwest::StatusCode::OK {
+        error!(
+            "Failed to retrieve feed={} with status={}",
+            link,
+            response.status()
+        );
+        return Err(Error::App(ApplicationError::FailedGetUrlContent(
+            link.clone(),
+        )));
+    }
+
+    return Ok(response.text()?);
 }
 
 pub fn clean_to_text(html: &str) -> String {

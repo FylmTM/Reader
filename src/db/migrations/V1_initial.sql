@@ -15,6 +15,7 @@ create table posts
     id            integer primary key autoincrement,
     feed_id       integer references feeds (id) not null,
 
+    unique_id     text                          not null,
     link          text                          not null,
     title         text                          not null,
     date          text                          not null,
@@ -24,7 +25,7 @@ create table posts
     media_link    text                          null,
     comments_link text                          null,
 
-    unique (feed_id, link)
+    unique (feed_id, unique_id)
 );
 
 create table users

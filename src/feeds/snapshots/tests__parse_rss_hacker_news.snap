@@ -5,6 +5,7 @@ expression: result
 [
     Post {
         id: -1,
+        unique_id: "https://www.reuters.com/article/us-eu-batteries/eu-approves-3-2-billion-euro-state-aid-for-battery-research-idUSKBN1YD0WJ",
         link: "https://www.reuters.com/article/us-eu-batteries/eu-approves-3-2-billion-euro-state-aid-for-battery-research-idUSKBN1YD0WJ",
         title: "EU approves 3.2B euro state aid for battery research",
         date: 2019-12-09T21:15:22Z,
@@ -22,6 +23,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.vitavonni.de/blog/201503/2015031201-the-sad-state-of-sysadmin-in-the-age-of-containers.html",
         link: "https://www.vitavonni.de/blog/201503/2015031201-the-sad-state-of-sysadmin-in-the-age-of-containers.html",
         title: "The sad state of sysadmin in the age of containers (2015)",
         date: 2019-12-09T10:05:26Z,
@@ -39,6 +41,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.tmakiguchi.org/geographer/asgeographer/geographyhuman.html",
         link: "https://www.tmakiguchi.org/geographer/asgeographer/geographyhuman.html",
         title: "Tsunebaro Makaguchi – Education Through Interest",
         date: 2019-12-08T06:21:34Z,
@@ -56,6 +59,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.newyorker.com/magazine/2019/12/16/how-william-gibson-keeps-his-science-fiction-real",
         link: "https://www.newyorker.com/magazine/2019/12/16/how-william-gibson-keeps-his-science-fiction-real",
         title: "How William Gibson Keeps His Science Fiction Real",
         date: 2019-12-09T18:35:49Z,
@@ -73,6 +77,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://github.com/Risk3sixty-Labs/geoapi",
         link: "https://github.com/Risk3sixty-Labs/geoapi",
         title: "Show HN: Tiny, fast, and free API to geolocate IP addresses",
         date: 2019-12-09T12:18:47Z,
@@ -90,6 +95,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.bbc.com/news/technology-50713723",
         link: "https://www.bbc.com/news/technology-50713723",
         title: "E-scooter company goes bust after spending big on Facebook ads",
         date: 2019-12-09T19:13:16Z,
@@ -107,6 +113,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.thestar.com.my/news/regional/2019/12/09/breaking-news-russia-banned-from-2020-olympics",
         link: "https://www.thestar.com.my/news/regional/2019/12/09/breaking-news-russia-banned-from-2020-olympics",
         title: "Russia Banned from 2020 Olympics",
         date: 2019-12-09T21:16:07Z,
@@ -124,6 +131,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "http://web.archive.org/web/20040929041451/http://www.shrovetuesdayobserved.com/flight.html",
         link: "http://web.archive.org/web/20040929041451/http://www.shrovetuesdayobserved.com/flight.html",
         title: "If All Stories Were Written Like Science Fiction Stories (2004)",
         date: 2019-12-09T21:05:24Z,
@@ -141,6 +149,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://fivebooks.com/best-books/science-2019-barbara-kiser/",
         link: "https://fivebooks.com/best-books/science-2019-barbara-kiser/",
         title: "Science Books of 2019",
         date: 2019-12-09T17:59:35Z,
@@ -158,6 +167,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://jamesmunns.com/blog/fmt-unreasonably-expensive/",
         link: "https://jamesmunns.com/blog/fmt-unreasonably-expensive/",
         title: "Formatting Is Unreasonably Expensive for Embedded Rust",
         date: 2019-12-09T15:41:11Z,
@@ -175,6 +185,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://github.com/ecaron/smart-nightlight-manager",
         link: "https://github.com/ecaron/smart-nightlight-manager",
         title: "Show HN: My in-network Node app for controlling my kids\' nightlights",
         date: 2019-12-08T22:52:12Z,
@@ -192,6 +203,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.wsj.com/articles/five-cities-account-for-vast-majority-of-growth-in-tech-jobs-study-finds-11575867660",
         link: "https://www.wsj.com/articles/five-cities-account-for-vast-majority-of-growth-in-tech-jobs-study-finds-11575867660",
         title: "Five cities account for vast majority of growth in U.S. tech jobs: study",
         date: 2019-12-09T14:56:35Z,
@@ -209,6 +221,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://github.com/infostreams/db",
         link: "https://github.com/infostreams/db",
         title: "Show HN: Version Control for Databases",
         date: 2019-12-09T13:06:35Z,
@@ -226,6 +239,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.bloomberg.com/news/articles/2019-12-08/repo-blowup-was-fueled-by-big-banks-and-hedge-funds-bis-says",
         link: "https://www.bloomberg.com/news/articles/2019-12-08/repo-blowup-was-fueled-by-big-banks-and-hedge-funds-bis-says",
         title: "Repo Blowup Was Fueled by Big Banks and Hedge Funds, BIS Says",
         date: 2019-12-09T14:05:49Z,
@@ -243,6 +257,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.theatlantic.com/ideas/archive/2019/11/why-child-care-so-expensive/602599",
         link: "https://www.theatlantic.com/ideas/archive/2019/11/why-child-care-so-expensive/602599",
         title: "Why Child Care Is So Expensive",
         date: 2019-12-09T18:41:48Z,
@@ -260,6 +275,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.atlasobscura.com/articles/cool-bar-montana",
         link: "https://www.atlasobscura.com/articles/cool-bar-montana",
         title: "For Sale: The Only Bar in a 14-Person Montana Town",
         date: 2019-12-09T19:40:03Z,
@@ -277,6 +293,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=e7096c131e5161fa3b8e52a650d7719d2857adfd",
         link: "https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=e7096c131e5161fa3b8e52a650d7719d2857adfd",
         title: "WireGuard is in net-next",
         date: 2019-12-09T08:21:03Z,
@@ -294,6 +311,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://queue.acm.org/detail.cfm?id=3341158",
         link: "https://queue.acm.org/detail.cfm?id=3341158",
         title: "Must and Must Not: On writing documentation",
         date: 2019-12-09T14:53:02Z,
@@ -311,6 +329,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "http://scholar.harvard.edu/files/mickens/files/towashitallaway.pdf",
         link: "http://scholar.harvard.edu/files/mickens/files/towashitallaway.pdf",
         title: "To Wash It All Away (2014) [pdf]",
         date: 2019-12-09T18:00:56Z,
@@ -328,6 +347,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://emacsair.me/2017/09/01/magit-walk-through/",
         link: "https://emacsair.me/2017/09/01/magit-walk-through/",
         title: "A walk through the Magit interface",
         date: 2019-12-07T10:55:30Z,
@@ -345,6 +365,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://web.archive.org/web/20030812081713/http://klausler.com/cnotes.txt",
         link: "https://web.archive.org/web/20030812081713/http://klausler.com/cnotes.txt",
         title: "Some things every C programmer should know about C (2002)",
         date: 2019-12-09T15:59:55Z,
@@ -362,6 +383,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.quantamagazine.org/how-simple-rules-bootstrap-the-laws-of-physics-20191209/",
         link: "https://www.quantamagazine.org/how-simple-rules-bootstrap-the-laws-of-physics-20191209/",
         title: "Simple Rules ‘Bootstrap’ the Laws of Physics",
         date: 2019-12-09T16:20:49Z,
@@ -379,6 +401,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.wsj.com/articles/if-bitcoin-looks-like-it-isnt-trading-its-because-it-isnt-11575637204",
         link: "https://www.wsj.com/articles/if-bitcoin-looks-like-it-isnt-trading-its-because-it-isnt-11575637204",
         title: "If Bitcoin Looks Like It Isn’t Trading, It’s Because It Isn’t",
         date: 2019-12-09T21:06:13Z,
@@ -396,6 +419,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.sametab.com/blog/operations-and-internal-communication-strategies-for-effective-ceos",
         link: "https://www.sametab.com/blog/operations-and-internal-communication-strategies-for-effective-ceos",
         title: "Operations for Effective CEOs",
         date: 2019-12-09T14:11:22Z,
@@ -413,6 +437,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://signal.org/blog/signal-private-group-system/",
         link: "https://signal.org/blog/signal-private-group-system/",
         title: "Technology Preview: Signal Private Group System",
         date: 2019-12-09T17:10:11Z,
@@ -430,6 +455,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.nytimes.com/2019/12/08/obituaries/caroll-spinney-dead.html",
         link: "https://www.nytimes.com/2019/12/08/obituaries/caroll-spinney-dead.html",
         title: "Caroll Spinney has died",
         date: 2019-12-08T19:31:16Z,
@@ -447,6 +473,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://www.wsj.com/articles/american-factories-demand-white-collar-education-for-blue-collar-work-11575907185",
         link: "https://www.wsj.com/articles/american-factories-demand-white-collar-education-for-blue-collar-work-11575907185",
         title: "College-educated workers are taking over the American factory floor",
         date: 2019-12-09T19:43:30Z,
@@ -464,6 +491,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://randomascii.wordpress.com/2019/12/08/on2-again-now-in-wmi/",
         link: "https://randomascii.wordpress.com/2019/12/08/on2-again-now-in-wmi/",
         title: "O(n^2), again, now in Windows Management Instrumentation",
         date: 2019-12-09T15:30:35Z,
@@ -481,6 +509,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://en.wikipedia.org/wiki/Transputer",
         link: "https://en.wikipedia.org/wiki/Transputer",
         title: "Transputer",
         date: 2019-12-09T21:22:57Z,
@@ -498,6 +527,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://blog.cynthia.re/post/nintendo-switch-ethernet-switch",
         link: "https://blog.cynthia.re/post/nintendo-switch-ethernet-switch",
         title: "The Nintendo Switch Switch",
         date: 2019-12-09T19:46:52Z,

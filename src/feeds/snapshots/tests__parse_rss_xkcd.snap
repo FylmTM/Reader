@@ -5,6 +5,7 @@ expression: result
 [
     Post {
         id: -1,
+        unique_id: "https://xkcd.com/2236/",
         link: "https://xkcd.com/2236/",
         title: "Is it Christmas?",
         date: 2019-12-02T05:00:00Z,
@@ -26,6 +27,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://xkcd.com/2237/",
         link: "https://xkcd.com/2237/",
         title: "AI Hiring Algorithm",
         date: 2019-12-04T05:00:00Z,
@@ -47,6 +49,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://xkcd.com/2238/",
         link: "https://xkcd.com/2238/",
         title: "Flu Shot",
         date: 2019-12-06T05:00:00Z,
@@ -68,6 +71,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://xkcd.com/2239/",
         link: "https://xkcd.com/2239/",
         title: "Data Error",
         date: 2019-12-09T05:00:00Z,

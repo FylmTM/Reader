@@ -1,24 +1,24 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use]
-extern crate log;
-extern crate r2d2;
-extern crate r2d2_sqlite;
-#[macro_use]
 extern crate rocket;
-extern crate rusqlite;
 #[macro_use]
 extern crate rust_embed;
+extern crate r2d2;
+extern crate r2d2_sqlite;
+extern crate rusqlite;
+#[macro_use]
+extern crate log;
 #[macro_use]
 extern crate serde_derive;
 extern crate ammonia;
 extern crate time;
 #[macro_use]
 extern crate lazy_static;
+extern crate regex;
 #[cfg(test)]
 #[macro_use]
 extern crate insta;
-extern crate regex;
 
 pub mod api;
 pub mod db;

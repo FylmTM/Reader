@@ -52,6 +52,7 @@ pub fn update_feed(conn: &mut db::Connection, feed: &db::Feed) -> Result<()> {
 
     let posts = match feed.kind {
         db::FeedKind::RSS => rss::update(&feed),
+        db::FeedKind::Atom => atom::update(&feed),
     }?;
 
     save_posts(conn, feed, &posts, &user_ids)?;

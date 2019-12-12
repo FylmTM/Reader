@@ -1,34 +1,16 @@
-use crate::db::{self};
+use crate::db::{Feed, MediaType, Post};
 use crate::error::{ApplicationError, Error, Result};
-use crate::feeds::utils;
+use crate::feeds::utils::{clean_to_safe_html, clean_to_text, find_image, get_url_content};
 
-pub fn update(feed: &db::Feed) -> Result<Vec<db::Post>> {
-    let content = get(&feed.feed)?;
+pub fn update(feed: &Feed) -> Result<Vec<Post>> {
+    let content = get_url_content(&feed.feed)?;
     let posts = parse(&content)?;
 
     Ok(posts)
 }
 
-fn get(link: &String) -> Result<String> {
-    let mut response = reqwest::get(link)?;
-
-    if response.status() != reqwest::StatusCode::OK {
-        error!(
-            "Failed to retrieve feed={} with status={}",
-            link,
-            response.status()
-        );
-        return Err(Error::App(ApplicationError::RSSFailedToRetrieve(
-            link.clone(),
-        )));
-    }
-
-    return Ok(response.text()?);
-}
-
-fn parse(content: &String) -> Result<Vec<db::Post>> {
-    let channel = rss::Channel::read_from(content.as_bytes())?;
-
+fn parse(content: &str) -> Result<Vec<Post>> {
+    let channel = content.parse::<rss::Channel>()?;
     let mut posts = Vec::with_capacity(channel.items().len());
 
     for item in channel.items() {
@@ -36,20 +18,24 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             .link()
             .ok_or(Error::App(ApplicationError::RSSParsingMissingItemLink))?
             .to_string();
+        let unique_id = item
+            .guid()
+            .map(|guid| guid.value().to_string())
+            .unwrap_or_else(|| link.clone());
         let title = item
             .title()
-            .ok_or(Error::App(ApplicationError::RSSParsingMissingItemLink))?
+            .ok_or(Error::App(ApplicationError::RSSParsingMissingItemTitle))?
             .to_string();
         let date = match item.pub_date() {
             Some(date) => parse_date(date)?,
             None => chrono::DateTime::from(chrono::Utc::now()),
         };
 
-        let summary = item.description().map(utils::clean_to_text);
+        let summary = item.description().map(clean_to_text);
         let content = item
             .content()
             .or(item.description())
-            .map(|content| utils::clean_to_safe_html(content, &link));
+            .map(|content| clean_to_safe_html(content, &link));
         let comments_link = item.comments().map(String::from);
 
         let (media_type, media_link) = {
@@ -62,7 +48,7 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
                     } else if mime_type.parse::<mime::Mime>().is_err() {
                         None
                     } else {
-                        Some(db::MediaType {
+                        Some(MediaType {
                             mime: mime_type.to_string(),
                         })
                     }
@@ -80,10 +66,10 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             } else if content.is_some() {
                 // If there is no enclosure in feed, let's try to cut out first image from content
                 let content = content.as_ref().unwrap();
-                utils::find_image(content)
+                find_image(content)
                     .map(|image| {
                         (
-                            Some(db::MediaType {
+                            Some(MediaType {
                                 mime: "image/*".to_string(),
                             }),
                             Some(image),
@@ -95,8 +81,9 @@ fn parse(content: &String) -> Result<Vec<db::Post>> {
             }
         };
 
-        let post = db::Post {
+        let post = Post {
             id: -1, // Post is not retrieved from database
+            unique_id,
             link,
             title,
             date,
@@ -133,36 +120,36 @@ mod tests {
 
     #[test]
     fn test_parse_rss_hacker_news() {
-        let content = include_str!("../../static/mock/rss/hacker_news.xml").to_string();
-        let result = parse(&content).unwrap();
+        let content = include_str!("../../static/mock/rss/hacker_news.xml");
+        let result = parse(content).unwrap();
         assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_kotlin() {
-        let content = include_str!("../../static/mock/rss/kotlin.xml").to_string();
-        let result = parse(&content).unwrap();
+        let content = include_str!("../../static/mock/rss/kotlin.xml");
+        let result = parse(content).unwrap();
         assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_react() {
-        let content = include_str!("../../static/mock/rss/react.xml").to_string();
-        let result = parse(&content).unwrap();
+        let content = include_str!("../../static/mock/rss/react.xml");
+        let result = parse(content).unwrap();
         assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_stopgame() {
-        let content = include_str!("../../static/mock/rss/stopgame.xml").to_string();
-        let result = parse(&content).unwrap();
+        let content = include_str!("../../static/mock/rss/stopgame.xml");
+        let result = parse(content).unwrap();
         assert_debug_snapshot!(result);
     }
 
     #[test]
     fn test_parse_rss_xkcd() {
-        let content = include_str!("../../static/mock/rss/xkcd.xml").to_string();
-        let result = parse(&content).unwrap();
+        let content = include_str!("../../static/mock/rss/xkcd.xml");
+        let result = parse(content).unwrap();
         assert_debug_snapshot!(result);
     }
 

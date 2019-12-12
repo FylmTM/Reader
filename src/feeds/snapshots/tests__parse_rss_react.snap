@@ -5,6 +5,7 @@ expression: result
 [
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2018/10/23/react-v-16-6.html",
         link: "https://reactjs.org/blog/2018/10/23/react-v-16-6.html",
         title: "React v16.6.0: lazy, memo and contextType",
         date: 2018-10-23T00:00:00Z,
@@ -20,6 +21,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2018/11/13/react-conf-recap.html",
         link: "https://reactjs.org/blog/2018/11/13/react-conf-recap.html",
         title: "React Conf recap: Hooks, Suspense, and Concurrent Rendering",
         date: 2018-11-13T00:00:00Z,
@@ -35,6 +37,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2018/11/27/react-16-roadmap.html",
         link: "https://reactjs.org/blog/2018/11/27/react-16-roadmap.html",
         title: "React 16.x Roadmap",
         date: 2018-11-27T00:00:00Z,
@@ -50,6 +53,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2018/12/19/react-v-16-7.html",
         link: "https://reactjs.org/blog/2018/12/19/react-v-16-7.html",
         title: "React v16.7: No, This Is Not the One With Hooks",
         date: 2018-12-19T00:00:00Z,
@@ -65,6 +69,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2019/02/06/react-v16.8.0.html",
         link: "https://reactjs.org/blog/2019/02/06/react-v16.8.0.html",
         title: "React v16.8: The One With Hooks",
         date: 2019-02-06T00:00:00Z,
@@ -80,6 +85,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2019/02/23/is-react-translated-yet.html",
         link: "https://reactjs.org/blog/2019/02/23/is-react-translated-yet.html",
         title: "Is React Translated Yet? ¡Sí! Sim! はい！",
         date: 2019-02-23T00:00:00Z,
@@ -95,6 +101,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2019/08/08/react-v16.9.0.html",
         link: "https://reactjs.org/blog/2019/08/08/react-v16.9.0.html",
         title: "React v16.9.0 and the Roadmap Update",
         date: 2019-08-08T00:00:00Z,
@@ -116,6 +123,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2019/08/15/new-react-devtools.html",
         link: "https://reactjs.org/blog/2019/08/15/new-react-devtools.html",
         title: "Introducing the New React DevTools",
         date: 2019-08-15T00:00:00Z,
@@ -137,6 +145,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2019/10/22/react-release-channels.html",
         link: "https://reactjs.org/blog/2019/10/22/react-release-channels.html",
         title: "Preparing for the Future with React Prereleases",
         date: 2019-10-22T00:00:00Z,
@@ -152,6 +161,7 @@ expression: result
     },
     Post {
         id: -1,
+        unique_id: "https://reactjs.org/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html",
         link: "https://reactjs.org/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html",
         title: "Building Great User Experiences with Concurrent Mode and Suspense",
         date: 2019-11-06T00:00:00Z,
