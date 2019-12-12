@@ -83,6 +83,14 @@ fn test_get_posts_all() {
 }
 
 #[test]
+fn test_get_posts_all_from_post_id() {
+    let client = client::authenticated();
+
+    let mut response = client.get("/api/v1/posts?from_post_id=10").dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
 fn test_get_posts_read_later() {
     let client = client::authenticated();
 
