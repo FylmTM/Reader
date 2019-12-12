@@ -3,10 +3,12 @@ Reader
 
 **Reader** is simple, small and fast news aggregator written in Rust.
 
-* Available as a single static binary.
-* Sensible default [configuration](#configuration).
+* Available as a single static binary, no dependencies.
+* Responsive web UI.
 * Multiple [sources](#sources).
 * Low CPU and memory usage.
+
+**Important:** Reader is in heavy development. Important features are still missing, and non-backward compatible schema changes might happen. In [this issue](https://github.com/FylmTM/Reader/issues/1) you can find more details on current development status.
 
 #### Features
 
@@ -18,9 +20,9 @@ Reader
 - [x] Categories
 - [x] Read later
 - [x] Option to show only unread posts
+- [ ] Shortcuts
 - [ ] Category & feed management
 - [ ] User management
-- [ ] Shortcuts
 
 #### Sources
 
@@ -31,8 +33,7 @@ Reader
 
 ## Quickstart
 
-1. Download [latest release](https://github.com/FylmTM/Reader/releases) for your platform.
-1. Run it
+At the moment no releases are available for download, so Reader must be built locally.
 
 ## Configuration
 
