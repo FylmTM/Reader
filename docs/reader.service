@@ -9,6 +9,7 @@ Restart=always
 RestartSec=1
 User=root
 Environment=ROCKET_PORT=80
+Environment=ROCKET_LOAD_FIXTURE=true
 Environment=RUST_LOG=warn
 WorkingDirectory=/root/reader
 ExecStart=/root/reader/reader
