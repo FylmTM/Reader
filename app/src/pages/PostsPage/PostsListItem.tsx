@@ -61,6 +61,7 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
             {post.feed_title}
           </NoStateLink>
         </span>
+      </span>
         <span className="actions">
           {post.comments_link && (
             <a
@@ -108,7 +109,6 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
             }}
           />
         </span>
-      </span>
       <NoStateLink href={post.link} onClickHref={onClickHref}>
         <div className="border">
           {isMediaImage && (

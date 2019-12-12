@@ -16,7 +16,7 @@
 }
 
 .r-post-content {
-    overflow-y: auto;
+    overflow-y: scroll;
     flex: 1;
     padding: 0px 20px 20px;
 }
@@ -49,13 +49,13 @@
 }
 
 .r-post-content .media {
-    display: flex;
-    justify-content: center;
     margin-top: 20px;
+    text-align: center;
 }
 
 .r-post-content .media img {
     max-width: 100%;
+    height: auto;
 }
 
 .r-post-content .text {
