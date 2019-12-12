@@ -62,53 +62,53 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
           </NoStateLink>
         </span>
       </span>
-        <span className="actions">
-          {post.comments_link && (
-            <a
-              href={post.comments_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="r-button minimal"
-            >
-              <Icon type="message" size="small" />
-            </a>
-          )}
-          <IconButton
-            className="read-later"
-            icon="bookmark"
-            look="minimal"
-            size="small"
-            tabIndex={-1}
-            onClick={event => {
-              event.preventDefault();
-              event.stopPropagation();
-              readLater(post.id, !post.is_read_later);
-            }}
-          />
-          <IconButton
-            className="read"
-            icon="check"
-            look="minimal"
-            size="small"
-            tabIndex={-1}
-            onClick={event => {
-              event.preventDefault();
-              event.stopPropagation();
-              read(post.id, !post.is_read);
-            }}
-          />
-          <IconButton
-            icon="close"
-            look="minimal"
-            size="small"
-            tabIndex={-1}
-            onClick={event => {
-              event.preventDefault();
-              event.stopPropagation();
-              close(post.id, isSelected, hrefPrefix);
-            }}
-          />
-        </span>
+      <span className="actions">
+        {post.comments_link && (
+          <a
+            href={post.comments_link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="r-button minimal"
+          >
+            <Icon type="message" size="small" />
+          </a>
+        )}
+        <IconButton
+          className="read-later"
+          icon="bookmark"
+          look="minimal"
+          size="small"
+          tabIndex={-1}
+          onClick={event => {
+            event.preventDefault();
+            event.stopPropagation();
+            readLater(post.id, !post.is_read_later);
+          }}
+        />
+        <IconButton
+          className="read"
+          icon="check"
+          look="minimal"
+          size="small"
+          tabIndex={-1}
+          onClick={event => {
+            event.preventDefault();
+            event.stopPropagation();
+            read(post.id, !post.is_read);
+          }}
+        />
+        <IconButton
+          icon="close"
+          look="minimal"
+          size="small"
+          tabIndex={-1}
+          onClick={event => {
+            event.preventDefault();
+            event.stopPropagation();
+            close(post.id, isSelected, hrefPrefix);
+          }}
+        />
+      </span>
       <NoStateLink href={post.link} onClickHref={onClickHref}>
         <div className="border">
           {isMediaImage && (
