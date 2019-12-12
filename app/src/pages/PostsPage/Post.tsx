@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useEffect } from "react";
 import { IconButton } from "../../components/common/Button/Button";
 import { Icon } from "../../components/common/Icon/Icon";
 import { NoStateLink } from "../../components/common/NoStateLink";
@@ -27,16 +27,11 @@ interface Props {
 }
 
 export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
-  const contentRef = useRef(null);
   const { posts, read, readLater, close } = usePosts();
   const post = posts.find(post => post.id === postId);
   const postContent = usePostContent();
 
   useEffect(() => {
-    if (contentRef != null) {
-      // @ts-ignore scroll to initial position of content element
-      contentRef.current?.scrollTo(0, 0);
-    }
     if (post == null) {
       postContent.unset();
     } else {
@@ -110,7 +105,7 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
           />
         </div>
       </Navbar>
-      <div ref={contentRef} className="r-post-content">
+      <div className="r-post-content">
         <div className="inner">
           <h1 className="title">
             <a href={post.link} target="_blank" rel="noopener noreferrer">

@@ -18,7 +18,7 @@ Reader
 - [x] Categories
 - [x] Read later
 - [x] Option to show only unread posts
-- [ ] Feed management
+- [ ] Category & feed management
 - [ ] User management
 - [ ] Shortcuts
 - [ ] Remove old read posts
