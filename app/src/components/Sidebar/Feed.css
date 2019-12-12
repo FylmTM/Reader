@@ -1,6 +1,7 @@
 .r-feed {
     display: flex;
     padding: 10px 10px 10px 29px;
+    align-items: center;
 }
 
 .r-feed .title {
@@ -9,4 +10,5 @@
 
 .r-feed .unread {
     margin-left: 5px;
+    font-size: var(--font-size-small);
 }

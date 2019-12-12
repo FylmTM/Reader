@@ -13,6 +13,7 @@
 
 .r-category .unread {
     margin-left: 5px;
+    font-size: var(--font-size-small);
 }
 
 .r-category-toggle {
