@@ -106,6 +106,7 @@
 
 .r-posts-list-item .media {
     margin-right: 5px;
+    overflow: hidden;
 }
 
 .r-posts-list-item .media img {
