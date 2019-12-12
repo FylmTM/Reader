@@ -96,6 +96,7 @@ impl Queries for Connection {
             select uc.id, uc.title
             from user_categories uc
             where uc.user_id = :user_id
+            order by uc.position
         ";
         let mut statement = self.prepare(query)?;
         let categories_rows = statement.query_map_named(&[(":user_id", &user_id)], |row| {

@@ -38,10 +38,11 @@ create table users
 
 create table user_categories
 (
-    id      integer primary key,
-    user_id integer references users (id) not null,
+    id       integer primary key,
+    user_id  integer references users (id) not null,
 
-    title   text                          not null
+    title    text                          not null,
+    position integer                       not null
 );
 
 create table user_category_feeds

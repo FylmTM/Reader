@@ -21,7 +21,6 @@ Reader
 - [ ] Category & feed management
 - [ ] User management
 - [ ] Shortcuts
-- [ ] Remove old read posts
 
 #### Sources
 

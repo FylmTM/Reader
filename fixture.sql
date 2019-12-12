@@ -18,9 +18,9 @@ insert or ignore into users(id, username, api_key)
 values (1, 'me', 'api_key')
 ;
 
-insert or ignore into user_categories(id, user_id, title)
-values (1, 1, 'General'),
-       (2, 1, 'Development')
+insert or ignore into user_categories(id, user_id, title, position)
+values (1, 1, 'General', 1),
+       (2, 1, 'Development', 2)
 ;
 
 insert or ignore into user_category_feeds(category_id, feed_id, title)
