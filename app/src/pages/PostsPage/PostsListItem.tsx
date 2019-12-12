@@ -63,7 +63,11 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
         </span>
         <span className="actions">
           {post.comments_link && (
-            <a href={post.comments_link} className="r-button minimal">
+            <a
+              href={post.comments_link}
+              target="_blank"
+              className="r-button minimal"
+            >
               <Icon type="message" size="small" />
             </a>
           )}

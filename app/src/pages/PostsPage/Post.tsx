@@ -67,7 +67,11 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
         <div className="left" />
         <div className="right">
           {post.comments_link && (
-            <a href={post.comments_link} className="r-button outline">
+            <a
+              href={post.comments_link}
+              target="_blank"
+              className="r-button outline"
+            >
               <Icon type="message" />
             </a>
           )}
@@ -107,7 +111,9 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
       </Navbar>
       <div ref={contentRef} className="r-post-content">
         <h1 className="title">
-          <a href={post.link}>{post.title}</a>
+          <a href={post.link} target="_blank">
+            {post.title}
+          </a>
         </h1>
         <div className="meta">
           <span className="date">{since}</span>
