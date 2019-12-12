@@ -9,8 +9,6 @@ import {
 } from "../domain";
 import client from "./client";
 
-const DELAY = 100;
-
 function getCurrentUser(): Promise<User> {
   return client.get("/api/v1/auth/current_user");
 }
@@ -64,19 +62,33 @@ function getPosts(
   return client.get(`/api/v1/posts${queryString}`);
 }
 
-function getPostContent(postId: number): Promise<PostContent> {
-  return client.get(`/api/v1/posts/${postId}/content`);
+function postsMarkAsRead(
+  section: PostsSection,
+  fromPostId: number,
+): Promise<Page<Post>> {
+  const query = [];
+  query.push(`from_post_id=${fromPostId}`);
+
+  switch (section.type) {
+    case "read-later":
+      throw new Error("Mark all as read not supported for read-later");
+    case "all":
+      // nothing
+      break;
+    case "category":
+      query.push(`category_id=${section.categoryId}`);
+      break;
+    case "feed":
+      query.push(`feed_id=${section.feedId}`);
+      break;
+  }
+
+  const queryString = query.length === 0 ? "" : `?${query.join("&")}`;
+  return client.get(`/api/v1/posts/mark_as_read${queryString}`);
 }
 
-function markAllAsRead(
-  section: PostsSection,
-  lastPostId: number,
-): Promise<void> {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, DELAY);
-  });
+function getPostContent(postId: number): Promise<PostContent> {
+  return client.get(`/api/v1/posts/${postId}/content`);
 }
 
 function markAsRead(postId: number, isRead: Boolean): Promise<void> {
@@ -98,8 +110,8 @@ export default {
   getCategoriesWithFeeds,
   getCategoriesWithFeedsUnreadCounts,
   getPosts,
+  postsMarkAsRead,
   getPostContent,
-  markAllAsRead,
   markAsRead,
   markAsReadLater,
 };

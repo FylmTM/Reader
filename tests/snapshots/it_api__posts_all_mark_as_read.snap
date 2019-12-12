@@ -1,0 +1,15 @@
+---
+source: tests/it_api.rs
+expression: response.json_entity()
+---
+[
+  "200 OK",
+  {
+    "payload": {
+      "all": 0,
+      "categories": {},
+      "feeds": {}
+    },
+    "status": "ok"
+  }
+]

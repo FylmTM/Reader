@@ -119,6 +119,7 @@ pub fn app(is_testing: bool) -> rocket::Rocket {
                 api::routes::categories_with_feeds,
                 api::routes::posts,
                 api::routes::posts_unread_count,
+                api::routes::posts_mark_as_read,
                 api::routes::post_content,
                 api::routes::post_is_read,
                 api::routes::post_is_read_later,

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect } from "react";
+import { IconButton } from "../../components/common/Button/Button";
 import { navigate } from "../../components/common/NoStateLink";
 import { Navbar } from "../../components/Navbar/Navbar";
 import * as domain from "../../domain";
@@ -121,6 +122,18 @@ export const PostsPage: FC = function PostsPage() {
               />
               Unread only
             </div>
+            {section.type != "read-later" && (
+              <div className="r-posts-list-action-mark-as-read">
+                <IconButton
+                  icon="check"
+                  look="outline"
+                  disabled={posts.postsMarkAsReadInProgress}
+                  onClick={() => {
+                    posts.markAllAsRead(section, hrefPrefix);
+                  }}
+                />
+              </div>
+            )}
           </div>
         </Navbar>
         <div className="r-posts-list-content">

@@ -195,6 +195,7 @@ interface PostsStore {
   posts: Array<Post>;
   hasNextPage: boolean;
   postsGetInProgress: boolean;
+  postsMarkAsReadInProgress: boolean;
   get: (section: PostsSection, isUnreadOnly: boolean) => void;
   getNextPage: (
     section: PostsSection,
@@ -211,6 +212,7 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
   posts: [],
   hasNextPage: true,
   postsGetInProgress: false,
+  postsMarkAsReadInProgress: false,
   get: (section, isUnreadOnly) => {
     set({ posts: [], postsGetInProgress: true, hasNextPage: true });
     api
@@ -246,12 +248,14 @@ export const [usePosts, postsStoreApi] = create<PostsStore>(set => ({
       }
 
       const fromPostId = posts[0].id;
+      set({ postsMarkAsReadInProgress: true });
       api
-        .markAllAsRead(section, fromPostId)
+        .postsMarkAsRead(section, fromPostId)
         .then(() => {
           appStoreApi.getState().refresh();
         })
-        .catch(handleError);
+        .catch(handleError)
+        .finally(() => set({ postsMarkAsReadInProgress: false }));
       return {};
     });
   },

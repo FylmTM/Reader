@@ -13,7 +13,7 @@ pub fn initialize(pool: &db::Pool, interval: u64) {
 
     info!("Schedule feeds update every {} minutes.", interval);
     thread::spawn(move || loop {
-        thread::sleep(Duration::from_secs(10));
+        thread::sleep(Duration::from_secs(5));
         loop {
             let mut conn = pool.get().expect("Failed to acquire db connection");
             update(&mut conn);

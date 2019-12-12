@@ -100,6 +100,18 @@ pub fn posts_unread_count(
     ok(count)
 }
 
+#[get("/api/v1/posts/mark_as_read?<from_post_id>&<category_id>&<feed_id>")]
+pub fn posts_mark_as_read(
+    from_post_id: i64,
+    category_id: Option<i64>,
+    feed_id: Option<i64>,
+    user: db::User,
+    conn: db::PoolConnection,
+) -> Response<()> {
+    conn.posts_mark_as_read(user.id, from_post_id, category_id, feed_id)?;
+    ok(())
+}
+
 #[get("/api/v1/posts/<post_id>/content")]
 pub fn post_content(
     post_id: i64,

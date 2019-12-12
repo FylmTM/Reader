@@ -57,13 +57,13 @@ create table user_category_feeds
 
 create table user_posts
 (
+    post_id       integer references posts (id) primary key not null,
     user_id       integer references users (id) not null,
-    post_id       integer references posts (id) not null,
 
     is_read       boolean default (false) not null,
     is_read_later boolean default (false) not null,
     read_date     text                          null,
 
-    primary key (user_id, post_id),
+    unique (user_id, post_id),
     check ( (is_read = false and read_date is null) or (is_read = true and read_date is not null) )
 );

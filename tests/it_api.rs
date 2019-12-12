@@ -115,6 +115,58 @@ fn test_get_posts_feed() {
 }
 
 #[test]
+fn test_posts_all_mark_as_read() {
+    let client = client::authenticated();
+
+    let mut response = client
+        .get("/api/v1/posts/mark_as_read?from_post_id=10000")
+        .dispatch();
+    assert_eq!(api_ok(()), response.entity());
+
+    let mut response = client.get("/api/v1/posts/unread_count").dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
+fn test_posts_all_mark_as_read_last_10() {
+    let client = client::authenticated();
+
+    let mut response = client
+        .get("/api/v1/posts/mark_as_read?from_post_id=10")
+        .dispatch();
+    assert_eq!(api_ok(()), response.entity());
+
+    let mut response = client.get("/api/v1/posts/unread_count").dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
+fn test_posts_category_mark_as_read() {
+    let client = client::authenticated();
+
+    let mut response = client
+        .get("/api/v1/posts/mark_as_read?from_post_id=10000&category_id=1")
+        .dispatch();
+    assert_eq!(api_ok(()), response.entity());
+
+    let mut response = client.get("/api/v1/posts/unread_count").dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
+fn test_posts_feed_mark_as_read() {
+    let client = client::authenticated();
+
+    let mut response = client
+        .get("/api/v1/posts/mark_as_read?from_post_id=10000&feed_id=1")
+        .dispatch();
+    assert_eq!(api_ok(()), response.entity());
+
+    let mut response = client.get("/api/v1/posts/unread_count").dispatch();
+    assert_json_snapshot!(response.json_entity());
+}
+
+#[test]
 fn test_get_posts_unread_count() {
     let client = client::authenticated();
 

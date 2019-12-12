@@ -36,6 +36,13 @@ pub trait Queries {
         category_id: Option<CategoryId>,
         feed_id: Option<FeedId>,
     ) -> Result<Page<UserPost>>;
+    fn posts_mark_as_read(
+        &self,
+        user_id: UserId,
+        from_post_id: PostId,
+        category_id: Option<CategoryId>,
+        feed_id: Option<FeedId>,
+    ) -> Result<()>;
     fn find_post_content_by_user(
         &self,
         user_id: UserId,
@@ -242,6 +249,56 @@ impl Queries for Connection {
             has_next_page,
             items: user_posts,
         })
+    }
+
+    fn posts_mark_as_read(
+        &self,
+        user_id: UserId,
+        from_post_id: PostId,
+        category_id: Option<CategoryId>,
+        feed_id: Option<FeedId>,
+    ) -> Result<()> {
+        let sql_category_id = category_id
+            .map(|_| "and ucf.category_id = :category_id")
+            .unwrap_or("");
+        let sql_feed_id = feed_id.map(|_| "and ucf.feed_id = :feed_id").unwrap_or("");
+
+        // language=SQLite
+        let query = format!(
+            "
+            update user_posts
+            set is_read = true,
+                read_date = :read_date
+            where user_posts.post_id IN (
+                select up.post_id
+                from user_posts up
+                inner join posts p on up.post_id = p.id
+                inner join user_category_feeds ucf on p.feed_id = ucf.feed_id
+                where up.user_id = :user_id
+                and up.post_id <= :from_post_id
+                and up.is_read = false
+                {}
+                {}
+            )
+        ",
+            sql_category_id, sql_feed_id,
+        );
+
+        let mut params: Vec<(&str, &dyn rusqlite::ToSql)> = Vec::new();
+        params.push((":user_id", &user_id));
+        params.push((":from_post_id", &from_post_id));
+
+        let read_date: chrono::DateTime<chrono::Utc> = chrono::DateTime::from(chrono::Utc::now());
+        params.push((":read_date", &read_date));
+        if category_id.is_some() {
+            params.push((":category_id", category_id.as_ref().unwrap()));
+        }
+        if feed_id.is_some() {
+            params.push((":feed_id", feed_id.as_ref().unwrap()));
+        }
+
+        self.execute_named(&query, params.as_slice())?;
+        Ok(())
     }
 
     fn find_post_content_by_user(
