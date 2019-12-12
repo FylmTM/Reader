@@ -58,7 +58,7 @@
 }
 
 .r-post-content .text a, .r-post-content .text a:hover {
-    text-decoration: underline;
+    color: var(--color-accent);
 }
 
 .r-post-content .text img {
