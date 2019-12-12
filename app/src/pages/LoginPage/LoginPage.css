@@ -1,6 +1,6 @@
 .r-page-login {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -8,5 +8,9 @@
 
 .r-page-login input {
     width: 300px;
-    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.r-page-login button {
+    width: 300px;
 }

@@ -3,36 +3,7 @@
     height: 100%;
 }
 
-
-.r-page-posts-list-navbar {
-    height: 40px;
-    padding: 5px 10px;
-    border-bottom: 1px solid var(--color-seconary-muted);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.r-page-posts-list-navbar > div {
-    display: flex;
-    align-items: center;
-}
-
 .r-posts-list-action-unread-only {
-    display: flex;
-    align-items: center;
-}
-
-.r-page-post-navbar {
-    height: 40px;
-    padding: 5px 10px;
-    border-bottom: 1px solid var(--color-seconary-muted);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.r-page-post-navbar > div {
     display: flex;
     align-items: center;
 }

@@ -10,8 +10,7 @@ import React, { FC } from "react";
 import "./Icon.css";
 import { classNames } from "../../../utils";
 import { ReactComponent as GridAnimated } from "./icons/grid.svg";
-import { ReactComponent as Login } from "./icons/log-in.svg";
-import { ReactComponent as Logout } from "./icons/log-out.svg";
+import { ReactComponent as Power } from "./icons/power.svg";
 import { ReactComponent as Settings } from "./icons/settings.svg";
 import { ReactComponent as Collapsed } from "./icons/chevron-right.svg";
 import { ReactComponent as Expanded } from "./icons/chevron-down.svg";
@@ -24,8 +23,7 @@ import { ReactComponent as Refresh } from "./icons/refresh-cw.svg";
 import { ReactComponent as Message } from "./icons/message-circle.svg";
 
 export type IconType =
-  | "login"
-  | "logout"
+  | "power"
   | "settings"
   | "grid-animated"
   | "collapsed"
@@ -50,10 +48,8 @@ export const Icon: FC<Props> = ({ type, size }) => {
   switch (type) {
     case "grid-animated":
       return <GridAnimated className={className} />;
-    case "login":
-      return <Login className={className} />;
-    case "logout":
-      return <Logout className={className} />;
+    case "power":
+      return <Power className={className} />;
     case "settings":
       return <Settings className={className} />;
     case "collapsed":

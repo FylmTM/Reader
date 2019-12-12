@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect } from "react";
 import { navigate } from "../../components/common/NoStateLink";
+import { Navbar } from "../../components/Navbar/Navbar";
 import * as domain from "../../domain";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useApp, useCategories, usePosts, usePostsSection } from "../../stores";
@@ -105,7 +106,7 @@ export const PostsPage: FC = function PostsPage() {
   return (
     <div className="r-page-posts">
       <div className="r-posts-list">
-        <div className="r-page-posts-list-navbar">
+        <Navbar>
           <div className="left">
             <span className="r-title ellipsis">
               <span className="ellipsis">{title}</span>
@@ -121,7 +122,7 @@ export const PostsPage: FC = function PostsPage() {
               Unread only
             </div>
           </div>
-        </div>
+        </Navbar>
         <div className="r-posts-list-content">
           <PostsList
             selectedPostId={selectedPostId}

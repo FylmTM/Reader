@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Activity } from "../../components/common/Activity/Activity";
-import { IconButton } from "../../components/common/Button/Button";
+import { Button } from "../../components/common/Button/Button";
 import { Input } from "../../components/common/Input/Input";
 import { useUser } from "../../stores";
 import "./LoginPage.css";
@@ -28,12 +28,9 @@ export const LoginPage = function LoginPage() {
           value={apiKey}
           onChange={event => setApiKey(event.target.value)}
         />
-        <IconButton
-          icon="login"
-          size="large"
-          type="submit"
-          disabled={user.loginInProgress}
-        />
+        <Button type="submit" disabled={user.loginInProgress} size="large">
+          Login
+        </Button>
       </form>
     </Activity>
   );

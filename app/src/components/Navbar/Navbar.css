@@ -1,0 +1,23 @@
+.r-navbar {
+    height: 40px;
+    padding: 5px;
+    border-bottom: 1px solid var(--color-seconary-muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-background);
+}
+
+.r-navbar > div {
+    display: flex;
+    align-items: center;
+}
+
+.r-navbar .left > * {
+    margin-right: 5px;
+}
+
+.r-navbar .right > * {
+    margin-left: 5px;
+}
+

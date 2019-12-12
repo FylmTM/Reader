@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { useAuthenticatedUser } from "../../stores";
 import { IconButton } from "../common/Button/Button";
 import { NoStateLink } from "../common/NoStateLink";
+import { Navbar } from "../Navbar/Navbar";
 import { Categories } from "./Categories";
 import "./Sidebar.css";
 
@@ -10,19 +11,19 @@ export const Sidebar: FC = function Sidebar({ children }) {
 
   return (
     <div className="r-sidebar">
-      <div className="r-sidebar-navbar">
+      <Navbar>
         <div className="left">
           <NoStateLink href="/">{user.current.username}</NoStateLink>
         </div>
         <div className="right">
           <IconButton
-            icon="logout"
+            icon="power"
             look="outline"
             onClick={user.logout}
             disabled={user.logoutInProgress}
           />
         </div>
-      </div>
+      </Navbar>
       <div className="r-sidebar-content">
         <Categories />
       </div>

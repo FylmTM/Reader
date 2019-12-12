@@ -25,7 +25,7 @@ export const Button: FC<NativeButton & ButtonProps> = ({
   children,
   ...props
 }) => {
-  const extendedClassName = classNames(className, look, size);
+  const extendedClassName = classNames(className, "r-button", look, size);
   return (
     <button {...props} className={extendedClassName}>
       {children}

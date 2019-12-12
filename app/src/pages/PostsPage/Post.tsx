@@ -3,6 +3,7 @@ import React, { FC, useEffect, useRef } from "react";
 import { IconButton } from "../../components/common/Button/Button";
 import { Icon } from "../../components/common/Icon/Icon";
 import { NoStateLink } from "../../components/common/NoStateLink";
+import { Navbar } from "../../components/Navbar/Navbar";
 import { usePosts, usePostContent } from "../../stores";
 import { classNames } from "../../utils";
 import "./Post.css";
@@ -12,10 +13,10 @@ import parseISO from "date-fns/parseISO";
 const NoPost: FC = function NoPost() {
   return (
     <div className="r-post">
-      <div className="r-page-post-navbar">
+      <Navbar>
         <div className="left" />
         <div className="right" />
-      </div>
+      </Navbar>
     </div>
   );
 };
@@ -62,7 +63,7 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
 
   return (
     <div className={className}>
-      <div className="r-page-post-navbar">
+      <Navbar>
         <div className="left" />
         <div className="right">
           {post.comments_link && (
@@ -103,7 +104,7 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
             }}
           />
         </div>
-      </div>
+      </Navbar>
       <div ref={contentRef} className="r-post-content">
         <h1 className="title">
           <a href={post.link}>{post.title}</a>
