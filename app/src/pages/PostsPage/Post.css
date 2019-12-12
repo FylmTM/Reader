@@ -51,10 +51,15 @@
 .r-post-content .media {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .r-post-content .media img {
     max-width: 100%;
+}
+
+.r-post-content .text {
+    margin-top: 20px;
 }
 
 .r-post-content .text a, .r-post-content .text a:hover {
