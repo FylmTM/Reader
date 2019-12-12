@@ -62,6 +62,10 @@ fn parse(content: &str) -> Result<Vec<Post>> {
         posts.push(post);
     }
 
+    // Items are sorted from newest to oldest, but for database insertion
+    // we need them sorted from oldest to newest.
+    posts.reverse();
+
     Ok(posts)
 }
 
