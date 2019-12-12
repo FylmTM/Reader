@@ -20,18 +20,18 @@ expression: response.json_entity()
             "title": "Hacker News"
           },
           {
-            "feed": "http://127.0.0.1:8080/mock/rss/xkcd.xml",
-            "id": 2,
-            "kind": "RSS",
-            "link": "https://xkcd.com",
-            "title": "xkcd"
-          },
-          {
             "feed": "http://127.0.0.1:8080/mock/rss/stopgame.xml",
             "id": 3,
             "kind": "RSS",
             "link": "https://stopgame.ru/",
             "title": "StopGame"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/rss/xkcd.xml",
+            "id": 2,
+            "kind": "RSS",
+            "link": "https://xkcd.com",
+            "title": "xkcd"
           }
         ]
       },
@@ -41,20 +41,6 @@ expression: response.json_entity()
           "title": "Development"
         },
         "feeds": [
-          {
-            "feed": "http://127.0.0.1:8080/mock/rss/kotlin.xml",
-            "id": 4,
-            "kind": "RSS",
-            "link": "https://blog.jetbrains.com/kotlin/",
-            "title": "Kotlin Blog"
-          },
-          {
-            "feed": "http://127.0.0.1:8080/mock/rss/react.xml",
-            "id": 5,
-            "kind": "RSS",
-            "link": "https://reactjs.org",
-            "title": "React.js"
-          },
           {
             "feed": "http://127.0.0.1:8080/mock/atom/github_rocket_releases.atom",
             "id": 6,
@@ -75,6 +61,20 @@ expression: response.json_entity()
             "kind": "Atom",
             "link": "https://jvns.ca",
             "title": "Julia Evans"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/rss/kotlin.xml",
+            "id": 4,
+            "kind": "RSS",
+            "link": "https://blog.jetbrains.com/kotlin/",
+            "title": "Kotlin Blog"
+          },
+          {
+            "feed": "http://127.0.0.1:8080/mock/rss/react.xml",
+            "id": 5,
+            "kind": "RSS",
+            "link": "https://reactjs.org",
+            "title": "React.js"
           },
           {
             "feed": "http://127.0.0.1:8080/mock/atom/rust.atom",

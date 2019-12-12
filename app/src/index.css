@@ -13,7 +13,7 @@
     --color-error: #b71c1c;
 
     --font-size-small: 9pt;
-    --font-size: 11pt;
+    --font-size: 13pt;
     --font-size-large: 16pt;
     --border-radius: 5px;
 }
@@ -102,4 +102,8 @@ a {
 
 :focus {
     scrollbar-color: var(--color-accent-muted) currentcolor;
+}
+
+li {
+    margin-bottom: 5px;
 }

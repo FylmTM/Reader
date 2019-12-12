@@ -135,6 +135,7 @@ impl Queries for Connection {
             from user_category_feeds ucf
             inner join feeds f on ucf.feed_id = f.id
             where ucf.category_id = :category_id
+            order by ucf.title
         ";
         let mut statement = self.prepare(query)?;
         let feeds_rows =
