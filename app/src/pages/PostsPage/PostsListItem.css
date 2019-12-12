@@ -39,12 +39,12 @@
 }
 
 .r-posts-list-item .fade {
-    height: 20px;
+    height: 15px;
     left: 10px;
     right: 10px;
     position: absolute;
+    background-image: linear-gradient(to bottom, rgba(26, 29, 33, 0), var(--color-background));
     bottom: 5px;
-    background-image: linear-gradient(to bottom, transparent, var(--color-background));
 }
 
 .r-posts-list-item:hover .border, .r-posts-list-item:focus .border {
