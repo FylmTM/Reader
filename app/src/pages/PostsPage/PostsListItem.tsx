@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC } from "react";
+import React, { FC } from "react";
 import { IconButton } from "../../components/common/Button/Button";
 import { Icon } from "../../components/common/Icon/Icon";
 import { NoStateLink } from "../../components/common/NoStateLink";
@@ -13,7 +13,6 @@ interface Props {
   post: Post;
   hrefPrefix: string;
   isSelected: boolean;
-  style: CSSProperties;
 }
 
 const MAX_SUMMARY_LENGTH = 300;
@@ -22,7 +21,6 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   post,
   hrefPrefix,
   isSelected,
-  style,
 }) {
   const { read, readLater, close } = postsStoreApi.getState();
   let summary = post.summary;
@@ -49,7 +47,7 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
   const since = formatDistanceToNow(parseISO(post.date));
 
   return (
-    <div className={className} style={style}>
+    <div className={className}>
       <span className="meta">
         <span className="date">{since}</span>
         <span>&nbsp;\&nbsp;</span>

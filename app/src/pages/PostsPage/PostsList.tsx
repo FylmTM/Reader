@@ -55,13 +55,14 @@ export const PostsList: FC<Props> = function PostsList({
     }
     const post = posts.posts[index];
     return (
-      <PostsListItem
-        key={post.id}
-        post={post}
-        hrefPrefix={hrefPrefix}
-        isSelected={selectedPostId ? selectedPostId === post.id : false}
-        style={style}
-      />
+      <div style={style}>
+        <PostsListItem
+          key={post.id}
+          post={post}
+          hrefPrefix={hrefPrefix}
+          isSelected={selectedPostId ? selectedPostId === post.id : false}
+        />
+      </div>
     );
   };
 
