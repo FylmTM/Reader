@@ -41,7 +41,7 @@ function getPosts(
   if (fromPostId != null) {
     query.push(`from_post_id=${fromPostId}`);
   }
-  if (isUnreadOnly) {
+  if (isUnreadOnly && section.type !== "read-later") {
     query.push(`is_read=false`);
   }
 

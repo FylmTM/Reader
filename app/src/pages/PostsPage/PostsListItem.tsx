@@ -66,6 +66,7 @@ export const PostsListItem: FC<Props> = React.memo(function PostsListItem({
             <a
               href={post.comments_link}
               target="_blank"
+              rel="noopener noreferrer"
               className="r-button minimal"
             >
               <Icon type="message" size="small" />

@@ -70,6 +70,7 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
             <a
               href={post.comments_link}
               target="_blank"
+              rel="noopener noreferrer"
               className="r-button outline"
             >
               <Icon type="message" />
@@ -110,34 +111,36 @@ export const Post: FC<Props> = function Post({ postId, hrefPrefix }) {
         </div>
       </Navbar>
       <div ref={contentRef} className="r-post-content">
-        <h1 className="title">
-          <a href={post.link} target="_blank">
-            {post.title}
-          </a>
-        </h1>
-        <div className="meta">
-          <span className="date">{since}</span>
-          <span>&nbsp;\&nbsp;</span>
-          <span className="feed">
-            <NoStateLink
-              href={`/category/${post.category_id}/feed/${post.feed_id}`}
-            >
-              {post.feed_title}
-            </NoStateLink>
-          </span>
+        <div className="inner">
+          <h1 className="title">
+            <a href={post.link} target="_blank" rel="noopener noreferrer">
+              {post.title}
+            </a>
+          </h1>
+          <div className="meta">
+            <span className="date">{since}</span>
+            <span>&nbsp;\&nbsp;</span>
+            <span className="feed">
+              <NoStateLink
+                href={`/category/${post.category_id}/feed/${post.feed_id}`}
+              >
+                {post.feed_title}
+              </NoStateLink>
+            </span>
+          </div>
+          {isContentLoaded && (
+            <>
+              <PostMedia
+                type={post.media_type}
+                link={post.media_link}
+                content={postContent.postContent?.content}
+              />
+              {contentHTML && (
+                <div className="text" dangerouslySetInnerHTML={contentHTML} />
+              )}
+            </>
+          )}
         </div>
-        {isContentLoaded && (
-          <>
-            <PostMedia
-              type={post.media_type}
-              link={post.media_link}
-              content={postContent.postContent?.content}
-            />
-            {contentHTML && (
-              <div className="text" dangerouslySetInnerHTML={contentHTML} />
-            )}
-          </>
-        )}
       </div>
     </div>
   );

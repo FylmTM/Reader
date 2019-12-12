@@ -18,10 +18,13 @@
 .r-post-content {
     overflow-y: auto;
     flex: 1;
+    padding: 0px 20px 20px;
 }
 
-.r-post-content > * {
-    margin: 0 20px 20px;
+.r-post-content .inner {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .r-post-content .title {
@@ -72,4 +75,8 @@
     margin: 0;
     padding: 0px 20px;
     border-left: 5px solid var(--color-accent);
+}
+
+.r-post-content .text {
+    line-height: 1.2;
 }
