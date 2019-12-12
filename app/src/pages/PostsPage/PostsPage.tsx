@@ -114,25 +114,27 @@ export const PostsPage: FC = function PostsPage() {
             </span>
           </div>
           <div className="right">
-            <div className="r-posts-list-action-unread-only">
-              <input
-                type="checkbox"
-                checked={isUnreadOnly}
-                onChange={() => setIsUnreadOnly(!isUnreadOnly)}
-              />
-              Unread only
-            </div>
-            {section.type != "read-later" && (
-              <div className="r-posts-list-action-mark-as-read">
-                <IconButton
-                  icon="check"
-                  look="outline"
-                  disabled={posts.postsMarkAsReadInProgress}
-                  onClick={() => {
-                    posts.markAllAsRead(section, hrefPrefix);
-                  }}
-                />
-              </div>
+            {section.type !== "read-later" && (
+              <>
+                <div className="r-posts-list-action-unread-only">
+                  <input
+                    type="checkbox"
+                    checked={isUnreadOnly}
+                    onChange={() => setIsUnreadOnly(!isUnreadOnly)}
+                  />
+                  Unread only
+                </div>
+                <div className="r-posts-list-action-mark-as-read">
+                  <IconButton
+                    icon="check"
+                    look="outline"
+                    disabled={posts.postsMarkAsReadInProgress}
+                    onClick={() => {
+                      posts.markAllAsRead(section, hrefPrefix);
+                    }}
+                  />
+                </div>
+              </>
             )}
           </div>
         </Navbar>
