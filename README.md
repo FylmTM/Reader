@@ -10,8 +10,6 @@ Reader
 
 ![screenshot](./screenshot.png)
 
-**Important:** This is unfinished personal project.
-
 #### Features
 
 **Supported browsers:** latest versions of Chrome, Firefox, Edge, Safari.
@@ -32,10 +30,6 @@ Reader
 - [x] Atom
 - [ ] Hacker News Best
 - [ ] Twitter
-
-## Quickstart
-
-At the moment no releases are available for download, so Reader must be built locally.
 
 ## Configuration
 
