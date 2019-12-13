@@ -8,7 +8,9 @@ Reader
 * Multiple [sources](#sources).
 * Low CPU and memory usage.
 
-**Important:** Reader is in heavy development. Important features are still missing, and non-backward compatible schema changes might happen. In [this issue](https://github.com/FylmTM/Reader/issues/1) you can find more details on current development status.
+![screenshot](./screenshot.png)
+
+**Important:** This is unfinished personal project.
 
 #### Features
 
