@@ -25,7 +25,7 @@ chrono = { version = "0.4.10", features = ["serde"], default-features = false }
 time = "0.1.42"
 
 # Embed static assets into binary
-rust-embed = "5.1.0"
+rust-embed = "6.3.0"
 
 # HTTP Client
 reqwest = "0.9.22"
